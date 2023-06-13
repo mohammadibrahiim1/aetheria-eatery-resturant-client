@@ -6,9 +6,13 @@ import {
   Group,
   Container,
   Grid,
+  Button,
+  rem,
+  Rating,
 } from "@mantine/core";
 import { useContext, useState } from "react";
 import { ApiContext } from "../../Context/DataContext";
+import { IconTrash } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -25,12 +29,67 @@ const useStyles = createStyles((theme) => ({
   body: {
     padding: theme.spacing.md,
   },
+  heading: {
+    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+    fontWeight: 700,
+    color: "#151515",
+    lineHeight: 1.2,
+    fontSize: rem(32),
+    // marginTop: theme.spacing.xs,
+    textTransform: "uppercase",
+    textAlign: "center",
+    // paddingBottom: theme.spacing.sm,
+  },
+  subTitle: {
+    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+    fontWeight: 500,
+    color: "#D99904",
+    lineHeight: 1.2,
+    fontSize: rem(12),
+    marginTop: theme.spacing.xs,
+    textTransform: "uppercase",
+    textAlign: "center",
+    paddingBottom: theme.spacing.xs,
+  },
+  controls: {
+    marginTop: `calc(${theme.spacing.xs}* 1.5)`,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    // paddingLeft: theme.spacing.xs,
+    // marginLeft: theme.spacing.md,
+
+    // [theme.fn.smallerThan("xs")]: {
+    //   flexDirection: "column",
+    // },
+  },
+  control: {
+    height: rem(32),
+    fontSize: theme.fontSizes.sm,
+    color: "#B70C1C",
+    width: "100%",
+
+    // "&:not(:first-of-type)": {
+    // marginLeft: theme.spacing.xs,
+    // },
+
+    // [theme.fn.smallerThan("xs")]: {
+    //   "&:not(:first-of-type)": {
+    //     marginTop: theme.spacing.md,
+    //     marginLeft: 0,
+    //   },
+    // },
+  },
 }));
 
 const Cart = () => {
   const { classes } = useStyles();
-  const { cart } = useContext(ApiContext);
+  const { cart, handleRemoveFoodItem } = useContext(ApiContext);
   const [products, setProducts] = useState(cart);
+
+  const handleRemove = (productId) => {
+    handleRemoveFoodItem(productId);
+  };
 
   const handleQuantityChange = (productId, quantity) => {
     setProducts((prevProducts) =>
@@ -53,7 +112,7 @@ const Cart = () => {
 
   return (
     <div>
-      <Container className="">
+      <Container className="py-24">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
         </div>
@@ -76,7 +135,7 @@ const Cart = () => {
                         <Text className={classes.title} mt="xs" mb="md">
                           ${product.price * product.quantity}
                         </Text>
-                        <div class="flex justify-between items-center   border-gray-100">
+                        <div class="flex justify-between items-center">
                           <input
                             onChange={(e) =>
                               handleQuantityChange(
@@ -88,6 +147,20 @@ const Cart = () => {
                             type="number"
                             value={product.quantity}
                           />
+                          <div position="center" className={classes.controls}>
+                            <Button
+                              // defaultValue={4}
+                              className={classes.control}
+                              compact
+                              variant="default"
+                              size="xs"
+                            >
+                              {" "}
+                              <IconTrash
+                                onClick={() => handleRemove(product.id)}
+                              />
+                            </Button>
+                          </div>
                         </div>
                         <Group noWrap spacing="xs"></Group>
                       </div>
@@ -95,6 +168,11 @@ const Cart = () => {
                   </Card>
                 </>
               ))}
+            </div>
+            <div className="py-8">
+              {/* <Button variant="default" className="w-full">
+                Checkout
+              </Button> */}
             </div>
           </Grid.Col>
           <Grid.Col md={6} lg={3}>
@@ -106,9 +184,9 @@ const Cart = () => {
               fz="xl"
               fw={700}
             >
-              {" "}
               Bill Details
             </Text>
+            <hr />
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -117,7 +195,6 @@ const Cart = () => {
               fz="sm"
               fw={700}
             >
-              {" "}
               <div className="py-8 ">
                 {" "}
                 <p className="pb-5">Subtotal: ${calculateSubTotal()}</p>
@@ -125,6 +202,30 @@ const Cart = () => {
                 <p className="pt-5">Total : ${calculateTotal()} </p>
               </div>
             </Text>
+            <div position="center" className={classes.controls}>
+              <Button
+                // onClick={open,()=>setFoodItem()}
+                // onClick={() => setFoodItem(item)}
+                // open={open}
+                compact
+                className={classes.control}
+                variant="default"
+                size="xs"
+              >
+                checkout
+              </Button>
+            </div>
+            <div position="center" className={classes.controls}>
+              <Button
+                // onClick={() => handleAddToCart(item)}
+                compact
+                className={classes.control}
+                variant="default"
+                size="xs"
+              >
+                Add more item
+              </Button>
+            </div>
           </Grid.Col>
         </Grid>
       </Container>

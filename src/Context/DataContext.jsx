@@ -22,10 +22,12 @@ const DataContext = ({ children }) => {
     // console.log(newCart);
   };
 
-  const handleRemoveFoodItem = (id) => {
-    const updatedItems = [...cart];
-    updatedItems.splice(id, 1);
-    setCart(updatedItems);
+  const handleRemoveFoodItem = (foodItem) => {
+    const remaining = cart.filter((item) => item.id !== foodItem.id);
+    setCart(remaining);
+    // const updatedItems = [...cart];
+    // updatedItems.splice(id, 1);
+    // setCart(updatedItems);
   };
 
   useEffect(() => {
