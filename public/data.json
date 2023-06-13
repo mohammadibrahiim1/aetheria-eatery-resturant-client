@@ -4,7 +4,7 @@
     "category": "shakes",
     "name": "Just Milo",
     "price": 259,
-    "categoryThumb": "https://i.ibb.co/B2YGmq1/just-milo.jpg",
+    "image": "https://i.ibb.co/B2YGmq1/just-milo.jpg",
     "description": "Cocoa based malted drink served with added cream, sugar syrup and crushed ice"
   },
   {
@@ -12,7 +12,7 @@
     "category": "shakes",
     "name": "Nutella Madness",
     "price": 279,
-    "categoryThumb": "https://i.ibb.co/xSQkmT0/nutella-madness.jpg",
+    "image": "https://i.ibb.co/xSQkmT0/nutella-madness.jpg",
     "description": "Iconic hazelnut spread mixed with milk, cream and sugar syrup"
   },
   {
@@ -20,7 +20,7 @@
     "category": "shakes",
     "name": "Cookies n' Cream",
     "price": 299,
-    "categoryThumb": "https://i.ibb.co/hV0BBb7/cookies-n-cream.jpg",
+    "image": "https://i.ibb.co/hV0BBb7/cookies-n-cream.jpg",
     "description": "Blended chocolate cookies in milk, cream and sugar syrup."
   },
   {
@@ -28,7 +28,7 @@
     "category": "shakes",
     "name": "French Vanilla Latte",
     "price": 199,
-    "categoryThumb": "https://i.ibb.co/8DzxP5K/french-vanilla-latte.jpg",
+    "image": "https://i.ibb.co/8DzxP5K/french-vanilla-latte.jpg",
     "description": "Classic chilled latte with a hint of Vanilla."
   },
   {
@@ -36,7 +36,7 @@
     "category": "shakes",
     "name": "Peanut Butter",
     "price": 349,
-    "categoryThumb": "https://i.ibb.co/Mhk4ZyD/peanut-butter.jpg",
+    "image": "https://i.ibb.co/Mhk4ZyD/peanut-butter.jpg",
     "description": "Crunchy Peanut butter mixed with milk, cream, chocolate and sugar syrup"
   },
   {
@@ -44,7 +44,7 @@
     "category": "shakes",
     "name": "Cake In My Shake",
     "price": 399,
-    "categoryThumb": "https://i.ibb.co/ChPRs1P/cake-in-my-shake.jpg",
+    "image": "https://i.ibb.co/ChPRs1P/cake-in-my-shake.jpg",
     "description": "Brownie piece dipped in hazelnut and cocoa flavored drink"
   },
   {
@@ -52,7 +52,7 @@
     "category": "Mocktails",
     "name": "Strawberry Caipirinha",
     "price": 279,
-    "categoryThumb": "https://i.ibb.co/YPj5RQD/strabrary-caipirinha.jpg",
+    "image": "https://i.ibb.co/YPj5RQD/strabrary-caipirinha.jpg",
     "description": "Fresh strawberry muddled with freshly squeezed lime juice, sugar syrup and crushed ice in soda water"
   },
   {
@@ -60,7 +60,7 @@
     "category": "Mocktails",
     "name": "Honey Limade",
     "price": 220,
-    "categoryThumb": "https://i.ibb.co/1n8cjH3/honey-limda.jpg",
+    "image": "https://i.ibb.co/1n8cjH3/honey-limda.jpg",
     "description": "Wild honey muddled with mint leaves, freshly squeezed lime juice and sugar syrup in soda water"
   },
   {
@@ -68,7 +68,7 @@
     "category": "Mocktails",
     "name": "Lime Refreshmint",
     "price": 210,
-    "categoryThumb": "https://i.ibb.co/vdGs7vJ/lime-refreshment.jpg",
+    "image": "https://i.ibb.co/vdGs7vJ/lime-refreshment.jpg",
     "description": "Made with mint, freshly squeezed lime juice, black salt and sugar syrup in soda water"
   },
   {
@@ -76,7 +76,7 @@
     "category": "Mocktails",
     "name": "Lemon Iced Tea",
     "price": 180,
-    "categoryThumb": "https://i.ibb.co/n7yCzsG/lemon-iced-tea.jpg",
+    "image": "https://i.ibb.co/n7yCzsG/lemon-iced-tea.jpg",
     "description": "A special blend of black tea muddled with freshly squeezed lime juice, sugar syrup and crushed ice"
   },
   {
@@ -84,7 +84,7 @@
     "category": "Wholesome Platters",
     "name": "Creamcheez Stuffed Chicken",
     "price": 699,
-    "categoryThumb": "https://i.ibb.co/0qtjCYM/creamcheez-stuffed-chicken.jpg",
+    "image": "https://i.ibb.co/0qtjCYM/creamcheez-stuffed-chicken.jpg",
     "description": "Seasoned tender chicken pieces stuffed with creamy, gooey cream cheese & spinach filling that you can dip in the most buttery base of velvety textured mashed potato and mushroom gravy"
   },
   {
@@ -92,7 +92,7 @@
     "category": "Wholesome Platters",
     "name": "Chicken Steak Meal",
     "price": 419,
-    "categoryThumb": "https://i.ibb.co/YXWrr3C/chicken-steak-meal.jpg",
+    "image": "https://i.ibb.co/YXWrr3C/chicken-steak-meal.jpg",
     "description": "Chicken steak coated with a choice of sauce, garlic mushroom & french fries"
   },
   {
@@ -100,7 +100,7 @@
     "category": "Wholesome Platters",
     "name": "Mad Monster",
     "price": 650,
-    "categoryThumb": "https://i.ibb.co/M8H6Ss9/m-monster.jpg",
+    "image": "https://i.ibb.co/M8H6Ss9/m-monster.jpg",
     "description": "Choice of poutine, Half chicken steak & choice of Classic burger"
   },
   {
@@ -109,7 +109,7 @@
     "name": "Mango Habanero Grilled Chicken",
     "price": 700,
 
-    "categoryThumb": "https://i.ibb.co/rFNcXbL/mango-grilled-chicken.jpg",
+    "image": "https://i.ibb.co/rFNcXbL/mango-grilled-chicken.jpg",
     "description": "A glorious platter starring juicy chicken legs marinated with mouth-watering spices, slathered in a homemade spicy mango-habanero sauce, and grilled to perfection, accompanied by two sides. Side Options: MAD Fried Rice, Everything Potato, Garlic Mushroom, and Fries"
   },
   {
@@ -117,7 +117,7 @@
     "category": "Rice Meals",
     "name": "Spicy Basil Chicken",
     "price": 451,
-    "categoryThumb": "https://i.ibb.co/g4SqC88/spicy-basil-chicken.png",
+    "image": "https://i.ibb.co/g4SqC88/spicy-basil-chicken.png",
     "description": "Choice of rice served with spicy basil infused chicken"
   },
   {
@@ -125,7 +125,7 @@
     "category": "Rice Meals",
     "name": "Gyro Chicken over Rice",
     "price": 399,
-    "categoryThumb": "https://i.ibb.co/X2fcZzx/gyro-chicken-over-rice.png",
+    "image": "https://i.ibb.co/X2fcZzx/gyro-chicken-over-rice.png",
     "description": "Choice of rice served with gyro chicken topped with mint yogurt sauce."
   },
   {
@@ -133,7 +133,7 @@
     "category": "Rice Meals",
     "name": "Creamy Mushroom Stuffed Chicken",
     "price": 475,
-    "categoryThumb": "https://i.ibb.co/XZPzNhg/cremy-mushroom.png",
+    "image": "https://i.ibb.co/XZPzNhg/cremy-mushroom.png",
     "description": "Choice of rice served with whole chicken breast stuffed with mushroom & cheddar cheese"
   },
   {
@@ -141,7 +141,7 @@
     "category": "Rice Meals",
     "name": "Achari Fried Rice",
     "price": 289,
-    "categoryThumb": "https://i.ibb.co/Sdc8pRc/achari-fried-rice.png",
+    "image": "https://i.ibb.co/Sdc8pRc/achari-fried-rice.png",
     "description": "Pickle flavored fried rice served with katsu chicken Flavor Choice: Naga/ Garlic"
   },
   {
@@ -149,7 +149,7 @@
     "category": "Poutines",
     "name": "Roast Chicken",
     "price": 329,
-    "categoryThumb": "https://i.ibb.co/dpGW4PX/roast-chiken.jpg",
+    "image": "https://i.ibb.co/dpGW4PX/roast-chiken.jpg",
     "description": "Potato fries topped with brown gravy, shredded roast chicken & melted cheddar cheese"
   },
   {
@@ -157,7 +157,7 @@
     "category": "Poutines",
     "name": "Shah Poutine",
     "price": 379,
-    "categoryThumb": "https://i.ibb.co/Wnm1dht/shah-poutin.jpg",
+    "image": "https://i.ibb.co/Wnm1dht/shah-poutin.jpg",
     "description": "Potato fries topped with brown gravy, beef bacon, garlic mushroom, melted cheddar cheese and an egg"
   },
   {
@@ -165,7 +165,7 @@
     "category": "Poutines",
     "name": "Gyro Chicken over Cajun Fries",
     "price": 379,
-    "categoryThumb": "https://i.ibb.co/B23tRJp/gyro-chiken.jpg",
+    "image": "https://i.ibb.co/B23tRJp/gyro-chiken.jpg",
     "description": "Cajun falvored potato fries topped with GYRO CHICKEN, Mint Yogurt & Spicy Sauce"
   },
   {
@@ -173,7 +173,7 @@
     "category": "Poutines",
     "name": "Crispy Chicken & Bacon",
     "price": 432,
-    "categoryThumb": "https://i.ibb.co/84xxy0c/cripsy-chicken-bacon.jpg",
+    "image": "https://i.ibb.co/84xxy0c/cripsy-chicken-bacon.jpg",
     "description": "Potato fries topped with brown gravy, Katsu Chicken, beef Bacon & melted cheddar cheese"
   },
   {
@@ -181,7 +181,7 @@
     "category": "Gourment Burgers",
     "name": "The HAWK",
     "price": 613,
-    "categoryThumb": "https://i.ibb.co/cwm57sF/hawk.jpg",
+    "image": "https://i.ibb.co/cwm57sF/hawk.jpg",
     "description": "Double beef cheese burger topped with shredded crispy pepperoni & beef bacon."
   },
   {
@@ -189,7 +189,7 @@
     "category": "Gourment Burgers",
     "name": "The Cuban",
     "price": 419,
-    "categoryThumb": "https://i.ibb.co/9ZmQtLr/cuban.jpg",
+    "image": "https://i.ibb.co/9ZmQtLr/cuban.jpg",
     "description": "Beef cheeseburger topped with smoked chicken & mustard sauce"
   },
   {
@@ -197,7 +197,7 @@
     "category": "Gourment Burgers",
     "name": "Mighty Spicy Chic",
     "price": 449,
-    "categoryThumb": "https://i.ibb.co/ZWm0n1V/mighy-spicy.jpg",
+    "image": "https://i.ibb.co/ZWm0n1V/mighy-spicy.jpg",
     "description": "Double bbq chicken cheeseburger topped with signature naga blast sauce & beef bacon."
   },
   {
@@ -205,7 +205,7 @@
     "category": "Gourment Burgers",
     "name": "Smokin' Chic",
     "price": 419,
-    "categoryThumb": "https://i.ibb.co/QcJHQPg/smokin.jpg",
+    "image": "https://i.ibb.co/QcJHQPg/smokin.jpg",
     "description": "Bbq chicken cheeseburger topped with smoked chicken layer & beef bacon."
   },
   {
@@ -213,7 +213,7 @@
     "category": "Gourment Burgers",
     "name": "The Dhakaiyya",
     "price": 457,
-    "categoryThumb": "https://i.ibb.co/Lr3RNTK/dhakaiya.jpg",
+    "image": "https://i.ibb.co/Lr3RNTK/dhakaiya.jpg",
     "description": "Beef cheeseburger topped with fried paneer layer & green chili mint sauce."
   },
   {
@@ -221,7 +221,7 @@
     "category": "Gourment Burgers",
     "name": "Madame Lucy",
     "price": "459",
-    "categoryThumb": "https://i.ibb.co/bBxnHq0/madame-lucy.jpg",
+    "image": "https://i.ibb.co/bBxnHq0/madame-lucy.jpg",
     "description": "Beef cheeseburger topped with chicken sausage gravy & beef bacon."
   },
   {
@@ -229,7 +229,7 @@
     "category": "Classic Burgers",
     "category": "The BIG Rob",
     "category": 379,
-    "categoryThumb": "https://i.ibb.co/FqSCpmk/the-big-rob.jpg",
+    "image": "https://i.ibb.co/FqSCpmk/the-big-rob.jpg",
     "description": "Beef cheese burger topped with fried chicken sausages"
   },
   {
@@ -237,7 +237,7 @@
     "category": "Classic Burgers",
     "name": "Madchef's FAV",
     "price": 380,
-    "categoryThumb": "https://i.ibb.co/xgyQdq3/md-fav.jpg",
+    "image": "https://i.ibb.co/xgyQdq3/md-fav.jpg",
     "description": "A mix of our two best house sauces: garlic mayo & naga Blast; topped with crispy pepperoni bits."
   },
   {
@@ -245,7 +245,7 @@
     "category": "Classic Burgers",
     "name": "Signature Beef",
     "price": 299,
-    "categoryThumb": "https://i.ibb.co/qDcPWrY/sign-beef.jpg",
+    "image": "https://i.ibb.co/qDcPWrY/sign-beef.jpg",
     "description": "Classic beef cheeseburger with a choice of signature madhouse sauce."
   },
   {
@@ -253,7 +253,7 @@
     "category": "Classic Burgers",
     "name": "Mushroom Melt",
     "price": 391,
-    "categoryThumb": "https://i.ibb.co/hDPwwpq/mushroom-melt.jpg",
+    "image": "https://i.ibb.co/hDPwwpq/mushroom-melt.jpg",
     "description": "Beef cheese burger topped with mushroom & chicken gravy"
   },
   {
@@ -261,7 +261,7 @@
     "category": "Classic Burgers",
     "name": "Signature Chicken",
     "price": 269,
-    "categoryThumb": "https://i.ibb.co/DzgN7bh/sig-chicken.jpg",
+    "image": "https://i.ibb.co/DzgN7bh/sig-chicken.jpg",
     "description": "Classic chicken cheeseburger with a choice of signature madhouse sauce."
   },
   {
@@ -269,7 +269,7 @@
     "category": "Crispy Chicken",
     "name": "Original",
     "price": 399,
-    "categoryThumb": "https://i.ibb.co/TKh4k6R/original.jpg",
+    "image": "https://i.ibb.co/TKh4k6R/original.jpg",
     "description": "Original chicken wings/ Bangkok style fried chicken."
   },
   {
@@ -277,7 +277,7 @@
     "category": "Crispy Chicken",
     "name": "Honey Garlic",
     "price": 400,
-    "categoryThumb": "https://i.ibb.co/xhkmynp/honey-garlic.jpg",
+    "image": "https://i.ibb.co/xhkmynp/honey-garlic.jpg",
     "description": "Chicken wings/ Bangkok style fried chicken dipped in honey garlic sauce."
   },
   {
@@ -285,7 +285,7 @@
     "category": "Crispy Chicken",
     "name": "Naga-Tastic",
     "price": 450,
-    "categoryThumb": "https://i.ibb.co/gJHF9CJ/naga-tastic.jpg",
+    "image": "https://i.ibb.co/gJHF9CJ/naga-tastic.jpg",
     "description": "Chicken wings/ Bangkok style fried chicken dipped in spicy naga sauce."
   },
   {
@@ -293,7 +293,7 @@
     "category": "Teasers",
     "name": "Salt & Pepper Fries",
     "price": 135,
-    "categoryThumb": "https://i.ibb.co/WvWMJ4q/menu-img-1.jpg",
+    "image": "https://i.ibb.co/WvWMJ4q/menu-img-1.jpg",
     "description": "The domestic goat or simply goat (Capra aegagrus hircus) is a subspecies of C. aegagrus domesticated from the wild goat of Southwest Asia and Eastern Europe. The goat is a member of the animal family Bovidae and the subfamily Caprinae, meaning it is closely related to the sheep. There are over 300 distinct breeds of goat. Goats are one of the oldest domesticated species of animal, and have been used for milk, meat, fur and skins across much of the world. Milk from goats is often turned into goat cheese."
   },
   {
@@ -301,7 +301,7 @@
     "category": "Teasers",
     "name": "Onion Rings",
     "price": 149,
-    "categoryThumb": "https://i.ibb.co/2Ww9LGS/onion-rings.jpg",
+    "image": "https://i.ibb.co/2Ww9LGS/onion-rings.jpg",
     "description": "Deep fried onion rings with breadcrumbs"
   },
   {
@@ -309,7 +309,7 @@
     "category": "Teasers",
     "name": "Chicken Cheese Bombs",
     "price": 315,
-    "categoryThumb": "https://i.ibb.co/0CdQb8B/chicken-cheese-booms.jpg",
+    "image": "https://i.ibb.co/0CdQb8B/chicken-cheese-booms.jpg",
     "description": "Fried chicken balls stuffed with melted cheese."
   },
   {
@@ -317,7 +317,7 @@
     "category": "Teasers",
     "name": "Spicy Cajun Fries",
     "price": 169,
-    "categoryThumb": "https://i.ibb.co/fNjfHvz/spicy-cajun-fries.jpg",
+    "image": "https://i.ibb.co/fNjfHvz/spicy-cajun-fries.jpg",
     "description": "French fries sprinkled with cajun spice."
   },
   {
@@ -325,7 +325,7 @@
     "category": "Teasers",
     "name": "Paneer Sticks",
     "price": 399,
-    "categoryThumb": "https://i.ibb.co/XFtpG0B/paneer-sticks.jpg",
+    "image": "https://i.ibb.co/XFtpG0B/paneer-sticks.jpg",
     "description": "Deshi cottage cheese sticks fried with breadcrumbs; served with deshi mint chutney."
   },
   {
@@ -333,7 +333,7 @@
     "category": "Teasers",
     "name": "Spicy Garlic Mushrooms",
     "price": 279,
-    "categoryThumb": "https://i.ibb.co/GVcZz4d/spicy-garlic-mashroom.jpg",
+    "image": "https://i.ibb.co/GVcZz4d/spicy-garlic-mashroom.jpg",
     "description": "Mushroom fried with garlic & mustard sauce."
   }
 ]
