@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import OrderOnline from "../Components/OrderOnline";
 import { Testimonials } from "../Components/Testimonials";
+import ContactUs from "../Components/ContactUs";
 
 const Home = () => {
   // const [menu, setMenu] = useState([]);
@@ -24,6 +25,7 @@ const Home = () => {
 
       <Header></Header>
       <OrderOnline></OrderOnline>
+      <ContactUs></ContactUs>
       <Testimonials></Testimonials>
     </div>
   );
