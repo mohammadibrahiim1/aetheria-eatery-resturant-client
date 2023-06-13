@@ -61,7 +61,7 @@ const useStyles = createStyles((theme) => ({
 export const Testimonials = () => {
   const { classes } = useStyles();
   return (
-    <Container>
+    <Container className="py-28">
       {" "}
       <div className={classes.heading} color="#151515">
         <h1>Testimonials</h1>
