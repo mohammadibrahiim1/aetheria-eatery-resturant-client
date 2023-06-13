@@ -40,7 +40,7 @@ const useStyles = createStyles((theme) => ({
     color: "#444444",
     lineHeight: 1.2,
     fontSize: rem(13),
-    width: rem(750),
+    width: "80%",
     marginTop: theme.spacing.xs,
     // textTransform: "uppercase",
     margin: "auto",
