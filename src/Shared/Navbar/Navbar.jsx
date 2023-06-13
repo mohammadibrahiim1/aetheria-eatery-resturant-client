@@ -294,7 +294,7 @@ const Navbar = () => {
           </div>
         </Text>
       </Link>
-      <Link to="/blog">
+      <Link to="/cart">
         {" "}
         <Text
           as="li"

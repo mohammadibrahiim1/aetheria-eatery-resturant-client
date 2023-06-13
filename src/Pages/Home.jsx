@@ -3,6 +3,7 @@ import Header from "../Components/Header";
 import OrderOnline from "../Components/OrderOnline";
 import { Testimonials } from "../Components/Testimonials";
 import ContactUs from "../Components/ContactUs";
+import Menu from "../Components/Menu";
 
 const Home = () => {
   // const [menu, setMenu] = useState([]);
@@ -25,6 +26,7 @@ const Home = () => {
 
       <Header></Header>
       <OrderOnline></OrderOnline>
+      <Menu></Menu>
       <ContactUs></ContactUs>
       <Testimonials></Testimonials>
     </div>

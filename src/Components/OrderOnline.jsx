@@ -66,7 +66,7 @@ const useStyles = createStyles((theme) => ({
 const OrderOnline = () => {
   const { classes } = useStyles();
   const { foodItems } = useContext(ApiContext);
-  console.log(foodItems);
+  // console.log(foodItems);
   return (
     <div>
       <Container className="py-28">

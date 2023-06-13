@@ -37,7 +37,7 @@ const useStyles = createStyles((theme) => ({
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
     fontWeight: 500,
-    color: "#444444",
+    color: "#D99904",
     lineHeight: 1.2,
     fontSize: rem(13),
     width: "80%",
@@ -67,7 +67,7 @@ export const Testimonials = () => {
         <h1>Testimonials</h1>
       </div>
       <div className={classes.subTitle}>
-        <p>What Our Client Says!</p>
+        <p>---What Our Client Says!---</p>
       </div>
       <Carousel
         maw={920}

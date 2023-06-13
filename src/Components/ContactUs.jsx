@@ -35,7 +35,7 @@ const useStyles = createStyles((theme) => ({
     color: theme.colors[theme.primaryColor][0],
     fontSize: theme.fontSizes.sm,
     marginTop: rem(5),
-    width: rem(250),
+    // width: rem(250),
   },
   heading: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -89,7 +89,7 @@ const data = [
   {
     title: "Address",
     description:
-      "123 ABS Street, Uni 21, Bangladesh  +88 123456789  Mon - Fri: 08:00 - 22:00,Sat - Sun: 10:00 - 23:00",
+      "123 ABS Street,Uni 21, Bangladesh +88 123456789  Mon - Fri: 08:00 - 22:00,Sat - Sun: 10:00 - 23:00",
   },
   {
     title: "Working Hours",
@@ -112,7 +112,7 @@ const ContactUs = () => {
           <h1>Contact Us</h1>
         </div>
         <div className={classes.subTitle}>
-          <p>Visit Us</p>
+          <p>---Visit Us---</p>
         </div>
       </div>
       <div className={classes.root}>{stats}</div>

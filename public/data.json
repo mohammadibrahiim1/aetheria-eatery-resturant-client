@@ -1,6 +1,6 @@
 [
   {
-    "idCategory": "1",
+    "id": "1",
     "category": "shakes",
     "name": "Just Milo",
     "price": 259,
@@ -8,7 +8,7 @@
     "description": "Cocoa based malted drink served with added cream, sugar syrup and crushed ice"
   },
   {
-    "idCategory": "2",
+    "id": "2",
     "category": "shakes",
     "name": "Nutella Madness",
     "price": 279,
@@ -16,7 +16,7 @@
     "description": "Iconic hazelnut spread mixed with milk, cream and sugar syrup"
   },
   {
-    "idCategory": "3",
+    "id": "3",
     "category": "shakes",
     "name": "Cookies n' Cream",
     "price": 299,
@@ -24,7 +24,7 @@
     "description": "Blended chocolate cookies in milk, cream and sugar syrup."
   },
   {
-    "idCategory": "4",
+    "id": "4",
     "category": "shakes",
     "name": "French Vanilla Latte",
     "price": 199,
@@ -32,7 +32,7 @@
     "description": "Classic chilled latte with a hint of Vanilla."
   },
   {
-    "idCategory": "5",
+    "id": "5",
     "category": "shakes",
     "name": "Peanut Butter",
     "price": 349,
@@ -40,7 +40,7 @@
     "description": "Crunchy Peanut butter mixed with milk, cream, chocolate and sugar syrup"
   },
   {
-    "idCategory": "6",
+    "id": "6",
     "category": "shakes",
     "name": "Cake In My Shake",
     "price": 399,
@@ -48,7 +48,7 @@
     "description": "Brownie piece dipped in hazelnut and cocoa flavored drink"
   },
   {
-    "idCategory": "7",
+    "id": "7",
     "category": "Mocktails",
     "name": "Strawberry Caipirinha",
     "price": 279,
@@ -56,7 +56,7 @@
     "description": "Fresh strawberry muddled with freshly squeezed lime juice, sugar syrup and crushed ice in soda water"
   },
   {
-    "idCategory": "8",
+    "id": "8",
     "category": "Mocktails",
     "name": "Honey Limade",
     "price": 220,
@@ -64,7 +64,7 @@
     "description": "Wild honey muddled with mint leaves, freshly squeezed lime juice and sugar syrup in soda water"
   },
   {
-    "idCategory": "9",
+    "id": "9",
     "category": "Mocktails",
     "name": "Lime Refreshmint",
     "price": 210,
@@ -72,7 +72,7 @@
     "description": "Made with mint, freshly squeezed lime juice, black salt and sugar syrup in soda water"
   },
   {
-    "idCategory": "10",
+    "id": "10",
     "category": "Mocktails",
     "name": "Lemon Iced Tea",
     "price": 180,
@@ -80,7 +80,7 @@
     "description": "A special blend of black tea muddled with freshly squeezed lime juice, sugar syrup and crushed ice"
   },
   {
-    "idCategory": "11",
+    "id": "11",
     "category": "Wholesome Platters",
     "name": "Creamcheez Stuffed Chicken",
     "price": 699,
@@ -88,7 +88,7 @@
     "description": "Seasoned tender chicken pieces stuffed with creamy, gooey cream cheese & spinach filling that you can dip in the most buttery base of velvety textured mashed potato and mushroom gravy"
   },
   {
-    "idCategory": "12",
+    "id": "12",
     "category": "Wholesome Platters",
     "name": "Chicken Steak Meal",
     "price": 419,
@@ -96,7 +96,7 @@
     "description": "Chicken steak coated with a choice of sauce, garlic mushroom & french fries"
   },
   {
-    "idCategory": "13",
+    "id": "13",
     "category": "Wholesome Platters",
     "name": "Mad Monster",
     "price": 650,
@@ -104,7 +104,7 @@
     "description": "Choice of poutine, Half chicken steak & choice of Classic burger"
   },
   {
-    "idCategory": "14",
+    "id": "14",
     "category": "Wholesome Platters",
     "name": "Mango Habanero Grilled Chicken",
     "price": 700,
@@ -113,7 +113,7 @@
     "description": "A glorious platter starring juicy chicken legs marinated with mouth-watering spices, slathered in a homemade spicy mango-habanero sauce, and grilled to perfection, accompanied by two sides. Side Options: MAD Fried Rice, Everything Potato, Garlic Mushroom, and Fries"
   },
   {
-    "idCategory": "15",
+    "id": "15",
     "category": "Rice Meals",
     "name": "Spicy Basil Chicken",
     "price": 451,
@@ -121,7 +121,7 @@
     "description": "Choice of rice served with spicy basil infused chicken"
   },
   {
-    "idCategory": "16",
+    "id": "16",
     "category": "Rice Meals",
     "name": "Gyro Chicken over Rice",
     "price": 399,
@@ -129,7 +129,7 @@
     "description": "Choice of rice served with gyro chicken topped with mint yogurt sauce."
   },
   {
-    "idCategory": "17",
+    "id": "17",
     "category": "Rice Meals",
     "name": "Creamy Mushroom Stuffed Chicken",
     "price": 475,
@@ -137,7 +137,7 @@
     "description": "Choice of rice served with whole chicken breast stuffed with mushroom & cheddar cheese"
   },
   {
-    "idCategory": "18",
+    "id": "18",
     "category": "Rice Meals",
     "name": "Achari Fried Rice",
     "price": 289,
@@ -145,7 +145,7 @@
     "description": "Pickle flavored fried rice served with katsu chicken Flavor Choice: Naga/ Garlic"
   },
   {
-    "idCategory": "19",
+    "id": "19",
     "category": "Poutines",
     "name": "Roast Chicken",
     "price": 329,
@@ -153,7 +153,7 @@
     "description": "Potato fries topped with brown gravy, shredded roast chicken & melted cheddar cheese"
   },
   {
-    "idCategory": "20",
+    "id": "20",
     "category": "Poutines",
     "name": "Shah Poutine",
     "price": 379,
@@ -161,7 +161,7 @@
     "description": "Potato fries topped with brown gravy, beef bacon, garlic mushroom, melted cheddar cheese and an egg"
   },
   {
-    "idCategory": "21",
+    "id": "21",
     "category": "Poutines",
     "name": "Gyro Chicken over Cajun Fries",
     "price": 379,
@@ -169,7 +169,7 @@
     "description": "Cajun falvored potato fries topped with GYRO CHICKEN, Mint Yogurt & Spicy Sauce"
   },
   {
-    "idCategory": "22",
+    "id": "22",
     "category": "Poutines",
     "name": "Crispy Chicken & Bacon",
     "price": 432,
@@ -177,7 +177,7 @@
     "description": "Potato fries topped with brown gravy, Katsu Chicken, beef Bacon & melted cheddar cheese"
   },
   {
-    "idCategory": "23",
+    "id": "23",
     "category": "Gourment Burgers",
     "name": "The HAWK",
     "price": 613,
@@ -185,7 +185,7 @@
     "description": "Double beef cheese burger topped with shredded crispy pepperoni & beef bacon."
   },
   {
-    "idCategory": "24",
+    "id": "24",
     "category": "Gourment Burgers",
     "name": "The Cuban",
     "price": 419,
@@ -193,7 +193,7 @@
     "description": "Beef cheeseburger topped with smoked chicken & mustard sauce"
   },
   {
-    "idCategory": "25",
+    "id": "25",
     "category": "Gourment Burgers",
     "name": "Mighty Spicy Chic",
     "price": 449,
@@ -201,7 +201,7 @@
     "description": "Double bbq chicken cheeseburger topped with signature naga blast sauce & beef bacon."
   },
   {
-    "idCategory": "26",
+    "id": "26",
     "category": "Gourment Burgers",
     "name": "Smokin' Chic",
     "price": 419,
@@ -209,7 +209,7 @@
     "description": "Bbq chicken cheeseburger topped with smoked chicken layer & beef bacon."
   },
   {
-    "idCategory": "27",
+    "id": "27",
     "category": "Gourment Burgers",
     "name": "The Dhakaiyya",
     "price": 457,
@@ -217,7 +217,7 @@
     "description": "Beef cheeseburger topped with fried paneer layer & green chili mint sauce."
   },
   {
-    "idCategory": "28",
+    "id": "28",
     "category": "Gourment Burgers",
     "name": "Madame Lucy",
     "price": "459",
@@ -225,7 +225,7 @@
     "description": "Beef cheeseburger topped with chicken sausage gravy & beef bacon."
   },
   {
-    "idCategory": "29",
+    "id": "29",
     "category": "Classic Burgers",
     "category": "The BIG Rob",
     "category": 379,
@@ -233,7 +233,7 @@
     "description": "Beef cheese burger topped with fried chicken sausages"
   },
   {
-    "idCategory": "30",
+    "id": "30",
     "category": "Classic Burgers",
     "name": "Madchef's FAV",
     "price": 380,
@@ -241,7 +241,7 @@
     "description": "A mix of our two best house sauces: garlic mayo & naga Blast; topped with crispy pepperoni bits."
   },
   {
-    "idCategory": "31",
+    "id": "31",
     "category": "Classic Burgers",
     "name": "Signature Beef",
     "price": 299,
@@ -249,7 +249,7 @@
     "description": "Classic beef cheeseburger with a choice of signature madhouse sauce."
   },
   {
-    "idCategory": "32",
+    "id": "32",
     "category": "Classic Burgers",
     "name": "Mushroom Melt",
     "price": 391,
@@ -257,7 +257,7 @@
     "description": "Beef cheese burger topped with mushroom & chicken gravy"
   },
   {
-    "idCategory": "33",
+    "id": "33",
     "category": "Classic Burgers",
     "name": "Signature Chicken",
     "price": 269,
@@ -265,7 +265,7 @@
     "description": "Classic chicken cheeseburger with a choice of signature madhouse sauce."
   },
   {
-    "idCategory": "34",
+    "id": "34",
     "category": "Crispy Chicken",
     "name": "Original",
     "price": 399,
@@ -273,7 +273,7 @@
     "description": "Original chicken wings/ Bangkok style fried chicken."
   },
   {
-    "idCategory": "35",
+    "id": "35",
     "category": "Crispy Chicken",
     "name": "Honey Garlic",
     "price": 400,
@@ -281,7 +281,7 @@
     "description": "Chicken wings/ Bangkok style fried chicken dipped in honey garlic sauce."
   },
   {
-    "idCategory": "36",
+    "id": "36",
     "category": "Crispy Chicken",
     "name": "Naga-Tastic",
     "price": 450,
@@ -289,7 +289,7 @@
     "description": "Chicken wings/ Bangkok style fried chicken dipped in spicy naga sauce."
   },
   {
-    "idCategory": "37",
+    "id": "37",
     "category": "Teasers",
     "name": "Salt & Pepper Fries",
     "price": 135,
@@ -297,7 +297,7 @@
     "description": "The domestic goat or simply goat (Capra aegagrus hircus) is a subspecies of C. aegagrus domesticated from the wild goat of Southwest Asia and Eastern Europe. The goat is a member of the animal family Bovidae and the subfamily Caprinae, meaning it is closely related to the sheep. There are over 300 distinct breeds of goat. Goats are one of the oldest domesticated species of animal, and have been used for milk, meat, fur and skins across much of the world. Milk from goats is often turned into goat cheese."
   },
   {
-    "idCategory": "37",
+    "id": "37",
     "category": "Teasers",
     "name": "Onion Rings",
     "price": 149,
@@ -305,7 +305,7 @@
     "description": "Deep fried onion rings with breadcrumbs"
   },
   {
-    "idCategory": "38",
+    "id": "38",
     "category": "Teasers",
     "name": "Chicken Cheese Bombs",
     "price": 315,
@@ -313,7 +313,7 @@
     "description": "Fried chicken balls stuffed with melted cheese."
   },
   {
-    "idCategory": "39",
+    "id": "39",
     "category": "Teasers",
     "name": "Spicy Cajun Fries",
     "price": 169,
@@ -321,7 +321,7 @@
     "description": "French fries sprinkled with cajun spice."
   },
   {
-    "idCategory": "40",
+    "id": "40",
     "category": "Teasers",
     "name": "Paneer Sticks",
     "price": 399,
@@ -329,7 +329,7 @@
     "description": "Deshi cottage cheese sticks fried with breadcrumbs; served with deshi mint chutney."
   },
   {
-    "idCategory": "41",
+    "id": "41",
     "category": "Teasers",
     "name": "Spicy Garlic Mushrooms",
     "price": 279,
