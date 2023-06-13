@@ -40,7 +40,10 @@ const Footer = () => {
   const { classes } = useStyles();
   return (
     <div>
-      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 self-center">
+      <div
+        id="footer"
+        className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 self-center"
+      >
         <div className="footer-left-side py-12">
           <h1 className="text-xl py-5 ">Contact Us</h1>
           <p>
