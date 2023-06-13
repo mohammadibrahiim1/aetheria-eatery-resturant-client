@@ -2,7 +2,7 @@ import { ActionIcon, Group, createStyles, rem } from "@mantine/core";
 import React from "react";
 import {
   IconBrandTwitter,
-  IconBrandYoutube,
+  IconBrandFacebook,
   IconBrandInstagram,
 } from "@tabler/icons-react";
 // import { MantineLogo } from "@mantine/ds";
@@ -64,7 +64,7 @@ const Footer = () => {
                 <IconBrandTwitter size="2.05rem" stroke={1.5} />
               </ActionIcon>
               <ActionIcon size="lg">
-                <IconBrandYoutube size="2.05rem" stroke={1.5} />
+                <IconBrandFacebook size="2.05rem" stroke={1.5} />
               </ActionIcon>
               <ActionIcon size="lg">
                 <IconBrandInstagram size="2.05rem" stroke={1.5} />
@@ -72,6 +72,11 @@ const Footer = () => {
             </Group>
           </div>
         </div>
+      </div>
+      <div className="bg-[#151515]">
+        <p className="text-white text-sm py-4 text-center">
+          Copyright © CulinaryCloud. All rights reserved.
+        </p>
       </div>
     </div>
   );
