@@ -4,6 +4,7 @@ import OrderOnline from "../Components/OrderOnline";
 import { Testimonials } from "../Components/Testimonials";
 // import ContactUs from "../Components/AboutUs";
 import Menu from "../Components/Menu";
+import Contact from "../Components/Contact";
 
 const Home = () => {
   // const [menu, setMenu] = useState([]);
@@ -28,6 +29,7 @@ const Home = () => {
       <OrderOnline></OrderOnline>
       <Menu></Menu>
       {/* <ContactUs></ContactUs> */}
+      <Contact></Contact>
       <Testimonials></Testimonials>
     </div>
   );
