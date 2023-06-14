@@ -333,7 +333,7 @@ const Navbar = () => {
           className="p-1 font-normal"
         >
           <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
-            Menu
+            Our Menu
           </div>
         </Text>
       </a>
@@ -378,6 +378,7 @@ const Navbar = () => {
                 className="cursor-pointer font-semibold text-md text-primary hover:text-accent"
               >
                 <FaUserAlt onClick={handleLogOut} className="h-6 w-6" />
+                {/* <img src={user.photoURL} alt="" srcset="" className="h-6 w-6" /> */}
               </Button>
             </MenuHandler>
             {/* <MenuList>
@@ -415,7 +416,7 @@ const Navbar = () => {
           </Menu>
         </Text>
       )}
-      {user.displayName}
+      {/* {user.displayName} */}
     </ul>
   );
   return (
