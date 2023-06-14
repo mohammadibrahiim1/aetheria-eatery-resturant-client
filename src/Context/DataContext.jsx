@@ -1,7 +1,4 @@
-// import { select } from "@material-tailwind/react";
 import React, { createContext, useEffect, useState } from "react";
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 export const ApiContext = createContext();
 const cartFromLocalStorage = JSON.parse(
@@ -20,7 +17,7 @@ const DataContext = ({ children }) => {
       newCart = [...cart, selectItem];
     } else {
       const rest = cart.filter((item) => item.id !== selectItem.id);
-      exists.quantity = exists.quantity + 1;
+      // exists.quantity = exists.quantity + 1;
       newCart = [...rest, exists];
     }
     setCart(newCart);
@@ -37,7 +34,7 @@ const DataContext = ({ children }) => {
     fetch("data.json")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+    
         setFoodItems(data);
       });
   }, []);
