@@ -124,18 +124,59 @@ const Menu = () => {
                     Crispy Chicken
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Classic Burger")}
+                    onClick={() => handleCategoryChange("Classic Burgers")}
+                    className="cursor-pointer"
                   >
                     Classic Burger
                   </List.Item>
-                  <List.Item >Gourment Burgers</List.Item>
-                  <List.Item>Poutines</List.Item>
-                  <List.Item>Rice Meals</List.Item>
-                  <List.Item>Thai Food</List.Item>
-                  <List.Item>WholeSome Platters</List.Item>
-                  <List.Item>Mocktails</List.Item>
-                  <List.Item  onClick={() => handleCategoryChange("shakes")}>Shakes</List.Item>
-                  <List.Item>Indian Food</List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Gourment Burgers")}
+                    className="cursor-pointer"
+                  >
+                    Gourment Burgers
+                  </List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Poutines")}
+                    className="cursor-pointer"
+                  >
+                    Poutines
+                  </List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Rice Meals")}
+                    className="cursor-pointer"
+                  >
+                    Rice Meals
+                  </List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Thai Food")}
+                    className="cursor-pointer"
+                  >
+                    Thai Food
+                  </List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Wholesome Platters")}
+                    className="cursor-pointer"
+                  >
+                    Wholesome Platters
+                  </List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Mocktails")}
+                    className="cursor-pointer"
+                  >
+                    Mocktails
+                  </List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("shakes")}
+                    className="cursor-pointer"
+                  >
+                    Shakes
+                  </List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Indian food")}
+                    className="cursor-pointer"
+                  >
+                    Indian Food
+                  </List.Item>
                 </List>
               </div>
             </Text>
