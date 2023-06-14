@@ -12,20 +12,20 @@ const DataContext = ({ children }) => {
 
   const addItemToCart = (selectItem) => {
     let newCart = [];
-    const exists = cart.find((item) => item.id === selectItem.id);
+    const exists = cart.find((item) => item._id === selectItem._id);
     if (!exists) {
       selectItem.quantity = 1;
       newCart = [...cart, selectItem];
     } else {
-      const rest = cart.filter((item) => item.id !== selectItem.id);
+      const rest = cart.filter((item) => item._id !== selectItem._id);
       // exists.quantity = exists.quantity + 1;
       newCart = [...rest, exists];
     }
     setCart(newCart);
     localStorage.setItem("newCart", JSON.stringify(newCart));
   };
-  const removeItemFromCart = (id) => {
-    const updatedCart = cart.filter((item) => item.id !== id);
+  const removeItemFromCart = (_id) => {
+    const updatedCart = cart.filter((item) => item._id !== _id);
     localStorage.setItem("newCart", JSON.stringify(updatedCart));
     setCart(updatedCart);
     window.location.reload();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import OrderOnline from "../Components/OrderOnline";
 import { Testimonials } from "../Components/Testimonials";
-import ContactUs from "../Components/ContactUs";
+// import ContactUs from "../Components/AboutUs";
 import Menu from "../Components/Menu";
 
 const Home = () => {
@@ -27,7 +27,7 @@ const Home = () => {
       <Header></Header>
       <OrderOnline></OrderOnline>
       <Menu></Menu>
-      <ContactUs></ContactUs>
+      {/* <ContactUs></ContactUs> */}
       <Testimonials></Testimonials>
     </div>
   );

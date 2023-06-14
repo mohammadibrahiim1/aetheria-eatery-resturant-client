@@ -8,6 +8,7 @@ import {
   createStyles,
   rem,
 } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -117,7 +118,10 @@ const Header = () => {
             <Text size="lg" className={classes.description}>
               {/* Build more reliable software with AI companion. AI is also trained
               to detect lazy developers who do nothing and just complain on
-              Twitter. */}Are you looking for somewhere special to go this weekend? Do you want to try something new? Check out one of these hot new restaurants.
+              Twitter. */}
+              Are you looking for somewhere special to go this weekend? Do you
+              want to try something new? Check out one of these hot new
+              restaurants.
             </Text>
           </Container>
 
@@ -125,12 +129,14 @@ const Header = () => {
             <Button className={classes.control} variant="white" size="lg">
               Get started
             </Button>
-            <Button
-              className={cx(classes.control, classes.secondaryControl)}
-              size="lg"
-            >
-              Our Menu
-            </Button>
+            <Link to="/mainMenu">
+              <Button
+                className={cx(classes.control, classes.secondaryControl)}
+                size="lg"
+              >
+                Our Menu
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

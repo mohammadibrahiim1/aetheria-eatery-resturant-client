@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 // import Footer from "../Shared/Footer";
 import Cart from "../Pages/Cart/Cart";
 import Signin from "../Pages/Signin/Signin";
+import AboutUs from "../Components/AboutUs";
+import MainMenu from "../Pages/MainMenu/MainMenu";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/signin",
         element: <Signin></Signin>,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/mainMenu",
+        element: <MainMenu></MainMenu>,
       },
     ],
   },

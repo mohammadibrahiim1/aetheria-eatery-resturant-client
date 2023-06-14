@@ -157,7 +157,7 @@ const Cart = () => {
                             >
                               {" "}
                               <IconTrash
-                                onClick={() => removeItemFromCart(product.id)}
+                                onClick={() => removeItemFromCart(product._id)}
                               />
                             </Button>
                           </div>

@@ -85,7 +85,7 @@ const Menu = () => {
 
   return (
     <div>
-      <Container className="py-28">
+      <Container className="py-22" id="menu">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
         </div>

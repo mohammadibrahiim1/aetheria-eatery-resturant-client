@@ -321,12 +321,24 @@ const Navbar = () => {
           className="p-1 font-normal"
         >
           <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
-            Menu
+            Home
           </div>
         </Text>
       </Link>
+      <a href="/mainMenu">
+        <Text
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
+            Menu
+          </div>
+        </Text>
+      </a>
 
-      <Link to="/allTools">
+      <Link to="/aboutUs">
         {" "}
         <Text
           as="li"
@@ -335,7 +347,7 @@ const Navbar = () => {
           className="p-1 font-normal"
         >
           <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
-            Contact Us
+            About Us
           </div>
         </Text>
       </Link>
@@ -410,8 +422,8 @@ const Navbar = () => {
     <Container>
       {/* <Link  to="https://ibb.co/7pjP0Rm"><img src="https://i.ibb.co/5jGmJnH/seo-search-symbol.png" alt="seo-search-symbol" border="0"></Link > */}
       <section>
-        <div className="   inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
-          <div className=" navbar  flex align-center justify-between text-blue-gray-900">
+        <div className=" inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
+          <div className=" navbar sticky-top flex align-center justify-between text-blue-gray-900">
             <Link to="/">
               {" "}
               <Text as="a" className="mr-4 cursor-pointer py-1.5 font-medium">
