@@ -92,7 +92,7 @@ const FoodCard = ({ item, setFoodItem, addItemToCart }) => {
             </Text>
             <Text className={classes.title} mt="xs" mb="md">
               <div className="flex justify-between align-center gap-28">
-                <span> {item.category}</span>
+                <span size="xs" > {item.category}</span>
                 <span>${item.price}</span>
               </div>
             </Text>

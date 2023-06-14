@@ -77,15 +77,12 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Menu = () => {
-  const { foodItems, addItemToCart, removeItemFromCart } =
+  const { foodItems, addItemToCart, removeItemFromCart, handleCategoryChange } =
     useContext(ApiContext);
   const { classes, cx } = useStyles();
 
   const [foodItem, setFoodItem] = useState({});
 
-  const findItems = () => {
-    console.log("items");
-  };
   return (
     <div>
       <Container className="py-28">
@@ -120,16 +117,25 @@ const Menu = () => {
               {" "}
               <div className="py-8 ">
                 <List spacing="sm" size="md" ta="left" className="">
-                  <List.Item onClick={findItems} className="cursor-pointer">
+                  <List.Item
+                    onClick={() => handleCategoryChange("Crispy Chicken")}
+                    className="cursor-pointer"
+                  >
                     Crispy Chicken
                   </List.Item>
-                  <List.Item>Classic Burger</List.Item>
-                  <List.Item>Gourment Burgers</List.Item>
+                  <List.Item
+                    onClick={() => handleCategoryChange("Classic Burger")}
+                  >
+                    Classic Burger
+                  </List.Item>
+                  <List.Item >Gourment Burgers</List.Item>
                   <List.Item>Poutines</List.Item>
                   <List.Item>Rice Meals</List.Item>
+                  <List.Item>Thai Food</List.Item>
                   <List.Item>WholeSome Platters</List.Item>
                   <List.Item>Mocktails</List.Item>
-                  <List.Item>Shakes</List.Item>
+                  <List.Item  onClick={() => handleCategoryChange("shakes")}>Shakes</List.Item>
+                  <List.Item>Indian Food</List.Item>
                 </List>
               </div>
             </Text>

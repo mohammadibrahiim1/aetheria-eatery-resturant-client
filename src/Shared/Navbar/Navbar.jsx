@@ -161,7 +161,9 @@
 
 // export default Navbar;
 
-import React from "react";
+import React, { useContext } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { FaUserAlt } from "react-icons/fa";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import {
@@ -172,9 +174,11 @@ import {
   // MenuItem,
   // MenuList,
   MobileNav,
-  Typography,
+  // Typography,
 } from "@material-tailwind/react";
 import { Container, Text, createStyles, rem } from "@mantine/core";
+import { AuthContext } from "../../Context/UserContext";
+import { toast } from "react-hot-toast";
 
 const useStyles = createStyles((theme) => ({
   // root: {
@@ -259,12 +263,53 @@ const Navbar = () => {
   const [openNav, setOpenNav] = React.useState(false);
   const { classes, cx } = useStyles();
 
+  // user
+
+  const { signInWithGoogle, loading, logOut, user } = useContext(AuthContext);
+
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+
+  // google sign in
+  const handleGoogleSignIn = () => {
+    signInWithGoogle().then((result) => {
+      const user = result.user;
+      if (user) {
+        fetch("http://localhost:5000/users", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.acknowledged) {
+              alert("successfully signin");
+            } else {
+              toast.error(data.message);
+            }
+          });
+      }
+    });
+  };
+
+  // logout
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+    toast.success("successfully logout");
+  };
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -307,35 +352,58 @@ const Navbar = () => {
           </div>
         </Text>
       </Link>
-
-      <Text
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Menu placement="bottom-start">
-          <MenuHandler>
-            <div className="cursor-pointer font-semibold text-md text-primary hover:text-accent">
-              Sign In
-            </div>
-          </MenuHandler>
-          {/* <MenuList>
-            <Link to="/signUp">
-              {" "}
-              <MenuItem className="mb-3 font-semibold text-base text-primary hover:text-accent ">
-                <div>Sign Up</div>
-              </MenuItem>
-            </Link>
-            <Link to="/logIn">
-              {" "}
-              <MenuItem className="mb-3 font-semibold text-base text-primary hover:text-accent">
-                <div>Login</div>
-              </MenuItem>
-            </Link>
-          </MenuList> */}
-        </Menu>
-      </Text>
+      {user?.email ? (
+        <Text
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <Menu placement="bottom-start">
+            <MenuHandler>
+              <Button
+                variant="default"
+                className="cursor-pointer font-semibold text-md text-primary hover:text-accent"
+              >
+                <FaUserAlt onClick={handleLogOut} className="h-6 w-6" />
+              </Button>
+            </MenuHandler>
+            {/* <MenuList>
+     <Link to="/signUp">
+       {" "}
+       <MenuItem className="mb-3 font-semibold text-base text-primary hover:text-accent ">
+         <div>Sign Up</div>
+       </MenuItem>
+     </Link>
+     <Link to="/logIn">
+       {" "}
+       <MenuItem className="mb-3 font-semibold text-base text-primary hover:text-accent">
+         <div>Login</div>
+       </MenuItem>
+     </Link>
+   </MenuList> */}
+          </Menu>
+        </Text>
+      ) : (
+        <Text
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <Menu placement="bottom-start">
+            <MenuHandler>
+              <Button
+                variant="default"
+                className="cursor-pointer font-semibold text-md text-primary hover:text-accent"
+              >
+                <FcGoogle onClick={handleGoogleSignIn} className="h-6 w-6" />{" "}
+              </Button>
+            </MenuHandler>
+          </Menu>
+        </Text>
+      )}
+      {user.displayName}
     </ul>
   );
   return (

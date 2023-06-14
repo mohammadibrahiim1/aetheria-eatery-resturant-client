@@ -8,6 +8,7 @@ const cartFromLocalStorage = JSON.parse(
 const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState(cartFromLocalStorage);
+  // const [selectedCategory, setSelectedCategory] = useState("");
 
   const addItemToCart = (selectItem) => {
     let newCart = [];
@@ -31,19 +32,38 @@ const DataContext = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/allProducts")
       .then((res) => res.json())
       .then((data) => {
-    
+        console.log(data);
         setFoodItems(data);
       });
   }, []);
 
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/category?category=${selectedCategory}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setFoodItems(data);
+  //     });
+  // }, [selectedCategory]);
+
+  const handleCategoryChange = (selectedCategory) => {
+    fetch(`http://localhost:5000/category?category=${selectedCategory}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFoodItems(data);
+      });
+    // setSelectedCategory(data);
+  };
   const foodInfo = {
     foodItems,
     addItemToCart,
     removeItemFromCart,
     cart,
+    handleCategoryChange,
   };
 
   return (
