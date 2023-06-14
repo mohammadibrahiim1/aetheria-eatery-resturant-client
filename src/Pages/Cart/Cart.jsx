@@ -84,12 +84,12 @@ const useStyles = createStyles((theme) => ({
 
 const Cart = () => {
   const { classes } = useStyles();
-  const { cart, handleRemoveFoodItem } = useContext(ApiContext);
+  const { cart, removeItemFromCart } = useContext(ApiContext);
   const [products, setProducts] = useState(cart);
 
-  const handleRemove = (productId) => {
-    handleRemoveFoodItem(productId);
-  };
+  // const handleRemove = (productId) => {
+  //   handleRemoveFoodItem(productId);
+  // };
 
   const handleQuantityChange = (productId, quantity) => {
     setProducts((prevProducts) =>
@@ -157,7 +157,7 @@ const Cart = () => {
                             >
                               {" "}
                               <IconTrash
-                                onClick={() => handleRemove(product.id)}
+                                onClick={() => removeItemFromCart(product.id)}
                               />
                             </Button>
                           </div>

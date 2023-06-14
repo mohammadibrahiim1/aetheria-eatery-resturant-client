@@ -75,12 +75,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const FoodCard = ({ item, setFoodItem, handleAddToCart }) => {
+const FoodCard = ({ item, setFoodItem, addItemToCart }) => {
   //   console.log(foodItem);
   const [opened, { open, close }] = useDisclosure(false);
   //   console.log(setFoodItem);
   const { classes, cx } = useStyles();
-  
+
   return (
     <div>
       <Card withBorder radius="md" p={0} className={classes.card}>
@@ -100,7 +100,8 @@ const FoodCard = ({ item, setFoodItem, handleAddToCart }) => {
               {" "}
               <div position="center" className={classes.controls}>
                 <Button
-                  onClick={() => handleAddToCart(item)}
+                
+                  onClick={() => addItemToCart(item)}
                   compact
                   className={classes.control}
                   variant="default"

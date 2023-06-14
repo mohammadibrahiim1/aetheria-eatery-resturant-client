@@ -77,7 +77,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Menu = () => {
-  const { foodItems, handleAddToCart, handleRemoveFoodItem } =
+  const { foodItems, addItemToCart, removeItemFromCart } =
     useContext(ApiContext);
   const { classes, cx } = useStyles();
 
@@ -142,7 +142,8 @@ const Menu = () => {
                   <FoodCard
                     item={item}
                     setFoodItem={setFoodItem}
-                    handleAddToCart={handleAddToCart}
+                    addItemToCart={addItemToCart}
+                    removeItemFromCart={removeItemFromCart}
                     foodItem={foodItem}
                     key={item.id}
                   ></FoodCard>
