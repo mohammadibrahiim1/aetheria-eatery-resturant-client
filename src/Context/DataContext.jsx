@@ -98,10 +98,10 @@ const DataContext = ({ children }) => {
     dessert,
     pizza,
     salads,
+    soup,
     drinks,
     thai,
     indian,
-    soup,
   };
 
   return (

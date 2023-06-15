@@ -115,6 +115,20 @@ const useStyles = createStyles((theme) => ({
       flexDirection: "column",
     },
   },
+  order: {
+    // width: "306px",
+    // height: "24px",
+    fontFamily: "Inter",
+    fontStyle: "normal",
+    fontWeight: 700,
+    fontSize: "12px",
+    lineHeight: "24px",
+    textAlign: "center",
+    // margin: "auto",
+    textTransform: "uppercase",
+    textDecoration: "underline",
+    color: "#1F2937",
+  },
 
   control: {
     height: rem(42),
@@ -152,7 +166,7 @@ const Dessert = () => {
   console.log(dessert);
   const { classes } = useStyles();
   return (
-    <div className="py-28">
+    <div className="py-24">
       {/* <Container> */}
       <div className={classes.wrapper}>
         <Overlay color="#000" opacity={0.65} zIndex={1} />
@@ -200,7 +214,10 @@ const Dessert = () => {
             <h1> Today's Offer</h1>
           </div>
         </div> */}
-        <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2 py-12">
+        <div className="pt-8">
+          <p className={classes.order}>ORDER YOUR FAVOURITE FOOD</p>
+        </div>
+        <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2 py-8">
           {dessert.map((item) => (
             <div>
               <Card withBorder radius="md" p={5} className={classes.card}>

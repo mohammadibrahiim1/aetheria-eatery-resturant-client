@@ -325,7 +325,7 @@ const Navbar = () => {
           </div>
         </Text>
       </Link>
-      <a href="/mainMenu">
+      <Link to="/mainMenu">
         <Text
           as="li"
           variant="small"
@@ -336,18 +336,16 @@ const Navbar = () => {
             Our Menu
           </div>
         </Text>
-      </a>
-
-      <Link to="/aboutUs">
-        {" "}
+      </Link>
+      <Link to="/shop">
         <Text
           as="li"
           variant="small"
           color="blue-gray"
           className="p-1 font-normal"
         >
-          <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
-            About Us
+          <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
+            Shop
           </div>
         </Text>
       </Link>
@@ -364,6 +362,20 @@ const Navbar = () => {
           </div>
         </Text>
       </Link>
+      <Link to="/aboutUs">
+        {" "}
+        <Text
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
+            About
+          </div>
+        </Text>
+      </Link>
+
       {user?.email ? (
         <Text
           as="li"

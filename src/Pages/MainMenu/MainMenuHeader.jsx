@@ -3,12 +3,12 @@ import {
   Title,
   Text,
   Container,
-  Button,
+  //   Button,
   Overlay,
   createStyles,
   rem,
 } from "@mantine/core";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 // https://i.ibb.co/Lv7XbhW/menu-img-4.png
 // https://i.ibb.co/sWVffGH/menu-img-2.png
@@ -105,7 +105,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const MainMenuHeader = () => {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   return (
     <div>
       <div className={classes.wrapper}>

@@ -6,6 +6,7 @@ import Cart from "../Pages/Cart/Cart";
 import Signin from "../Pages/Signin/Signin";
 import AboutUs from "../Components/AboutUs";
 import MainMenu from "../Pages/MainMenu/MainMenu";
+import Shop from "../Pages/Shop/Shop";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "/mainMenu",
         element: <MainMenu></MainMenu>,
+      },
+      {
+        path: "/shop",
+        element: <Shop></Shop>,
       },
     ],
   },
