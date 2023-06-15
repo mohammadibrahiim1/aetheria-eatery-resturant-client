@@ -109,7 +109,7 @@ const Contact = () => {
     </div>
   ));
   return (
-    <div className="28">
+    <div className="py-28">
       <div className="py-12">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
