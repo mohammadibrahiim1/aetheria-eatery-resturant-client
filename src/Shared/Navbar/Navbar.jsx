@@ -176,9 +176,10 @@ import {
   MobileNav,
   // Typography,
 } from "@material-tailwind/react";
-import { Container, Text, createStyles, rem } from "@mantine/core";
+import { Container, Indicator, Text, createStyles, rem } from "@mantine/core";
 import { AuthContext } from "../../Context/UserContext";
 import { toast } from "react-hot-toast";
+import { ApiContext } from "../../Context/DataContext";
 
 const useStyles = createStyles((theme) => ({
   // root: {
@@ -261,6 +262,8 @@ const useStyles = createStyles((theme) => ({
 
 const Navbar = () => {
   const [openNav, setOpenNav] = React.useState(false);
+  const { cart } = useContext(ApiContext);
+
   const { classes, cx } = useStyles();
 
   // user
@@ -357,6 +360,13 @@ const Navbar = () => {
           color="blue-gray"
           className="p-1 font-normal"
         >
+          {/* "bottom-end" | "bottom-start" | "top-end" | "top-start" | "bottom-center" | "top-center" | "middle-center" | "middle-end" | "middle-start" */}
+          <Indicator
+            position="top-end"
+            label={cart.length}
+            color="red"
+            size={14}
+          />
           <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
             Cart
           </div>
