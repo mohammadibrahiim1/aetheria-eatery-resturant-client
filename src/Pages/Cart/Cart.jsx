@@ -13,6 +13,8 @@ import {
 import { useContext, useState } from "react";
 import { ApiContext } from "../../Context/DataContext";
 import { IconTrash } from "@tabler/icons-react";
+import { hover } from "@testing-library/user-event/dist/hover";
+import { color } from "framer-motion";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -53,9 +55,9 @@ const useStyles = createStyles((theme) => ({
   },
   controls: {
     marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    // display: "flex",
+    // justifyContent: "space-between",
+    // alignItems: "center",
     // paddingLeft: theme.spacing.xs,
     // marginLeft: theme.spacing.md,
 
@@ -68,10 +70,17 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
     width: "100%",
+    border: "1px solid red",
+    ":hover": {
+      backgroundColor: "red",
+      border: "1px solid red",
+      transition: "0.5s",
+      color: "white",
+    },
 
-    // "&:not(:first-of-type)": {
-    // marginLeft: theme.spacing.xs,
-    // },
+    "&:not(:first-of-type)": {
+      marginLeft: theme.spacing.xs,
+    },
 
     // [theme.fn.smallerThan("xs")]: {
     //   "&:not(:first-of-type)": {
@@ -94,7 +103,7 @@ const Cart = () => {
   const handleQuantityChange = (productId, quantity) => {
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
-        product.id === productId ? { ...product, quantity } : product
+        product._id === productId ? { ...product, quantity } : product
       )
     );
   };
@@ -121,7 +130,7 @@ const Cart = () => {
         </div>
 
         <Grid className="py-8">
-          <Grid.Col md={6} lg={9}>
+          <Grid.Col md={6} lg={12}>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
               {products?.map((product) => (
                 <>
@@ -129,25 +138,22 @@ const Cart = () => {
                     <Group noWrap spacing={0} key={product.id}>
                       <Image src={product.image} height={140} width={140} />
                       <div className={classes.body}>
-                        <Text className={classes.title} mt="xs" mb="md">
+                        <Text className={classes.title} mb="md">
                           {product.name}
                         </Text>
-                        <Text className={classes.title} mt="xs" mb="md">
+                        <Text className={classes.title} mb="md">
                           ${product.price * product.quantity}
                         </Text>
-                        <div class="flex justify-between items-center">
+                        <div class="flex gap-32 lg:gap-48">
                           <input
                             onChange={(e) =>
-                              handleQuantityChange(
-                                product.id,
-                                parseInt(e.target.value)
-                              )
+                              handleQuantityChange(product._id, e.target.value)
                             }
                             class="h-8 w-8 border bg-white text-center text-xs outline-none"
                             type="number"
                             value={product.quantity}
                           />
-                          <div position="center" className={classes.controls}>
+                          <div position="center">
                             <Button
                               // defaultValue={4}
                               className={classes.control}
@@ -175,7 +181,7 @@ const Cart = () => {
               </Button> */}
             </div>
           </Grid.Col>
-          <Grid.Col md={6} lg={3}>
+          <Grid.Col md={6} lg={12}>
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -209,10 +215,10 @@ const Cart = () => {
                 // open={open}
                 compact
                 className={classes.control}
-                variant="default"
+                // variant="default"
                 size="xs"
               >
-                checkout
+                Checkout
               </Button>
             </div>
             <div position="center" className={classes.controls}>
@@ -220,7 +226,7 @@ const Cart = () => {
                 // onClick={() => handleAddToCart(item)}
                 compact
                 className={classes.control}
-                variant="default"
+                // variant="default"
                 size="xs"
               >
                 Add more item
