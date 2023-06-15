@@ -96,7 +96,8 @@ const useStyles = createStyles((theme) => ({
 
 const Cart = () => {
   const { classes } = useStyles();
-  const { cart, removeItemFromCart } = useContext(ApiContext);
+  const { cart, removeItemFromCart, setTotalPrice, handleTotalPrice } =
+    useContext(ApiContext);
   const [products, setProducts] = useState(cart);
 
   // const handleRemove = (productId) => {
@@ -214,7 +215,7 @@ const Cart = () => {
             <Link to="/checkout" position="center" className={classes.controls}>
               <Button
                 // onClick={open,()=>setFoodItem()}
-                // onClick={() => setFoodItem(item)}
+                onClick={() => handleTotalPrice(calculateTotal())}
                 // open={open}
                 compact
                 className={classes.control}

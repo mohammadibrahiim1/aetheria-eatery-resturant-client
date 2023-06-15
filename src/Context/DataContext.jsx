@@ -8,6 +8,8 @@ const cartFromLocalStorage = JSON.parse(
 const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState(cartFromLocalStorage);
+  const [totalPrice, setTotalPrice] = useState("");
+  console.log(totalPrice);
   const [allItems, setAllItems] = useState([]);
   const [offer, setOffer] = useState([]);
   const [dessert, setDessert] = useState([]);
@@ -71,6 +73,10 @@ const DataContext = ({ children }) => {
       });
   }, []);
 
+  const handleTotalPrice = (totalPrice) => {
+    setTotalPrice(totalPrice);
+  };
+
   // useEffect(() => {
   //   fetch(`http://localhost:5000/category?category=${selectedCategory}`)
   //     .then((res) => res.json())
@@ -104,6 +110,9 @@ const DataContext = ({ children }) => {
     thai,
     indian,
     allItems,
+    setTotalPrice,
+    handleTotalPrice,
+    totalPrice,
   };
 
   return (

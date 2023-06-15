@@ -8,7 +8,11 @@ import AboutUs from "../Components/AboutUs";
 import MainMenu from "../Pages/MainMenu/MainMenu";
 import Shop from "../Pages/Shop/Shop";
 import Checkout from "../Pages/Checkout/Checkout";
-
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(
+  "pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8"
+);
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -40,7 +44,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout></Checkout>,
+        element: (
+          <Elements stripe={stripePromise}>
+            <Checkout></Checkout>
+          </Elements>
+        ),
       },
     ],
   },

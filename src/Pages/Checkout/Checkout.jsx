@@ -16,9 +16,17 @@ import {
   IconSignature,
   IconTruckDelivery,
 } from "@tabler/icons-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PhoneInput from "react-phone-number-input";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import {
+  CardElement,
+  useElements,
+  useStripe,
+  totalPrice,
+} from "@stripe/react-stripe-js";
+import { ApiContext } from "../../Context/DataContext";
+// import { loadStripe } from "@stripe/stripe-js";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -34,6 +42,10 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  error: {
+    color: "red",
+    font: "sm",
   },
 
   body: {
@@ -66,7 +78,7 @@ const useStyles = createStyles((theme) => ({
     height: rem(32),
     fontSize: theme.fontSizes.sm,
     color: "#32C770",
-    marginTop: "20px",
+    marginTop: "25px",
     width: "100%",
     border: "1px solid #32C770",
     ":hover": {
@@ -99,19 +111,57 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+// const stripePromise = loadStripe(
+//   "pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8"
+// );
+// console.log(stripePromise);
+
+// pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8
+
 const Checkout = () => {
+  const { totalPrice } = useContext(ApiContext);
+  const stripe = useStripe();
+  const elements = useElements();
   const { classes } = useStyles();
   const [value, setValue] = useState();
+  const [cardError, setCardError] = useState("");
+  console.log(cardError);
+
+  // create funtion for stripe data
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+
+    const card = elements.getElement(CardElement);
+    if (card === null) {
+      return;
+    }
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card,
+    });
+    console.log(card);
+    if (error) {
+      console.log(error);
+      setCardError(error.message);
+    } else {
+      console.log("paymentMethod", paymentMethod);
+      setCardError("");
+    }
+  };
   return (
     <div>
       <Container className="py-28">
         <div className={classes.form}>
-          <form action="">
+          <form action="" onSubmit={handleSubmit}>
             <div className="pb-8 ">
               <Text className={classes.title}>
                 {" "}
                 <p>Payment</p>
-                <p>total amount : $100 </p>
+                <p>total amount : ${totalPrice} </p>
               </Text>
               <hr />
             </div>
@@ -181,8 +231,23 @@ const Checkout = () => {
                   {/* Gallery tab content */}
                 </Tabs.Panel>
 
-                <Tabs.Panel value="messages" pt="xs">
-                  strip card
+                <Tabs.Panel value="messages" pt="sm">
+                  <CardElement
+                    options={{
+                      style: {
+                        base: {
+                          fontSize: "15px",
+                          color: "#424770",
+                          "::placeholder": {
+                            color: "#aab7c4",
+                          },
+                        },
+                        invalid: {
+                          color: "#9e2146",
+                        },
+                      },
+                    }}
+                  />
                 </Tabs.Panel>
                 {/* 
                 <Tabs.Panel value="settings" pt="xs">
@@ -190,11 +255,20 @@ const Checkout = () => {
                 </Tabs.Panel> */}
               </Tabs>
             </div>
-            <Link to="/shop" position="center" className={classes.controls}>
-              <Button compact className={classes.control} size="xs">
+
+            <p className={classes.error}>{cardError}</p>
+
+            <div position="center" className={classes.controls}>
+              <Button
+                type="submit"
+                // disabled={!stripe || !clientSecret || processing}
+                compact
+                className={classes.control}
+                size="xs"
+              >
                 Confirm
               </Button>
-            </Link>
+            </div>
           </form>
         </div>
       </Container>
