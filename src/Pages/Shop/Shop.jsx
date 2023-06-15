@@ -2,7 +2,10 @@ import { React, useContext, useState } from "react";
 import { Button, Container, Grid, List, Text, rem } from "@mantine/core";
 // import { ApiContext } from "../Context/DataContext";
 
-import { createStyles, Card, Image, Group } from "@mantine/core";
+import {
+  createStyles,
+  //  Card, Image, Group
+} from "@mantine/core";
 // import FoodCard from "../../Components/FoodCard";
 // import FoodModal from "../../Components/FoodModal";
 import { ApiContext } from "../../Context/DataContext";
@@ -98,7 +101,7 @@ const Shop = () => {
         </div>
 
         <Grid className="py-8">
-          {/* <Grid.Col md={6} lg={3}>
+          <Grid.Col md={6} lg={3}>
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -119,78 +122,83 @@ const Shop = () => {
               fw={700}
             >
               {" "}
-              <div className="py-8 ">
+              <div className="py-8  ">
                 <List spacing="sm" size="md" ta="left" className="">
                   <List.Item
-                    onClick={() => handleCategoryChange("Crispy Chicken")}
+                    onClick={() => handleCategoryChange("desert")}
                     className="cursor-pointer"
                   >
-                    Crispy Chicken
+                    Desert
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Classic Burgers")}
+                    onClick={() => handleCategoryChange("offer")}
                     className="cursor-pointer"
                   >
-                    Classic Burger
+                    Offer
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Gourment Burgers")}
+                    onClick={() => handleCategoryChange("drinks")}
                     className="cursor-pointer"
                   >
-                    Gourment Burgers
+                    Drinks
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Poutines")}
+                    onClick={() => handleCategoryChange("pizza")}
                     className="cursor-pointer"
                   >
-                    Poutines
+                    Pizza
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Rice Meals")}
+                    onClick={() => handleCategoryChange("salad")}
                     className="cursor-pointer"
                   >
-                    Rice Meals
+                    Salads
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Thai Food")}
+                    onClick={() => handleCategoryChange("thai")}
                     className="cursor-pointer"
                   >
-                    Thai Food
+                    Thai
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Wholesome Platters")}
+                    onClick={() => handleCategoryChange("soup")}
                     className="cursor-pointer"
                   >
-                    Wholesome Platters
+                    Soup
                   </List.Item>
                   <List.Item
-                    onClick={() => handleCategoryChange("Mocktails")}
+                    onClick={() => handleCategoryChange("indian")}
                     className="cursor-pointer"
                   >
-                    Mocktails
+                    Indian
                   </List.Item>
-                  <List.Item
+                  {/* <List.Item
                     onClick={() => handleCategoryChange("shakes")}
                     className="cursor-pointer"
                   >
                     Shakes
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("Indian food")}
+                  </List.Item> */}
+                  {/* <List.Item
+                    onClick={() => handleCategoryChange(allItems)}
                     className="cursor-pointer"
                   >
-                    Indian Food
-                  </List.Item>
+                    All Items
+                  </List.Item> */}
                 </List>
               </div>
             </Text>
-          </Grid.Col> */}
+          </Grid.Col>
 
-          <Grid.Col md={6} lg={12}>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
-              {allItems?.map((item) => (
+          <Grid.Col md={6} lg={9}>
+            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
+              {allItems?.slice(0, 6)?.map((item) => (
                 <>
-                  <ShopPageCard item={item}></ShopPageCard>
+                  <ShopPageCard
+                    item={item}
+                    addItemToCart={addItemToCart}
+                    removeItemFromCart={removeItemFromCart}
+                    handleCategoryChange={handleCategoryChange}
+                  ></ShopPageCard>
                   {/* <FoodCard
                     item={item}
                     setFoodItem={setFoodItem}

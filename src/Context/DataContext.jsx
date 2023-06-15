@@ -85,7 +85,7 @@ const DataContext = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setFoodItems(data);
+        setAllItems(data);
       });
     // setSelectedCategory(data);
   };
