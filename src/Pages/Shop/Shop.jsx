@@ -10,6 +10,8 @@ import {
 // import FoodModal from "../../Components/FoodModal";
 import { ApiContext } from "../../Context/DataContext";
 import { ShopPageCard } from "../../Components/ShopPageCard";
+import ShopPageHeader from "../../Components/ShopPageHeader";
+import Contact from "../../Components/Contact";
 // import FoodCard from "./FoodCard";
 // import Modal from "./FoodModal";
 // import FoodModal from "./FoodModal";
@@ -31,7 +33,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     color: "#151515",
     lineHeight: 1.2,
-    fontSize: rem(32),
+    fontSize: rem(22),
     // marginTop: theme.spacing.xs,
     textTransform: "uppercase",
     textAlign: "center",
@@ -88,16 +90,17 @@ const Shop = () => {
     useContext(ApiContext);
   const { classes, cx } = useStyles();
 
-  const [foodItem, setFoodItem] = useState({});
+  //   const [foodItem, setFoodItem] = useState({});
 
   return (
     <div>
-      <Container className="py-22">
+      <ShopPageHeader></ShopPageHeader>
+      <Container className="py-24">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
         </div>
         <div className={classes.heading} color="#151515">
-          <h1> OUR SHOP</h1>
+          <h1> Order Your Favourite Food</h1>
         </div>
 
         <Grid className="py-8">
@@ -191,7 +194,7 @@ const Shop = () => {
 
           <Grid.Col md={6} lg={9}>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
-              {allItems?.slice(0, 6)?.map((item) => (
+              {allItems?.slice(0, 4)?.map((item) => (
                 <>
                   <ShopPageCard
                     item={item}
@@ -221,6 +224,7 @@ const Shop = () => {
           </Grid.Col>
         </Grid>
       </Container>
+      <Contact></Contact>
     </div>
   );
 };

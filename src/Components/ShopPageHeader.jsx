@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
     position: "relative",
     paddingTop: rem(180),
     paddingBottom: rem(130),
-    backgroundImage: "url(https://i.ibb.co/Zd1b1Ww/header-img.png)",
+    backgroundImage: "url(https://i.ibb.co/Lv7XbhW/menu-img-4.png)",
     backgroundSize: "cover",
     backgroundPosition: "center",
 
@@ -99,18 +99,18 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+const ShopPageHeader = () => {
   const { classes, cx } = useStyles();
   return (
     <div>
       <div className={classes.wrapper}>
-        <Overlay color="#000" opacity={0.65} zIndex={1} />
+        <Overlay color="#000" opacity={0.4} zIndex={1} />
 
         <div className={classes.inner}>
           <Title className={classes.title}>
-            OUR{" "}
+            ORDER 
             <Text component="span" inherit className={classes.highlight}>
-              SHOP
+              ONLINE
             </Text>
           </Title>
 
@@ -125,9 +125,9 @@ const Header = () => {
             </Text>
           </Container>
 
-          <Link to="/shop" className={classes.controls}>
+          <div className={classes.controls}>
             <Button className={classes.control} variant="white" size="lg">
-              Order Online
+              Get started
             </Button>
             <Link to="/mainMenu">
               <Button
@@ -137,11 +137,11 @@ const Header = () => {
                 Our Menu
               </Button>
             </Link>
-          </Link>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default ShopPageHeader;

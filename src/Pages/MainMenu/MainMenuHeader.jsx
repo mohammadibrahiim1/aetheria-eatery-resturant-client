@@ -3,12 +3,12 @@ import {
   Title,
   Text,
   Container,
-  //   Button,
+  Button,
   Overlay,
   createStyles,
   rem,
 } from "@mantine/core";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // https://i.ibb.co/Lv7XbhW/menu-img-4.png
 // https://i.ibb.co/sWVffGH/menu-img-2.png
@@ -18,8 +18,8 @@ import {
 const useStyles = createStyles((theme) => ({
   wrapper: {
     position: "relative",
-    paddingTop: rem(220),
-    paddingBottom: rem(220),
+    paddingTop: rem(180),
+    paddingBottom: rem(130),
     backgroundImage: "url(https://i.ibb.co/TTtNG9F/menu-img-1.png)",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -105,7 +105,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const MainMenuHeader = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   return (
     <div>
       <div className={classes.wrapper}>
@@ -130,19 +130,19 @@ const MainMenuHeader = () => {
             </Text>
           </Container>
 
-          {/* <div className={classes.controls}>
+          <Link to="/" className={classes.controls}>
             <Button className={classes.control} variant="white" size="lg">
-              Get started
+              Home
             </Button>
-            <Link to="/mainMenu">
+            <Link to="/shop">
               <Button
                 className={cx(classes.control, classes.secondaryControl)}
                 size="lg"
               >
-                Our Menu
+                Order Online
               </Button>
             </Link>
-          </div> */}
+          </Link>
         </div>
       </div>
     </div>
