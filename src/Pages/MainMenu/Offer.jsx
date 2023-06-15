@@ -1,32 +1,64 @@
 import {
   createStyles,
   Card,
-  Image,
-  Avatar,
+//   Image,
+//   Avatar,
   Text,
   Group,
   Container,
+  rem,
 } from "@mantine/core";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
+// import { Grid } from "antd";
 
 const useStyles = createStyles((theme) => ({
   card: {
+    border: 0,
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
   },
 
   title: {
     fontWeight: 700,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontFamily: `"Inter", sans-serif`,
     lineHeight: 1.2,
+  },
+  heading: {
+    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+    fontWeight: 700,
+    color: "#151515",
+    lineHeight: 1.2,
+    fontSize: rem(32),
+    // marginTop: theme.spacing.xs,
+    textTransform: "uppercase",
+    textAlign: "center",
+    // paddingBottom: theme.spacing.sm,
+  },
+  subTitle: {
+    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+    fontWeight: 500,
+    color: "#D99904",
+    lineHeight: 1.2,
+    fontSize: rem(12),
+    marginTop: theme.spacing.xs,
+    textTransform: "uppercase",
+    textAlign: "center",
+    paddingBottom: theme.spacing.xs,
+  },
+  price: {
+    fontWeight: 700,
+    fontFamily: `"Inter", sans-serif`,
+    lineHeight: 1.2,
+    color: "rebeccapurple",
   },
 
   body: {
     // padding: theme.spacing.md,
     display: "flex",
     justifyContent: "space-between",
-    // alignItems: "center",
+    alignItems: "start",
+    // gap: "240px",
   },
 }));
 
@@ -34,51 +66,52 @@ export const Offer = () => {
   const { offer } = useContext(ApiContext);
   const { classes } = useStyles();
   return (
-    <Container className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2">
-      {offer.map((item) => (
-        <div>
-          <Card withBorder radius="md" p={0} className={classes.card}>
-            <Group noWrap spacing={0}>
-              {/* <Image src={item.image} height={140} width={140} /> */}
-              <div className="flex align-center gap-32 lg:gap-48">
-                <Text
-                  transform="uppercase"
-                  color="dimmed"
-                  weight={700}
-                  size="xs"
-                >
-                  {item.name}
-                </Text>
-                <Text className={classes.title}  mb="md">
-                  {item.price}
-                </Text>
-                {/* <Group noWrap spacing="xs">
-                  <Group spacing="xs" noWrap>
-                    <Avatar size={20} src={author.avatar} />
-                    <Text size="xs">{author.name}</Text>
-                  </Group>
-                  <Text size="xs" color="dimmed">
-                    •
-                  </Text>
-                  <Text size="xs" color="dimmed">
-                    {date}
-                  </Text>
-                </Group> */}
-              </div>
-              {/* <div>
-              <Text
-                  transform="uppercase"
-                  color="dimmed"
-                  weight={700}
-                  size="xs"
-                >
-                  {item.name}
-                </Text>
-              </div> */}
-            </Group>
-          </Card>
+    <Container>
+      <div>
+        <div className={classes.subTitle}>
+          <p>---check it out---</p>
         </div>
-      ))}
+        <div className={classes.heading} color="#151515">
+          <h1> From Our Menu</h1>
+        </div>
+      </div>
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2">
+        {offer.map((item) => (
+          <div>
+            <Card withBorder radius="md" p={5} className={classes.card}>
+              <Group noWrap spacing={0}>
+                <div className={classes.body}>
+                  <Text
+                    transform="uppercase"
+                    color="default"
+                    weight={700}
+                    size="sm"
+                  >
+                    {item.name}--------------------
+                  </Text>
+
+                  <Text className={classes.price} size="sm" mb="md">
+                    ${item.price}
+                  </Text>
+                </div>
+              </Group>
+
+              <div>
+                <Text
+                  // transform="uppercase"
+                  color="dimmed"
+                  weight={700}
+                  size="xs"
+                  className={classes.title}
+                  // mb="md"
+                >
+                  {item.description}
+                </Text>
+              </div>
+            </Card>
+          </div>
+        ))}
+      </div>
     </Container>
   );
 };
