@@ -8,21 +8,21 @@ const cartFromLocalStorage = JSON.parse(
 const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState(cartFromLocalStorage);
+  const [allItems, setAllItems] = useState([]);
   const [offer, setOffer] = useState([]);
-
   const [dessert, setDessert] = useState([]);
   const [pizza, setPizza] = useState([]);
-  console.log(pizza);
+  // console.log(pizza);
   const [salads, setSalad] = useState([]);
-  console.log(salads);
+  // console.log(salads);
   const [soup, setSoup] = useState([]);
-  console.log(soup);
+  // console.log(soup);
   const [drinks, setDrinks] = useState([]);
-  console.log(drinks);
+  // console.log(drinks);
   const [thai, setThai] = useState([]);
-  console.log(thai);
+  // console.log(thai);
   const [indian, setIndian] = useState([]);
-  console.log(indian);
+  // console.log(indian);
   // const [selectedCategory, setSelectedCategory] = useState("");
 
   const addItemToCart = (selectItem) => {
@@ -67,6 +67,7 @@ const DataContext = ({ children }) => {
         setDrinks(data.slice(24, 30));
         setIndian(data.slice(30, 35));
         setThai(data.slice(35, 39));
+        setAllItems(data);
       });
   }, []);
 
@@ -102,6 +103,7 @@ const DataContext = ({ children }) => {
     drinks,
     thai,
     indian,
+    allItems,
   };
 
   return (
