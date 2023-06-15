@@ -9,11 +9,20 @@ const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState(cartFromLocalStorage);
   const [offer, setOffer] = useState([]);
-  console.log(offer);
+
   const [dessert, setDessert] = useState([]);
   const [pizza, setPizza] = useState([]);
+  console.log(pizza);
   const [salads, setSalad] = useState([]);
-  const [soup, setSout] = useState([]);
+  console.log(salads);
+  const [soup, setSoup] = useState([]);
+  console.log(soup);
+  const [drinks, setDrinks] = useState([]);
+  console.log(drinks);
+  const [thai, setThai] = useState([]);
+  console.log(thai);
+  const [indian, setIndian] = useState([]);
+  console.log(indian);
   // const [selectedCategory, setSelectedCategory] = useState("");
 
   const addItemToCart = (selectItem) => {
@@ -51,6 +60,13 @@ const DataContext = ({ children }) => {
       .then((data) => {
         console.log(data);
         setOffer(data.slice(0, 4));
+        setDessert(data.slice(4, 9));
+        setPizza(data.slice(9, 15));
+        setSalad(data.slice(15, 20));
+        setSoup(data.slice(20, 24));
+        setDrinks(data.slice(24, 30));
+        setIndian(data.slice(30, 35));
+        setThai(data.slice(35, 39));
       });
   }, []);
 
@@ -78,7 +94,14 @@ const DataContext = ({ children }) => {
     removeItemFromCart,
     cart,
     handleCategoryChange,
-    offer
+    offer,
+    dessert,
+    pizza,
+    salads,
+    drinks,
+    thai,
+    indian,
+    soup,
   };
 
   return (

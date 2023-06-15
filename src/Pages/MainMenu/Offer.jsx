@@ -1,8 +1,8 @@
 import {
   createStyles,
   Card,
-//   Image,
-//   Avatar,
+  //   Image,
+  //   Avatar,
   Text,
   Group,
   Container,
@@ -67,12 +67,12 @@ export const Offer = () => {
   const { classes } = useStyles();
   return (
     <Container>
-      <div>
+      <div className="py-12">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
         </div>
         <div className={classes.heading} color="#151515">
-          <h1> From Our Menu</h1>
+          <h1> Today's Offer</h1>
         </div>
       </div>
       <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2">
