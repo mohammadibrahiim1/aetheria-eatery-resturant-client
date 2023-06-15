@@ -3,8 +3,6 @@ import {
   Container,
   Tabs,
   Text,
-  // Input,
-  // NumberInput,
   TextInput,
   createStyles,
   rem,
@@ -12,20 +10,15 @@ import {
 import "react-phone-number-input/style.css";
 import {
   IconAddressBook,
-  // IconAt,
   IconBrandStripe,
   IconDeviceLandlinePhone,
   IconMailFilled,
-  // IconMessageCircle,
-  // IconPhoto,
-  // IconSettings,
   IconSignature,
   IconTruckDelivery,
 } from "@tabler/icons-react";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import { Link } from "react-router-dom";
-// import { Button } from "antd";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -52,10 +45,8 @@ const useStyles = createStyles((theme) => ({
     color: "#151515",
     lineHeight: 1.2,
     fontSize: rem(32),
-    // marginTop: theme.spacing.xs,
     textTransform: "uppercase",
     textAlign: "center",
-    // paddingBottom: theme.spacing.sm,
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -70,7 +61,6 @@ const useStyles = createStyles((theme) => ({
   },
   controls: {
     marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-    // paddingTop: "20px",
   },
   control: {
     height: rem(32),
@@ -130,7 +120,6 @@ const Checkout = () => {
                 type="text"
                 withAsterisk
                 icon={<IconSignature />}
-                // placeholder="Your Name"
                 label="Your Name"
                 required
               />
@@ -140,7 +129,6 @@ const Checkout = () => {
                 type="email"
                 withAsterisk
                 icon={<IconMailFilled />}
-                // placeholder="Your email"
                 label="Your Email"
                 required
               />
@@ -150,7 +138,6 @@ const Checkout = () => {
               <PhoneInput
                 className={classes.PhoneInput}
                 icon={<IconDeviceLandlinePhone />}
-                // placeholder="Enter phone number"
                 value={value}
                 onChange={setValue}
                 defaultCountry="BD"
@@ -162,7 +149,6 @@ const Checkout = () => {
                 type="text"
                 icon={<IconAddressBook />}
                 withAsterisk
-                // placeholder="Your Address"
                 label="Your Address"
                 required
               />
@@ -205,13 +191,7 @@ const Checkout = () => {
               </Tabs>
             </div>
             <Link to="/shop" position="center" className={classes.controls}>
-              <Button
-                // onClick={() => handleAddToCart(item)}
-                compact
-                className={classes.control}
-                // variant="default"
-                size="xs"
-              >
+              <Button compact className={classes.control} size="xs">
                 Confirm
               </Button>
             </Link>
