@@ -24,17 +24,41 @@ const useStyles = createStyles((theme) => ({
 
   count: {
     color: theme.white,
-    fontSize: rem(32),
+    fontSize: rem(28),
     lineHeight: 1,
     fontWeight: 700,
     marginBottom: theme.spacing.md,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    textAlign: "center",
   },
-
+  heading: {
+    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+    fontWeight: 700,
+    color: "#151515",
+    lineHeight: 1.2,
+    fontSize: rem(32),
+    // marginTop: theme.spacing.xs,
+    textTransform: "uppercase",
+    textAlign: "center",
+    // paddingBottom: theme.spacing.sm,
+  },
   description: {
     color: theme.colors[theme.primaryColor][0],
     fontSize: theme.fontSizes.sm,
     marginTop: rem(5),
+    // width: "91%",
+    textAlign: "center",
+  },
+  subTitle: {
+    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+    fontWeight: 500,
+    color: "#D99904",
+    lineHeight: 1.2,
+    fontSize: rem(12),
+    marginTop: theme.spacing.xs,
+    textTransform: "uppercase",
+    textAlign: "center",
+    paddingBottom: theme.spacing.xs,
   },
 
   stat: {
@@ -58,9 +82,21 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { title: "one", stats: "two", description: "three" },
-  { title: "one", stats: "two", description: "three" },
-  { title: "one", stats: "two", description: "three" },
+  {
+    // title: "one",
+    stats: "Phone",
+    description: "+38 (012) 34 56 789",
+  },
+  {
+    //  title: "one",
+    stats: "Contact Us",
+    description: "123 ABS Street, Uni 21, Bangladesh ,+88 123456789",
+  },
+  {
+    // title: "one",
+    stats: "working Hours",
+    description: "Mon - Fri: 08:00 - 22:00 , Sat - Sun: 10:00 - 23:00",
+  },
 ];
 
 const Contact = () => {
@@ -68,12 +104,20 @@ const Contact = () => {
   const stats = data.map((stat) => (
     <div key={stat.title} className={classes.stat}>
       <Text className={classes.count}>{stat.stats}</Text>
-      <Text className={classes.title}>{stat.title}</Text>
-      <Text className={classes.description}>{stat.description}</Text>
+      {/* <Text className={classes.title}>{stat.title}</Text> */}
+      <Text className={classes.description}> {stat.description}</Text>
     </div>
   ));
   return (
-    <div className="py-36" >
+    <div className="28">
+      <div className="py-12">
+        <div className={classes.subTitle}>
+          <p>---check it out---</p>
+        </div>
+        <div className={classes.heading} color="#151515">
+          <h1> Contact Us</h1>
+        </div>
+      </div>
       <Container className={classes.root}>{stats}</Container>
     </div>
   );

@@ -439,7 +439,7 @@ const Navbar = () => {
           <div className=" navbar sticky-top flex align-center justify-between text-blue-gray-900">
             <Link to="/">
               {" "}
-              <Text as="a" className="mr-4 cursor-pointer py-1.5 font-medium">
+              <Text as="a" className="mr-4 cursor-pointer py-4  font-medium">
                 Aetheria Eatery
               </Text>
             </Link>
