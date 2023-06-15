@@ -8,13 +8,14 @@ import {
   Grid,
   Button,
   rem,
-  Rating,
+  // Rating,
 } from "@mantine/core";
 import { useContext, useState } from "react";
 import { ApiContext } from "../../Context/DataContext";
 import { IconTrash } from "@tabler/icons-react";
-import { hover } from "@testing-library/user-event/dist/hover";
-import { color } from "framer-motion";
+// import { hover } from "@testing-library/user-event/dist/hover";
+// import { color } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -55,6 +56,7 @@ const useStyles = createStyles((theme) => ({
   },
   controls: {
     marginTop: `calc(${theme.spacing.xs}* 1.5)`,
+
     // display: "flex",
     // justifyContent: "space-between",
     // alignItems: "center",
@@ -69,6 +71,7 @@ const useStyles = createStyles((theme) => ({
     height: rem(32),
     fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
+    marginTop: "12px",
     width: "100%",
     border: "1px solid red",
     ":hover": {
@@ -208,7 +211,7 @@ const Cart = () => {
                 <p className="pt-5">Total : ${calculateTotal()} </p>
               </div>
             </Text>
-            <div position="center" className={classes.controls}>
+            <Link to="/checkout" position="center" className={classes.controls}>
               <Button
                 // onClick={open,()=>setFoodItem()}
                 // onClick={() => setFoodItem(item)}
@@ -220,8 +223,8 @@ const Cart = () => {
               >
                 Checkout
               </Button>
-            </div>
-            <div position="center" className={classes.controls}>
+            </Link>
+            <Link to="/shop" position="center" className={classes.controls}>
               <Button
                 // onClick={() => handleAddToCart(item)}
                 compact
@@ -231,7 +234,7 @@ const Cart = () => {
               >
                 Add more item
               </Button>
-            </div>
+            </Link>
           </Grid.Col>
         </Grid>
       </Container>

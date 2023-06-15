@@ -1,15 +1,31 @@
 import {
+  Button,
   Container,
-  Input,
-  NumberInput,
+  Tabs,
+  Text,
+  // Input,
+  // NumberInput,
   TextInput,
   createStyles,
   rem,
 } from "@mantine/core";
 import "react-phone-number-input/style.css";
-import { IconAt } from "@tabler/icons-react";
+import {
+  IconAddressBook,
+  // IconAt,
+  IconBrandStripe,
+  IconDeviceLandlinePhone,
+  IconMailFilled,
+  // IconMessageCircle,
+  // IconPhoto,
+  // IconSettings,
+  IconSignature,
+  IconTruckDelivery,
+} from "@tabler/icons-react";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-number-input";
+import { Link } from "react-router-dom";
+// import { Button } from "antd";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -21,6 +37,10 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1.2,
+    color: "#32C770",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 
   body: {
@@ -50,25 +70,18 @@ const useStyles = createStyles((theme) => ({
   },
   controls: {
     marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-    // display: "flex",
-    // justifyContent: "space-between",
-    // alignItems: "center",
-    // paddingLeft: theme.spacing.xs,
-    // marginLeft: theme.spacing.md,
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   flexDirection: "column",
-    // },
+    // paddingTop: "20px",
   },
   control: {
     height: rem(32),
     fontSize: theme.fontSizes.sm,
-    color: "#B70C1C",
+    color: "#32C770",
+    marginTop: "20px",
     width: "100%",
-    border: "1px solid red",
+    border: "1px solid #32C770",
     ":hover": {
-      backgroundColor: "red",
-      border: "1px solid red",
+      backgroundColor: "#32C770",
+      border: "1px solid #32C770",
       transition: "0.5s",
       color: "white",
     },
@@ -76,23 +89,23 @@ const useStyles = createStyles((theme) => ({
     "&:not(:first-of-type)": {
       marginLeft: theme.spacing.xs,
     },
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   "&:not(:first-of-type)": {
-    //     marginTop: theme.spacing.md,
-    //     marginLeft: 0,
-    //   },
-    // },
   },
   form: {
     width: "50%",
     margin: "auto",
+    border: "1px solid #32C770",
+    padding: "45px",
+    borderRadius: "7px",
   },
 
   PhoneInput: {
     border: "1px solid #CED4DA",
     padding: "7px 0px 7px 7px",
     borderRadius: "3px",
+  },
+
+  input: {
+    paddingBottom: "15px",
   },
 }));
 
@@ -101,49 +114,107 @@ const Checkout = () => {
   const [value, setValue] = useState();
   return (
     <div>
-      <Container>
+      <Container className="py-28">
         <div className={classes.form}>
-          <form
-            action="
-        "
-          >
-            <div>
+          <form action="">
+            <div className="pb-8 ">
+              <Text className={classes.title}>
+                {" "}
+                <p>Payment</p>
+                <p>total amount : $100 </p>
+              </Text>
+              <hr />
+            </div>
+            <div className={classes.input}>
               <TextInput
                 type="text"
                 withAsterisk
-                icon={<IconAt />}
-                placeholder="Your Name"
+                icon={<IconSignature />}
+                // placeholder="Your Name"
                 label="Your Name"
+                required
               />
             </div>
-            <div>
+            <div className={classes.input}>
               <TextInput
                 type="email"
                 withAsterisk
-                icon={<IconAt />}
-                placeholder="Your email"
+                icon={<IconMailFilled />}
+                // placeholder="Your email"
                 label="Your Email"
+                required
               />
             </div>
             <label htmlFor="">Phone</label>
-            <div className={classes.PhoneInput}>
+            <div className={classes.input}>
               <PhoneInput
-                placeholder="Enter phone number"
+                className={classes.PhoneInput}
+                icon={<IconDeviceLandlinePhone />}
+                // placeholder="Enter phone number"
                 value={value}
                 onChange={setValue}
                 defaultCountry="BD"
                 required
               />
             </div>
-            <div>
+            <div className={classes.input}>
               <TextInput
                 type="text"
-                icon={<IconAt />}
+                icon={<IconAddressBook />}
                 withAsterisk
-                placeholder="Your Address"
+                // placeholder="Your Address"
                 label="Your Address"
+                required
               />
             </div>
+
+            <div>
+              <Tabs color="teal" defaultValue="gallery">
+                <Tabs.List>
+                  <Tabs.Tab
+                    value="gallery"
+                    icon={<IconTruckDelivery size="0.8rem" />}
+                  >
+                    cash on delivery
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                    value="messages"
+                    icon={<IconBrandStripe size="0.8rem" />}
+                  >
+                    Strip
+                  </Tabs.Tab>
+                  {/* <Tabs.Tab
+                    value="settings"
+                    icon={<IconSettings size="0.8rem" />}
+                  >
+                    Settings
+                  </Tabs.Tab> */}
+                </Tabs.List>
+
+                <Tabs.Panel value="gallery" pt="xs">
+                  {/* Gallery tab content */}
+                </Tabs.Panel>
+
+                <Tabs.Panel value="messages" pt="xs">
+                  strip card
+                </Tabs.Panel>
+                {/* 
+                <Tabs.Panel value="settings" pt="xs">
+                  Settings tab content
+                </Tabs.Panel> */}
+              </Tabs>
+            </div>
+            <Link to="/shop" position="center" className={classes.controls}>
+              <Button
+                // onClick={() => handleAddToCart(item)}
+                compact
+                className={classes.control}
+                // variant="default"
+                size="xs"
+              >
+                Confirm
+              </Button>
+            </Link>
           </form>
         </div>
       </Container>
