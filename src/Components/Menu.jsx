@@ -94,7 +94,7 @@ const Menu = () => {
         </div>
 
         <Grid className="py-8">
-          <Grid.Col md={6} lg={3}>
+          {/* <Grid.Col md={6} lg={3}>
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -180,9 +180,9 @@ const Menu = () => {
                 </List>
               </div>
             </Text>
-          </Grid.Col>
+          </Grid.Col> */}
 
-          <Grid.Col md={6} lg={9}>
+          <Grid.Col md={6} lg={12}>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
               {foodItems?.slice(0, 6).map((item) => (
                 <>

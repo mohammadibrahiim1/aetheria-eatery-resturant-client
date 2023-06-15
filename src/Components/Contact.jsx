@@ -1,5 +1,5 @@
 import React from "react";
-import { createStyles, Text, rem } from "@mantine/core";
+import { createStyles, Text, rem, Container } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -57,15 +57,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-
- const   data = [
-    // { title: "one", stats: 'two', description: 'three' },
-    // { title: "one", stats: 'two', description: 'three' },
-    // { title: "one", stats: 'two', description: 'three' },
-    // { title: "string", stats: 'string', description: 'string' },
-    // { title: "string", stats: 'string', description: 'string' },
+const data = [
+  { title: "one", stats: "two", description: "three" },
+  { title: "one", stats: "two", description: "three" },
+  { title: "one", stats: "two", description: "three" },
 ];
-
 
 const Contact = () => {
   const { classes } = useStyles();
@@ -76,7 +72,11 @@ const Contact = () => {
       <Text className={classes.description}>{stat.description}</Text>
     </div>
   ));
-  return <div className={classes.root}>{stats}</div>;
+  return (
+    <div className="py-36" >
+      <Container className={classes.root}>{stats}</Container>
+    </div>
+  );
 };
 
 export default Contact;

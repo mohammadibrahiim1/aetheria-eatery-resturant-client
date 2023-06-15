@@ -2,145 +2,278 @@
   {
     "category": "offer",
     "name": "Roast Duck Breast ",
-    "price": 15.5,
+    "price": 15,
+    "image": "https://i.ibb.co/ZxtPQjj/duck-breast-finished-1200-949x1024.webp",
     "description": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
   },
   {
     "category": "offer",
     "name": "Tuna Nicoise ",
-    "price": 14.5,
+    "price": 14,
+    "image": "https://i.ibb.co/WkK9FBX/recipe-image-legacy-id-19038-11-4fb76ca.webp",
     "description": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
   },
   {
     "category": "offer",
     "name": "Escalope De Veau ",
-    "price": 17.5,
+    "price": 17,
+    "image": "https://i.ibb.co/5kGCpDP/112098-w1000h667c1cx2880cy1920cxb5760cyb3840.webp",
     "description": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
   },
   {
     "category": "offer",
     "name": "Chicken and Walnut Salad ",
-    "price": 17.5,
+    "price": 17,
+    "image": "https://i.ibb.co/fvt6Qzj/Awesome-Chicken-Salad-with-Grapes-and-Walnuts-2.jpg",
     "description": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
   },
   {
     "category": "desert",
     "name": "Damson crumble ",
-    "price": 15.5,
+    "price": 15,
+    "image": "https://i.ibb.co/P4x6L8v/damson-crumble-d2ab73c.webp",
     "description": "This damson and apple crumble will go down a treat as a family dessert. "
   },
   {
     "category": "desert",
     "name": "Peach Melba pie ",
-    "price": 10.2,
+    "price": 10,
+    "image": "https://i.ibb.co/C23yyL2/peach-melba-pie-6e76a2d.webp",
     "description": "Have some raspberries that are a little past their best? Use them to make this fabulous Peach Melba pie "
   },
   {
     "category": "desert",
     "name": "Treacle tart ",
-    "price": 12.5,
+    "price": 12,
+    "image": "https://i.ibb.co/zm3rg8K/treacle-tart-6ed628f.webp",
     "description": "Treat family and friends to a comforting treacle tart with crumbly pastry and rich filling."
   },
   {
     "category": "desert",
     "name": "Easy chocolate molten cakes ",
     "price": 11,
+    "image": "https://i.ibb.co/dMZmrdS/easy-chocolate-molten-cakes-37a25eb.webp",
     "description": "Bake an impressive dinner party dessert with minimum fuss – these chocolate puddings"
   },
   {
     "category": "desert",
     "name": "Pies and Cobblers ",
-    "price": 11.7,
+    "price": 11,
+    "image": "https://i.ibb.co/grH5bVg/classic-chess-pie-54-1-preview-8de7af8bbbe8418d9443b0cd8b1b1679.webp",
     "description": "Pies and cobblers are delicious desserts that are great for holidays and parties. "
   },
+
   {
     "category": "pizza",
     "name": "Cheese Pizza ",
-    "price": 27.5,
+    "price": 27,
+    "image": "https://i.ibb.co/tYPtFQs/Goat-Cheese-Pizza-002.jpg",
     "description": "It should be no shocker that a classic is the statistical favorite. "
   },
   {
     "category": "pizza",
     "name": "Veggie Pizza ",
-    "price": 16.5,
+    "price": 16,
+    "image": "https://i.ibb.co/m9nrzL9/Pizza-041.webp",
     "description": "When you want to jazz up your cheese pizza with color and texture, veggies are the perfect topping. "
   },
   {
     "category": "pizza",
     "name": "Meat Pizza ",
-    "price": 19.2,
+    "price": 19,
+    "image": "https://i.ibb.co/dJKcjMY/meet-pizza.webp",
     "description": "Have some raspberries that are a little past their best? Use them to make this fabulous Peach Melba pie "
   },
   {
     "category": "pizza",
     "name": "Pepperoni Pizza ",
-    "price": 18.5,
+    "price": 18,
+    "image": "https://i.ibb.co/7kG85Sn/homemade-pepperoni-pizza.webp",
     "description": "There’s a reason this is one of the most popular types of pizza."
   },
   {
     "category": "pizza",
     "name": "Margherita Pizza",
-    "price": 13.1,
+    "price": 13,
+    "image": "https://i.ibb.co/7CckHvN/margherita-pizza.jpg",
     "description": "Deceptively simple, the Margherita pizza is made with basil, fresh mozzarella, and tomatoes."
   },
   {
     "category": "pizza",
     "name": "Hawaiian Pizza ",
-    "price": 11.7,
+    "price": 11,
+    "image": "https://i.ibb.co/yqTTVHR/Hawaiian-Pizza.jpg",
     "description": "Pineapple might not be the first thing that comes to mind when you think pizza.  "
   },
   {
     "category": "salad",
     "name": "Chopped Salad ",
-    "price": 5.5,
+    "price": 55,
+    "image": "https://i.ibb.co/ThzWz8z/Chopped-Salad-010.webp",
     "description": "This chopped salad will amaze everyone around the table! We served this salad at a dinner party "
   },
   {
     "category": "salad",
-    "name": "Apple Salad ",
-    "price": 9.1,
+    "name": "Crisp Apple Salad ",
+    "price": 19,
+    "image": "https://i.ibb.co/JmtqdXy/Apple-Salad-010.jpg",
     "description": "Here’s a simple way to turn apples into a beautiful side dish: this stunning Apple Salad recipe! "
   },
   {
     "category": "salad",
-    "name": "Kale Salad ",
-    "price": 3.5,
+    "name": "Kale Quinoa Salad",
+    "price": 35,
+    "image": "https://i.ibb.co/qsPhs2c/Kale-Quinoa-Salad-006.jpg",
     "description": "Next up in our best salad recipes: are you ready for the BEST way to eat kale? Get ready to be amazed!"
   },
   {
     "category": "salad",
-    "name": "Caesar Salad",
-    "price": 3.5,
+    "name": "Salmon Caesar Salad",
+    "price": 36,
+    "image": "https://i.ibb.co/z4zv4pj/Salmon-Caesar-Salad-009.jpg",
     "description": "Like frosty vanilla bean ice cream or hot crispy French fries, this classic salad is basic but truly irresistible."
   },
+
   {
     "category": "salad",
-    "name": "Italian Salad ",
-    "price": 2.7,
+    "name": "Perfect Italian Salad ",
+    "price": 27,
+    "image": "https://i.ibb.co/syBk06f/Italian-Salad-051.webp",
     "description": "Here’s a great salad that’s simply perfection, in our books.  "
   },
+
   {
     "category": "soup",
     "name": "Bacon and Beef Stew ",
-    "price": 9.1,
+    "price": 13,
+    "image": " https://i.ibb.co/gwtdKw0/Bacon-Beef-Barley-Soup-EXPS-HSCBZ17-41339-C07-25-6b-4.jpg",
     "description": " Savory, rich bacon and beef pair perfectly with beer, mustard, and red wine vinegar creating a well-rounded, complex flavor profile. "
   },
   {
     "category": "soup",
     "name": "Soulful Chicken Soup ",
-    "price": 8.5,
+    "price": 25,
+    "image": "https://i.ibb.co/n1yQtT5/soulful-chicken-soup.webp",
     "description": "No dish is quite as soothing as a hearty bowl of chicken noodle soup"
   },
   {
     "category": "soup",
     "name": "Pozole",
-    "price": 3.5,
+    "price": 22,
+    "image": "https://i.ibb.co/wysXGpr/Pozole-Soup.jpg",
     "description": "Serve the fresh garnishes with Bill Smith's earthy soup to add color and crunch."
   },
   {
     "category": "soup",
     "name": "Slow Cooker Cioppino",
-    "price": 2.7,
+    "price": 27,
+    "image": "https://i.ibb.co/gWXq5Lm/slow-cooker-soup.jpg",
     "description": "Simmering the base of this rich stew in the slow cooker allows for ultimate flavor concentration.   "
+  },
+  {
+    "category": "drinks",
+    "name": "Bubble Tea Powders",
+    "price": 23,
+    "image": "https://i.ibb.co/8d7NQBG/bubble-powder.jpg",
+    "description": "Bubble tea powders empower you to quickly prepare and serve beloved bubble tea staples.   "
+  },
+  {
+    "category": "drinks",
+    "name": "Just Milo",
+    "price": 59,
+    "image": "https://i.ibb.co/B2YGmq1/just-milo.jpg",
+    "description": "Cocoa based malted drink served with added cream, sugar syrup and crushed ice"
+  },
+  {
+    "category": "drinks",
+    "name": "Peanut Butter",
+    "price": 39,
+    "image": "https://i.ibb.co/Mhk4ZyD/peanut-butter.jpg",
+    "description": "Crunchy Peanut butter mixed with milk, cream, chocolate and sugar syrup"
+  },
+  {
+    "category": "drinks",
+    "name": "Cake In My Shake",
+    "price": 39,
+    "image": "https://i.ibb.co/ChPRs1P/cake-in-my-shake.jpg",
+    "description": "Brownie piece dipped in hazelnut and cocoa flavored drink"
+  },
+  {
+    "category": "drinks",
+    "name": "Cookies n' Cream",
+    "price": 29,
+    "image": "https://i.ibb.co/hV0BBb7/cookies-n-cream.jpg",
+    "description": "Blended chocolate cookies in milk, cream and sugar syrup."
+  },
+
+  {
+    "category": "drinks",
+    "name": "French Vanilla Latte",
+    "price": 19,
+    "image": "https://i.ibb.co/8DzxP5K/french-vanilla-latte.jpg",
+    "description": "Classic chilled latte with a hint of Vanilla."
+  },
+  {
+    "category": "indian",
+    "name": "Beef Pasanda",
+    "price": 79,
+    "image": "https://i.ibb.co/k5289Xm/Beef-Pasanda.jpg",
+    "description": "Pasanda is a popular North Indian and Pakistani meat dish. It’s made with slim slice of meat. Here is a simple and yummy Pasanda recipe from the desk of cooking experts to make your each day special. So let’s try this easy recipe and give your views."
+  },
+  {
+    "category": "indian",
+    "name": "Chiken Tikka Masala",
+    "price": 99,
+    "image": "https://i.ibb.co/Nn7xHjK/Best-Chicken-Tikka-Masala-IMAGE-2.jpg",
+    "description": "Authentic Chicken Tikka Masala is usually made with yogurt marinated chicken, skewered and chargrilled for incredible bbq flavours. "
+  },
+  {
+    "category": "indian",
+    "name": "Fish Curry",
+    "price": 11,
+    "image": "https://i.ibb.co/VHJ3G7m/curry.png",
+    "description": " Goan Fish Curry is a famous fish curry from Goa, a little pocket of Indian paradise. Tender fish in a rich, aromatic tomato coconut curry"
+  },
+  {
+    "category": "indian",
+    "name": "Shrimp Corma",
+    "price": 43,
+    "image": "https://i.ibb.co/yN5rFD4/Shrimp-Korma.jpg",
+    "description": "PThis Shrimp Korma is a creamy cashew based curry with a succulent gravy perfect for soaking up with naan or rice."
+  },
+  {
+    "category": "indian",
+    "name": "Bambayya Pav bhaji",
+    "price": 49,
+    "image": "https://i.ibb.co/y0McjWC/Bambayya-Pav-bhaji.jpg",
+    "description": "Pav Bhaji is an Indian fast food consisting of a thick spicy vegetable gravy served with soft dinner rolls. "
+  },
+  {
+    "category": "thai",
+    "name": "Mango-Sticky-Rice",
+    "price": 39,
+    "image": "https://i.ibb.co/SPf3NGT/11-Best-Thai-Food-Dishes-Mango-Sticky-Rice.webp",
+    "description": "Classic chilled latte with a hint of Vanilla."
+  },
+  {
+    "category": "thai",
+    "name": "Gaeng Keow",
+    "price": 20,
+    "image": "https://i.ibb.co/TrqW21P/11-Best-Thai-Food-Dishes-Green-Curry.webp",
+    "description": "Originating from Central Thailand, green curry is the spiciest of the Thai ‘holy trilogy’ and arguably, most familiar world-wide."
+  },
+  {
+    "category": "thai",
+    "name": "Gaeng Daeng",
+    "price": 35,
+    "image": "https://i.ibb.co/4pyT5bY/11-Best-Thai-Food-Dishes-Red-Curry.webp",
+    "description": "One of Thailand’s most common curry varieties, red curries are a happy medium: generally spicier than yellow curries but less so than the green varieties. The distinctive red color of this rich, sweet and aromatic curry comes from crushed red chilies in the curry paste (a base of garlic, shallots, blue ginger and lemongrass), which is added to coconut milk, vegetables, such as eggplant, mushrooms, or tomatoes and chicken breast slices. The curry is topped off with finely sliced kaffir leaves and sweet basil, presenting a perfectly balanced combo of creamy and spicy broth to get those tastebuds tingling.One of the best-known red curry varieties, Massaman Chicken Curry, is mild, sweet and simmered in coconut milk; however, is unusual for its less soupy consistency and interpretation of a traditional Persian dish and Indian curry, made with roasted spices."
+  },
+  {
+    "category": "thai",
+    "name": "Kaeng Lueang",
+    "price": 29,
+    "image": "https://i.ibb.co/QpQ3Jgz/11-Best-Thai-Food-Dishes-Yellow-Curry.webp",
+    "description": "Thailand’s world-famous curries range from mild to explosive and sweet to sour and invariably concocted with coconut milk, present a soup-like consistency. There are endless regional varieties, but the three main curry types, red, green and yellow are the best known internationally, with differences according to spiciness levels and dominant ingredients."
   }
 ]
