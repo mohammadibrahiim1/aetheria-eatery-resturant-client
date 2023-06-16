@@ -120,7 +120,9 @@ const useStyles = createStyles((theme) => ({
 // pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8
 
 const Checkout = () => {
-  // const { totalPrice } = useContext(ApiContext);
+  const { checkoutInfo } = useContext(ApiContext);
+  console.log(checkoutInfo);
+  const { totalPrice } = checkoutInfo;
   const { user } = useContext(AuthContext);
 
   const stripe = useStripe();

@@ -8,8 +8,8 @@ const cartFromLocalStorage = JSON.parse(
 const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState(cartFromLocalStorage);
-  const [totalPrice, setTotalPrice] = useState("");
-  console.log(totalPrice);
+  // const [checkoutInfo, setCheckoutInfo] = useState({});
+  // console.log(checkoutInfo);
   const [allItems, setAllItems] = useState([]);
   const [offer, setOffer] = useState([]);
   const [dessert, setDessert] = useState([]);
@@ -74,6 +74,15 @@ const DataContext = ({ children }) => {
       });
   }, []);
 
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/checkoutInfo")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCheckoutInfo(data);
+  //     });
+  // }, []);
+
   // const handleTotalPrice = (totalPrice) => {
   //   setTotalPrice(totalPrice);
   //   // const checkoutInfo = {
@@ -101,11 +110,11 @@ const DataContext = ({ children }) => {
 
   const handleCartInfo = (totalPrice) => {
     const checkoutInfo = {
-      cart,
+      // cart,
       totalPrice,
     };
     console.log(checkoutInfo);
-    setTotalPrice(totalPrice);
+    // setTotalPrice(totalPrice);
     if (checkoutInfo) {
       fetch("http://localhost:5000/checkoutInfo", {
         method: "POST",
@@ -159,9 +168,9 @@ const DataContext = ({ children }) => {
     thai,
     indian,
     allItems,
-    setTotalPrice,
+    // checkoutInfo,
     // handleTotalPrice,
-    totalPrice,
+    // totalPrice,
     handleCartInfo,
   };
 

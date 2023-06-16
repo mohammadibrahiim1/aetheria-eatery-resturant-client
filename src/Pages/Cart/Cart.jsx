@@ -8,14 +8,14 @@ import {
   Grid,
   Button,
   rem,
-  // Rating,
 } from "@mantine/core";
 import { useContext, useState } from "react";
 import { ApiContext } from "../../Context/DataContext";
-import { IconTrash } from "@tabler/icons-react";
-// import { hover } from "@testing-library/user-event/dist/hover";
-// import { color } from "framer-motion";
+
 import { Link } from "react-router-dom";
+// import PhoneInput from "react-phone-number-input";
+// import { AuthContext } from "../../Context/UserContext";
+import { IconTrash } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -96,18 +96,12 @@ const useStyles = createStyles((theme) => ({
 
 const Cart = () => {
   const { classes } = useStyles();
-  const {
-    cart,
-    removeItemFromCart,
-    setTotalPrice,
-    handleTotalPrice,
-    handleCartInfo,
-  } = useContext(ApiContext);
-  const [products, setProducts] = useState(cart);
+  // const { user } = useContext(AuthContext);
 
-  // const handleRemove = (productId) => {
-  //   handleRemoveFoodItem(productId);
-  // };
+  // const [value, setValue] = useState();
+
+  const { cart, removeItemFromCart } = useContext(ApiContext);
+  const [products, setProducts] = useState(cart);
 
   const handleQuantityChange = (productId, quantity) => {
     setProducts((prevProducts) =>
@@ -121,22 +115,6 @@ const Cart = () => {
     return products.reduce((total, product) => {
       return total + product.price * product.quantity;
     }, 0);
-
-    // fetch("http://localhost:5000/payments", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(payment),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       setPaymentSuccess("congrats! your payment completed");
-    //       setTransactionId(paymentIntent.id);
-    //       // nabigate('/cart')
-    //       window.location.reload();
   };
 
   const calculateSubTotal = () => {
@@ -234,11 +212,12 @@ const Cart = () => {
                 <p className="pt-5">Total : ${calculateTotal()} </p>
               </div>
             </Text>
+
             <Link to="/checkout" position="center" className={classes.controls}>
               <Button
                 // onClick={open,()=>setFoodItem()}
                 onClick={
-                  () => handleCartInfo(calculateTotal())
+                  calculateTotal()
                   // () => handleTotalPrice(calculateTotal())
                 }
                 // open={open}
@@ -247,7 +226,7 @@ const Cart = () => {
                 // variant="default"
                 size="xs"
               >
-                Checkout
+                Order
               </Button>
             </Link>
             <Link to="/shop" position="center" className={classes.controls}>
