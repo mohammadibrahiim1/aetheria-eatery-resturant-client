@@ -16,7 +16,7 @@ import {
   IconSignature,
   IconTruckDelivery,
 } from "@tabler/icons-react";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 // import { Link } from "react-router-dom";
 import {
@@ -26,6 +26,7 @@ import {
   totalPrice,
 } from "@stripe/react-stripe-js";
 import { ApiContext } from "../../Context/DataContext";
+import { AuthContext } from "../../Context/UserContext";
 // import { loadStripe } from "@stripe/stripe-js";
 
 const useStyles = createStyles((theme) => ({
@@ -120,22 +121,51 @@ const useStyles = createStyles((theme) => ({
 
 const Checkout = () => {
   const { totalPrice } = useContext(ApiContext);
+  const { user } = useContext(AuthContext);
+
   const stripe = useStripe();
   const elements = useElements();
   const { classes } = useStyles();
   const [value, setValue] = useState();
   const [cardError, setCardError] = useState("");
-  console.log(cardError);
 
-  // create funtion for stripe data
+  const [clientSecret, setClientSecret] = useState("");
+  const [paymentSuccess, setPaymentSuccess] = useState("");
+  const [processing, setProccesing] = useState(false);
+  const [transactionId, setTransactionId] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:5000/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        totalPrice,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setClientSecret(data.clientSecret);
+      });
+  }, [totalPrice]);
+
+  // create function for stripe data
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const card = elements.getElement(CardElement);
+    const form = event.target;
+    // const email = form.email.value;
+    // const name = form.name.value;
+    const phone = form.phone.value;
+    const address = form.address.value;
+    console.log(phone, address);
 
     if (!stripe || !elements) {
       return;
     }
 
-    const card = elements.getElement(CardElement);
     if (card === null) {
       return;
     }
@@ -143,14 +173,68 @@ const Checkout = () => {
       type: "card",
       card,
     });
-    console.log(card);
+    // console.log(card);
     if (error) {
       console.log(error);
       setCardError(error.message);
     } else {
-      console.log("paymentMethod", paymentMethod);
+      // console.log("paymentMethod", paymentMethod);
       setCardError("");
     }
+    setProccesing(true);
+    setPaymentSuccess("");
+
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(
+        clientSecret,
+
+        {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: user.name,
+              email: user.email,
+              // phone,
+              // address,
+            },
+          },
+        }
+      );
+
+    if (confirmError) {
+      setCardError(confirmError.message);
+      return;
+    }
+    if (paymentIntent.status === "succeeded") {
+      console.log("card info", card);
+      const payment = {
+        totalPrice,
+        transactionId: paymentIntent.id,
+        email: user.email,
+        name: user.name,
+        phone: phone,
+        address: address,
+      };
+      // console.log(paymentInfo);
+      fetch("http://localhost:5000/payments", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            setPaymentSuccess("congrats! your payment completed");
+            setTransactionId(paymentIntent.id);
+            // nabigate('/cart')
+            window.location.reload();
+          }
+        });
+    }
+    setProccesing(false);
   };
   return (
     <div>
@@ -168,18 +252,22 @@ const Checkout = () => {
             <div className={classes.input}>
               <TextInput
                 type="text"
+                id="name"
                 withAsterisk
                 icon={<IconSignature />}
                 label="Your Name"
+                defaultValue={user.displayName}
                 required
               />
             </div>
             <div className={classes.input}>
               <TextInput
                 type="email"
+                id="email"
                 withAsterisk
                 icon={<IconMailFilled />}
                 label="Your Email"
+                defaultValue={user.email}
                 required
               />
             </div>
@@ -189,6 +277,8 @@ const Checkout = () => {
                 className={classes.PhoneInput}
                 icon={<IconDeviceLandlinePhone />}
                 value={value}
+                type="phone"
+                id="phone"
                 onChange={setValue}
                 defaultCountry="BD"
                 required
@@ -197,6 +287,7 @@ const Checkout = () => {
             <div className={classes.input}>
               <TextInput
                 type="text"
+                id="address"
                 icon={<IconAddressBook />}
                 withAsterisk
                 label="Your Address"
