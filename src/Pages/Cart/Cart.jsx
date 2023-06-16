@@ -8,6 +8,8 @@ import {
   Grid,
   Button,
   rem,
+  TextInput,
+  // Tabs,
 } from "@mantine/core";
 import { useContext, useState } from "react";
 import { ApiContext } from "../../Context/DataContext";
@@ -15,7 +17,18 @@ import { ApiContext } from "../../Context/DataContext";
 import { Link } from "react-router-dom";
 // import PhoneInput from "react-phone-number-input";
 // import { AuthContext } from "../../Context/UserContext";
-import { IconTrash } from "@tabler/icons-react";
+import {
+  IconAddressBook,
+  // IconBrandStripe,
+  IconDeviceLandlinePhone,
+  IconMailFilled,
+  IconSignature,
+  IconTrash,
+  // IconTruckDelivery,
+} from "@tabler/icons-react";
+import PhoneInput from "react-phone-number-input";
+// import { CardElement } from "@stripe/react-stripe-js";
+import { AuthContext } from "../../Context/UserContext";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -96,9 +109,9 @@ const useStyles = createStyles((theme) => ({
 
 const Cart = () => {
   const { classes } = useStyles();
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-  // const [value, setValue] = useState();
+  const [value, setValue] = useState();
 
   const { cart, removeItemFromCart } = useContext(ApiContext);
   const [products, setProducts] = useState(cart);
@@ -121,6 +134,17 @@ const Cart = () => {
     return products.reduce((subTotal, product) => {
       return subTotal + product.price * product.quantity;
     }, 0);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //   const card = elements.getElement(CardElement);
+      const form = event.target;
+    //   // const email = form.email.value;
+    //   // const name = form.name.value;
+      const phone = form.phone.value;
+      const address = form.address.value;
+      console.log(phone, address);
   };
 
   return (
@@ -186,6 +210,7 @@ const Cart = () => {
             </div>
           </Grid.Col>
           <Grid.Col md={6} lg={12}>
+            {/* <Grid.Col md={6} lg={4}> */}{" "}
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -212,17 +237,136 @@ const Cart = () => {
                 <p className="pt-5">Total : ${calculateTotal()} </p>
               </div>
             </Text>
+            {/* </Grid.Col> */}
+            {/* <Grid.Col md={6} lg={4}> */}
+            <form
+              action=""
+              onSubmit={handleSubmit}
+            >
+              <div className="pb-8 ">
+                <Text className={classes.title}>
+                  {" "}
+                  <p>Your Info</p>
+                  {/* <p>total amount : ${totalPrice} </p> */}
+                </Text>
+                <hr />
+              </div>
+              <div className={classes.input}>
+                <TextInput
+                  type="text"
+                  id="name"
+                  name="name"
+                  withAsterisk
+                  icon={<IconSignature />}
+                  label="Your Name"
+                  defaultValue={user.displayName}
+                  required
+                />
+              </div>
+              <div className={classes.input}>
+                <TextInput
+                  type="email"
+                  id="email"
+                  name="email"
+                  withAsterisk
+                  icon={<IconMailFilled />}
+                  label="Your Email"
+                  defaultValue={user.email}
+                  required
+                />
+              </div>
+              <label htmlFor="">Phone</label>
+              <div className={classes.input}>
+                <PhoneInput
+                  className={classes.PhoneInput}
+                  icon={<IconDeviceLandlinePhone />}
+                  // value={value}
+                  // type="phone"
+                  id="phone"
+                  name="phone"
+                  onChange={setValue}
+                  defaultCountry="BD"
+                  required
+                />
+              </div>
+              <div className={classes.input}>
+                <TextInput
+                  type="text"
+                  id="address"
+                  name="address"
+                  icon={<IconAddressBook />}
+                  withAsterisk
+                  label="Your Address"
+                  required
+                />
+              </div>
 
-            <Link to="/checkout" position="center" className={classes.controls}>
-              <Button compact className={classes.control} size="xs">
-                Order
-              </Button>
-            </Link>
-            <Link to="/shop" position="center" className={classes.controls}>
-              <Button compact className={classes.control} size="xs">
-                Add more item
-              </Button>
-            </Link>
+              <div position="center" className={classes.controls}>
+                <Button
+                  // onClick={handleSubmit}
+                  compact
+                  className={classes.control}
+                  size="xs"
+                >
+                  Checkout
+                </Button>
+              </div>
+              <Link to="/shop" position="center" className={classes.controls}>
+                <Button compact className={classes.control} size="xs">
+                  Add more item
+                </Button>
+              </Link>
+
+              {/* <div>
+                  <Tabs color="teal" defaultValue="gallery">
+                    <Tabs.List>
+                      <Tabs.Tab
+                        value="gallery"
+                        icon={<IconTruckDelivery size="0.8rem" />}
+                      >
+                        cash on delivery
+                      </Tabs.Tab>
+                      <Tabs.Tab
+                        value="messages"
+                        icon={<IconBrandStripe size="0.8rem" />}
+                      >
+                        Strip
+                      </Tabs.Tab>
+                    </Tabs.List>
+
+                    <Tabs.Panel value="messages" pt="sm">
+                      <CardElement
+                        options={{
+                          style: {
+                            base: {
+                              fontSize: "15px",
+                              color: "#424770",
+                              "::placeholder": {
+                                color: "#aab7c4",
+                              },
+                            },
+                            invalid: {
+                              color: "#9e2146",
+                            },
+                          },
+                        }}
+                      />
+                    </Tabs.Panel>
+                  </Tabs>
+                  <div position="center" className={classes.controls}>
+                    <Button
+                      type="submit"
+                      // disabled={!stripe || !clientSecret || !processing}
+                      compact
+                      className={classes.control}
+                      size="xs"
+                    >
+                      Confirm
+                    </Button>
+                  </div>
+                </div> */}
+            </form>
+            {/* </Grid.Col> */}
           </Grid.Col>
         </Grid>
       </Container>
