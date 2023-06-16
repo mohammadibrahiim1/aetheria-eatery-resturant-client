@@ -24,6 +24,7 @@ const DataContext = ({ children }) => {
   const [thai, setThai] = useState([]);
   // console.log(thai);
   const [indian, setIndian] = useState([]);
+  // const [clientSecret, setClientSecret] = useState("");
   // console.log(indian);
   // const [selectedCategory, setSelectedCategory] = useState("");
 

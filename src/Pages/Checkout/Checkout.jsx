@@ -133,7 +133,6 @@ const Checkout = () => {
   const [paymentSuccess, setPaymentSuccess] = useState("");
   const [processing, setProccesing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
-
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
@@ -150,7 +149,6 @@ const Checkout = () => {
         setClientSecret(data.clientSecret);
       });
   }, [totalPrice]);
-
   // create function for stripe data
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -173,7 +171,7 @@ const Checkout = () => {
       type: "card",
       card,
     });
-    // console.log(card);
+    console.log(card);
     if (error) {
       console.log(error);
       setCardError(error.message);
@@ -352,7 +350,7 @@ const Checkout = () => {
             <div position="center" className={classes.controls}>
               <Button
                 type="submit"
-                // disabled={!stripe || !clientSecret || processing}
+                // disabled={!stripe || !clientSecret || !processing}
                 compact
                 className={classes.control}
                 size="xs"
