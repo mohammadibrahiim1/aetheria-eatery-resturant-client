@@ -74,8 +74,56 @@ const DataContext = ({ children }) => {
       });
   }, []);
 
-  const handleTotalPrice = (totalPrice) => {
+  // const handleTotalPrice = (totalPrice) => {
+  //   setTotalPrice(totalPrice);
+  //   // const checkoutInfo = {
+  //   //   totalPrice,
+  //   //   cart,
+  //   // };
+
+  //   // fetch("http://localhost:5000/checkoutInfo", {
+  //   //   method: "POST",
+  //   //   headers: {
+  //   //     "content-type": "application/json",
+  //   //   },
+  //   //   body: JSON.stringify(checkoutInfo),
+  //   // })
+  //   //   .then((res) => res.json())
+  //   //   .then((data) => {
+  //   //     console.log(data);
+  //   //     if (data.acknowledged) {
+  //   //       alert("successfully added");
+  //   //       window.location.reload();
+  //   //     }
+  //   //   })
+  //   //   .catch((error) => console.error(error));
+  // };
+
+  const handleCartInfo = (totalPrice) => {
+    const checkoutInfo = {
+      cart,
+      totalPrice,
+    };
+    console.log(checkoutInfo);
     setTotalPrice(totalPrice);
+    if (checkoutInfo) {
+      fetch("http://localhost:5000/checkoutInfo", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(checkoutInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            alert("added successfully");
+          }
+
+          console.log(data);
+        })
+        .catch((error) => console.error(error.message));
+    }
   };
 
   // useEffect(() => {
@@ -112,8 +160,9 @@ const DataContext = ({ children }) => {
     indian,
     allItems,
     setTotalPrice,
-    handleTotalPrice,
+    // handleTotalPrice,
     totalPrice,
+    handleCartInfo,
   };
 
   return (

@@ -96,8 +96,13 @@ const useStyles = createStyles((theme) => ({
 
 const Cart = () => {
   const { classes } = useStyles();
-  const { cart, removeItemFromCart, setTotalPrice, handleTotalPrice } =
-    useContext(ApiContext);
+  const {
+    cart,
+    removeItemFromCart,
+    setTotalPrice,
+    handleTotalPrice,
+    handleCartInfo,
+  } = useContext(ApiContext);
   const [products, setProducts] = useState(cart);
 
   // const handleRemove = (productId) => {
@@ -116,7 +121,24 @@ const Cart = () => {
     return products.reduce((total, product) => {
       return total + product.price * product.quantity;
     }, 0);
+
+    // fetch("http://localhost:5000/payments", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(payment),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.insertedId) {
+    //       setPaymentSuccess("congrats! your payment completed");
+    //       setTransactionId(paymentIntent.id);
+    //       // nabigate('/cart')
+    //       window.location.reload();
   };
+
   const calculateSubTotal = () => {
     return products.reduce((subTotal, product) => {
       return subTotal + product.price * product.quantity;
@@ -215,7 +237,10 @@ const Cart = () => {
             <Link to="/checkout" position="center" className={classes.controls}>
               <Button
                 // onClick={open,()=>setFoodItem()}
-                onClick={() => handleTotalPrice(calculateTotal())}
+                onClick={
+                  () => handleCartInfo(calculateTotal())
+                  // () => handleTotalPrice(calculateTotal())
+                }
                 // open={open}
                 compact
                 className={classes.control}

@@ -120,7 +120,7 @@ const useStyles = createStyles((theme) => ({
 // pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8
 
 const Checkout = () => {
-  const { totalPrice } = useContext(ApiContext);
+  // const { totalPrice } = useContext(ApiContext);
   const { user } = useContext(AuthContext);
 
   const stripe = useStripe();
@@ -133,112 +133,116 @@ const Checkout = () => {
   const [paymentSuccess, setPaymentSuccess] = useState("");
   const [processing, setProccesing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
-  useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        totalPrice,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setClientSecret(data.clientSecret);
-      });
-  }, [totalPrice]);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/create-payment-intent", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       totalPrice,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setClientSecret(data.clientSecret);
+  //     });
+  // }, []);
   // create function for stripe data
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const card = elements.getElement(CardElement);
-    const form = event.target;
-    // const email = form.email.value;
-    // const name = form.name.value;
-    const phone = form.phone.value;
-    const address = form.address.value;
-    console.log(phone, address);
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const card = elements.getElement(CardElement);
+  //   const form = event.target;
+  //   // const email = form.email.value;
+  //   // const name = form.name.value;
+  //   const phone = form.phone.value;
+  //   const address = form.address.value;
+  //   console.log(phone, address);
 
-    if (!stripe || !elements) {
-      return;
-    }
+  //   if (!stripe || !elements) {
+  //     return;
+  //   }
 
-    if (card === null) {
-      return;
-    }
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card,
-    });
-    console.log(card);
-    if (error) {
-      console.log(error);
-      setCardError(error.message);
-    } else {
-      // console.log("paymentMethod", paymentMethod);
-      setCardError("");
-    }
-    setProccesing(true);
-    setPaymentSuccess("");
+  //   if (card === null) {
+  //     return;
+  //   }
+  //   const { error, paymentMethod } = await stripe.createPaymentMethod({
+  //     type: "card",
+  //     card,
+  //   });
+  //   console.log(card);
+  //   if (error) {
+  //     console.log(error);
+  //     setCardError(error.message);
+  //   } else {
+  //     console.log("paymentMethod", paymentMethod);
+  //     setCardError("");
+  //   }
+  //   setProccesing(true);
+  //   setPaymentSuccess("");
 
-    const { paymentIntent, error: confirmError } =
-      await stripe.confirmCardPayment(
-        clientSecret,
+  //   const { paymentIntent, error: confirmError } =
+  //   await stripe.confirmCardPayment(
+  //       clientSecret,
 
-        {
-          payment_method: {
-            card: card,
-            billing_details: {
-              name: user.name,
-              email: user.email,
-              // phone,
-              // address,
-            },
-          },
-        }
-      );
+  //       {
+  //         payment_method: {
+  //           card: card,
+  //           billing_details: {
+  //             name: user.name,
+  //             email: user.email,
+  //             // phone,
+  //             // address,
+  //           },
+  //         },
+  //       }
+  //     );
 
-    if (confirmError) {
-      setCardError(confirmError.message);
-      return;
-    }
-    if (paymentIntent.status === "succeeded") {
-      console.log("card info", card);
-      const payment = {
-        totalPrice,
-        transactionId: paymentIntent.id,
-        email: user.email,
-        name: user.name,
-        phone: phone,
-        address: address,
-      };
-      // console.log(paymentInfo);
-      fetch("http://localhost:5000/payments", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(payment),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.insertedId) {
-            setPaymentSuccess("congrats! your payment completed");
-            setTransactionId(paymentIntent.id);
-            // nabigate('/cart')
-            window.location.reload();
-          }
-        });
-    }
-    setProccesing(false);
-  };
+  //   if (confirmError) {
+  //     setCardError(confirmError.message);
+  //     return;
+  //   }
+  //   if (paymentIntent.status === "succeeded") {
+  //     console.log("card info", card);
+  //     const payment = {
+  //       totalPrice,
+  //       transactionId: paymentIntent.id,
+  //       email: user.email,
+  //       name: user.name,
+  //       phone: phone,
+  //       address: address,
+  //     };
+  //     // console.log(paymentInfo);
+  //     fetch("http://localhost:5000/payments", {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(payment),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         if (data.insertedId) {
+  //           setPaymentSuccess("congrats! your payment completed");
+  //           setTransactionId(paymentIntent.id);
+  //           // nabigate('/cart')
+  //           window.location.reload();
+  //         }
+  //       });
+  //   }
+  //   setProccesing(false);
+  // };
   return (
     <div>
       <Container className="py-28">
         <div className={classes.form}>
-          <form action="" onSubmit={handleSubmit}>
+          <form
+            action=""
+            // onSubmit={handleSubmit}
+          >
             <div className="pb-8 ">
               <Text className={classes.title}>
                 {" "}
