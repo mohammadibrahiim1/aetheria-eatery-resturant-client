@@ -25,12 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: (
-          <Elements stripe={stripePromise}>
-            {" "}
-            <Cart></Cart>{" "}
-          </Elements>
-        ),
+        element: <Cart></Cart>,
       },
       {
         path: "/signin",
@@ -50,7 +45,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout></Checkout>,
+        element: (
+          <Elements stripe={stripePromise}>
+            {" "}
+            <Checkout></Checkout>{" "}
+          </Elements>
+        ),
       },
     ],
   },

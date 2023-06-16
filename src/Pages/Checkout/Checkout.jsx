@@ -23,7 +23,7 @@ import {
   CardElement,
   useElements,
   useStripe,
-  totalPrice,
+  // totalPrice,
 } from "@stripe/react-stripe-js";
 import { ApiContext } from "../../Context/DataContext";
 import { AuthContext } from "../../Context/UserContext";
@@ -120,9 +120,9 @@ const useStyles = createStyles((theme) => ({
 // pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8
 
 const Checkout = () => {
-  const { checkoutInfo } = useContext(ApiContext);
-  console.log(checkoutInfo);
-  const { totalPrice } = checkoutInfo;
+  // const { checkoutInfo } = useContext(ApiContext);
+  // console.log(checkoutInfo);
+  // const { totalPrice } = checkoutInfo;
   const { user } = useContext(AuthContext);
 
   const stripe = useStripe();
@@ -249,7 +249,7 @@ const Checkout = () => {
               <Text className={classes.title}>
                 {" "}
                 <p>Payment</p>
-                <p>total amount : ${totalPrice} </p>
+                {/* <p>total amount : ${totalPrice} </p> */}
               </Text>
               <hr />
             </div>

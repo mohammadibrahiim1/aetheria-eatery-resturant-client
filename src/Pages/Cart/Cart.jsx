@@ -214,29 +214,12 @@ const Cart = () => {
             </Text>
 
             <Link to="/checkout" position="center" className={classes.controls}>
-              <Button
-                // onClick={open,()=>setFoodItem()}
-                onClick={
-                  calculateTotal()
-                  // () => handleTotalPrice(calculateTotal())
-                }
-                // open={open}
-                compact
-                className={classes.control}
-                // variant="default"
-                size="xs"
-              >
+              <Button compact className={classes.control} size="xs">
                 Order
               </Button>
             </Link>
             <Link to="/shop" position="center" className={classes.controls}>
-              <Button
-                // onClick={() => handleAddToCart(item)}
-                compact
-                className={classes.control}
-                // variant="default"
-                size="xs"
-              >
+              <Button compact className={classes.control} size="xs">
                 Add more item
               </Button>
             </Link>
