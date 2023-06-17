@@ -8,19 +8,13 @@ import {
   Grid,
   Button,
   rem,
-
-
 } from "@mantine/core";
 import { useContext, useState } from "react";
 import { ApiContext } from "../../Context/DataContext";
 
 import { Link } from "react-router-dom";
 
-import {
- 
-  IconTrash,
-  
-} from "@tabler/icons-react";
+import { IconTrash } from "@tabler/icons-react";
 
 // import { AuthContext } from "../../Context/UserContext";
 import PaymentButton from "../../Components/PaymentButton";
@@ -108,32 +102,34 @@ const Cart = () => {
 
   // const [value, setValue] = useState();
 
-  const { cart, removeItemFromCart } = useContext(ApiContext);
-  const [products, setProducts] = useState(cart);
+  const {
+    cart,
+    removeItemFromCart,
+    handleIncreaseItem,
+    handleDecreaseItem,
+    // quantity,
+  } = useContext(ApiContext);
+  // const [items, setitems] = useState(cart);
 
-  const handleQuantityChange = (productId, quantity) => {
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product._id === productId ? { ...product, quantity } : product
-      )
-    );
-  };
+  // const handleQuantityChange = (itemId, quantity) => {
+  //   setitems((previtems) =>
+  //     previtems.map((item) =>
+  //       item._id === itemId ? { ...item, quantity } : item
+  //     )
+  //   );
+  // };
 
   const calculateTotal = () => {
-    return products.reduce((total, product) => {
-      return total + product.price * product.quantity;
+    return cart.reduce((total, item) => {
+      return total + item.price * item.quantity;
     }, 0);
   };
 
   const calculateSubTotal = () => {
-    return products.reduce((subTotal, product) => {
-      return subTotal + product.price * product.quantity;
+    return cart.reduce((subTotal, item) => {
+      return subTotal + item.price * item.quantity;
     }, 0);
   };
-
-  // const handleCheckout = () => {
-
-  // };
 
   return (
     <div>
@@ -148,27 +144,40 @@ const Cart = () => {
         <Grid className="py-8">
           <Grid.Col md={6} lg={12}>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
-              {products?.map((product) => (
+              {cart?.map((item) => (
                 <>
                   <Card withBorder radius="md" p={0} className={classes.card}>
-                    <Group noWrap spacing={0} key={product.id}>
-                      <Image src={product.image} height={140} width={140} />
+                    <Group noWrap spacing={0} key={item.id}>
+                      <Image src={item.image} height={140} width={140} />
                       <div className={classes.body}>
                         <Text className={classes.title} mb="md">
-                          {product.name}
+                          {item.name}
                         </Text>
                         <Text className={classes.title} mb="md">
-                          ${product.price * product.quantity}
+                          ${item.price * item.quantity}
                         </Text>
                         <div class="flex gap-32 lg:gap-48">
-                          <input
+                          <div className="cart-item-quantity">
+                            <button
+                              onClick={() => handleDecreaseItem(item._id)}
+                            >
+                              -
+                            </button>
+                            <div className="count">{item.quantity}</div>
+                            <button
+                              onClick={() => handleIncreaseItem(item._id)}
+                            >
+                              +
+                            </button>
+                          </div>
+                          {/* <input
                             onChange={(e) =>
-                              handleQuantityChange(product._id, e.target.value)
+                              handleQuantityChange(item._id, e.target.value)
                             }
                             class="h-8 w-8 border bg-white text-center text-xs outline-none"
                             type="number"
-                            value={product.quantity}
-                          />
+                            value={item.quantity}
+                          /> */}
                           <div position="center">
                             <Button
                               // defaultValue={4}
@@ -179,7 +188,7 @@ const Cart = () => {
                             >
                               {" "}
                               <IconTrash
-                                onClick={() => removeItemFromCart(product._id)}
+                                onClick={() => removeItemFromCart(item._id)}
                               />
                             </Button>
                           </div>
@@ -226,9 +235,15 @@ const Cart = () => {
               </div>
             </Text>
             {/* <div position="center" className={classes.controls}> */}
-              {/* <Button compact className={classes.control} size="xs"> */}
-                <PaymentButton size= 'xs' compact  className={classes.controls} cart={cart} variant="default"></PaymentButton>
-              {/* </Button> */}
+            {/* <Button compact className={classes.control} size="xs"> */}
+            <PaymentButton
+              size="xs"
+              compact
+              className={classes.controls}
+              cart={cart}
+              variant="default"
+            ></PaymentButton>
+            {/* </Button> */}
             {/* </div> */}
             <Link to="/shop" position="center" className={classes.controls}>
               <Button compact className={classes.controls} size="xs">

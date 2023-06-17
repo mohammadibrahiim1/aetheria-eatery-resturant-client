@@ -153,6 +153,32 @@ const DataContext = ({ children }) => {
       });
     // setSelectedCategory(data);
   };
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncreaseItem = (id) => {
+    const updateItems = cart.map((item) => {
+      if (item._id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+      return item;
+    });
+    setCart(updateItems);
+  };
+  const handleDecreaseItem = (id) => {
+    const updateItems = cart.map((item) => {
+      if (item._id === id && item.quantity > 1) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+      return item;
+    });
+    setCart(updateItems);
+  };
   const foodInfo = {
     foodItems,
     addItemToCart,
@@ -172,6 +198,9 @@ const DataContext = ({ children }) => {
     // handleTotalPrice,
     // totalPrice,
     handleCartInfo,
+    handleIncreaseItem,
+    handleDecreaseItem,
+    quantity,
   };
 
   return (

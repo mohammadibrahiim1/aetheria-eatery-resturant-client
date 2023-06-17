@@ -7,7 +7,7 @@ import axios from "axios";
 const PaymentButton = ({ cart }) => {
   const { user } = useContext(AuthContext);
   // const url = "http://localhost:5000";
-  console.log(user);
+  // console.log(user);
   const handleCheckout = () => {
     console.log(cart);
     axios
