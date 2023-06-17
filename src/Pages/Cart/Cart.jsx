@@ -8,27 +8,22 @@ import {
   Grid,
   Button,
   rem,
-  TextInput,
-  // Tabs,
+
+
 } from "@mantine/core";
 import { useContext, useState } from "react";
 import { ApiContext } from "../../Context/DataContext";
 
 import { Link } from "react-router-dom";
-// import PhoneInput from "react-phone-number-input";
-// import { AuthContext } from "../../Context/UserContext";
+
 import {
-  IconAddressBook,
-  // IconBrandStripe,
-  IconDeviceLandlinePhone,
-  IconMailFilled,
-  IconSignature,
+ 
   IconTrash,
-  // IconTruckDelivery,
+  
 } from "@tabler/icons-react";
-import PhoneInput from "react-phone-number-input";
-// import { CardElement } from "@stripe/react-stripe-js";
-import { AuthContext } from "../../Context/UserContext";
+
+// import { AuthContext } from "../../Context/UserContext";
+import PaymentButton from "../../Components/PaymentButton";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -67,22 +62,22 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
     paddingBottom: theme.spacing.xs,
   },
+  // controls: {
+  //   marginTop: `calc(${theme.spacing.xs}* 1.5)`,
+
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  //   alignItems: "center",
+  //   paddingLeft: theme.spacing.xs,
+  //   marginLeft: theme.spacing.md,
+
+  //   [theme.fn.smallerThan("xs")]: {
+  //     flexDirection: "column",
+  //   },
+  // },
   controls: {
-    marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-
-    // display: "flex",
-    // justifyContent: "space-between",
-    // alignItems: "center",
-    // paddingLeft: theme.spacing.xs,
-    // marginLeft: theme.spacing.md,
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   flexDirection: "column",
-    // },
-  },
-  control: {
     height: rem(32),
-    fontSize: theme.fontSizes.sm,
+    // fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
     marginTop: "12px",
     width: "100%",
@@ -98,20 +93,20 @@ const useStyles = createStyles((theme) => ({
       marginLeft: theme.spacing.xs,
     },
 
-    // [theme.fn.smallerThan("xs")]: {
-    //   "&:not(:first-of-type)": {
-    //     marginTop: theme.spacing.md,
-    //     marginLeft: 0,
-    //   },
-    // },
+    [theme.fn.smallerThan("xs")]: {
+      "&:not(:first-of-type)": {
+        marginTop: theme.spacing.md,
+        marginLeft: 0,
+      },
+    },
   },
 }));
 
 const Cart = () => {
   const { classes } = useStyles();
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
-  const [value, setValue] = useState();
+  // const [value, setValue] = useState();
 
   const { cart, removeItemFromCart } = useContext(ApiContext);
   const [products, setProducts] = useState(cart);
@@ -136,16 +131,9 @@ const Cart = () => {
     }, 0);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    //   const card = elements.getElement(CardElement);
-      const form = event.target;
-    //   // const email = form.email.value;
-    //   // const name = form.name.value;
-      const phone = form.phone.value;
-      const address = form.address.value;
-      console.log(phone, address);
-  };
+  // const handleCheckout = () => {
+
+  // };
 
   return (
     <div>
@@ -237,136 +225,16 @@ const Cart = () => {
                 <p className="pt-5">Total : ${calculateTotal()} </p>
               </div>
             </Text>
-            {/* </Grid.Col> */}
-            {/* <Grid.Col md={6} lg={4}> */}
-            <form
-              action=""
-              onSubmit={handleSubmit}
-            >
-              <div className="pb-8 ">
-                <Text className={classes.title}>
-                  {" "}
-                  <p>Your Info</p>
-                  {/* <p>total amount : ${totalPrice} </p> */}
-                </Text>
-                <hr />
-              </div>
-              <div className={classes.input}>
-                <TextInput
-                  type="text"
-                  id="name"
-                  name="name"
-                  withAsterisk
-                  icon={<IconSignature />}
-                  label="Your Name"
-                  defaultValue={user.displayName}
-                  required
-                />
-              </div>
-              <div className={classes.input}>
-                <TextInput
-                  type="email"
-                  id="email"
-                  name="email"
-                  withAsterisk
-                  icon={<IconMailFilled />}
-                  label="Your Email"
-                  defaultValue={user.email}
-                  required
-                />
-              </div>
-              <label htmlFor="">Phone</label>
-              <div className={classes.input}>
-                <PhoneInput
-                  className={classes.PhoneInput}
-                  icon={<IconDeviceLandlinePhone />}
-                  // value={value}
-                  // type="phone"
-                  id="phone"
-                  name="phone"
-                  onChange={setValue}
-                  defaultCountry="BD"
-                  required
-                />
-              </div>
-              <div className={classes.input}>
-                <TextInput
-                  type="text"
-                  id="address"
-                  name="address"
-                  icon={<IconAddressBook />}
-                  withAsterisk
-                  label="Your Address"
-                  required
-                />
-              </div>
-
-              <div position="center" className={classes.controls}>
-                <Button
-                  // onClick={handleSubmit}
-                  compact
-                  className={classes.control}
-                  size="xs"
-                >
-                  Checkout
-                </Button>
-              </div>
-              <Link to="/shop" position="center" className={classes.controls}>
-                <Button compact className={classes.control} size="xs">
-                  Add more item
-                </Button>
-              </Link>
-
-              {/* <div>
-                  <Tabs color="teal" defaultValue="gallery">
-                    <Tabs.List>
-                      <Tabs.Tab
-                        value="gallery"
-                        icon={<IconTruckDelivery size="0.8rem" />}
-                      >
-                        cash on delivery
-                      </Tabs.Tab>
-                      <Tabs.Tab
-                        value="messages"
-                        icon={<IconBrandStripe size="0.8rem" />}
-                      >
-                        Strip
-                      </Tabs.Tab>
-                    </Tabs.List>
-
-                    <Tabs.Panel value="messages" pt="sm">
-                      <CardElement
-                        options={{
-                          style: {
-                            base: {
-                              fontSize: "15px",
-                              color: "#424770",
-                              "::placeholder": {
-                                color: "#aab7c4",
-                              },
-                            },
-                            invalid: {
-                              color: "#9e2146",
-                            },
-                          },
-                        }}
-                      />
-                    </Tabs.Panel>
-                  </Tabs>
-                  <div position="center" className={classes.controls}>
-                    <Button
-                      type="submit"
-                      // disabled={!stripe || !clientSecret || !processing}
-                      compact
-                      className={classes.control}
-                      size="xs"
-                    >
-                      Confirm
-                    </Button>
-                  </div>
-                </div> */}
-            </form>
-            {/* </Grid.Col> */}
+            {/* <div position="center" className={classes.controls}> */}
+              {/* <Button compact className={classes.control} size="xs"> */}
+                <PaymentButton size= 'xs' compact  className={classes.controls} cart={cart} variant="default"></PaymentButton>
+              {/* </Button> */}
+            {/* </div> */}
+            <Link to="/shop" position="center" className={classes.controls}>
+              <Button compact className={classes.controls} size="xs">
+                Add more item
+              </Button>
+            </Link>
           </Grid.Col>
         </Grid>
       </Container>

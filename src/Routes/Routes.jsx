@@ -10,6 +10,7 @@ import Shop from "../Pages/Shop/Shop";
 import Checkout from "../Pages/Checkout/Checkout";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import CheckoutSuccess from "../Components/CheckoutSuccess";
 const stripePromise = loadStripe(
   "pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8"
 );
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart></Cart>,
+      },
+      {
+        path: "/checkout-success",
+        element: <CheckoutSuccess></CheckoutSuccess>,
       },
       {
         path: "/signin",
