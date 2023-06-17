@@ -56,20 +56,20 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
     paddingBottom: theme.spacing.xs,
   },
-  // controls: {
-  //   marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-
-  //   display: "flex",
-  //   justifyContent: "space-between",
-  //   alignItems: "center",
-  //   paddingLeft: theme.spacing.xs,
-  //   marginLeft: theme.spacing.md,
-
-  //   [theme.fn.smallerThan("xs")]: {
-  //     flexDirection: "column",
-  //   },
-  // },
   controls: {
+    marginTop: `calc(${theme.spacing.xs}* 1.5)`,
+
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingLeft: theme.spacing.xs,
+    marginLeft: theme.spacing.md,
+
+    [theme.fn.smallerThan("xs")]: {
+      flexDirection: "column",
+    },
+  },
+  control: {
     height: rem(32),
     // fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
@@ -237,19 +237,19 @@ const Cart = () => {
             {/* <div position="center" className={classes.controls}> */}
             {/* <Button compact className={classes.control} size="xs"> */}
             <PaymentButton
-              size="xs"
-              compact
-              className={classes.controls}
+              // size="xs"
+              // compact
+              // className={classes.controls}
               cart={cart}
-              variant="default"
+              // variant="default"
             ></PaymentButton>
             {/* </Button> */}
             {/* </div> */}
-            <Link to="/shop" position="center" className={classes.controls}>
-              <Button compact className={classes.controls} size="xs">
+            {/* <Link to="/shop" position="center" className={classes.controls}>
+              <Button compact className={classes.control} size="xs">
                 Add more item
               </Button>
-            </Link>
+            </Link> */}
           </Grid.Col>
         </Grid>
       </Container>
