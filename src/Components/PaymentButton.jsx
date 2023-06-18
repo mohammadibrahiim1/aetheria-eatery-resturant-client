@@ -85,12 +85,12 @@ const useStyles = createStyles((theme) => ({
 const PaymentButton = ({ cart }) => {
   const { classes } = useStyles();
   const { user } = useContext(AuthContext);
-  // const url = "https://resturant-website-server.vercel.app";
+  // const url = "http://localhost:5000";
   // console.log(user);
   const handleCheckout = () => {
     console.log(cart);
     axios
-      .post(`https://resturant-website-server.vercel.app/stripe/create-checkout-session`, {
+      .post(`http://localhost:5000/stripe/create-checkout-session`, {
         cart,
         userId: user._id,
       })

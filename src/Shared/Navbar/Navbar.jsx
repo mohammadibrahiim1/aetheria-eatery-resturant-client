@@ -264,11 +264,11 @@ const Navbar = () => {
   const [openNav, setOpenNav] = React.useState(false);
   const { cart } = useContext(ApiContext);
 
-  const { classes, cx } = useStyles();
+  // const { classes, cx } = useStyles();
 
   // user
 
-  const { signInWithGoogle, loading, logOut, user } = useContext(AuthContext);
+  const { signInWithGoogle, logOut, user } = useContext(AuthContext);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -282,7 +282,7 @@ const Navbar = () => {
     signInWithGoogle().then((result) => {
       const user = result.user;
       if (user) {
-        fetch("https://resturant-website-server.vercel.app/users", {
+        fetch("http://localhost:5000/users", {
           method: "post",
           headers: {
             "content-type": "application/json",
@@ -316,7 +316,7 @@ const Navbar = () => {
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Link to="/">
+      <Link to="/tableReservation">
         <Text
           as="li"
           variant="small"
@@ -324,7 +324,7 @@ const Navbar = () => {
           className="p-1 font-normal"
         >
           <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
-            Home
+            Book A Table
           </div>
         </Text>
       </Link>

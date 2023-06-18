@@ -50,7 +50,7 @@ const DataContext = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("https://resturant-website-server.vercel.app/allProducts")
+    fetch("http://localhost:5000/allProducts")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -58,7 +58,7 @@ const DataContext = ({ children }) => {
       });
   }, []);
   useEffect(() => {
-    fetch("https://resturant-website-server.vercel.app/menu")
+    fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -75,7 +75,7 @@ const DataContext = ({ children }) => {
   }, []);
 
   // useEffect(() => {
-  //   fetch("https://resturant-website-server.vercel.app/checkoutInfo")
+  //   fetch("http://localhost:5000/checkoutInfo")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -90,7 +90,7 @@ const DataContext = ({ children }) => {
   //   //   cart,
   //   // };
 
-  //   // fetch("https://resturant-website-server.vercel.app/checkoutInfo", {
+  //   // fetch("http://localhost:5000/checkoutInfo", {
   //   //   method: "POST",
   //   //   headers: {
   //   //     "content-type": "application/json",
@@ -116,7 +116,7 @@ const DataContext = ({ children }) => {
     console.log(checkoutInfo);
     // setTotalPrice(totalPrice);
     if (checkoutInfo) {
-      fetch("https://resturant-website-server.vercel.app/checkoutInfo", {
+      fetch("http://localhost:5000/checkoutInfo", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -136,7 +136,7 @@ const DataContext = ({ children }) => {
   };
 
   // useEffect(() => {
-  //   fetch(`https://resturant-website-server.vercel.app/category?category=${selectedCategory}`)
+  //   fetch(`http://localhost:5000/category?category=${selectedCategory}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -145,7 +145,7 @@ const DataContext = ({ children }) => {
   // }, [selectedCategory]);
 
   const handleCategoryChange = (selectedCategory) => {
-    fetch(`https://resturant-website-server.vercel.app/category?category=${selectedCategory}`)
+    fetch(`http://localhost:5000/category?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
