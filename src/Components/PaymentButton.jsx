@@ -103,14 +103,6 @@ const PaymentButton = ({ cart }) => {
   };
   return (
     <div>
-      {/* <!-- Use action="/create-checkout-session.php" if your server is PHP based. --> */}
-      {/* <form action="/create-checkout-session" method="POST">
-      <button  type="submit">Checkout</button>
-    </form> */}
-
-      {/* <button  className={classes.controls}>
-        <span className={classes.control}> Checkout</span>
-      </button> */}
       <div
         onClick={() => handleCheckout()}
         to="/shop"

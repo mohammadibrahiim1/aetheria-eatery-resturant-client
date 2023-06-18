@@ -108,7 +108,7 @@ const ShopPageHeader = () => {
 
         <div className={classes.inner}>
           <Title className={classes.title}>
-            ORDER 
+            ORDER
             <Text component="span" inherit className={classes.highlight}>
               ONLINE
             </Text>
@@ -125,9 +125,9 @@ const ShopPageHeader = () => {
             </Text>
           </Container>
 
-          <div className={classes.controls}>
+          <Link to="/tableReservation" className={classes.controls}>
             <Button className={classes.control} variant="white" size="lg">
-              Get started
+              Book A Table
             </Button>
             <Link to="/mainMenu">
               <Button
@@ -137,7 +137,7 @@ const ShopPageHeader = () => {
                 Our Menu
               </Button>
             </Link>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

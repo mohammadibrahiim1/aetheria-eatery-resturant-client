@@ -55,7 +55,7 @@ const DataContext = ({ children }) => {
     fetch("http://localhost:5000/allProducts")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setFoodItems(data);
       });
   }, []);
@@ -63,7 +63,7 @@ const DataContext = ({ children }) => {
     fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setOffer(data.slice(0, 4));
         setDessert(data.slice(4, 9));
         setPizza(data.slice(9, 15));
@@ -131,7 +131,7 @@ const DataContext = ({ children }) => {
             alert("added successfully");
           }
 
-          console.log(data);
+          // console.log(data);
         })
         .catch((error) => console.error(error.message));
     }
@@ -150,7 +150,7 @@ const DataContext = ({ children }) => {
     fetch(`http://localhost:5000/category?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setAllItems(data);
       });
     // setSelectedCategory(data);
@@ -158,10 +158,12 @@ const DataContext = ({ children }) => {
   const [quantity, setQuantity] = useState(1);
   // /users
 
-  const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+
+
+  const { data: booking = [] } = useQuery({
+    queryKey: ["booking"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/users`);
+      const res = await fetch(`http://localhost:5000/bookings`);
       const data = await res.json();
       console.log(data);
       return data;
@@ -216,7 +218,9 @@ const DataContext = ({ children }) => {
     handleIncreaseItem,
     handleDecreaseItem,
     quantity,
-    users,
+    // users,
+    booking,
+    // refetch,
   };
 
   return (

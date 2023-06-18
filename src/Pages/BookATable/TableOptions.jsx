@@ -68,8 +68,11 @@ export const TableOptions = () => {
 
   return (
     <div>
-      {bookingOptions.length}
-      <Container>
+      {/* {bookingOptions.length} */}
+      <Container className="py-28">
+        <p className="pb-5 text-xl text-accent text-center font-semibold">
+          Book your desire Table
+        </p>
         <SimpleGrid
           cols={3}
           breakpoints={[

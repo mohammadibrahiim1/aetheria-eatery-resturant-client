@@ -7,17 +7,19 @@ import Signin from "../Pages/Signin/Signin";
 import AboutUs from "../Components/AboutUs";
 import MainMenu from "../Pages/MainMenu/MainMenu";
 import Shop from "../Pages/Shop/Shop";
-import Checkout from "../Pages/Checkout/Checkout";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import CheckoutSuccess from "../Components/CheckoutSuccess";
+// import Checkout from "../Pages/Checkout/Checkout";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
+// import CheckoutSuccess from "../Components/CheckoutSuccess";
 import TableReservation from "../Pages/BookATable/BookATable";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AllBookings from "../Pages/AllBookings/AllBookings";
 import AllUsers from "../Pages/AllUsers/AllUsers";
-const stripePromise = loadStripe(
-  "pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8"
-);
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+// const stripePromise = loadStripe(
+//   "pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8"
+// );
 // sk_test_51MlpzGLrYWLOOZ8Ueo9lSKyjvBkUNZAQCqRDvVO5x1wiwu0MbJ2V6DeVFW7YHcoeCi0axInmbfmxCfIE5MrvaswE003sZXKmdG
 export const router = createBrowserRouter([
   {
@@ -32,10 +34,10 @@ export const router = createBrowserRouter([
         path: "/cart",
         element: <Cart></Cart>,
       },
-      {
-        path: "/checkout-success",
-        element: <CheckoutSuccess></CheckoutSuccess>,
-      },
+      // {
+      //   path: "/checkout-success",
+      //   element: <CheckoutSuccess></CheckoutSuccess>,
+      // },
       {
         path: "/signin",
         element: <Signin></Signin>,
@@ -60,15 +62,27 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/allBookings",
-        element: <AllBookings></AllBookings>,
+        element: (
+          <AdminRoute>
+            <AllBookings></AllBookings>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allUsers",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
     ],
   },

@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
     position: "relative",
     paddingTop: rem(180),
     paddingBottom: rem(130),
-    backgroundImage: "url(https://i.ibb.co/Zd1b1Ww/header-img.png)",
+    backgroundImage: "url(https://i.ibb.co/bzvJrdx/img.webp)",
     backgroundSize: "cover",
     backgroundPosition: "center",
 
@@ -108,9 +108,9 @@ const BookATableBanner = () => {
 
         <div className={classes.inner}>
           <Title className={classes.title}>
-            OUR{" "}
+            Book A
             <Text component="span" inherit className={classes.highlight}>
-              SHOP
+              Table
             </Text>
           </Title>
 

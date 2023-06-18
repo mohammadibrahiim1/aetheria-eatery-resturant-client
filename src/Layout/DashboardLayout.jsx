@@ -12,7 +12,7 @@ const DashboardLayout = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <Container className="py-28">
+      <Container className="py-32">
         {" "}
         <div>
           {/* <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> */}
