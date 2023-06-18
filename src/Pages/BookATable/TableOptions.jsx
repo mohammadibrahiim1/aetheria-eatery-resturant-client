@@ -1,52 +1,62 @@
 // import { Icon } from "@chakra-ui/react";
 import {
-  Button,
-  Card,
+//   Button,
+//   Card,
   Container,
-  Grid,
-  Progress,
+//   Grid,
+//   Group,
+//   Modal,
+//   Progress,
   SimpleGrid,
-  Text,
-  createStyles,
+//   Text,
+//   createStyles,
 } from "@mantine/core";
+// import { useDisclosure } from "@mantine/hooks";
 
 import { useEffect } from "react";
 import { useState } from "react";
-const useStyles = createStyles((theme) => ({
-  card: {
-    backgroundColor: theme.fn.primaryColor(),
-  },
+import BookingModal from "./BookingModal";
+import Options from "./Options";
+// const useStyles = createStyles((theme) => ({
+//   card: {
+//     backgroundColor: theme.fn.primaryColor(),
+//   },
 
-  title: {
-    color: theme.fn.rgba(theme.white, 0.65),
-  },
+//   title: {
+//     color: theme.fn.rgba(theme.white, 0.65),
+//   },
 
-  stats: {
-    color: theme.white,
-  },
+//   stats: {
+//     color: theme.white,
+//   },
 
-  progressBar: {
-    color: "yellow",
-    border: "1px solid yellow",
-    // backgroundColor: theme.white,
-  },
+//   progressBar: {
+//     color: "yellow",
+//     border: "1px solid yellow",
+//     // backgroundColor: theme.white,
+//   },
 
-  progressTrack: {
-    backgroundColor: theme.fn.rgba(theme.white, 0.4),
-  },
-}));
+//   progressTrack: {
+//     backgroundColor: theme.fn.rgba(theme.white, 0.4),
+//   },
+// }));
 
 export const TableOptions = () => {
-  const { classes } = useStyles();
+  //   const [opened, { open, close }] = useDisclosure(false);
+    // const { classes } = useStyles();
   const [availableTable, setAvailableTable] = useState([]);
+  const [selectTable, setSelectTable] = useState({});
+  console.log(selectTable);
   useEffect(() => {
     fetch("tabledata.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setAvailableTable(data);
       });
   }, []);
+
+  //  const  handleTableBooking
 
   return (
     <div>
@@ -60,27 +70,10 @@ export const TableOptions = () => {
           ]}
         >
           {availableTable.map((table) => (
-            <div>
-              {/* const {(name, slots)}= table */}
-              {/* <Grid.Col span={12}> */}{" "}
-              <Card withBorder radius="md" p="xl" className={classes.card}>
-                <Text fz="xs" tt="uppercase" fw={700} className={classes.title}>
-                  {table.name}
-                </Text>
-                <Text fz="lg" fw={500} className={classes.stats}>
-                  {table.slots.length > 0 ? table.slots[0] : "try another day"}
-                </Text>
-                <Text fz="lg" fw={500} className={classes.stats}>
-                  Available free spaces : {table.slots.length}
-                </Text>
-
-                <Button className={classes.progressBar} variant="light">
-                  Book A Table
-                </Button>
-              </Card>
-            </div>
+            <Options setSelectTable={setSelectTable} table={table}></Options>
           ))}
         </SimpleGrid>
+        <BookingModal selectTable={selectTable}></BookingModal>
       </Container>
     </div>
   );
