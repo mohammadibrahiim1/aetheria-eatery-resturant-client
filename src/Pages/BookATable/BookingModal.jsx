@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
 import { AuthContext } from "../../Context/UserContext";
 import { Toaster, toast } from "react-hot-toast";
+import { format } from "date-fns";
 
-const BookingModal = ({ selectTable, setSelectTable }) => {
+const BookingModal = ({ selectTable, setSelectTable, refetch }) => {
   const { selectDate } = useContext(ApiContext);
+  const date = format(selectDate, "PP");
   const { user } = useContext(AuthContext);
   //   console.log(selectTable);
   const { name, slots } = selectTable;
@@ -20,12 +22,12 @@ const BookingModal = ({ selectTable, setSelectTable }) => {
     const slot = form.slot.value;
 
     const booking = {
-      bookingDate: selectDate,
-      customerName: userName,
-      customerEmail: email,
-      customerPhone: phone,
-      selectedSlot: slot,
-      tableCategory: name,
+      bookingDate: date,
+      name: userName,
+      email: email,
+      phone: phone,
+      slot: slot,
+      table: name,
     };
     fetch("http://localhost:5000/bookings", {
       method: "POST",
@@ -40,7 +42,7 @@ const BookingModal = ({ selectTable, setSelectTable }) => {
         if (data.acknowledged) {
           setSelectTable(null);
           toast.success("Booking confirmed");
-          //   window.location.reload();
+          refetch();
         } else {
           toast.error(data.message);
         }

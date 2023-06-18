@@ -12,6 +12,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutSuccess from "../Components/CheckoutSuccess";
 import TableReservation from "../Pages/BookATable/BookATable";
+import DashboardLayout from "../Layout/DashboardLayout";
+import AllBookings from "../Pages/AllBookings/AllBookings";
+import AllUsers from "../Pages/AllUsers/AllUsers";
 const stripePromise = loadStripe(
   "pk_test_51MlpzGLrYWLOOZ8UljA5X1ANJMi0EXPD3KZWZmLIjyuv5DQgLe3I2dZvA4TPFfa4n0opSlz0POZ3wbxzcy27Necr005pDnWQh8"
 );
@@ -53,15 +56,20 @@ export const router = createBrowserRouter([
         path: "/tableReservation",
         element: <TableReservation></TableReservation>,
       },
-      // {
-      //   path: "/checkout",
-      //   element: (
-      //     <Elements stripe={stripePromise}>
-      //       {" "}
-      //       <Checkout></Checkout>
-      //     </Elements>
-      //   ),
-      // },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard/allBookings",
+        element: <AllBookings></AllBookings>,
+      },
+      {
+        path: "/dashboard/allUsers",
+        element: <AllUsers></AllUsers>,
+      },
     ],
   },
 ]);

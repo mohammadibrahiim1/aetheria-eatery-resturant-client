@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { createContext, useEffect, useState } from "react";
 
 export const ApiContext = createContext();
@@ -155,6 +156,17 @@ const DataContext = ({ children }) => {
     // setSelectedCategory(data);
   };
   const [quantity, setQuantity] = useState(1);
+  // /users
+
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/users`);
+      const data = await res.json();
+      console.log(data);
+      return data;
+    },
+  });
 
   const handleIncreaseItem = (id) => {
     const updateItems = cart.map((item) => {
@@ -204,6 +216,7 @@ const DataContext = ({ children }) => {
     handleIncreaseItem,
     handleDecreaseItem,
     quantity,
+    users,
   };
 
   return (

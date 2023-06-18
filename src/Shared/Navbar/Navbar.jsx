@@ -180,6 +180,7 @@ import { Container, Indicator, Text, createStyles, rem } from "@mantine/core";
 import { AuthContext } from "../../Context/UserContext";
 import { toast } from "react-hot-toast";
 import { ApiContext } from "../../Context/DataContext";
+import { IconLayoutDashboard } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   // root: {
@@ -382,6 +383,20 @@ const Navbar = () => {
         >
           <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
             About
+          </div>
+        </Text>
+      </Link>
+
+      <Link to="/dashboard/allBookings">
+        {" "}
+        <Text
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
+            <IconLayoutDashboard className="h-6 w-6" />
           </div>
         </Text>
       </Link>

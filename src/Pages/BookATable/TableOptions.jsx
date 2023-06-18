@@ -13,11 +13,14 @@ import {
 } from "@mantine/core";
 // import { useDisclosure } from "@mantine/hooks";
 
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useState } from "react";
 import BookingModal from "./BookingModal";
 import Options from "./Options";
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { ApiContext } from "../../Context/DataContext";
+import { format } from "date-fns";
 // const useStyles = createStyles((theme) => ({
 //   card: {
 //     backgroundColor: theme.fn.primaryColor(),
@@ -43,27 +46,25 @@ import { useQuery } from "@tanstack/react-query";
 // }));
 
 export const TableOptions = () => {
+  const { selectDate } = useContext(ApiContext);
+
+  const date = format(selectDate, "PP");
   //   const [opened, { open, close }] = useDisclosure(false);
   // const { classes } = useStyles();
-//   const [availableTable, setAvailableTable] = useState([]);
+  //   const [availableTable, setAvailableTable] = useState([]);
   const [selectTable, setSelectTable] = useState({});
   console.log(selectTable);
-  const { data: bookingOptions = [], isLoading } = useQuery({
-    queryKey: ["bookingOptions"],
-    queryFn: () =>
-      fetch("http://localhost:5000/v2/bookingOptions").then((res) =>
-        res.json()
-      ),
+
+  const { data: bookingOptions = [], refetch } = useQuery({
+    queryKey: ["bookingOptions", date],
+    queryFn: async () => {
+      const res = await fetch(
+        `http://localhost:5000/bookingOptions?date=${date}`
+      );
+      const data = await res.json();
+      return data;
+    },
   });
-  //   useEffect(() => {
-
-  //       .then((data) => {
-  //         // console.log(data);
-  //         setAvailableTable(data);
-  //       });
-  //   }, []);
-
-  //  const  handleTableBooking
 
   return (
     <div>
@@ -84,6 +85,7 @@ export const TableOptions = () => {
           <BookingModal
             setSelectTable={setSelectTable}
             selectTable={selectTable}
+            refetch={refetch}
           ></BookingModal>
         )}
       </Container>
