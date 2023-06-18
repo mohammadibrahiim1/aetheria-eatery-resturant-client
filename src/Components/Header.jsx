@@ -65,7 +65,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: `calc(${theme.spacing.xl} * 1.5)`,
     display: "flex",
     justifyContent: "center",
-    paddingLeft: theme.spacing.md,
+    // paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
 
     [theme.fn.smallerThan("xs")]: {
