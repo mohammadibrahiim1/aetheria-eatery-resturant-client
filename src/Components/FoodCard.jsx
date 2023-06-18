@@ -1,10 +1,13 @@
 import React from "react";
-import { useContext } from "react";
-import { Button, Container, Grid, List, Modal, Text, rem } from "@mantine/core";
-// import { ApiContext } from "../Context/DataContext";
+import {
+  Button,
+  // Container, Grid, List, Modal,
+  Text,
+  rem,
+} from "@mantine/core";
 
 import { createStyles, Card, Image, Group } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -24,10 +27,8 @@ const useStyles = createStyles((theme) => ({
     color: "#151515",
     lineHeight: 1.2,
     fontSize: rem(32),
-    // marginTop: theme.spacing.xs,
     textTransform: "uppercase",
     textAlign: "center",
-    // paddingBottom: theme.spacing.sm,
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -50,36 +51,16 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    // paddingLeft: theme.spacing.xs,
-    // marginRight: theme.spacing.md,
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   flexDirection: "column",
-    // },
   },
   control: {
     height: rem(28),
     fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
-
-    // "&:not(:first-of-type)": {
-    // marginLeft: theme.spacing.xs,
-    // },
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   "&:not(:first-of-type)": {
-    //     marginTop: theme.spacing.md,
-    //     marginLeft: 0,
-    //   },
-    // },
   },
 }));
 
 const FoodCard = ({ item, setFoodItem, addItemToCart }) => {
-  //   console.log(foodItem);
-  const [opened, { open, close }] = useDisclosure(false);
-  //   console.log(setFoodItem);
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
 
   return (
     <div>
@@ -92,15 +73,14 @@ const FoodCard = ({ item, setFoodItem, addItemToCart }) => {
             </Text>
             <Text className={classes.title} mt="xs" mb="md">
               <div className="flex justify-between align-center gap-28">
-                <span size="xs" > {item.category}</span>
+                <span size="xs"> {item.category}</span>
                 <span>${item.price}</span>
               </div>
             </Text>
             <div>
               {" "}
-              <div position="center" className={classes.controls}>
+              <div className={classes.controls}>
                 <Button
-                
                   onClick={() => addItemToCart(item)}
                   compact
                   className={classes.control}
@@ -109,27 +89,20 @@ const FoodCard = ({ item, setFoodItem, addItemToCart }) => {
                 >
                   add to cart
                 </Button>
-                <Button
-                  // onClick={open,()=>setFoodItem()}
-                  onClick={() => setFoodItem(item)}
-                  open={open}
-                  compact
-                  className={classes.control}
-                  variant="default"
-                  size="xs"
-                >
-                  view
-                </Button>
+                <Link to="/shop">
+                  <Button
+                    // onClick={open,()=>setFoodItem()}
+                    onClick={() => setFoodItem(item)}
+                    compact
+                    className={classes.control}
+                    variant="default"
+                    size="xs"
+                  >
+                    see more items
+                  </Button>
+                </Link>
               </div>
             </div>
-            <Modal
-              opened={opened}
-              onClose={close}
-              title="Authentication"
-              centered
-            >
-              {/* Modal content */}
-            </Modal>
           </div>
         </Group>
       </Card>

@@ -92,8 +92,40 @@ export const Testimonials = () => {
             <p>John Doe</p>
           </Text>
         </Carousel.Slide>
-        <Carousel.Slide>2</Carousel.Slide>
-        <Carousel.Slide>3</Carousel.Slide>
+        <Carousel.Slide>
+          {" "}
+          <Rating defaultValue={4} className={classes.rating} />
+          <Text className={classes.subTitle} size="xs">
+            {/* {item.category} */}
+            <p>
+              Various version have evolved over the years, sometimes by
+              accident, sometimes on purpose (injected humour and the like). It
+              is a long established fact that a reader will be distracted by the
+              readable content of a page when looking at its layout.
+            </p>
+          </Text>
+          <Text className={classes.title} size="xs">
+            {/* {item.category} */}
+            <p>John Doe</p>
+          </Text>
+        </Carousel.Slide>
+        <Carousel.Slide>
+          {" "}
+          <Rating defaultValue={4} className={classes.rating} />
+          <Text className={classes.subTitle} size="xs">
+            {/* {item.category} */}
+            <p>
+              Various version have evolved over the years, sometimes by
+              accident, sometimes on purpose (injected humour and the like). It
+              is a long established fact that a reader will be distracted by the
+              readable content of a page when looking at its layout.
+            </p>
+          </Text>
+          <Text className={classes.title} size="xs">
+            {/* {item.category} */}
+            <p>John Doe</p>
+          </Text>
+        </Carousel.Slide>
         {/* ...other slides */}
       </Carousel>
     </Container>
