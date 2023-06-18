@@ -1,15 +1,15 @@
 // import { Icon } from "@chakra-ui/react";
 import {
-//   Button,
-//   Card,
+  //   Button,
+  //   Card,
   Container,
-//   Grid,
-//   Group,
-//   Modal,
-//   Progress,
+  //   Grid,
+  //   Group,
+  //   Modal,
+  //   Progress,
   SimpleGrid,
-//   Text,
-//   createStyles,
+  //   Text,
+  //   createStyles,
 } from "@mantine/core";
 // import { useDisclosure } from "@mantine/hooks";
 
@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import BookingModal from "./BookingModal";
 import Options from "./Options";
+import { useQuery } from "@tanstack/react-query";
 // const useStyles = createStyles((theme) => ({
 //   card: {
 //     backgroundColor: theme.fn.primaryColor(),
@@ -43,24 +44,30 @@ import Options from "./Options";
 
 export const TableOptions = () => {
   //   const [opened, { open, close }] = useDisclosure(false);
-    // const { classes } = useStyles();
-  const [availableTable, setAvailableTable] = useState([]);
+  // const { classes } = useStyles();
+//   const [availableTable, setAvailableTable] = useState([]);
   const [selectTable, setSelectTable] = useState({});
   console.log(selectTable);
-  useEffect(() => {
-    fetch("tabledata.json")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setAvailableTable(data);
-      });
-  }, []);
+  const { data: bookingOptions = [], isLoading } = useQuery({
+    queryKey: ["bookingOptions"],
+    queryFn: () =>
+      fetch("http://localhost:5000/v2/bookingOptions").then((res) =>
+        res.json()
+      ),
+  });
+  //   useEffect(() => {
+
+  //       .then((data) => {
+  //         // console.log(data);
+  //         setAvailableTable(data);
+  //       });
+  //   }, []);
 
   //  const  handleTableBooking
 
   return (
     <div>
-      {availableTable.length}
+      {bookingOptions.length}
       <Container>
         <SimpleGrid
           cols={3}
@@ -69,11 +76,16 @@ export const TableOptions = () => {
             { maxWidth: "md", cols: 2 },
           ]}
         >
-          {availableTable.map((table) => (
-            <Options setSelectTable={setSelectTable} table={table}></Options>
+          {bookingOptions.map((option) => (
+            <Options setSelectTable={setSelectTable} option={option}></Options>
           ))}
         </SimpleGrid>
-        <BookingModal selectTable={selectTable}></BookingModal>
+        {selectTable && (
+          <BookingModal
+            setSelectTable={setSelectTable}
+            selectTable={selectTable}
+          ></BookingModal>
+        )}
       </Container>
     </div>
   );

@@ -24,6 +24,7 @@ const DataContext = ({ children }) => {
   const [thai, setThai] = useState([]);
   // console.log(thai);
   const [indian, setIndian] = useState([]);
+  const [selectDate, setSelectDate] = useState(new Date());
   // const [clientSecret, setClientSecret] = useState("");
   // console.log(indian);
   // const [selectedCategory, setSelectedCategory] = useState("");
@@ -194,6 +195,8 @@ const DataContext = ({ children }) => {
     thai,
     indian,
     allItems,
+    selectDate,
+    setSelectDate,
     // checkoutInfo,
     // handleTotalPrice,
     // totalPrice,

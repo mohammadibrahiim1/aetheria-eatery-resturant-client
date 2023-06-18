@@ -5,11 +5,13 @@ import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
+import { useContext } from "react";
+import { ApiContext } from "../../Context/DataContext";
 // import { useState } from "react";
 
 const AvailableTables = () => {
   //   const [value, setValue] = (useState < Date) | (null > null);
-  const [selectDate, setSelectDate] = useState(new Date());
+  const { selectDate, setSelectDate } = useContext(ApiContext);
   return (
     <div>
       <div className="text-center py-8">

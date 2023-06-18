@@ -1,6 +1,5 @@
 [
   {
-    "_id": 1,
     "name": "Standard",
     "slots": [
       "08.00 AM - 08.30 AM",
@@ -22,7 +21,6 @@
     ]
   },
   {
-    "_id": 2,
     "name": "Normal",
     "slots": [
       "08.00 AM - 08.30 AM",
@@ -44,7 +42,6 @@
     ]
   },
   {
-    "_id": 3,
     "name": "Private",
     "slots": [
       "08.00 AM - 08.30 AM",
@@ -66,7 +63,6 @@
     ]
   },
   {
-    "_id": 4,
     "name": "Cornar",
     "slots": [
       "08.00 AM - 08.30 AM",
@@ -88,7 +84,6 @@
     ]
   },
   {
-    "_id": 5,
     "name": "Beside Window",
     "slots": [
       "08.00 AM - 08.30 AM",
@@ -110,7 +105,6 @@
     ]
   },
   {
-    "_id": 6,
     "name": "Family",
     "slots": [
       "08.00 AM - 08.30 AM",

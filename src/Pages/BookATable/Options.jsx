@@ -27,9 +27,9 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.fn.rgba(theme.white, 0.4),
   },
 }));
-const Options = ({ table, setSelectTable }) => {
+const Options = ({ option, setSelectTable }) => {
   const { classes } = useStyles();
-  const { name, slots } = table;
+  const { name, slots } = option;
   return (
     <div>
       <Card withBorder radius="md" p="xl" className={classes.card}>
@@ -44,8 +44,13 @@ const Options = ({ table, setSelectTable }) => {
         </Text>
 
         {/* <Button> */}
-        <div onClick={() => setSelectTable(table)} className="mt-8">
-          <label htmlFor="booking-modal" className={classes.progressBar}>
+        <div className="mt-8">
+          <label
+            disabled={slots.length === 0}
+            htmlFor="booking-modal"
+            className={classes.progressBar}
+            onClick={() => setSelectTable(option)}
+          >
             Book A Table
           </label>
         </div>

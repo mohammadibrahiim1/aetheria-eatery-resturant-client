@@ -31,10 +31,12 @@ const UserContext = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
 
   const signInWithGoogle = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
