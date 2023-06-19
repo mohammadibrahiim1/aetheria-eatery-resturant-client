@@ -43,13 +43,14 @@ const DataContext = ({ children }) => {
       newCart = [...rest, exists];
     }
     setCart(newCart);
+    toast.success("add item to cart successfully");
     localStorage.setItem("newCart", JSON.stringify(newCart));
   };
   const removeItemFromCart = (_id) => {
     const updatedCart = cart.filter((item) => item._id !== _id);
     localStorage.setItem("newCart", JSON.stringify(updatedCart));
     setCart(updatedCart);
-    window.location.reload();
+    toast.error("remove item from cart!");
   };
 
   useEffect(() => {
@@ -158,7 +159,6 @@ const DataContext = ({ children }) => {
   };
   const [quantity, setQuantity] = useState(1);
   // /users
-
 
   const { data: booking = [] } = useQuery({
     queryKey: ["booking"],
