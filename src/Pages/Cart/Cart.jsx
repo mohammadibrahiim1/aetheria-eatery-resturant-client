@@ -157,9 +157,7 @@ const Cart = () => {
                     <Group noWrap spacing={0} key={item.id}>
                       <Image src={item.image} height={140} width={140} />
                       <div className={classes.body}>
-                        <Text className={classes.title} mb="md">
-                          {item.name}
-                        </Text>
+                        <Text className={classes.title} mb={3}>{item.name}</Text>
                         <Text className={classes.title}>
                           ${item.price * item.quantity}
                         </Text>
