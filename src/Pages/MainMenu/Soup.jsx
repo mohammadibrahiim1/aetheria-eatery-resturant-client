@@ -156,11 +156,6 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-// https://i.ibb.co/Lv7XbhW/menu-img-4.png
-// https://i.ibb.co/sWVffGH/menu-img-2.png
-// https://i.ibb.co/TTtNG9F/menu-img-1.png
-// https://i.ibb.co/FwHvK47/menu-img-3.png
-
 const Soup = () => {
   const { soup } = useContext(ApiContext);
   console.log(soup);
@@ -189,32 +184,10 @@ const Soup = () => {
               restaurants.
             </Text>
           </Container>
-
-          {/* <div className={classes.controls}>
-                  <Button className={classes.control} variant="white" size="lg">
-                    Get started
-                  </Button>
-                  <Link to="/mainMenu">
-                    <Button
-                      className={cx(classes.control, classes.secondaryControl)}
-                      size="lg"
-                    >
-                      Our Menu
-                    </Button>
-                  </Link>
-                </div> */}
         </div>
       </div>
       <Container>
-        {/* <div className="py-12">
-                <div className={classes.subTitle}>
-                  <p>---check it out---</p>
-                </div>
-                <div className={classes.heading} color="#151515">
-                  <h1> Today's Offer</h1>
-                </div>
-              </div> */}
-                  <div className="pt-8">
+        <div className="pt-8">
           <p className={classes.order}>ORDER YOUR FAVOURITE FOOD</p>
         </div>
         <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2 py-8">
@@ -240,12 +213,10 @@ const Soup = () => {
 
                 <div>
                   <Text
-                    // transform="uppercase"
                     color="dimmed"
                     weight={700}
                     size="xs"
                     className={classes.cardTitle}
-                    // mb="md"
                   >
                     {item.description}
                   </Text>
@@ -254,9 +225,7 @@ const Soup = () => {
             </div>
           ))}
         </div>
-    
       </Container>
-      {/* </Container> */}
     </div>
   );
 };

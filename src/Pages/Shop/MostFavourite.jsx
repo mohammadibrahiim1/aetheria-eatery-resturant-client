@@ -1,12 +1,11 @@
 import { Carousel } from "@mantine/carousel";
 import React, { useContext } from "react";
-// import { ApiContext } from "../Context/DataContext";
+
 import {
   createStyles,
   Paper,
   Text,
   Title,
-  //   Button,
   rem,
   Container,
 } from "@mantine/core";
