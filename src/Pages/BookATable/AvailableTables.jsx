@@ -39,11 +39,11 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontWeight: 800,
     fontSize: rem(17),
-    // letterSpacing: rem(-1),
-    paddingLeft: theme.spacing.md,
+    letterSpacing: rem(-1),
+    // paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
-    // color: "light",
-    marginBottom: theme.spacing.xs,
+    color: "light",
+    // marginBottom: theme.spacing.xs,
     textAlign: "center",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 
@@ -67,6 +67,14 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  input: {
+    border: "1px solid indigo",
+    padding: "3px",
+    borderRadius: "7px",
+    marginTop: "15px",
+    textAlign: "center",
+  },
+
   controls: {
     marginTop: `calc(${theme.spacing.xl} * 1.5)`,
     display: "flex",
@@ -80,18 +88,10 @@ const useStyles = createStyles((theme) => ({
   },
 
   control: {
-    height: rem(42),
-    fontSize: theme.fontSizes.md,
-
-    "&:not(:first-of-type)": {
-      marginLeft: theme.spacing.md,
-    },
-
+    textAlign: "center",
     [theme.fn.smallerThan("xs")]: {
-      "&:not(:first-of-type)": {
-        marginTop: theme.spacing.md,
-        marginLeft: 0,
-      },
+      fontSize: rem(15),
+      textAlign: "left",
     },
   },
 
@@ -113,35 +113,39 @@ const AvailableTables = () => {
   const date = format(selectDate, "PP");
   return (
     <div>
-      <Container>
-        {" "}
-        <SimpleGrid
-          cols={2}
-          breakpoints={[
-            { maxWidth: "sm", cols: 1 },
-            { maxWidth: "md", cols: 2 },
-          ]}
-        >
-          {/* <Grid.Col span={5}> */}
-          <ReactDatePicker
-            span={6}
-            mode="single"
-            selected={selectDate}
-            onChange={setSelectDate}
-          />
-          {/* </Grid.Col> */}
-          {/* <Grid.Col span={6}> */}
-          <Text
-            span={6}
-            variant="gradient"
-            gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-            className={classes.title}
-          >
-            {" "}
-            <div className="text-center">Available tables on {date}</div>
-          </Text>
-          {/* </Grid.Col> */}
-        </SimpleGrid>
+      <Container className="py-28">
+        <Grid>
+          <Grid.Col md={6} lg={6}>
+            <Text
+              // span={12}
+              variant="gradient"
+              gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+              className={classes.title}
+            >
+              {" "}
+              <div>Available tables on {date}</div>
+            </Text>
+          </Grid.Col>
+          <Grid.Col md={6} lg={6}>
+            <Text
+              variant="gradient"
+              gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+              className={classes.title}
+            >
+              {" "}
+              Select Your Booking Date : <br />
+            </Text>
+            <Text className={classes.control}>
+              <ReactDatePicker
+                className={classes.input}
+                // span={12}
+                mode="single"
+                selected={selectDate}
+                onChange={setSelectDate}
+              />
+            </Text>
+          </Grid.Col>
+        </Grid>{" "}
       </Container>
     </div>
   );

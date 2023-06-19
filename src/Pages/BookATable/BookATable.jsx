@@ -2,7 +2,7 @@ import React from "react";
 import AvailableTables from "./AvailableTables";
 import BookATableBanner from "./BookATableBanner";
 import { TableOptions } from "./TableOptions";
-import BookingModal from "./BookingModal";
+import Contact from "../../Components/Contact";
 
 const BookATable = () => {
   return (
@@ -10,7 +10,7 @@ const BookATable = () => {
       <BookATableBanner></BookATableBanner>
       <AvailableTables></AvailableTables>
       <TableOptions></TableOptions>
-      {/* <BookingModal></BookingModal> */}
+      <Contact></Contact>
     </div>
   );
 };

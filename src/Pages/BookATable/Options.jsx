@@ -83,14 +83,6 @@ const Options = ({ option, setSelectTable }) => {
         {/* <Button> */}
         <div className={classes.controls}>
           <label
-            // inherit
-            // theme={{
-            //   defaultGradient: {
-            //     from: "orange",
-            //     to: "red",
-            //     deg: 45,
-            //   },
-            // }}
             disabled={slots.length === 0}
             htmlFor="booking-modal"
             className={classes.control}
@@ -99,7 +91,7 @@ const Options = ({ option, setSelectTable }) => {
             Book A Table
           </label>
         </div>
-        {/* </Button> */}
+        
       </Card>
     </div>
   );
