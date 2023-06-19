@@ -12,6 +12,8 @@ import { ApiContext } from "../../Context/DataContext";
 import { ShopPageCard } from "../../Components/ShopPageCard";
 import ShopPageHeader from "../../Components/ShopPageHeader";
 import Contact from "../../Components/Contact";
+import OrderOnline from "../../Components/OrderOnline";
+import MostFavourite from "./MostFavourite";
 // import FoodCard from "./FoodCard";
 // import Modal from "./FoodModal";
 // import FoodModal from "./FoodModal";
@@ -43,7 +45,7 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
     fontWeight: 600,
     color: "#D99904",
-    lineHeight: 1.2,
+    // lineHeight: 1.2,
     fontSize: rem(15),
     marginTop: theme.spacing.xs,
     // textTransform: "uppercase",
@@ -57,16 +59,19 @@ const useStyles = createStyles((theme) => ({
   },
 
   controls: {
-    marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    // marginTop: `calc(${theme.spacing.xs}* 1.5)`,
+    // display: "flex",
+    // justifyContent: "space-between",
+    // alignItems: "center",
     // paddingLeft: theme.spacing.xs,
     // marginRight: theme.spacing.md,
 
-    // [theme.fn.smallerThan("xs")]: {
-    //   flexDirection: "column",
-    // },
+    [theme.fn.smallerThan("sm")]: {
+      // column: "12"
+      // display: "flex",
+      // justifyContent: "space-between",
+      // alignItems: "center",
+    },
   },
   control: {
     height: rem(28),
@@ -105,88 +110,89 @@ const Shop = () => {
         </div>
 
         <Grid className="py-8">
-          <Grid.Col sm={12} md={6} lg={3}>
+          <Grid.Col sm={12} xs={12} lg={3}>
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
               sx={{ fontFamily: "Inter, sans-serif" }}
-              ta="center"
+              ta="left"
               fz="xl"
               fw={700}
             >
-              {" "}
-              <div className="pt-6 self-center ">
-                <Grid>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("desert")}
-                      className={classes.subTitle}
-                    >
-                      Desert
-                    </span>
-                  </Grid.Col>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("offer")}
-                      className={classes.subTitle}
-                    >
-                      Offer
-                    </span>
-                  </Grid.Col>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("drinks")}
-                      className={classes.subTitle}
-                    >
-                      Drinks
-                    </span>
-                  </Grid.Col>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("pizza")}
-                      className={classes.subTitle}
-                    >
-                      Pizza
-                    </span>
-                  </Grid.Col>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("salad")}
-                      className={classes.subTitle}
-                    >
-                      Salads
-                    </span>
-                  </Grid.Col>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("thai")}
-                      className={classes.subTitle}
-                    >
-                      Thai
-                    </span>
-                  </Grid.Col>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("soup")}
-                      className={classes.subTitle}
-                    >
-                      Soup
-                    </span>
-                  </Grid.Col>
-                  <Grid.Col lg={12}>
-                    <span
-                      onClick={() => handleCategoryChange("indian")}
-                      className={classes.subTitle}
-                    >
-                      Indian
-                    </span>
-                  </Grid.Col>
-                </Grid>
-              </div>
+              <p>Category</p>
+
+              <Grid>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    className={classes.subTitle}
+                    variant="primary"
+                    onClick={() => handleCategoryChange("desert")}
+                  >
+                    Desert
+                  </span>
+                </Grid.Col>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    onClick={() => handleCategoryChange("offer")}
+                    className={classes.subTitle}
+                  >
+                    Offer
+                  </span>
+                </Grid.Col>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    onClick={() => handleCategoryChange("drinks")}
+                    className={classes.subTitle}
+                  >
+                    Drinks
+                  </span>
+                </Grid.Col>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    onClick={() => handleCategoryChange("pizza")}
+                    className={classes.subTitle}
+                  >
+                    Pizza
+                  </span>
+                </Grid.Col>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    onClick={() => handleCategoryChange("salad")}
+                    className={classes.subTitle}
+                  >
+                    Salads
+                  </span>
+                </Grid.Col>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    onClick={() => handleCategoryChange("thai")}
+                    className={classes.subTitle}
+                  >
+                    Thai
+                  </span>
+                </Grid.Col>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    onClick={() => handleCategoryChange("soup")}
+                    className={classes.subTitle}
+                  >
+                    Soup
+                  </span>
+                </Grid.Col>
+                <Grid.Col sm={1} lg={12}>
+                  <span
+                    onClick={() => handleCategoryChange("indian")}
+                    className={classes.subTitle}
+                  >
+                    Indian
+                  </span>
+                </Grid.Col>
+              </Grid>
+              {/* </div> */}
             </Text>
           </Grid.Col>
 
-          <Grid.Col sm={12} md={6} lg={9}>
+          <Grid.Col sm={12} xs={12} lg={9}>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
               {allItems?.slice(0, 4)?.map((item) => (
                 <>
@@ -209,6 +215,10 @@ const Shop = () => {
             </div>
           </Grid.Col>
         </Grid>
+
+        <MostFavourite></MostFavourite>
+
+        {/* <OrderOnline></OrderOnline> */}
       </Container>
       <Contact></Contact>
     </div>
