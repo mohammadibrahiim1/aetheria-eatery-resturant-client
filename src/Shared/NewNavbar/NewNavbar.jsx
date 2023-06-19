@@ -8,6 +8,7 @@ import {
   Paper,
   Transition,
   rem,
+  Indicator,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { MantineLogo } from "@mantine/ds";
@@ -25,7 +26,7 @@ const HEADER_HEIGHT = rem(60);
 const useStyles = createStyles((theme) => ({
   root: {
     position: "relative",
-    zIndex: 1,
+    // zIndex: 1,
   },
 
   dropdown: {
@@ -102,10 +103,6 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-// interface HeaderResponsiveProps {
-//   links: { link: string, label: string }[];
-// }
-
 export const NewNavbar = () => {
   const { signInWithGoogle, logOut, user } = useContext(AuthContext);
   // const [openNav, setOpenNav] = React.useState(false);
@@ -152,7 +149,20 @@ export const NewNavbar = () => {
     { link: "/tableReservation", label: "Book A Table" },
     { link: "/mainMenu", label: " Our Menu" },
     { link: "/shop", label: "Shop" },
-    { link: "/cart", label: " Cart" },
+    {
+      link: "/cart",
+      label: (
+        <div>
+          {"Cart"}
+          <Indicator
+            position="bottom-end"
+            color="red"
+            size={16}
+            label={cart.length}
+          />
+        </div>
+      ),
+    },
     { link: "/aboutUs", label: "About" },
     {
       link: "/dashboard/allBookings",
