@@ -10,7 +10,6 @@ import {
 } from "@mantine/core";
 import React, { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
-// import MainMenuHeader from './MainMenuHeader';
 const useStyles = createStyles((theme) => ({
   wrapper: {
     position: "relative",
@@ -42,10 +41,8 @@ const useStyles = createStyles((theme) => ({
     color: "#151515",
     lineHeight: 1.2,
     fontSize: rem(32),
-    // marginTop: theme.spacing.xs,
     textTransform: "uppercase",
     textAlign: "center",
-    // paddingBottom: theme.spacing.sm,
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -66,22 +63,18 @@ const useStyles = createStyles((theme) => ({
   },
 
   body: {
-    // padding: theme.spacing.md,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "start",
-    // gap: "240px",
   },
   order: {
-    // width: "306px",
-    // height: "24px",
     fontFamily: "Inter",
     fontStyle: "normal",
     fontWeight: 700,
     fontSize: "12px",
     lineHeight: "24px",
     textAlign: "center",
-    // margin: "auto",
+
     textTransform: "uppercase",
     textDecoration: "underline",
     color: "#1F2937",
@@ -90,7 +83,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontWeight: 800,
     fontSize: rem(40),
-    // letterSpacing: rem(-1),
+
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     color: theme.white,
@@ -156,18 +149,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-// https://i.ibb.co/Lv7XbhW/menu-img-4.png
-// https://i.ibb.co/sWVffGH/menu-img-2.png
-// https://i.ibb.co/TTtNG9F/menu-img-1.png
-// https://i.ibb.co/FwHvK47/menu-img-3.png
-
 const Pizza = () => {
   const { pizza } = useContext(ApiContext);
   console.log(pizza);
   const { classes } = useStyles();
   return (
     <div className="pt-24">
-      {/* <Container> */}
       <div className={classes.wrapper}>
         <Overlay color="#000" opacity={0.65} zIndex={1} />
 
@@ -181,40 +168,15 @@ const Pizza = () => {
 
           <Container size={640}>
             <Text size="lg" className={classes.description}>
-              {/* Build more reliable software with AI companion. AI is also trained
-                to detect lazy developers who do nothing and just complain on
-                Twitter. */}
               Are you looking for somewhere special to go this weekend? Do you
               want to try something new? Check out one of these hot new
               restaurants.
             </Text>
           </Container>
-
-          {/* <div className={classes.controls}>
-              <Button className={classes.control} variant="white" size="lg">
-                Get started
-              </Button>
-              <Link to="/mainMenu">
-                <Button
-                  className={cx(classes.control, classes.secondaryControl)}
-                  size="lg"
-                >
-                  Our Menu
-                </Button>
-              </Link>
-            </div> */}
         </div>
       </div>
       <Container>
-        {/* <div className="py-12">
-            <div className={classes.subTitle}>
-              <p>---check it out---</p>
-            </div>
-            <div className={classes.heading} color="#151515">
-              <h1> Today's Offer</h1>
-            </div>
-          </div> */}
-             <div className="pt-8">
+        <div className="pt-8">
           <p className={classes.order}>ORDER YOUR FAVOURITE FOOD</p>
         </div>
         <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2 py-8">
@@ -240,12 +202,10 @@ const Pizza = () => {
 
                 <div>
                   <Text
-                    // transform="uppercase"
                     color="dimmed"
                     weight={700}
                     size="xs"
                     className={classes.cardTitle}
-                    // mb="md"
                   >
                     {item.description}
                   </Text>
@@ -254,9 +214,7 @@ const Pizza = () => {
             </div>
           ))}
         </div>
-     
       </Container>
-      {/* </Container> */}
     </div>
   );
 };
