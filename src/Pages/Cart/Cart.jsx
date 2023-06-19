@@ -56,6 +56,13 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
     paddingBottom: theme.spacing.xs,
   },
+
+  counterButton: {
+    border: "1px solid red",
+    paddingRight: "5px",
+    paddingLeft: "5px",
+  },
+
   controls: {
     marginTop: `calc(${theme.spacing.xs}* 1.5)`,
 
@@ -153,18 +160,22 @@ const Cart = () => {
                         <Text className={classes.title} mb="md">
                           {item.name}
                         </Text>
-                        <Text className={classes.title} mb="md">
+                        <Text className={classes.title}>
                           ${item.price * item.quantity}
                         </Text>
-                        <div class="flex gap-32 lg:gap-48">
-                          <div className="cart-item-quantity">
+                        <div class=" flex justify-between items-center gap-32 lg:gap-52">
+                          <div className="cart-item-quantity flex justify-between items-center">
                             <button
+                              className={classes.counterButton}
                               onClick={() => handleDecreaseItem(item._id)}
                             >
                               -
                             </button>
-                            <div className="count">{item.quantity}</div>
+                            <div className={classes.counterButton}>
+                              {item.quantity}
+                            </div>
                             <button
+                              className={classes.counterButton}
                               onClick={() => handleIncreaseItem(item._id)}
                             >
                               +
