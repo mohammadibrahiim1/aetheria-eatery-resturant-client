@@ -146,15 +146,6 @@ const AboutUs = () => {
                   Yorkshire.
                 </p>
               </div>
-              {/* <div class="md:5/12 lg:w-5/12">
-                <img
-                  src="https://tailus.io/sources/blocks/left-image/preview/images/startup.png"
-                  alt=""
-                  loading="lazy"
-                  width="auto"
-                  height="auto"
-                />
-              </div> */}
             </div>
           </div>
         </div>
@@ -189,8 +180,7 @@ const AboutUs = () => {
               alt=""
             />
           </div>
-          {/* </div> */}
-          {/* <div class="grid gap-4"> */}
+      
           <div>
             <img
               class="h-full max-w-full rounded-lg"
@@ -212,8 +202,7 @@ const AboutUs = () => {
               alt=""
             />
           </div>
-          {/* </div> */}
-          {/* <div class="grid gap-4"> */}
+       
           <div>
             <img
               class="h-full max-w-full rounded-lg"
@@ -235,9 +224,8 @@ const AboutUs = () => {
               alt=""
             />
           </div>
-          {/* </div> */}
-          {/* <div class="grid gap-4"> */}
-          <div>
+     
+          {/* <div>
             <img
               class="h-full max-w-full rounded-lg"
               src="https://i.ibb.co/SPf3NGT/11-Best-Thai-Food-Dishes-Mango-Sticky-Rice.webp"
@@ -257,8 +245,8 @@ const AboutUs = () => {
               src="https://i.ibb.co/QpQ3Jgz/11-Best-Thai-Food-Dishes-Yellow-Curry.webp"
               alt=""
             />
-          </div>
-          {/* </div> */}
+          </div> */}
+          
         </div>
 
         <div>
