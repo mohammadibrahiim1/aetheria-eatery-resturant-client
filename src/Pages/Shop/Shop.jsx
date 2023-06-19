@@ -41,14 +41,15 @@ const useStyles = createStyles((theme) => ({
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
-    fontWeight: 500,
+    fontWeight: 600,
     color: "#D99904",
     lineHeight: 1.2,
-    fontSize: rem(12),
+    fontSize: rem(15),
     marginTop: theme.spacing.xs,
-    textTransform: "uppercase",
+    // textTransform: "uppercase",
     textAlign: "center",
     paddingBottom: theme.spacing.xs,
+    cursor: "pointer",
   },
 
   body: {
@@ -95,7 +96,7 @@ const Shop = () => {
   return (
     <div>
       <ShopPageHeader></ShopPageHeader>
-      <Container className="py-24">
+      <Container className="lg:py-24 md:pt-16 sm:pt-12">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
         </div>
@@ -104,18 +105,7 @@ const Shop = () => {
         </div>
 
         <Grid className="py-8">
-          <Grid.Col md={6} lg={3}>
-            <Text
-              variant="gradient"
-              gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
-              sx={{ fontFamily: "Inter, sans-serif" }}
-              ta="left"
-              fz="xl"
-              fw={700}
-            >
-              {" "}
-              Category
-            </Text>
+          <Grid.Col sm={12} md={6} lg={3}>
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -125,74 +115,78 @@ const Shop = () => {
               fw={700}
             >
               {" "}
-              <div className="py-8  ">
-                <List spacing="sm" size="md" ta="left" className="">
-                  <List.Item
-                    onClick={() => handleCategoryChange("desert")}
-                    className="cursor-pointer"
-                  >
-                    Desert
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("offer")}
-                    className="cursor-pointer"
-                  >
-                    Offer
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("drinks")}
-                    className="cursor-pointer"
-                  >
-                    Drinks
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("pizza")}
-                    className="cursor-pointer"
-                  >
-                    Pizza
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("salad")}
-                    className="cursor-pointer"
-                  >
-                    Salads
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("thai")}
-                    className="cursor-pointer"
-                  >
-                    Thai
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("soup")}
-                    className="cursor-pointer"
-                  >
-                    Soup
-                  </List.Item>
-                  <List.Item
-                    onClick={() => handleCategoryChange("indian")}
-                    className="cursor-pointer"
-                  >
-                    Indian
-                  </List.Item>
-                  {/* <List.Item
-                    onClick={() => handleCategoryChange("shakes")}
-                    className="cursor-pointer"
-                  >
-                    Shakes
-                  </List.Item> */}
-                  {/* <List.Item
-                    onClick={() => handleCategoryChange(allItems)}
-                    className="cursor-pointer"
-                  >
-                    All Items
-                  </List.Item> */}
-                </List>
+              <div className="pt-6 self-center ">
+                <Grid>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("desert")}
+                      className={classes.subTitle}
+                    >
+                      Desert
+                    </span>
+                  </Grid.Col>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("offer")}
+                      className={classes.subTitle}
+                    >
+                      Offer
+                    </span>
+                  </Grid.Col>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("drinks")}
+                      className={classes.subTitle}
+                    >
+                      Drinks
+                    </span>
+                  </Grid.Col>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("pizza")}
+                      className={classes.subTitle}
+                    >
+                      Pizza
+                    </span>
+                  </Grid.Col>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("salad")}
+                      className={classes.subTitle}
+                    >
+                      Salads
+                    </span>
+                  </Grid.Col>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("thai")}
+                      className={classes.subTitle}
+                    >
+                      Thai
+                    </span>
+                  </Grid.Col>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("soup")}
+                      className={classes.subTitle}
+                    >
+                      Soup
+                    </span>
+                  </Grid.Col>
+                  <Grid.Col lg={12}>
+                    <span
+                      onClick={() => handleCategoryChange("indian")}
+                      className={classes.subTitle}
+                    >
+                      Indian
+                    </span>
+                  </Grid.Col>
+                </Grid>
               </div>
             </Text>
           </Grid.Col>
 
-          <Grid.Col md={6} lg={9}>
+          <Grid.Col sm={12} md={6} lg={9}>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
               {allItems?.slice(0, 4)?.map((item) => (
                 <>
@@ -212,14 +206,6 @@ const Shop = () => {
                   ></FoodCard> */}
                 </>
               ))}
-            </div>
-            <div>
-              {/* {foodItem && (
-                <FoodModal
-                  foodItem={foodItem}
-                  setFoodItem={setFoodItem}
-                ></FoodModal>
-              )} */}
             </div>
           </Grid.Col>
         </Grid>
