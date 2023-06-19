@@ -191,7 +191,6 @@ export const NewNavbar = () => {
         [classes.linkActive]: active === link.link,
       })}
       onClick={(event) => {
-        // event.preventDefault();
         setActive(link.link);
         close();
       }}
@@ -203,10 +202,7 @@ export const NewNavbar = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
-        <Link to="/">
-          {/* <MantineLogo size={28} /> */}
-          Aetheria Eatery
-        </Link>
+        <Link to="/">Aetheria Eatery</Link>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
