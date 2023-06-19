@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { createContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
 export const ApiContext = createContext();
 const cartFromLocalStorage = JSON.parse(
@@ -52,7 +53,7 @@ const DataContext = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/allProducts")
+    fetch("   http://localhost:5000/allProducts")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -60,7 +61,7 @@ const DataContext = ({ children }) => {
       });
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/menu")
+    fetch("   http://localhost:5000/menu")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -77,7 +78,7 @@ const DataContext = ({ children }) => {
   }, []);
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/checkoutInfo")
+  //   fetch("   http://localhost:5000/checkoutInfo")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -92,7 +93,7 @@ const DataContext = ({ children }) => {
   //   //   cart,
   //   // };
 
-  //   // fetch("http://localhost:5000/checkoutInfo", {
+  //   // fetch("   http://localhost:5000/checkoutInfo", {
   //   //   method: "POST",
   //   //   headers: {
   //   //     "content-type": "application/json",
@@ -118,7 +119,7 @@ const DataContext = ({ children }) => {
     console.log(checkoutInfo);
     // setTotalPrice(totalPrice);
     if (checkoutInfo) {
-      fetch("http://localhost:5000/checkoutInfo", {
+      fetch("   http://localhost:5000/checkoutInfo", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -138,7 +139,7 @@ const DataContext = ({ children }) => {
   };
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/category?category=${selectedCategory}`)
+  //   fetch(`   http://localhost:5000/category?category=${selectedCategory}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -147,7 +148,7 @@ const DataContext = ({ children }) => {
   // }, [selectedCategory]);
 
   const handleCategoryChange = (selectedCategory) => {
-    fetch(`http://localhost:5000/category?category=${selectedCategory}`)
+    fetch(`   http://localhost:5000/category?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -159,11 +160,10 @@ const DataContext = ({ children }) => {
   // /users
 
 
-
   const { data: booking = [] } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/bookings`);
+      const res = await fetch(`   http://localhost:5000/bookings`);
       const data = await res.json();
       console.log(data);
       return data;
@@ -211,16 +211,11 @@ const DataContext = ({ children }) => {
     allItems,
     selectDate,
     setSelectDate,
-    // checkoutInfo,
-    // handleTotalPrice,
-    // totalPrice,
     handleCartInfo,
     handleIncreaseItem,
     handleDecreaseItem,
     quantity,
-    // users,
     booking,
-    // refetch,
   };
 
   return (

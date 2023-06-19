@@ -85,7 +85,7 @@ const useStyles = createStyles((theme) => ({
 const PaymentButton = ({ cart }) => {
   const { classes } = useStyles();
   const { user } = useContext(AuthContext);
-  // const url = "http://localhost:5000";
+  // const url = "   http://localhost:5000";
   // console.log(user);
   const handleCheckout = () => {
     console.log(cart);

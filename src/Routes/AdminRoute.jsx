@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/UserContext";
 // import useAdmin from "../Hooks/UseAdmin";
 import { Loader } from "@mantine/core";
 import UseAdmin from "../Hooks/UseAdmin";
+import { toast } from "react-hot-toast";
 // import useAdmin from "../Hooks/useAdmin";
 // import { AuthContext } from "../../contexts/AuthProvider";
 // import useAdmin from "../../hooks/useAdmin";
@@ -20,6 +21,8 @@ const AdminRoute = ({ children }) => {
 
   if (user && isAdmin) {
     return children;
+  } else {
+    toast.error("only usable for admin");
   }
 
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;

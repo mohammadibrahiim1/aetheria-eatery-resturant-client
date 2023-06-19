@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import UserContext from "./Context/UserContext";
 import DataContext from "./Context/DataContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

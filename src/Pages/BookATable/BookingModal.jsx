@@ -154,7 +154,7 @@ const BookingModal = ({ selectTable, setSelectTable, refetch }) => {
       slot: slot,
       table: name,
     };
-    fetch("http://localhost:5000/bookings", {
+    fetch("   http://localhost:5000/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -199,7 +199,7 @@ const BookingModal = ({ selectTable, setSelectTable, refetch }) => {
             <input
               type="text"
               name="name"
-              value={user.displayName}
+              value={user?.displayName}
               placeholder="Your name"
               className={classes.input}
             />
@@ -207,7 +207,7 @@ const BookingModal = ({ selectTable, setSelectTable, refetch }) => {
               name="email"
               type="email"
               placeholder=" email"
-              value={user.email}
+              value={user?.email}
               disabled
               className={classes.input}
             />

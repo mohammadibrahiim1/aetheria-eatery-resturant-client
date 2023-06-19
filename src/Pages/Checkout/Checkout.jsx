@@ -137,7 +137,7 @@ const Checkout = () => {
   const [transactionId, setTransactionId] = useState("");
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/create-payment-intent", {
+  //   fetch("   http://localhost:5000/create-payment-intent", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -217,7 +217,7 @@ const Checkout = () => {
   //       address: address,
   //     };
   //     // console.log(paymentInfo);
-  //     fetch("http://localhost:5000/payments", {
+  //     fetch("   http://localhost:5000/payments", {
   //       method: "POST",
   //       headers: {
   //         "content-type": "application/json",

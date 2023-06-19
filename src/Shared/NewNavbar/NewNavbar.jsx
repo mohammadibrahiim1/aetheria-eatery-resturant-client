@@ -234,7 +234,9 @@ const useStyles = createStyles((theme) => ({
 //   );
 
 export const NewNavbar = () => {
+  
   const links = [{ to: "/shop", label: "Home" }];
+  
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].Link);
   const { classes, cx } = useStyles();

@@ -103,6 +103,7 @@ const Navbar = () => {
   const { signInWithGoogle, logOut, user } = useContext(AuthContext);
   const [openNav, setOpenNav] = React.useState(false);
   const { cart } = useContext(ApiContext);
+  // const { cart } = useContext(ApiContext);
   const [isAdmin] = UseAdmin(user?.email);
 
   React.useEffect(() => {
@@ -117,7 +118,7 @@ const Navbar = () => {
     signInWithGoogle().then((result) => {
       const user = result.user;
       if (user) {
-        fetch("http://localhost:5000/users", {
+        fetch("   http://localhost:5000/users", {
           method: "post",
           headers: {
             "content-type": "application/json",
@@ -132,7 +133,7 @@ const Navbar = () => {
           .then((data) => {
             console.log(data);
             if (data.acknowledged) {
-              alert("successfully signin");
+              toast.success("SignIn successfully");
             } else {
               toast.error(data.message);
             }
@@ -148,6 +149,9 @@ const Navbar = () => {
       .catch((error) => console.error(error));
     toast.success("successfully logout");
   };
+
+  // toast
+  // const notify = () => toast("Here is your toast.");
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">

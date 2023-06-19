@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes";
+import { Toaster } from "react-hot-toast";
+// import { Toaster } from "react-hot-toast";
 
 function App() {
   // const [meal, setMeal] = useState([]);
@@ -17,6 +19,8 @@ function App() {
     <div>
       <div>
         <RouterProvider router={router}></RouterProvider>
+        {/* <Toaster /> */}
+        <Toaster></Toaster>
       </div>
     </div>
   );

@@ -56,7 +56,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/tableReservation",
-        element: <TableReservation></TableReservation>,
+        element: (
+          <PrivateRoute>
+            <TableReservation></TableReservation>
+          </PrivateRoute>
+        ),
       },
     ],
   },
