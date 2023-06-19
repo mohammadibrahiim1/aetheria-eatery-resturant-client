@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   createStyles,
   Header,
@@ -12,6 +12,13 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { MantineLogo } from "@mantine/ds";
 import { Link } from "react-router-dom";
+import UseAdmin from "../../Hooks/UseAdmin";
+import { ApiContext } from "../../Context/DataContext";
+import { AuthContext } from "../../Context/UserContext";
+import { toast } from "react-hot-toast";
+import { FaUserAlt } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { IconLayoutDashboard } from "@tabler/icons-react";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -98,159 +105,94 @@ const useStyles = createStyles((theme) => ({
 //   links: { link: string, label: string }[];
 // }
 
-// const navList = (
-//     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-//       <Link to="/tableReservation">
-//         <Text
-//           as="li"
-//           variant="small"
-//           color="blue-gray"
-//           className="p-1 font-normal"
-//         >
-//           <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
-//             Book A Table
-//           </div>
-//         </Text>
-//       </Link>
-//       <Link to="/mainMenu">
-//         <Text
-//           as="li"
-//           variant="small"
-//           color="blue-gray"
-//           className="p-1 font-normal"
-//         >
-//           <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
-//             Our Menu
-//           </div>
-//         </Text>
-//       </Link>
-//       <Link to="/shop">
-//         <Text
-//           as="li"
-//           variant="small"
-//           color="blue-gray"
-//           className="p-1 font-normal"
-//         >
-//           <div className="flex items-center text-primary text-md hover:text-accent font-semibold">
-//             Shop
-//           </div>
-//         </Text>
-//       </Link>
-//       <Link to="/cart">
-//         {" "}
-//         <Text
-//           as="li"
-//           variant="small"
-//           color="blue-gray"
-//           className="p-1 font-normal"
-//         >
-//           <Indicator
-//             position="top-end"
-//             label={cart.length}
-//             color="red"
-//             size={14}
-//           />
-//           <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
-//             Cart
-//           </div>
-//         </Text>
-//       </Link>
-//       <Link to="/aboutUs">
-//         {" "}
-//         <Text
-//           as="li"
-//           variant="small"
-//           color="blue-gray"
-//           className="p-1 font-normal"
-//         >
-//           <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
-//             About
-//           </div>
-//         </Text>
-//       </Link>
-//       {user?.email && isAdmin ? (
-//         <>
-//           {" "}
-//           <Link to="/dashboard/allBookings">
-//             {" "}
-//             <Text
-//               as="li"
-//               variant="small"
-//               color="blue-gray"
-//               className="p-1 font-normal"
-//             >
-//               <div className="flex items-center text-md text-primary hover:text-accent font-semibold">
-//                 <IconLayoutDashboard className="h-6 w-6" />
-//               </div>
-//             </Text>
-//           </Link>
-//         </>
-//       ) : (
-//         ""
-//       )}
-
-//       {user?.email ? (
-//         <>
-//           <Text
-//             as="li"
-//             variant="small"
-//             color="blue-gray"
-//             className="p-1 font-normal"
-//           >
-//             <Menu placement="bottom-start">
-//               <MenuHandler>
-//                 <Button
-//                   variant="default"
-//                   className="cursor-pointer font-semibold text-md text-primary hover:text-accent"
-//                 >
-//                   <FaUserAlt onClick={handleLogOut} className="h-6 w-6" />
-//                   {/* <img src={user.photoURL} alt="" srcset="" className="h-6 w-6" /> */}
-//                 </Button>
-//               </MenuHandler>
-//             </Menu>
-//           </Text>
-//         </>
-//       ) : (
-//         <Text
-//           as="li"
-//           variant="small"
-//           color="blue-gray"
-//           className="p-1 font-normal"
-//         >
-//           <Menu placement="bottom-start">
-//             <MenuHandler>
-//               <Button
-//                 variant="default"
-//                 className="cursor-pointer font-semibold text-md text-primary hover:text-accent"
-//               >
-//                 <FcGoogle onClick={handleGoogleSignIn} className="h-6 w-6" />{" "}
-//               </Button>
-//             </MenuHandler>
-//           </Menu>
-//         </Text>
-//       )}
-//       {/* {user.displayName} */}
-//     </ul>
-//   );
-
 export const NewNavbar = () => {
-  
-  const links = [{ to: "/shop", label: "Home" }];
-  
+  const { signInWithGoogle, logOut, user } = useContext(AuthContext);
+  // const [openNav, setOpenNav] = React.useState(false);
+  const { cart } = useContext(ApiContext);
+  // const { cart } = useContext(ApiContext);
+  const [isAdmin] = UseAdmin(user?.email);
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle().then((result) => {
+      const user = result.user;
+      if (user) {
+        fetch("   http://localhost:5000/users", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.acknowledged) {
+              toast.success("SignIn successfully");
+            } else {
+              toast.error(data.message);
+            }
+          });
+      }
+    });
+  };
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+    toast.success("successfully logout");
+  };
+
+  const links = [
+    { link: "/tableReservation", label: "Book A Table" },
+    { link: "/mainMenu", label: " Our Menu" },
+    { link: "/shop", label: "Shop" },
+    { link: "/cart", label: " Cart" },
+    { link: "/aboutUs", label: "About" },
+    {
+      link: "/dashboard/allBookings",
+      label:
+        user?.email && isAdmin ? (
+          <div>
+            {" "}
+            <IconLayoutDashboard className="h-6 w-6" />
+          </div>
+        ) : (
+          <></>
+        ),
+    },
+    {
+      // link: "/dashboard/allBookings",
+      label: user?.email ? (
+        <div onClick={handleLogOut}>
+          <FaUserAlt className="h-6 w-6" />
+        </div>
+      ) : (
+        <div onClick={handleGoogleSignIn}>
+          <FcGoogle className="h-6 w-6" />{" "}
+        </div>
+      ),
+    },
+  ];
+
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].Link);
+  const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
     <Link
       key={link.label}
-      to={link.to}
+      to={link.link}
       className={cx(classes.link, {
-        [classes.linkActive]: active === link.Link,
+        [classes.linkActive]: active === link.link,
       })}
       onClick={(event) => {
-        event.preventDefault();
-        setActive(link.Link);
+        // event.preventDefault();
+        setActive(link.link);
         close();
       }}
     >
@@ -259,9 +201,11 @@ export const NewNavbar = () => {
   ));
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
+    <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
-        <MantineLogo size={28} />
+        <Link to="/">
+          <MantineLogo size={28} />
+        </Link>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>

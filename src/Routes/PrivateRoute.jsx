@@ -18,7 +18,7 @@ const PrivateRoute = ({ children }) => {
     return children;
   } else {
     // alert("please log in with google icon in the navbar");
-    toast.success("This didn't work.");
+    toast.error("log in with google for booking a table");
   }
 
   return (
