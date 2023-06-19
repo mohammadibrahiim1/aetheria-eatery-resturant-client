@@ -204,7 +204,8 @@ export const NewNavbar = () => {
     <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
         <Link to="/">
-          <MantineLogo size={28} />
+          {/* <MantineLogo size={28} /> */}
+          Aetheria Eatery
         </Link>
         <Group spacing={5} className={classes.links}>
           {items}

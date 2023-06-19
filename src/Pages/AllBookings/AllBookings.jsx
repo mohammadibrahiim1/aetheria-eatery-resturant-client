@@ -40,7 +40,7 @@ const AllBookings = () => {
     <div>
       <p className="text-center"> See All booking data</p>
       <p className="text-center">
-        Total <span className="text-error"> {booking.length}</span> users
+        Total <span className="text-error"> {booking.length}</span> bookings
       </p>
       <Table>
         <thead>
