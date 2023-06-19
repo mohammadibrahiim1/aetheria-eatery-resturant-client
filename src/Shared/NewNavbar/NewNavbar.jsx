@@ -48,6 +48,7 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    fontWeight: " bold",
     height: "100%",
   },
 
@@ -202,18 +203,27 @@ export const NewNavbar = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
-        <Link to="/">Aetheria Eatery</Link>
+        {" "}
+        <Link to="/" className="flex justify-between align-center gap-2">
+          <span>
+            <img
+              src="https://i.ibb.co/HtH5rWq/fast-food-1.png"
+              alt=""
+              srcset=""
+              className="h-6 w-6"
+            />
+          </span>
+          <span>Aetheria Eatery</span>
+        </Link>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-
         <Burger
           opened={opened}
           onClick={toggle}
           className={classes.burger}
           size="sm"
         />
-
         <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
