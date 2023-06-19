@@ -59,44 +59,19 @@ const useStyles = createStyles((theme) => ({
   },
 
   controls: {
-    // marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-    // display: "flex",
-    // justifyContent: "space-between",
-    // alignItems: "center",
-    // paddingLeft: theme.spacing.xs,
-    // marginRight: theme.spacing.md,
-
-    [theme.fn.smallerThan("sm")]: {
-      // column: "12"
-      // display: "flex",
-      // justifyContent: "space-between",
-      // alignItems: "center",
-    },
+    [theme.fn.smallerThan("sm")]: {},
   },
   control: {
     height: rem(28),
     fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
-
-    // "&:not(:first-of-type)": {
-    // marginLeft: theme.spacing.xs,
-    // },
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   "&:not(:first-of-type)": {
-    //     marginTop: theme.spacing.md,
-    //     marginLeft: 0,
-    //   },
-    // },
   },
 }));
 
 const Shop = () => {
   const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange } =
     useContext(ApiContext);
-  const { classes, cx } = useStyles();
-
-  //   const [foodItem, setFoodItem] = useState({});
+  const { classes } = useStyles();
 
   return (
     <div>
@@ -217,8 +192,6 @@ const Shop = () => {
         </Grid>
 
         <MostFavourite></MostFavourite>
-
-        {/* <OrderOnline></OrderOnline> */}
       </Container>
       <Contact></Contact>
     </div>
