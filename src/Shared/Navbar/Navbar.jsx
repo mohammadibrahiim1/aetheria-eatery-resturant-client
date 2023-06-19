@@ -101,14 +101,9 @@ import UseAdmin from "../../Hooks/UseAdmin";
 
 const Navbar = () => {
   const { signInWithGoogle, logOut, user } = useContext(AuthContext);
-  // const { user } = useContext(AuthContext);
   const [openNav, setOpenNav] = React.useState(false);
   const { cart } = useContext(ApiContext);
   const [isAdmin] = UseAdmin(user?.email);
-
-  // const { classes, cx } = useStyles();
-
-  // user
 
   React.useEffect(() => {
     window.addEventListener(
@@ -200,7 +195,6 @@ const Navbar = () => {
           color="blue-gray"
           className="p-1 font-normal"
         >
-          {/* "bottom-end" | "bottom-start" | "top-end" | "top-start" | "bottom-center" | "top-center" | "middle-center" | "middle-end" | "middle-start" */}
           <Indicator
             position="top-end"
             label={cart.length}

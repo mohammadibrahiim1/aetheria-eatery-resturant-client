@@ -1,6 +1,7 @@
 import { Container, createStyles, rem } from "@mantine/core";
 import React from "react";
 import Header from "./Header";
+import { OurTeam } from "./OurTeam";
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor:
@@ -258,6 +259,10 @@ const AboutUs = () => {
             />
           </div>
           {/* </div> */}
+        </div>
+
+        <div>
+          <OurTeam></OurTeam>
         </div>
       </Container>
     </div>
