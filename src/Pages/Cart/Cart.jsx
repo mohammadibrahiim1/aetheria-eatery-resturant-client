@@ -15,6 +15,7 @@ import { ApiContext } from "../../Context/DataContext";
 import { IconTrash } from "@tabler/icons-react";
 
 import PaymentButton from "../../Components/PaymentButton";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -136,38 +137,44 @@ const Cart = () => {
         <Grid className="py-8">
           <Grid.Col md={6} lg={12}>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
-              {cart && cart ? (
-                cart?.map((item) => (
-                  <>
-                    <Card withBorder radius="md" p={0} className={classes.card}>
-                      <Group noWrap spacing={0} key={item.id}>
-                        <Image src={item.image} height={140} width={140} />
-                        <div className={classes.body}>
-                          <Text className={classes.title} mb={3}>
-                            {item.name}
-                          </Text>
-                          <Text className={classes.title}>
-                            ${item.price * item.quantity}
-                          </Text>
-                          <div class=" flex justify-between items-center gap-32 lg:gap-52">
-                            <div className="cart-item-quantity flex justify-between items-center">
-                              <button
-                                className={classes.counterButton}
-                                onClick={() => handleDecreaseItem(item._id)}
-                              >
-                                -
-                              </button>
-                              <div className={classes.counterButton}>
-                                {item.quantity}
+              {cart.length ? (
+                <>
+                  {cart?.map((item) => (
+                    <>
+                      <Card
+                        withBorder
+                        radius="md"
+                        p={0}
+                        className={classes.card}
+                      >
+                        <Group noWrap spacing={0} key={item.id}>
+                          <Image src={item.image} height={140} width={140} />
+                          <div className={classes.body}>
+                            <Text className={classes.title} mb={3}>
+                              {item.name}
+                            </Text>
+                            <Text className={classes.title}>
+                              ${item.price * item.quantity}
+                            </Text>
+                            <div class=" flex justify-between items-center gap-32 lg:gap-52">
+                              <div className="cart-item-quantity flex justify-between items-center">
+                                <button
+                                  className={classes.counterButton}
+                                  onClick={() => handleDecreaseItem(item._id)}
+                                >
+                                  -
+                                </button>
+                                <div className={classes.counterButton}>
+                                  {item.quantity}
+                                </div>
+                                <button
+                                  className={classes.counterButton}
+                                  onClick={() => handleIncreaseItem(item._id)}
+                                >
+                                  +
+                                </button>
                               </div>
-                              <button
-                                className={classes.counterButton}
-                                onClick={() => handleIncreaseItem(item._id)}
-                              >
-                                +
-                              </button>
-                            </div>
-                            {/* <input
+                              {/* <input
                             onChange={(e) =>
                               handleQuantityChange(item._id, e.target.value)
                             }
@@ -175,29 +182,53 @@ const Cart = () => {
                             type="number"
                             value={item.quantity}
                           /> */}
-                            <div position="center">
-                              <Button
-                                // defaultValue={4}
-                                className={classes.control}
-                                compact
-                                variant="default"
-                                size="xs"
-                              >
-                                {" "}
-                                <IconTrash
-                                  onClick={() => removeItemFromCart(item._id)}
-                                />
-                              </Button>
+                              <div position="center">
+                                <Button
+                                  // defaultValue={4}
+                                  className={classes.control}
+                                  compact
+                                  variant="default"
+                                  size="xs"
+                                >
+                                  {" "}
+                                  <IconTrash
+                                    onClick={() => removeItemFromCart(item._id)}
+                                  />
+                                </Button>
+                              </div>
                             </div>
+                            <Group noWrap spacing="xs"></Group>
                           </div>
-                          <Group noWrap spacing="xs"></Group>
-                        </div>
-                      </Group>
-                    </Card>
-                  </>
-                ))
+                        </Group>
+                      </Card>
+                    </>
+                  ))}
+                </>
               ) : (
-                <p className="text-red"> your card in empty!</p>
+                <>
+                  <section className="flex items-center text-red-800 mt-8">
+                    <div className="container flex flex-col items-center justify-center mx-auto">
+                      <div className="max-w-md text-center">
+                        {/* <h2 className="mb-8 font-extrabold text-9xl text-gray-400">
+                          <span className="sr-only">Error</span>404
+                        </h2> */}
+                        <p className="text-2xl font-semibold md:text-3xl">
+                          Sorry, we couldn't find items .
+                        </p>
+                        <p className="mt-4  text-info-600">
+                          But dont worry, you can find items or things on our{" "}
+                          <Link
+                            to="/shop"
+                            className="text-indigo-500 font-semibold text-md btn"
+                          >
+                            Shop
+                          </Link>{" "}
+                          page .
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+                </>
               )}
             </div>
             <div className="py-8">
