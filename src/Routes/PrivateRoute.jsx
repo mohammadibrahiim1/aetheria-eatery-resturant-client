@@ -3,8 +3,9 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/UserContext";
 import { Navigate, useLocation } from "react-router-dom";
 import { Loader } from "@mantine/core";
-// import { Toaster } from "react-hot-toast";
 import { toast } from "react-hot-toast";
+// import { Toaster } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 // import { toast } from "react-hot-toast";
 
 const PrivateRoute = ({ children }) => {
@@ -17,10 +18,9 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   } else {
-    // alert("please log in with google icon in the navbar");
-    toast.error("log in with google for booking a table");
+    toast.error("log in first with your google account");
   }
-
+  // return <div></div>;
   return (
     <div>
       <Navigate to="/" state={{ from: location }} replace></Navigate>

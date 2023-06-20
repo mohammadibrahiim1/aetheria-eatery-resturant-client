@@ -2,6 +2,8 @@ import { Container, createStyles, rem } from "@mantine/core";
 import React from "react";
 import Header from "./Header";
 import { OurTeam } from "./OurTeam";
+import GoogleMap from "./GoogleMap";
+// import { GoogleMap } from "./GoogleMap";
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor:
@@ -180,7 +182,7 @@ const AboutUs = () => {
               alt=""
             />
           </div>
-      
+
           <div>
             <img
               class="h-full max-w-full rounded-lg"
@@ -202,7 +204,7 @@ const AboutUs = () => {
               alt=""
             />
           </div>
-       
+
           <div>
             <img
               class="h-full max-w-full rounded-lg"
@@ -224,7 +226,7 @@ const AboutUs = () => {
               alt=""
             />
           </div>
-     
+
           {/* <div>
             <img
               class="h-full max-w-full rounded-lg"
@@ -246,13 +248,15 @@ const AboutUs = () => {
               alt=""
             />
           </div> */}
-          
         </div>
 
         <div>
           <OurTeam></OurTeam>
         </div>
       </Container>
+      <div>
+        <GoogleMap></GoogleMap>
+      </div>
     </div>
   );
 };

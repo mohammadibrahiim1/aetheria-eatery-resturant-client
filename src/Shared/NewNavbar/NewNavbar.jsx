@@ -129,7 +129,7 @@ export const NewNavbar = () => {
           .then((data) => {
             console.log(data);
             if (data.acknowledged) {
-              toast.success("SignIn successfully");
+              toast.success(" successfully SignIn");
             } else {
               toast.error(data.message);
             }
