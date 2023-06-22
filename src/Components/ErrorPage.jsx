@@ -1,34 +1,89 @@
-import React from "react";
+import {
+  createStyles,
+  Image,
+  Container,
+  Title,
+  Text,
+  Button,
+  SimpleGrid,
+  rem,
+} from "@mantine/core";
 import { Link } from "react-router-dom";
+// import image from "./image.svg";
 
-const ErrorPage = () => {
+const useStyles = createStyles((theme) => ({
+  root: {
+    paddingTop: rem(80),
+    paddingBottom: rem(80),
+  },
+
+  title: {
+    fontWeight: 900,
+    fontSize: rem(34),
+    marginBottom: theme.spacing.md,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+
+    [theme.fn.smallerThan("sm")]: {
+      fontSize: rem(32),
+    },
+  },
+
+  control: {
+    [theme.fn.smallerThan("sm")]: {
+      width: "100%",
+    },
+  },
+
+  mobileImage: {
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  desktopImage: {
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+}));
+
+export function ErrorPage() {
+  const { classes } = useStyles();
+
   return (
-    <div>
-      <section className="flex items-center h-full p-16 bg-gray-50 text-gray-800">
-        <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-          <div className="max-w-md text-center">
-            <h2 className="mb-8 font-extrabold text-9xl text-gray-400">
-              <span className="sr-only">Error</span>404
-            </h2>
-            <p className="text-2xl font-semibold md:text-3xl">
-              Sorry, we couldn't find this page.
-            </p>
-            <p className="mt-4 mb-8 text-gray-600">
-              But dont worry, you can find plenty of other things on our
-              homepage.
-            </p>
-            <Link
-              rel="noopener noreferrer"
-              to="/"
-              className="px-8 py-3 font-semibold rounded bg-violet-600 text-gray-50"
+    <Container className={classes.root}>
+      <SimpleGrid
+        spacing={80}
+        cols={2}
+        breakpoints={[{ maxWidth: "sm", cols: 1, spacing: 40 }]}
+      >
+        <Image
+          src="https://ui.mantine.dev/_next/static/media/image.11cd6c19.svg"
+          className={classes.mobileImage}
+        />
+        <div>
+          <Title className={classes.title}>Something is not right...</Title>
+          <Text color="dimmed" size="lg">
+            Page you are trying to open does not exist. You may have mistyped
+            the address, or the page has been moved to another URL. If you think
+            this is an error contact support.
+          </Text>
+          <Link to="/">
+            <Button
+              variant="outline"
+              size="md"
+              mt="xl"
+              className={classes.control}
             >
-              return to home
-            </Link>
-          </div>
+              Get back to home page
+            </Button>
+          </Link>
         </div>
-      </section>
-    </div>
+        <Image
+          src="https://ui.mantine.dev/_next/static/media/image.11cd6c19.svg"
+          className={classes.desktopImage}
+        />
+      </SimpleGrid>
+    </Container>
   );
-};
-
-export default ErrorPage;
+}
