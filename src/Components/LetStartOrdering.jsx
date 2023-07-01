@@ -1,4 +1,5 @@
 import { createStyles, Text, rem, Button } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -84,9 +85,9 @@ export const LetStartOrdering = () => {
   const stats = data.map((stat) => (
     <>
       <div key={stat.title} className={classes.stat}>
-        <div>
+        <Link to="/shop">
           <button className={classes.button}>Delivery</button>
-        </div>
+        </Link>
         <div>
           <button className={classes.button}>TakeAway</button>
         </div>

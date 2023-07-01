@@ -12,7 +12,7 @@ import { ApiContext } from "../../Context/DataContext";
 import { ShopPageCard } from "../../Components/ShopPageCard";
 import ShopPageHeader from "../../Components/ShopPageHeader";
 import Contact from "../../Components/Contact";
-import OrderOnline from "../../Components/OrderOnline";
+// import OrderOnline from "../../Components/OrderOnline";
 import MostFavourite from "./MostFavourite";
 // import FoodCard from "./FoodCard";
 // import Modal from "./FoodModal";
