@@ -10,6 +10,7 @@ import {
   rem,
   Container,
 } from "@mantine/core";
+import { LetStartOrdering } from "./LetStartOrdering";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -69,6 +70,9 @@ const OrderOnline = () => {
   // console.log(foodItems);
   return (
     <div>
+      <Container>
+        <LetStartOrdering></LetStartOrdering>
+      </Container>
       <Container className="py-28">
         <div className={classes.heading} color="#151515">
           <h1>Order Online</h1>
