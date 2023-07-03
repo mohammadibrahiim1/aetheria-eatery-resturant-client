@@ -21,27 +21,27 @@ const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    height: "150px",
+    width: "100%",
   },
 
   title: {
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1.2,
+    marginTop: "15px",
+    marginBottom: "15px",
   },
 
   body: {
     padding: theme.spacing.md,
   },
   heading: {
-    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
     fontWeight: 700,
-    color: "#151515",
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1.2,
-    fontSize: rem(32),
-    // marginTop: theme.spacing.xs,
-    textTransform: "uppercase",
-    textAlign: "center",
-    // paddingBottom: theme.spacing.sm,
+    marginTop: "15px",
+    marginBottom: "15px",
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -78,7 +78,7 @@ const useStyles = createStyles((theme) => ({
     height: rem(32),
     // fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
-    marginTop: "12px",
+    // marginTop: "12px",
     width: "100%",
     border: "1px solid red",
     ":hover": {
@@ -98,6 +98,16 @@ const useStyles = createStyles((theme) => ({
         marginLeft: 0,
       },
     },
+  },
+
+  cartItems: {
+    border: "1px solid gray",
+    borderRadius: "15px",
+  },
+
+  section: {
+    width: "60%",
+    margin: "auto",
   },
 }));
 
@@ -126,33 +136,26 @@ const Cart = () => {
 
   return (
     <div>
-      <Container className="py-24">
-        <div className={classes.subTitle}>
-          <p>---check it out---</p>
-        </div>
-        <div className={classes.heading} color="#151515">
-          <h1> Confirm Your Order</h1>
-        </div>
+      <section className={classes.section}>
+        <Text className={classes.heading}>My Cart</Text>
 
-        <Grid className="py-8">
-          <Grid.Col md={6} lg={12}>
-            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
+        <Grid className="">
+          <Grid.Col md={6} lg={8} className={classes.cartItems}>
+            <div className="">
               {cart.length ? (
                 <>
                   {cart?.map((item) => (
                     <>
-                      <Card
-                        withBorder
-                        radius="md"
-                        p={0}
-                        className={classes.card}
-                      >
-                        <Group noWrap spacing={0} key={item.id}>
-                          <Image src={item.image} height={140} width={140} />
+                      <Card className={classes.card}>
+                        <Group key={item.id}>
+                          <Image
+                            src={item.image}
+                            height={90}
+                            width={90}
+                            radius={10}
+                          />
                           <div className={classes.body}>
-                            <Text className={classes.title} mb={3}>
-                              {item.name}
-                            </Text>
+                            <Text className={classes.title}>{item.name}</Text>
                             <Text className={classes.title}>
                               ${item.price * item.quantity}
                             </Text>
@@ -237,8 +240,8 @@ const Cart = () => {
               </Button> */}
             </div>
           </Grid.Col>
-          <Grid.Col md={6} lg={12}>
-            {/* <Grid.Col md={6} lg={4}> */}{" "}
+          <Grid.Col md={6} lg={.5}></Grid.Col>
+          <Grid.Col md={6} lg={3.5} className={classes.cartItems}>
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -283,7 +286,7 @@ const Cart = () => {
             </Link> */}
           </Grid.Col>
         </Grid>
-      </Container>
+      </section>
     </div>
   );
 };
