@@ -102,18 +102,21 @@ const PaymentButton = ({ cart }) => {
       .catch((err) => console.log(err.message));
   };
   return (
-    <div>
+    <div className="mt-2" >
       <div
         onClick={() => handleCheckout()}
         to="/shop"
         position="center"
-        className={classes.controls}
+        // mt={6}
+        // className={classes.controls}
       >
         <Button compact className={classes.control} size="xs">
           Checkout
         </Button>
       </div>
-      <Link to="/shop" position="center" className={classes.controls}>
+      <Link to="/shop" position="center" 
+      // className={classes.controls}
+      >
         <Button compact className={classes.control} size="xs">
           Add more items
         </Button>

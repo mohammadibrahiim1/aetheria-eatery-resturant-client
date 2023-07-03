@@ -112,6 +112,12 @@ const useStyles = createStyles((theme) => ({
     opacity: "0.7",
     borderRadius: "15px",
   },
+  cartPaymentSummary: {
+    border: "1px solid gray",
+    opacity: "0.7",
+    borderRadius: "15px",
+    height: '250px'
+  },
 
   section: {
     width: "60%",
@@ -264,7 +270,7 @@ const Cart = () => {
             </div>
           </Grid.Col>
           <Grid.Col md={6} lg={0.5}></Grid.Col>
-          <Grid.Col md={6} lg={3.5} className={classes.cartItems}>
+          <Grid.Col md={6} lg={3.5} className={classes.cartPaymentSummary}>
             <Text
               variant="gradient"
               gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
@@ -284,7 +290,7 @@ const Cart = () => {
               fz="sm"
               fw={700}
             >
-              <div>
+              <div className="mt-5">
                 <div className="flex justify-between p-2">
                   <p>Subtotal :</p>
                   <p>${calculateSubTotal()}</p>
