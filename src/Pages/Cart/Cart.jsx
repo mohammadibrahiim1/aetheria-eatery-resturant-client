@@ -4,7 +4,7 @@ import {
   Image,
   Text,
   Group,
-  Container,
+  // Container,
   Grid,
   Button,
   rem,
@@ -27,14 +27,15 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     fontWeight: 700,
+    opacity: "0.7",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1.2,
-    marginTop: "15px",
-    marginBottom: "15px",
+    // marginTop: "15px",
+    // marginBottom: "15px",
   },
 
   body: {
-    padding: theme.spacing.md,
+    // padding: theme.spacing.md,
   },
   heading: {
     fontWeight: 700,
@@ -45,14 +46,15 @@ const useStyles = createStyles((theme) => ({
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
-    fontWeight: 500,
+    fontWeight: 400,
     color: "#D99904",
     lineHeight: 1.2,
-    fontSize: rem(12),
-    marginTop: theme.spacing.xs,
-    textTransform: "uppercase",
-    textAlign: "center",
-    paddingBottom: theme.spacing.xs,
+    fontSize: rem(13),
+    width: "55%",
+    marginTop: "5px",
+    // textTransform: "uppercase",
+    // textAlign: "center",
+    // paddingBottom: theme.spacing.xs,
   },
 
   counterButton: {
@@ -122,6 +124,8 @@ const Cart = () => {
     // quantity,
   } = useContext(ApiContext);
 
+  console.log(cart);
+
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
       return total + item.price * item.quantity;
@@ -156,9 +160,12 @@ const Cart = () => {
                           />
                           <div className={classes.body}>
                             <Text className={classes.title}>{item.name}</Text>
-                            <Text className={classes.title}>
-                              ${item.price * item.quantity}
+                            <Text className={classes.subTitle}>
+                              {item.description}
                             </Text>
+                            {/* <Text className={classes.title}>
+                              ${item.price * item.quantity}
+                            </Text> */}
                             <div class=" flex justify-between items-center gap-32 lg:gap-52">
                               <div className="cart-item-quantity flex justify-between items-center">
                                 <button
@@ -240,7 +247,7 @@ const Cart = () => {
               </Button> */}
             </div>
           </Grid.Col>
-          <Grid.Col md={6} lg={.5}></Grid.Col>
+          <Grid.Col md={6} lg={0.5}></Grid.Col>
           <Grid.Col md={6} lg={3.5} className={classes.cartItems}>
             <Text
               variant="gradient"
