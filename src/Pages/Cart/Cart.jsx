@@ -3,7 +3,7 @@ import {
   Card,
   Image,
   Text,
-  Group,
+  // Group,
   // Container,
   Grid,
   Button,
@@ -21,7 +21,6 @@ const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-    height: "150px",
     width: "100%",
   },
 
@@ -36,6 +35,9 @@ const useStyles = createStyles((theme) => ({
 
   body: {
     // padding: theme.spacing.md,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   heading: {
     fontWeight: 700,
@@ -47,20 +49,24 @@ const useStyles = createStyles((theme) => ({
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
     fontWeight: 400,
-    color: "#D99904",
+    opacity: "0.5",
     lineHeight: 1.2,
     fontSize: rem(13),
-    width: "55%",
+    width: "75%",
     marginTop: "5px",
-    // textTransform: "uppercase",
-    // textAlign: "center",
-    // paddingBottom: theme.spacing.xs,
   },
 
-  counterButton: {
-    border: "1px solid red",
-    paddingRight: "5px",
-    paddingLeft: "5px",
+  counterContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    border: "1px solid gray",
+    opacity: "0.5",
+    paddingLeft: "9px",
+    paddingRight: "9px",
+    margin: "5px",
+    borderRadius: "8px",
+    gap: "7px",
   },
 
   controls: {
@@ -77,17 +83,16 @@ const useStyles = createStyles((theme) => ({
     },
   },
   control: {
-    height: rem(32),
-    // fontSize: theme.fontSizes.sm,
+    height: rem(22),
     color: "#B70C1C",
-    // marginTop: "12px",
-    width: "100%",
-    border: "1px solid red",
+    width: "50%",
+    // border: "1px solid red",
+
     ":hover": {
-      backgroundColor: "red",
-      border: "1px solid red",
+      backgroundColor: "white",
+      // border: "1px solid red",
       transition: "0.5s",
-      color: "white",
+      color: "#E4002B",
     },
 
     "&:not(:first-of-type)": {
@@ -104,12 +109,23 @@ const useStyles = createStyles((theme) => ({
 
   cartItems: {
     border: "1px solid gray",
+    opacity: "0.7",
     borderRadius: "15px",
   },
 
   section: {
     width: "60%",
     margin: "auto",
+  },
+  counterMinusButton: {
+    borderRight: "1px solid gray",
+    opacity: "0.5",
+    paddingRight: "9px",
+  },
+  counterPlusButton: {
+    borderLeft: "1px solid gray",
+    opacity: "0.5",
+    paddingLeft: "9px",
   },
 }));
 
@@ -143,7 +159,7 @@ const Cart = () => {
       <section className={classes.section}>
         <Text className={classes.heading}>My Cart</Text>
 
-        <Grid className="">
+        <Grid className="py-8">
           <Grid.Col md={6} lg={8} className={classes.cartItems}>
             <div className="">
               {cart.length ? (
@@ -151,53 +167,52 @@ const Cart = () => {
                   {cart?.map((item) => (
                     <>
                       <Card className={classes.card}>
-                        <Group key={item.id}>
-                          <Image
-                            src={item.image}
-                            height={90}
-                            width={90}
-                            radius={10}
-                          />
+                        <div key={item.id}>
                           <div className={classes.body}>
-                            <Text className={classes.title}>{item.name}</Text>
-                            <Text className={classes.subTitle}>
-                              {item.description}
-                            </Text>
-                            {/* <Text className={classes.title}>
-                              ${item.price * item.quantity}
-                            </Text> */}
-                            <div class=" flex justify-between items-center gap-32 lg:gap-52">
-                              <div className="cart-item-quantity flex justify-between items-center">
+                            <div className="flex items-center gap-5 ">
+                              <Image
+                                src={item.image}
+                                height={80}
+                                width={120}
+                                radius={10}
+                              />
+                              <div>
+                                <Text className={classes.title}>
+                                  {item.name}
+                                </Text>
+                                <Text className={classes.subTitle}>
+                                  {item.description.slice(0, 75)}...
+                                </Text>
+                              </div>
+                            </div>
+
+                            <div class=" flex items-center gap-7 w-60">
+                              <div className={classes.counterContainer}>
                                 <button
-                                  className={classes.counterButton}
+                                  className={classes.counterMinusButton}
                                   onClick={() => handleDecreaseItem(item._id)}
                                 >
                                   -
                                 </button>
-                                <div className={classes.counterButton}>
-                                  {item.quantity}
-                                </div>
+                                <div>{item.quantity}</div>
                                 <button
-                                  className={classes.counterButton}
+                                  className={classes.counterPlusButton}
                                   onClick={() => handleIncreaseItem(item._id)}
                                 >
                                   +
                                 </button>
                               </div>
-                              {/* <input
-                            onChange={(e) =>
-                              handleQuantityChange(item._id, e.target.value)
-                            }
-                            class="h-8 w-8 border bg-white text-center text-xs outline-none"
-                            type="number"
-                            value={item.quantity}
-                          /> */}
-                              <div position="center">
+
+                              <div className="flex gap-2 items-center justify-between">
+                                <Text className={classes.title}>
+                                  ${item.price * item.quantity}
+                                </Text>
+
                                 <Button
                                   // defaultValue={4}
                                   className={classes.control}
                                   compact
-                                  variant="default"
+                                  // variant="default"
                                   size="xs"
                                 >
                                   {" "}
@@ -207,10 +222,11 @@ const Cart = () => {
                                 </Button>
                               </div>
                             </div>
-                            <Group noWrap spacing="xs"></Group>
+                            {/* <Group noWrap spacing="xs"></Group> */}
                           </div>
-                        </Group>
+                        </div>
                       </Card>
+                      <hr />
                     </>
                   ))}
                 </>
@@ -257,7 +273,7 @@ const Cart = () => {
               fz="xl"
               fw={700}
             >
-              Bill Details
+              Payment summary
             </Text>
             <hr />
             <Text
@@ -268,11 +284,17 @@ const Cart = () => {
               fz="sm"
               fw={700}
             >
-              <div className="py-8 ">
-                {" "}
-                <p className="pb-5">Subtotal: ${calculateSubTotal()}</p>
+              <div>
+                <div className="flex justify-between p-2">
+                  <p>Subtotal :</p>
+                  <p>${calculateSubTotal()}</p>
+                </div>
                 <hr />
-                <p className="pt-5">Total : ${calculateTotal()} </p>
+                <div className="flex justify-between p-2">
+                  <p>Total(tax incl.) : </p>
+                  <p> ${calculateTotal()}</p>
+                </div>
+                <hr />
               </div>
             </Text>
             {/* <div position="center" className={classes.controls}> */}
