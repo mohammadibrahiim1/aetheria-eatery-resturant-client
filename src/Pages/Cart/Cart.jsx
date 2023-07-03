@@ -43,7 +43,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1.2,
-    marginTop: "15px",
+    marginTop: "20px",
     marginBottom: "15px",
   },
   subTitle: {
