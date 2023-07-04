@@ -3,7 +3,7 @@ import { Grid, Input, createStyles } from "@mantine/core";
 import React from "react";
 import PaymentSavedCart from "../../Components/PaymentSavedCart";
 import PaymentCard from "../../Components/PaymentCard";
-import { IconAt } from "@tabler/icons-react";
+import { IconAt, IconPhone, IconWriting } from "@tabler/icons-react";
 // import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -66,15 +66,51 @@ const Checkout = () => {
               Complete your order by providing your payment details.
             </p>
             <div class="mt-5">
+              <label for="email">Name</label>
+              <div class="relative">
+                <Input
+                  mt={4}
+                  type="text"
+                  id="name"
+                  name="name"
+                  icon={<IconWriting />}
+                  placeholder="Your Name"
+                />
+                {/* <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="your.email@gmail.com"
+
+                /> */}
+              </div>
               <label for="email">Email</label>
               <div class="relative">
                 <Input
-                mt={4}
+                  mt={4}
                   type="email"
                   id="email"
                   name="email"
                   icon={<IconAt />}
                   placeholder="Your email"
+                />
+                {/* <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="your.email@gmail.com"
+
+                /> */}
+              </div>
+              <label for="email">Phone</label>
+              <div class="relative">
+                <Input
+                  mt={4}
+                  type="phone"
+                  id="phone"
+                  name="phone"
+                  icon={<IconPhone />}
+                  placeholder="Your phone"
                 />
                 {/* <input
                   type="text"

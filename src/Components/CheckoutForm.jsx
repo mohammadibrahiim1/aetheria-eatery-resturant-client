@@ -137,17 +137,10 @@ const CheckoutForm = () => {
           <p class="text-2xl font-semibold text-gray-900">$408.00</p>
         </div>
         {/* </div> */}
-        <button class="mt-8 border  w-full rounded-md bg-[#697BFF] hover:bg-[#4E60FF]  px-6 py-3 font-medium text-white">
+        <button class="mt-8 border  w-full rounded-md bg-[#697BFF] hover:bg-[#4E60FF]  py-2  font-medium text-white">
           Place Order
         </button>
-        {/* </div> */}
-        {/* <button
-          type="submit"
-          className="mt-4 btn btn-primary"
-          disabled={!stripe || !clientSecret || processing}
-        >
-          Pay
-        </button> */}
+     
         <p className="text-danger">{cardError}</p>
         {paymentSuccess && (
           <div>

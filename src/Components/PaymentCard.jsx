@@ -11,8 +11,9 @@ console.log(stripePromise);
 const PaymentCard = () => {
   return (
     <div>
-      <section className="mt-5 mb-5 pb-5 pt-5  ">
+      <section className="mt-5 pt-5  ">
         <div>
+          <p className="text-xs mb-2 ">Payment Card Info</p>
           <Elements stripe={stripePromise}>
             <CheckoutForm></CheckoutForm>
           </Elements>

@@ -30,6 +30,8 @@ const DataContext = ({ children }) => {
   // const [clientSecret, setClientSecret] = useState("");
   // console.log(indian);
   // const [selectedCategory, setSelectedCategory] = useState("");
+  const [subTotal, setSubTotal] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const addItemToCart = (selectItem) => {
     let newCart = [];
@@ -78,7 +80,6 @@ const DataContext = ({ children }) => {
       });
   }, []);
 
-  
   //   fetch("   http://localhost:5000/checkoutInfo")
   //     .then((res) => res.json())
   //     .then((data) => {
@@ -194,6 +195,25 @@ const DataContext = ({ children }) => {
     });
     setCart(updateItems);
   };
+
+  // calculate cart item total price
+  useEffect(() => {
+    const subTotalPrice = cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    setSubTotal(subTotalPrice);
+  }, [cart]);
+  useEffect(() => {
+    const totalPrice = cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    setTotal(totalPrice);
+  }, [cart]);
+
+  // transfer value to children
+
   const foodInfo = {
     foodItems,
     addItemToCart,
@@ -216,6 +236,8 @@ const DataContext = ({ children }) => {
     handleDecreaseItem,
     quantity,
     booking,
+    subTotal,
+    total,
   };
 
   return (

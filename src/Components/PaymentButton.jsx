@@ -82,7 +82,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
-const PaymentButton = ({ cart, handleCheckout }) => {
+const PaymentButton = () => {
   const { classes } = useStyles();
   // const { user } = useContext(AuthContext);
   // const url = "   http://localhost:5000";
@@ -110,7 +110,10 @@ const PaymentButton = ({ cart, handleCheckout }) => {
         // mt={6}
         // className={classes.controls}
       >
-        <Link to="/checkout" onClick={handleCheckout}>
+        <Link
+          to="/checkout"
+          //  onClick={handleCheckout}
+        >
           <Button compact className={classes.control} size="xs">
             Proceed to checkout
           </Button>

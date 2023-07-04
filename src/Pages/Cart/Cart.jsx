@@ -16,9 +16,10 @@ import { IconTrash } from "@tabler/icons-react";
 
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { AuthContext } from "../../Context/UserContext";
-import { toast } from "react-hot-toast";
+// import axios from "axios";
+// import { AuthContext } from "../../Context/UserContext";
+// import { toast } from "react-hot-toast";
+// import { isEmail } from "@mantine/form";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -142,44 +143,42 @@ const Cart = () => {
   // const { user } = useContext(AuthContext);
   const {
     cart,
+    subTotal,
+    total,
     removeItemFromCart,
     handleIncreaseItem,
     handleDecreaseItem,
     // quantity,
   } = useContext(ApiContext);
   const { classes } = useStyles();
-  const handleCheckout = () => {
-    // console.log(cart);
-    axios
-      .post(`http://localhost:5000/checkoutPostInfo`, {
-        price: calculateSubTotal(),
-        totalPrice: calculateTotal(),
 
-        // cart,
-        // userId: user._id,
-      })
-      .then((res) => {
-        if (res.data.url) {
-          window.location.href = res.data.url;
-          toast.success("add checkout info");
-        }
-      })
-      .catch((err) => console.log(err.message));
-  };
+  //   axios
+  //     .post(`http://localhost:5000/checkoutPostInfo`, {
+  //       price: calculateSubTotal(),
+  //       totalPrice: calculateTotal(),
+  //     })
+  //     .then((res) => {
+  //       if (res.data.url) {
+  //         window.location.href = res.data.url;
+  //         toast.success("add checkout info");
+  //       }
+  //     })
+  //     .catch((err) => console.log(err.message));
+  // };
 
   // console.log(cart);
 
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => {
-      return total + item.price * item.quantity;
-    }, 0);
-  };
+  // const calculateTotal = () => {
+  //   return cart.reduce((total, item) => {
+  //     return total + item.price * item.quantity;
+  //   }, 0);
+  // };
 
-  const calculateSubTotal = () => {
-    return cart.reduce((subTotal, item) => {
-      return subTotal + item.price * item.quantity;
-    }, 0);
-  };
+  // const calculateSubTotal = () => {
+  //   return cart.reduce((subTotal, item) => {
+  //     return subTotal + item.price * item.quantity;
+  //   }, 0);
+  // };
 
   return (
     <div>
@@ -276,7 +275,7 @@ const Cart = () => {
                           >
                             Shop
                           </Link>{" "}
-                          page .
+                          page
                         </p>
                       </div>
                     </div>
@@ -310,12 +309,31 @@ const Cart = () => {
               <div className="mt-5">
                 <div className="flex justify-between p-2">
                   <p>Subtotal :</p>
-                  <p>${calculateSubTotal()}</p>
+                  <p>
+                    $
+                    {
+                      subTotal
+                      // cart.reduce(
+                      //   (total, item) => total + item.price * item.quantity,
+                      //   0
+                      // )
+                    }
+                  </p>
                 </div>
                 <hr />
                 <div className="flex justify-between p-2">
                   <p>Total(tax incl.) : </p>
-                  <p> ${calculateTotal()}</p>
+                  <p>
+                    {" "}
+                    $
+                    {
+                      total
+                      // cart.reduce(
+                      //   (total, item) => total + item.price * item.quantity,
+                      //   0
+                      // )
+                    }
+                  </p>
                 </div>
                 <hr />
               </div>
@@ -327,7 +345,7 @@ const Cart = () => {
               // compact
               // className={classes.controls}
               cart={cart}
-              handleCheckout={handleCheckout}
+              // handleCheckout={handleCheckout}
               // variant="default"
             ></PaymentButton>
             {/* </Button> */}
