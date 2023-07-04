@@ -154,6 +154,7 @@ const Cart = () => {
       .post(`http://localhost:5000/checkoutPostInfo`, {
         price: calculateSubTotal(),
         totalPrice: calculateTotal(),
+
         // cart,
         // userId: user._id,
       })
@@ -283,11 +284,7 @@ const Cart = () => {
                 </>
               )}
             </div>
-            <div className="py-8">
-              {/* <Button variant="default" className="w-full">
-                Checkout
-              </Button> */}
-            </div>
+            <div className="py-8"></div>
           </Grid.Col>
           <Grid.Col md={6} lg={0.5}></Grid.Col>
           <Grid.Col md={6} lg={3.5} className={classes.cartPaymentSummary}>

@@ -78,7 +78,7 @@ const DataContext = ({ children }) => {
       });
   }, []);
 
-  // useEffect(() => {
+  
   //   fetch("   http://localhost:5000/checkoutInfo")
   //     .then((res) => res.json())
   //     .then((data) => {
