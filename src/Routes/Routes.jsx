@@ -13,6 +13,7 @@ import AllUsers from "../Pages/AllUsers/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import { ErrorPage } from "../Components/ErrorPage";
+import Checkout from "../Pages/Checkout/Checkout";
 // import ErrorPage from "../Components/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop></Shop>,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout></Checkout>,
       },
       {
         path: "/tableReservation",

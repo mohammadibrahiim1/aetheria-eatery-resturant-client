@@ -1,7 +1,7 @@
 // import axios from "axios";
-import React, { useContext } from "react";
-import { AuthContext } from "../Context/UserContext";
-import axios from "axios";
+import React from "react";
+// import { AuthContext } from "../Context/UserContext";
+// import axios from "axios";
 import { createStyles, rem } from "@mantine/core";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
@@ -82,40 +82,44 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
-const PaymentButton = ({ cart }) => {
+const PaymentButton = ({ cart, handleCheckout }) => {
   const { classes } = useStyles();
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   // const url = "   http://localhost:5000";
   // console.log(user);
-  const handleCheckout = () => {
-    console.log(cart);
-    axios
-      .post(`http://localhost:5000/stripe/create-checkout-session`, {
-        cart,
-        userId: user._id,
-      })
-      .then((res) => {
-        if (res.data.url) {
-          window.location.href = res.data.url;
-        }
-      })
-      .catch((err) => console.log(err.message));
-  };
+  // const handleCheckout = () => {
+  //   console.log(cart);
+  //   axios
+  //     .post(`http://localhost:5000/stripe/create-checkout-session`, {
+  //       cart,
+  //       userId: user._id,
+  //     })
+  //     .then((res) => {
+  //       if (res.data.url) {
+  //         window.location.href = res.data.url;
+  //       }
+  //     })
+  //     .catch((err) => console.log(err.message));
+  // };
   return (
-    <div className="mt-2" >
+    <div className="mt-2">
       <div
-        onClick={() => handleCheckout()}
+        // onClick={() => handleCheckout()}
         to="/shop"
         position="center"
         // mt={6}
         // className={classes.controls}
       >
-        <Button compact className={classes.control} size="xs">
-          Checkout
-        </Button>
+        <Link to="/checkout" onClick={handleCheckout}>
+          <Button compact className={classes.control} size="xs">
+            Proceed to checkout
+          </Button>
+        </Link>
       </div>
-      <Link to="/shop" position="center" 
-      // className={classes.controls}
+      <Link
+        to="/shop"
+        position="center"
+        // className={classes.controls}
       >
         <Button compact className={classes.control} size="xs">
           Add more items

@@ -16,6 +16,9 @@ import { IconTrash } from "@tabler/icons-react";
 
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { AuthContext } from "../../Context/UserContext";
+import { toast } from "react-hot-toast";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -116,7 +119,7 @@ const useStyles = createStyles((theme) => ({
     border: "1px solid gray",
     opacity: "0.7",
     borderRadius: "15px",
-    height: '250px'
+    height: "250px",
   },
 
   section: {
@@ -136,8 +139,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Cart = () => {
-  const { classes } = useStyles();
-
+  // const { user } = useContext(AuthContext);
   const {
     cart,
     removeItemFromCart,
@@ -145,8 +147,26 @@ const Cart = () => {
     handleDecreaseItem,
     // quantity,
   } = useContext(ApiContext);
+  const { classes } = useStyles();
+  const handleCheckout = () => {
+    // console.log(cart);
+    axios
+      .post(`http://localhost:5000/checkoutPostInfo`, {
+        price: calculateSubTotal(),
+        totalPrice: calculateTotal(),
+        // cart,
+        // userId: user._id,
+      })
+      .then((res) => {
+        if (res.data.url) {
+          window.location.href = res.data.url;
+          toast.success("add checkout info");
+        }
+      })
+      .catch((err) => console.log(err.message));
+  };
 
-  console.log(cart);
+  // console.log(cart);
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
@@ -310,6 +330,7 @@ const Cart = () => {
               // compact
               // className={classes.controls}
               cart={cart}
+              handleCheckout={handleCheckout}
               // variant="default"
             ></PaymentButton>
             {/* </Button> */}
