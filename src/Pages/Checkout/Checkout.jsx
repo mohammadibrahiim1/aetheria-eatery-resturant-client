@@ -1,9 +1,10 @@
 import { Grid, Input, createStyles } from "@mantine/core";
 // import { theme } from "antd";
-import React from "react";
+import React, { useContext } from "react";
 import PaymentSavedCart from "../../Components/PaymentSavedCart";
 import PaymentCard from "../../Components/PaymentCard";
 import { IconAt, IconPhone, IconWriting } from "@tabler/icons-react";
+import { AuthContext } from "../../Context/UserContext";
 // import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -44,11 +45,13 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Checkout = () => {
+  const { user } = useContext(AuthContext);
   const { classes } = useStyles();
+
   return (
     <div>
       <Grid className={classes.section}>
-        <Grid.Col sm={12} xs={12} lg={8}>
+        <Grid.Col sm={12} xs={12} lg={7}>
           <div className={classes.payment_method}>
             <p class={classes.heading}>Select payment method</p>
             <div class="mt-4">
@@ -58,8 +61,8 @@ const Checkout = () => {
             <p class={classes.paymentCard_heading}>New payment method</p>
           </div>
         </Grid.Col>
-        {/* <Grid.Col sm={12} xs={12} lg={0.5}></Grid.Col> */}
-        <Grid.Col sm={12} xs={12} lg={4}>
+
+        <Grid.Col sm={12} xs={12} lg={5}>
           <div class={classes.paymentCard}>
             <p class={classes.heading}>Payment Details</p>
             <p class="">
@@ -75,14 +78,8 @@ const Checkout = () => {
                   name="name"
                   icon={<IconWriting />}
                   placeholder="Your Name"
+                  defaultValue={user.displayName}
                 />
-                {/* <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="your.email@gmail.com"
-
-                /> */}
               </div>
               <label for="email">Email</label>
               <div class="relative">
@@ -93,14 +90,8 @@ const Checkout = () => {
                   name="email"
                   icon={<IconAt />}
                   placeholder="Your email"
+                  defaultValue={user.email}
                 />
-                {/* <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="your.email@gmail.com"
-
-                /> */}
               </div>
               <label for="email">Phone</label>
               <div class="relative">
@@ -112,13 +103,6 @@ const Checkout = () => {
                   icon={<IconPhone />}
                   placeholder="Your phone"
                 />
-                {/* <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="your.email@gmail.com"
-
-                /> */}
               </div>
 
               <div>

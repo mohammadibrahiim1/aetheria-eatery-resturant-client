@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { ApiContext } from "../Context/DataContext";
 
 const CheckoutForm = () => {
   const [cardError, setCardError] = useState("");
@@ -10,6 +11,8 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  const { total } = useContext(ApiContext);
+
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
@@ -102,6 +105,9 @@ const CheckoutForm = () => {
     // console.log("paymentIntent", paymentIntent);
   };
 
+  const shippingCost = 10.0;
+  const totalPrice = total + shippingCost;
+
   return (
     <div>
       <form className="payment-card" onSubmit={handleSubmit}>
@@ -122,25 +128,28 @@ const CheckoutForm = () => {
           }}
         />
         <div>
-          {/* <div class="mt-6 border-t border-b py-2"> */}
           <div class="flex items-center justify-between mt-12">
             <p class="text-sm font-medium text-gray-900">Subtotal</p>
-            <p class="font-semibold text-gray-900">$399.00</p>
+            <p class="font-semibold text-gray-900">${total}</p>
           </div>
           <div class="flex items-center justify-between">
             <p class="text-sm font-medium text-gray-900">Shipping</p>
-            <p class="font-semibold text-gray-900">$8.00</p>
+            <p class="font-semibold text-gray-900">${shippingCost}</p>
           </div>
         </div>
         <div class="mt-6 flex items-center justify-between">
           <p class="text-sm font-medium text-gray-900">Total</p>
-          <p class="text-2xl font-semibold text-gray-900">$408.00</p>
+          <p class="text-2xl font-semibold text-gray-900">${totalPrice}</p>
         </div>
-        {/* </div> */}
-        <button class="mt-8 border  w-full rounded-md bg-[#697BFF] hover:bg-[#4E60FF]  py-2  font-medium text-white">
+
+        <button
+          class="mt-8 border  w-full rounded-md bg-[#697BFF] hover:bg-[#4E60FF]  py-2  font-medium text-white"
+          type="submit"
+          disabled={!stripe}
+        >
           Place Order
         </button>
-     
+
         <p className="text-danger">{cardError}</p>
         {paymentSuccess && (
           <div>
