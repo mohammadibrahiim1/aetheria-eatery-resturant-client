@@ -1,8 +1,9 @@
-import { Grid, createStyles } from "@mantine/core";
+import { Grid, Input, createStyles } from "@mantine/core";
 // import { theme } from "antd";
 import React from "react";
 import PaymentSavedCart from "../../Components/PaymentSavedCart";
 import PaymentCard from "../../Components/PaymentCard";
+import { IconAt } from "@tabler/icons-react";
 // import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -57,22 +58,31 @@ const Checkout = () => {
             <p class={classes.paymentCard_heading}>New payment method</p>
           </div>
         </Grid.Col>
-        <Grid.Col sm={12} xs={12} lg={0.5}></Grid.Col>
-        <Grid.Col sm={12} xs={12} lg={3.5}>
+        {/* <Grid.Col sm={12} xs={12} lg={0.5}></Grid.Col> */}
+        <Grid.Col sm={12} xs={12} lg={4}>
           <div class={classes.paymentCard}>
             <p class={classes.heading}>Payment Details</p>
             <p class="">
               Complete your order by providing your payment details.
             </p>
-            <div class="">
+            <div class="mt-5">
               <label for="email">Email</label>
               <div class="relative">
-                <input
+                <Input
+                mt={4}
+                  type="email"
+                  id="email"
+                  name="email"
+                  icon={<IconAt />}
+                  placeholder="Your email"
+                />
+                {/* <input
                   type="text"
                   id="email"
                   name="email"
                   placeholder="your.email@gmail.com"
-                />
+
+                /> */}
               </div>
 
               <div>
