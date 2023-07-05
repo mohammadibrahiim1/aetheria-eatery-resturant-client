@@ -159,7 +159,7 @@ const Cart = () => {
   //     name: user.displayName,
   //     email: user.email,
   //   };
-  //   fetch("http://localhost:5000/checkout", {
+  //   fetch("https://resturant-website-server.vercel.app/checkout", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
@@ -180,7 +180,7 @@ const Cart = () => {
   // };
 
   //   axios
-  //     .post(`http://localhost:5000/checkoutPostInfo`, {
+  //     .post(`https://resturant-website-server.vercel.app/checkoutPostInfo`, {
   //       price: calculateSubTotal(),
   //       totalPrice: calculateTotal(),
   //     })

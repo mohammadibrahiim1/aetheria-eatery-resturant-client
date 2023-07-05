@@ -19,6 +19,11 @@ import MostFavourite from "./MostFavourite";
 // import FoodModal from "./FoodModal";
 
 const useStyles = createStyles((theme) => ({
+  container: {
+    width: "60%",
+    margin: "auto",
+  },
+
   card: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
@@ -31,24 +36,41 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
   },
   heading: {
-    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontWeight: 700,
-    color: "#151515",
+    color: "#606072",
     lineHeight: 1.2,
-    fontSize: rem(22),
-    textTransform: "uppercase",
-    textAlign: "center",
+    fontSize: rem(19),
+    marginTop: "11px",
+
+    // textTransform: "uppercase",
+    // textAlign: "center",
   },
-  subTitle: {
-    fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
-    fontWeight: 600,
-    color: "#D99904",
-    fontSize: rem(15),
-    marginTop: theme.spacing.xs,
-    textAlign: "center",
-    paddingBottom: theme.spacing.xs,
+
+  category: {
+    border: "1px solid #E4002B",
+    // padding: "9px",
+    paddingRight: "15px",
+    paddingLeft: "15px",
+    paddingTop: "5px",
+    paddingBottom: "5px",
+    borderRadius: "11px",
     cursor: "pointer",
   },
+
+  category_container: {
+    marginBottom: "11px",
+  },
+  // category: {
+  //   fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
+  //   fontWeight: 600,
+  //   color: "#D99904",
+  //   fontSize: rem(15),
+  //   marginTop: theme.spacing.xs,
+  //   textAlign: "center",
+  //   paddingBottom: theme.spacing.xs,
+  //   cursor: "pointer",
+  // },
 
   body: {
     padding: theme.spacing.md,
@@ -72,99 +94,87 @@ const Shop = () => {
   return (
     <div>
       <ShopPageHeader></ShopPageHeader>
-      <Container className="lg:py-24 md:pt-16 sm:pt-12">
-        <div className={classes.subTitle}>
-          <p>---check it out---</p>
-        </div>
-        <div className={classes.heading} color="#151515">
-          <h1> Order Your Favourite Food</h1>
-        </div>
+      <section className={classes.container}>
+        <Text className={classes.heading}>
+          <h1>All Items</h1>
+        </Text>
 
         <Grid className="py-8">
-          <Grid.Col sm={12} xs={12} lg={3}>
-            <Text
-              variant="gradient"
-              gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
-              sx={{ fontFamily: "Inter, sans-serif" }}
-              ta="left"
-              fz="xl"
-              fw={700}
-            >
-              <p>Category</p>
-
-              <Grid>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    className={classes.subTitle}
-                    variant="primary"
-                    onClick={() => handleCategoryChange("desert")}
-                  >
-                    Desert
-                  </span>
-                </Grid.Col>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    onClick={() => handleCategoryChange("offer")}
-                    className={classes.subTitle}
-                  >
-                    Offer
-                  </span>
-                </Grid.Col>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    onClick={() => handleCategoryChange("drinks")}
-                    className={classes.subTitle}
-                  >
-                    Drinks
-                  </span>
-                </Grid.Col>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    onClick={() => handleCategoryChange("pizza")}
-                    className={classes.subTitle}
-                  >
-                    Pizza
-                  </span>
-                </Grid.Col>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    onClick={() => handleCategoryChange("salad")}
-                    className={classes.subTitle}
-                  >
-                    Salads
-                  </span>
-                </Grid.Col>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    onClick={() => handleCategoryChange("thai")}
-                    className={classes.subTitle}
-                  >
-                    Thai
-                  </span>
-                </Grid.Col>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    onClick={() => handleCategoryChange("soup")}
-                    className={classes.subTitle}
-                  >
-                    Soup
-                  </span>
-                </Grid.Col>
-                <Grid.Col sm={1} lg={12}>
-                  <span
-                    onClick={() => handleCategoryChange("indian")}
-                    className={classes.subTitle}
-                  >
-                    Indian
-                  </span>
-                </Grid.Col>
-              </Grid>
-              {/* </div> */}
-            </Text>
+          <Grid.Col className={classes.category_container}>
+            <Grid>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  className={classes.category}
+                  variant="primary"
+                  onClick={() => handleCategoryChange("desert")}
+                >
+                  Desert
+                </span>
+              </Grid.Col>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  onClick={() => handleCategoryChange("offer")}
+                  className={classes.category}
+                >
+                  Offer
+                </span>
+              </Grid.Col>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  onClick={() => handleCategoryChange("drinks")}
+                  className={classes.category}
+                >
+                  Drinks
+                </span>
+              </Grid.Col>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  onClick={() => handleCategoryChange("pizza")}
+                  className={classes.category}
+                >
+                  Pizza
+                </span>
+              </Grid.Col>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  onClick={() => handleCategoryChange("salad")}
+                  className={classes.category}
+                >
+                  Salads
+                </span>
+              </Grid.Col>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  onClick={() => handleCategoryChange("thai")}
+                  className={classes.category}
+                >
+                  Thai
+                </span>
+              </Grid.Col>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  onClick={() => handleCategoryChange("soup")}
+                  className={classes.category}
+                >
+                  Soup
+                </span>
+              </Grid.Col>
+              <Grid.Col sm={1} lg={1.5}>
+                <span
+                  onClick={() => handleCategoryChange("indian")}
+                  className={classes.category}
+                >
+                  Indian
+                </span>
+              </Grid.Col>
+            </Grid>
           </Grid.Col>
 
-          <Grid.Col sm={12} xs={12} lg={9}>
-            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
+          <Grid.Col>
+            <p className="text-md text-[#4E60FF] mb-4">
+              found {allItems.length} items
+            </p>
+            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4">
               {allItems?.slice(0, 4)?.map((item) => (
                 <>
                   <ShopPageCard
@@ -188,7 +198,7 @@ const Shop = () => {
         </Grid>
 
         <MostFavourite></MostFavourite>
-      </Container>
+      </section>
       <Contact></Contact>
     </div>
   );

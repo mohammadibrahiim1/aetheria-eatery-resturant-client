@@ -66,7 +66,7 @@ const DataContext = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("   http://localhost:5000/allProducts")
+    fetch("http://localhost:5000/allProducts")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -74,7 +74,7 @@ const DataContext = ({ children }) => {
       });
   }, []);
   useEffect(() => {
-    fetch("   http://localhost:5000/menu")
+    fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -90,7 +90,7 @@ const DataContext = ({ children }) => {
       });
   }, []);
 
-  //   fetch("   http://localhost:5000/checkoutInfo")
+  //   fetch("  http://localhost:5000 /checkoutInfo")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -105,7 +105,7 @@ const DataContext = ({ children }) => {
   //   //   cart,
   //   // };
 
-  //   // fetch("   http://localhost:5000/checkoutInfo", {
+  //   // fetch("  http://localhost:5000 /checkoutInfo", {
   //   //   method: "POST",
   //   //   headers: {
   //   //     "content-type": "application/json",
@@ -123,35 +123,35 @@ const DataContext = ({ children }) => {
   //   //   .catch((error) => console.error(error));
   // };
 
-  const handleCartInfo = (totalPrice) => {
-    const checkoutInfo = {
-      // cart,
-      totalPrice,
-    };
-    console.log(checkoutInfo);
-    // setTotalPrice(totalPrice);
-    if (checkoutInfo) {
-      fetch("   http://localhost:5000/checkoutInfo", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(checkoutInfo),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.acknowledged) {
-            alert("added successfully");
-          }
+  // const handleCartInfo = (totalPrice) => {
+  //   const checkoutInfo = {
+  //     // cart,
+  //     totalPrice,
+  //   };
+  //   console.log(checkoutInfo);
+  //   // setTotalPrice(totalPrice);
+  //   if (checkoutInfo) {
+  //     fetch("http://localhost:5000/checkoutInfo", {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(checkoutInfo),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data.acknowledged) {
+  //           alert("added successfully");
+  //         }
 
-          // console.log(data);
-        })
-        .catch((error) => console.error(error.message));
-    }
-  };
+  //         // console.log(data);
+  //       })
+  //       .catch((error) => console.error(error.message));
+  //   }
+  // };
 
   // useEffect(() => {
-  //   fetch(`   http://localhost:5000/category?category=${selectedCategory}`)
+  //   fetch(`  http://localhost:5000 /category?category=${selectedCategory}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -160,7 +160,7 @@ const DataContext = ({ children }) => {
   // }, [selectedCategory]);
 
   const handleCategoryChange = (selectedCategory) => {
-    fetch(`   http://localhost:5000/category?category=${selectedCategory}`)
+    fetch(`http://localhost:5000/category?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -174,7 +174,7 @@ const DataContext = ({ children }) => {
   const { data: booking = [] } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const res = await fetch(`   http://localhost:5000/bookings`);
+      const res = await fetch(`http://localhost:5000/bookings`);
       const data = await res.json();
       // console.log(data);
       return data;
@@ -241,7 +241,7 @@ const DataContext = ({ children }) => {
     allItems,
     selectDate,
     setSelectDate,
-    handleCartInfo,
+    // handleCartInfo,
     handleIncreaseItem,
     handleDecreaseItem,
     quantity,
