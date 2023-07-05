@@ -34,10 +34,10 @@ const MyOrder = () => {
 
   const rows = orders.map((order) => (
     <tr key={order.name}>
-      <td>{order.orderId}</td>
+      <td>{order.orderId ? order.orderId : "no order id"}</td>
       <td>{order.name}</td>
       <td>{order.email}</td>
-      <td>{order.price}</td>
+      <td>${order.price}</td>
     </tr>
   ));
 
