@@ -17,7 +17,8 @@ import { IconTrash } from "@tabler/icons-react";
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
 // import axios from "axios";
-// import { AuthContext } from "../../Context/UserContext";
+import { AuthContext } from "../../Context/UserContext";
+import { toast } from "react-hot-toast";
 // import { toast } from "react-hot-toast";
 // import { isEmail } from "@mantine/form";
 
@@ -140,7 +141,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Cart = () => {
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const {
     cart,
     subTotal,
@@ -151,6 +152,32 @@ const Cart = () => {
     // quantity,
   } = useContext(ApiContext);
   const { classes } = useStyles();
+
+  // const handleCheckout = () => {
+  //   const checkout = {
+  //     total,
+  //     name: user.displayName,
+  //     email: user.email,
+  //   };
+  //   fetch("http://localhost:5000/checkout", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(checkout),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.acknowledged) {
+  //         // setSelectTable(null);
+  //         toast.success("added  successfully");
+  //         // refetch();
+  //       } else {
+  //         toast.error(data.message);
+  //       }
+  //     });
+  // };
 
   //   axios
   //     .post(`http://localhost:5000/checkoutPostInfo`, {

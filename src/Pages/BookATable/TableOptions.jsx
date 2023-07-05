@@ -59,7 +59,7 @@ export const TableOptions = () => {
     queryKey: ["bookingOptions", date],
     queryFn: async () => {
       const res = await fetch(
-        `   http://localhost:5000/bookingOptions?date=${date}`
+        `http://localhost:5000/bookingOptions?date=${date}`
       );
       const data = await res.json();
       return data;

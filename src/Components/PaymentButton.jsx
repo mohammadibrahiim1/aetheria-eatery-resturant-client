@@ -110,9 +110,8 @@ const PaymentButton = () => {
         // mt={6}
         // className={classes.controls}
       >
-        <Link
-          to="/checkout"
-          //  onClick={handleCheckout}
+        <Link to="/checkout" 
+        // onClick={handleCheckout}
         >
           <Button compact className={classes.control} size="xs">
             Proceed to checkout
