@@ -33,6 +33,16 @@ const DataContext = ({ children }) => {
   const [subTotal, setSubTotal] = useState(0);
   const [total, setTotal] = useState(0);
 
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/v2/payments")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setOrders(data);
+      });
+  }, []);
+
   const addItemToCart = (selectItem) => {
     let newCart = [];
     const exists = cart.find((item) => item._id === selectItem._id);
@@ -238,6 +248,7 @@ const DataContext = ({ children }) => {
     booking,
     subTotal,
     total,
+    orders,
   };
 
   return (

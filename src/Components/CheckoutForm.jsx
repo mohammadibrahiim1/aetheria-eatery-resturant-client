@@ -86,14 +86,11 @@ const CheckoutForm = () => {
       console.log("card info", card);
       // store payment info in the database
       const payment = {
-        // totalPrice,
-
+        price: totalPrice,
         transactionId: paymentIntent.id,
-        // email: email,
-        // bookingId: _id,
-        // user: userName,
-        // email,
-        // name: name,
+        orderId: paymentIntent.created,
+        name: user.displayName,
+        email: user.email,
       };
       fetch("http://localhost:5000/payments", {
         method: "POST",
@@ -165,9 +162,9 @@ const CheckoutForm = () => {
         <button
           class="mt-8 border  w-full rounded-md bg-[#697BFF] hover:bg-[#4E60FF]  py-2  font-medium text-white"
           type="submit"
-          disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret || processing}
         >
-          Place Order
+          Submit Order
         </button>
 
         {/* <p className="text-danger">{cardError}</p> */}

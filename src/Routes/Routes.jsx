@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import { ErrorPage } from "../Components/ErrorPage";
 import Checkout from "../Pages/Checkout/Checkout";
+import MyOrder from "../Pages/MyOrder/MyOrder";
 // import ErrorPage from "../Components/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout></Checkout>,
+      },
+      {
+        path: "/myOrder",
+        element: <MyOrder></MyOrder>
       },
       {
         path: "/tableReservation",
