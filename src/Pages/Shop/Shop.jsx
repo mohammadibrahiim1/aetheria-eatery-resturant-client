@@ -87,9 +87,14 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Shop = () => {
+  const [showMore, setShowMore] = useState(4);
   const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange } =
     useContext(ApiContext);
   const { classes } = useStyles();
+
+  const handleShowMore = () => {
+    setShowMore((preValue) => preValue + 1);
+  };
 
   return (
     <div>
@@ -171,11 +176,13 @@ const Shop = () => {
           </Grid.Col>
 
           <Grid.Col>
-            <p className="text-md text-[#4E60FF] mb-4">
-              found {allItems.length} items
+            <p className="mb-1">
+              found{" "}
+              <span className="text-md text-[#4E60FF] ">{allItems.length}</span>{" "}
+              items
             </p>
-            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4">
-              {allItems?.slice(0, 4)?.map((item) => (
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+              {allItems?.slice(0, showMore)?.map((item) => (
                 <>
                   <ShopPageCard
                     item={item}
@@ -194,6 +201,19 @@ const Shop = () => {
                 </>
               ))}
             </div>
+            <Button
+              onClick={handleShowMore}
+              variant="light"
+              color="red"
+              fullWidth
+              center
+              mt="md"
+              radius="md"
+              // variant="gradient"
+              // gradient={{ from: "teal", to: "blue", deg: 60 }}
+            >
+              load more
+            </Button>
           </Grid.Col>
         </Grid>
 

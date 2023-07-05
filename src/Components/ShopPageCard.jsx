@@ -46,7 +46,7 @@ export const ShopPageCard = ({
           <Button
             onClick={() => addItemToCart(item)}
             variant="light"
-            color="blue"
+            color="red"
             fullWidth
             mt="md"
             radius="md"
@@ -56,12 +56,12 @@ export const ShopPageCard = ({
           <Button
             onClick={open}
             variant="light"
-            color="blue"
+            color="red"
             fullWidth
             mt="md"
             radius="md"
           >
-            more
+            read more
           </Button>
         </div>
       </Card>
