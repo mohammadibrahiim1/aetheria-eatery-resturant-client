@@ -3,9 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 export const ApiContext = createContext();
-const cartFromLocalStorage = JSON.parse(
-  localStorage.getItem("newCart") || "[]"
-);
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("newCart") || "[]");
 
 const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
@@ -55,14 +53,14 @@ const DataContext = ({ children }) => {
       newCart = [...rest, exists];
     }
     setCart(newCart);
-    toast.success("add item to cart successfully");
+    toast.success(`add ${selectItem.name} to cart successfully`);
     localStorage.setItem("newCart", JSON.stringify(newCart));
   };
-  const removeItemFromCart = (_id) => {
-    const updatedCart = cart.filter((item) => item._id !== _id);
+  const removeItemFromCart = (selectItem) => {
+    const updatedCart = cart.filter((item) => item._id !== selectItem._id);
     localStorage.setItem("newCart", JSON.stringify(updatedCart));
     setCart(updatedCart);
-    toast.error("remove item from cart!");
+    toast.error(`remove ${selectItem.name} from cart!`);
   };
 
   useEffect(() => {
@@ -208,17 +206,11 @@ const DataContext = ({ children }) => {
 
   // calculate cart item total price
   useEffect(() => {
-    const subTotalPrice = cart.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    const subTotalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     setSubTotal(subTotalPrice);
   }, [cart]);
   useEffect(() => {
-    const totalPrice = cart.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     setTotal(totalPrice);
   }, [cart]);
 

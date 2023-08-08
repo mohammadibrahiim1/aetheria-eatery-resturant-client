@@ -9,11 +9,13 @@ import {
   Button,
   rem,
   Container,
+  ActionIcon,
+  Group,
 } from "@mantine/core";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
 
-import { IconTrash } from "@tabler/icons-react";
+import { IconArrowNarrowLeft, IconTrash } from "@tabler/icons-react";
 
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
@@ -41,8 +43,6 @@ const useStyles = createStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     gap: "12px",
-    // width: "95%",
-    // margin: " auto",
   },
 
   heading: {
@@ -112,13 +112,12 @@ const useStyles = createStyles((theme) => ({
   },
 
   cartItems: {
-    border: "1px solid gray",
+    border: "1px solid rgb(229 231 235)",
     overflow: "auto",
-    // opacity: "0.7",
-    borderRadius: "9px",
+    borderRadius: "15px",
   },
   cartPaymentSummary: {
-    border: "1px solid gray",
+    border: "1px solid rgb(229 231 235)",
     opacity: "0.7",
     borderRadius: "15px",
     height: "250px",
@@ -219,38 +218,31 @@ const Cart = () => {
       <Container size="lg">
         <Text className={classes.heading}>My Cart</Text>
 
-        <Grid className="py-8">
-          <Grid.Col md={6} lg={8.5} h={500} gap={2} className={classes.cartItems}>
+        <Grid className="pt-8 pb-2" gutter={"xs"}>
+          <Grid.Col md={6} lg={8.2} h={500} gap={2} className={classes.cartItems}>
             <div className="">
               {cart.length ? (
                 <>
-                  <div className="flex justify-start items-center gap-2 ms-4">
+                  <Group c={"#5C7CFA"} className="flex justify-start items-center gap-2 ms-4">
                     <Text fw={700} mb={2}>
                       Menu
                     </Text>
                     <Text fw={700} fz={12}>
                       {cart.length} meals
                     </Text>
-                  </div>
+                  </Group>
 
                   {cart?.map((item) => (
                     <>
                       <Card className={classes.card}>
                         <div key={item.id}>
                           <div className={classes.body}>
-                            {/* <div
-                            // className="flex items-center gap-5"
-                            > */}
                             <Image src={item.image} width={90} height={90} radius={10} />
                             <div className={classes.text_container}>
                               <Text className={classes.title}>{item.name}</Text>
                               <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
                             </div>
-                            {/* </div> */}
 
-                            {/* <div
-                            // class=" flex items-center gap-7 w-60"
-                            > */}
                             <div className={classes.counterContainer}>
                               <button className="btn  btn-sm btn-circle" onClick={() => handleDecreaseItem(item._id)}>
                                 -
@@ -263,10 +255,7 @@ const Cart = () => {
                               </button>
                             </div>
 
-                            {/* <div
-                              // className="flex gap-2 items-center justify-between"
-                              > */}
-                            <Text w={60} align="center" className={classes.title}>
+                            <Text w={50} align="center" className={classes.title}>
                               ${item.price * item.quantity}
                             </Text>
 
@@ -278,10 +267,8 @@ const Cart = () => {
                               size="xs"
                             >
                               {" "}
-                              <IconTrash onClick={() => removeItemFromCart(item._id)} />
+                              <IconTrash onClick={() => removeItemFromCart(item)} />
                             </Button>
-                            {/* </div> */}
-                            {/* </div> */}
                           </div>
                         </div>
                       </Card>
@@ -293,17 +280,21 @@ const Cart = () => {
                 <>
                   <section className="flex items-center text-red-800 mt-8">
                     <div className="container flex flex-col items-center justify-center mx-auto">
-                      <div className="max-w-md text-center">
+                      <div className="text-center">
                         {/* <h2 className="mb-8 font-extrabold text-9xl text-gray-400">
                           <span className="sr-only">Error</span>404
                         </h2> */}
                         <p className="text-2xl font-semibold md:text-3xl">Sorry, we couldn't find items .</p>
                         <p className="mt-4  text-info-600">
-                          But dont worry, you can find items or things on our{" "}
-                          <Link to="/shop" className="text-indigo-500 font-semibold text-md btn">
-                            Shop
-                          </Link>{" "}
-                          page
+                          Good food is always cooking! Go ahead, order some yummy items from the menu.
+                          <Link to={"/shop"} className="flex justify-center items-center gap-1">
+                            <ActionIcon c={"#5C7CFA"}>
+                              <IconArrowNarrowLeft size="1.25rem" />
+                            </ActionIcon>
+                            <Text c={"#5C7CFA"} fw={600} fz="sm">
+                              Add more meals
+                            </Text>
+                          </Link>
                         </p>
                       </div>
                     </div>
@@ -313,7 +304,8 @@ const Cart = () => {
             </div>
             <div className="py-8"></div>
           </Grid.Col>
-          {/* <Grid.Col md={6} lg={0.5}></Grid.Col> */}
+
+          <Grid.Col md={6} lg={0.2}></Grid.Col>
           <Grid.Col md={6} lg={3.5} className={classes.cartPaymentSummary}>
             <Text
               variant="gradient"
@@ -376,15 +368,17 @@ const Cart = () => {
               // handleCheckout={handleCheckout}
               // variant="default"
             ></PaymentButton>
-            {/* </Button> */}
-            {/* </div> */}
-            {/* <Link to="/shop" position="center" className={classes.controls}>
-              <Button compact className={classes.control} size="xs">
-                Add more item
-              </Button>
-            </Link> */}
+       
           </Grid.Col>
         </Grid>
+        <Link to={"/shop"} className="flex justify-start items-center gap-1 pb-5">
+          <ActionIcon c={"#5C7CFA"}>
+            <IconArrowNarrowLeft size="1.25rem" />
+          </ActionIcon>
+          <Text c={"#5C7CFA"} fw={600} fz="sm">
+            Add more meals
+          </Text>
+        </Link>
       </Container>
     </div>
   );
