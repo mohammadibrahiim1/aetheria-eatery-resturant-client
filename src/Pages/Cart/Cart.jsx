@@ -8,6 +8,7 @@ import {
   Grid,
   Button,
   rem,
+  Container,
 } from "@mantine/core";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
@@ -17,16 +18,14 @@ import { IconTrash } from "@tabler/icons-react";
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
 // import axios from "axios";
-import { AuthContext } from "../../Context/UserContext";
-import { toast } from "react-hot-toast";
+// import { AuthContext } from "../../Context/UserContext";
+// import { toast } from "react-hot-toast";
 // import { toast } from "react-hot-toast";
 // import { isEmail } from "@mantine/form";
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-    width: "100%",
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
   },
 
   title: {
@@ -34,16 +33,18 @@ const useStyles = createStyles((theme) => ({
     opacity: "0.7",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1.2,
-    // marginTop: "15px",
-    // marginBottom: "15px",
   },
 
   body: {
-    // padding: theme.spacing.md,
-    display: "flex",
+    display: "grid",
+    gridTemplateColumns: "repeat(5,1fr)",
     justifyContent: "space-between",
     alignItems: "center",
+    gap: "12px",
+    // width: "95%",
+    // margin: " auto",
   },
+
   heading: {
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
@@ -57,26 +58,24 @@ const useStyles = createStyles((theme) => ({
     opacity: "0.5",
     lineHeight: 1.2,
     fontSize: rem(13),
-    width: "75%",
+    width: "90%",
     marginTop: "5px",
   },
 
   counterContainer: {
     display: "flex",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     alignItems: "center",
-    border: "1px solid gray",
-    opacity: "0.5",
-    paddingLeft: "9px",
-    paddingRight: "9px",
-    margin: "5px",
-    borderRadius: "8px",
+    // border: "1px solid gray",
+    // paddingLeft: "9px",
+    // paddingRight: "9px",
+    // margin: "5px",
+    // borderRadius: "8px",
     gap: "7px",
   },
 
   controls: {
     marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -90,7 +89,7 @@ const useStyles = createStyles((theme) => ({
   control: {
     height: rem(22),
     color: "#B70C1C",
-    width: "50%",
+    // width: "50%",
     // border: "1px solid red",
 
     ":hover": {
@@ -114,8 +113,9 @@ const useStyles = createStyles((theme) => ({
 
   cartItems: {
     border: "1px solid gray",
-    opacity: "0.7",
-    borderRadius: "15px",
+    overflow: "auto",
+    // opacity: "0.7",
+    borderRadius: "9px",
   },
   cartPaymentSummary: {
     border: "1px solid gray",
@@ -128,20 +128,27 @@ const useStyles = createStyles((theme) => ({
     width: "60%",
     margin: "auto",
   },
+
   counterMinusButton: {
-    borderRight: "1px solid gray",
-    opacity: "0.5",
-    paddingRight: "9px",
+    border: "1px solid gray",
+    // opacity: "0.5",
+    paddingRight: "4px",
+    paddingLeft: "4px",
+    borderRadius: "100%",
   },
   counterPlusButton: {
     borderLeft: "1px solid gray",
     opacity: "0.5",
     paddingLeft: "9px",
   },
+
+  text_container: {
+    width: "400px",
+  },
 }));
 
 const Cart = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const {
     cart,
     subTotal,
@@ -209,73 +216,72 @@ const Cart = () => {
 
   return (
     <div>
-      <section className={classes.section}>
+      <Container size="lg">
         <Text className={classes.heading}>My Cart</Text>
 
         <Grid className="py-8">
-          <Grid.Col md={6} lg={8} className={classes.cartItems}>
+          <Grid.Col md={6} lg={8.5} h={500} gap={2} className={classes.cartItems}>
             <div className="">
               {cart.length ? (
                 <>
+                  <div className="flex justify-start items-center gap-2 ms-4">
+                    <Text fw={700} mb={2}>
+                      Menu
+                    </Text>
+                    <Text fw={700} fz={12}>
+                      {cart.length} meals
+                    </Text>
+                  </div>
+
                   {cart?.map((item) => (
                     <>
                       <Card className={classes.card}>
                         <div key={item.id}>
                           <div className={classes.body}>
-                            <div className="flex items-center gap-5 ">
-                              <Image
-                                src={item.image}
-                                height={80}
-                                width={120}
-                                radius={10}
-                              />
-                              <div>
-                                <Text className={classes.title}>
-                                  {item.name}
-                                </Text>
-                                <Text className={classes.subTitle}>
-                                  {item.description.slice(0, 75)}...
-                                </Text>
-                              </div>
+                            {/* <div
+                            // className="flex items-center gap-5"
+                            > */}
+                            <Image src={item.image} width={90} height={90} radius={10} />
+                            <div className={classes.text_container}>
+                              <Text className={classes.title}>{item.name}</Text>
+                              <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
+                            </div>
+                            {/* </div> */}
+
+                            {/* <div
+                            // class=" flex items-center gap-7 w-60"
+                            > */}
+                            <div className={classes.counterContainer}>
+                              <button className="btn  btn-sm btn-circle" onClick={() => handleDecreaseItem(item._id)}>
+                                -
+                              </button>
+                              <Text size={15} w={15} align="center">
+                                {item.quantity}
+                              </Text>
+                              <button className="btn btn-sm btn-circle" onClick={() => handleIncreaseItem(item._id)}>
+                                +
+                              </button>
                             </div>
 
-                            <div class=" flex items-center gap-7 w-60">
-                              <div className={classes.counterContainer}>
-                                <button
-                                  className={classes.counterMinusButton}
-                                  onClick={() => handleDecreaseItem(item._id)}
-                                >
-                                  -
-                                </button>
-                                <div>{item.quantity}</div>
-                                <button
-                                  className={classes.counterPlusButton}
-                                  onClick={() => handleIncreaseItem(item._id)}
-                                >
-                                  +
-                                </button>
-                              </div>
+                            {/* <div
+                              // className="flex gap-2 items-center justify-between"
+                              > */}
+                            <Text w={60} align="center" className={classes.title}>
+                              ${item.price * item.quantity}
+                            </Text>
 
-                              <div className="flex gap-2 items-center justify-between">
-                                <Text className={classes.title}>
-                                  ${item.price * item.quantity}
-                                </Text>
-
-                                <Button
-                                  // defaultValue={4}
-                                  className={classes.control}
-                                  compact
-                                  // variant="default"
-                                  size="xs"
-                                >
-                                  {" "}
-                                  <IconTrash
-                                    onClick={() => removeItemFromCart(item._id)}
-                                  />
-                                </Button>
-                              </div>
-                            </div>
-                            {/* <Group noWrap spacing="xs"></Group> */}
+                            <Button
+                              // defaultValue={4}
+                              className={classes.control}
+                              compact
+                              // variant="default"
+                              size="xs"
+                            >
+                              {" "}
+                              <IconTrash onClick={() => removeItemFromCart(item._id)} />
+                            </Button>
+                            {/* </div> */}
+                            {/* </div> */}
                           </div>
                         </div>
                       </Card>
@@ -291,15 +297,10 @@ const Cart = () => {
                         {/* <h2 className="mb-8 font-extrabold text-9xl text-gray-400">
                           <span className="sr-only">Error</span>404
                         </h2> */}
-                        <p className="text-2xl font-semibold md:text-3xl">
-                          Sorry, we couldn't find items .
-                        </p>
+                        <p className="text-2xl font-semibold md:text-3xl">Sorry, we couldn't find items .</p>
                         <p className="mt-4  text-info-600">
                           But dont worry, you can find items or things on our{" "}
-                          <Link
-                            to="/shop"
-                            className="text-indigo-500 font-semibold text-md btn"
-                          >
+                          <Link to="/shop" className="text-indigo-500 font-semibold text-md btn">
                             Shop
                           </Link>{" "}
                           page
@@ -312,7 +313,7 @@ const Cart = () => {
             </div>
             <div className="py-8"></div>
           </Grid.Col>
-          <Grid.Col md={6} lg={0.5}></Grid.Col>
+          {/* <Grid.Col md={6} lg={0.5}></Grid.Col> */}
           <Grid.Col md={6} lg={3.5} className={classes.cartPaymentSummary}>
             <Text
               variant="gradient"
@@ -384,7 +385,7 @@ const Cart = () => {
             </Link> */}
           </Grid.Col>
         </Grid>
-      </section>
+      </Container>
     </div>
   );
 };

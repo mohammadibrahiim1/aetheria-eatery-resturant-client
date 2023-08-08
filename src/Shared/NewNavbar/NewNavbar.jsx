@@ -1,16 +1,6 @@
 import { useContext, useState } from "react";
-import {
-  createStyles,
-  Header,
-  Container,
-  Group,
-  Burger,
-  Paper,
-  Transition,
-  rem,
-  Indicator,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { createStyles, Header, Container, Group, Burger, Paper, Transition, rem, Indicator } from "@mantine/core";
+// import { useDisclosure } from "@mantine/hooks";
 import { MantineLogo } from "@mantine/ds";
 import { Link } from "react-router-dom";
 import UseAdmin from "../../Hooks/UseAdmin";
@@ -51,8 +41,8 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     fontWeight: " bold",
     height: "100%",
-    width: "60%",
-    margin: "auto",
+    // width: "60%",
+    // margin: "auto",
   },
 
   links: {
@@ -73,18 +63,12 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
     },
 
     [theme.fn.smallerThan("sm")]: {
@@ -99,8 +83,7 @@ const useStyles = createStyles((theme) => ({
         variant: "light",
         color: theme.primaryColor,
       }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
+      color: theme.fn.variant({ variant: "light", color: theme.primaryColor }).color,
     },
   },
 }));
@@ -156,12 +139,7 @@ export const NewNavbar = () => {
       label: (
         <div>
           {"Cart"}
-          <Indicator
-            position="bottom-end"
-            color="red"
-            size={16}
-            label={cart.length}
-          />
+          <Indicator position="bottom-end" color="red" size={16} label={cart.length} />
         </div>
       ),
     },
@@ -192,7 +170,7 @@ export const NewNavbar = () => {
     },
   ];
 
-  const [opened, { toggle, close }] = useDisclosure(false);
+  // const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
@@ -205,7 +183,7 @@ export const NewNavbar = () => {
       })}
       onClick={(event) => {
         setActive(link.link);
-        close();
+        // close();
       }}
     >
       {link.label}
@@ -214,16 +192,11 @@ export const NewNavbar = () => {
 
   return (
     <Header height={HEADER_HEIGHT} className={classes.root}>
-      <section className={classes.header}>
+      <Container size="lg"  className={classes.header}>
         {" "}
         <Link to="/" className="flex justify-between align-center gap-2">
           <span>
-            <img
-              src="https://i.ibb.co/HtH5rWq/fast-food-1.png"
-              alt=""
-              srcset=""
-              className="h-6 w-6"
-            />
+            <img src="https://i.ibb.co/HtH5rWq/fast-food-1.png" alt="" srcset="" className="h-6 w-6" />
           </span>
           <span>Aetheria Eatery</span>
         </Link>
@@ -231,19 +204,23 @@ export const NewNavbar = () => {
           {items}
         </Group>
         <Burger
-          opened={opened}
-          onClick={toggle}
+          // opened={opened}
+          // onClick={toggle}
           className={classes.burger}
           size="sm"
         />
-        <Transition transition="pop-top-right" duration={200} mounted={opened}>
+        <Transition
+          transition="pop-top-right"
+          duration={200}
+          //  mounted={opened}
+        >
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
               {items}
             </Paper>
           )}
         </Transition>
-      </section>
+      </Container>
     </Header>
   );
 };

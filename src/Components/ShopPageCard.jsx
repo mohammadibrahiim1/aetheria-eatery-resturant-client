@@ -1,5 +1,5 @@
 import { Card, Image, Text, Badge, Button, Group, Modal } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+// import { useDisclosure } from "@mantine/hooks";
 
 // function Demo() {
 //     const [opened, { open, close }] = useDisclosure(false)}
@@ -10,12 +10,14 @@ export const ShopPageCard = ({
   //   removeItemFromCart,
   //   handleCategoryChange,
 }) => {
-  const [opened, { open, close }] = useDisclosure(false);
+  // const [opened, { open, close }] = useDisclosure(false);
 
   const { image, name, description, price, category } = item;
   return (
     <div>
-      <Modal opened={opened} onClose={close} title="About Dishes" centered>
+      <Modal
+      //  opened={opened} onClose={close} title="About Dishes" centered
+       >
         <Text size="sm" color="dimmed">
           {name}
         </Text>
@@ -54,7 +56,7 @@ export const ShopPageCard = ({
             Add To Cart
           </Button>
           <Button
-            onClick={open}
+            // onClick={open}
             variant="light"
             color="red"
             fullWidth

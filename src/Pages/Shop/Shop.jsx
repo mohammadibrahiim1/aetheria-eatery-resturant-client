@@ -181,7 +181,7 @@ const Shop = () => {
               <span className="text-md text-[#4E60FF] ">{allItems.length}</span>{" "}
               items
             </p>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
               {allItems?.slice(0, showMore)?.map((item) => (
                 <>
                   <ShopPageCard
