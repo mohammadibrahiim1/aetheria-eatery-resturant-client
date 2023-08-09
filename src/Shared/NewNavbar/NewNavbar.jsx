@@ -99,7 +99,7 @@ export const NewNavbar = () => {
     signInWithGoogle().then((result) => {
       const user = result.user;
       if (user) {
-        fetch("  http://localhost:5000 /users", {
+        fetch("http://localhost:5000/users", {
           method: "post",
           headers: {
             "content-type": "application/json",
@@ -192,7 +192,7 @@ export const NewNavbar = () => {
 
   return (
     <Header height={HEADER_HEIGHT} className={classes.root}>
-      <Container size="lg"  className={classes.header}>
+      <Container size="lg" className={classes.header}>
         {" "}
         <Link to="/" className="flex justify-between align-center gap-2">
           <span>

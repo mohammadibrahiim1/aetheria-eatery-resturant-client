@@ -29,7 +29,7 @@ const DataContext = ({ children }) => {
   // console.log(indian);
   // const [selectedCategory, setSelectedCategory] = useState("");
   const [subTotal, setSubTotal] = useState(0);
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
 
   const [orders, setOrders] = useState([]);
   useEffect(() => {
@@ -53,14 +53,27 @@ const DataContext = ({ children }) => {
       newCart = [...rest, exists];
     }
     setCart(newCart);
-    toast.success(`add ${selectItem.name} to cart successfully`);
+    toast.success(`add ${selectItem.name} to cart successfully`, {
+      style: {
+        borderRadius: "10px",
+        background: "#40C057",
+        // #DC3515
+        color: "#fff",
+      },
+    });
     localStorage.setItem("newCart", JSON.stringify(newCart));
   };
   const removeItemFromCart = (selectItem) => {
     const updatedCart = cart.filter((item) => item._id !== selectItem._id);
     localStorage.setItem("newCart", JSON.stringify(updatedCart));
     setCart(updatedCart);
-    toast.error(`remove ${selectItem.name} from cart!`);
+    toast.error(`remove ${selectItem.name} from cart!`, {
+      style: {
+        borderRadius: "10px",
+        background: "#F03E3E",
+        color: "#fff",
+      },
+    });
   };
 
   useEffect(() => {
@@ -166,7 +179,7 @@ const DataContext = ({ children }) => {
       });
     // setSelectedCategory(data);
   };
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   // /users
 
   const { data: booking = [] } = useQuery({
@@ -209,10 +222,20 @@ const DataContext = ({ children }) => {
     const subTotalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     setSubTotal(subTotalPrice);
   }, [cart]);
-  useEffect(() => {
-    const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    setTotal(totalPrice);
-  }, [cart]);
+
+  let taxRate = 11;
+  const taxDue = subTotal * (taxRate / 100);
+  console.log(taxDue.toFixed(2));
+
+  const finalPrice = subTotal * (1 + taxRate / 100);
+  console.log(finalPrice.toFixed(2));
+
+ 
+  // useEffect(() => {
+
+  //   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  //   setTotal(totalPrice);
+  // }, [cart]);
 
   // transfer value to children
 
@@ -236,10 +259,11 @@ const DataContext = ({ children }) => {
     // handleCartInfo,
     handleIncreaseItem,
     handleDecreaseItem,
-    quantity,
+    // quantity,
     booking,
     subTotal,
-    total,
+    finalPrice,
+    taxDue,
     orders,
   };
 

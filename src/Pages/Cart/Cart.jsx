@@ -11,14 +11,19 @@ import {
   Container,
   ActionIcon,
   Group,
+  SegmentedControl,
+  Center,
+  Box,
 } from "@mantine/core";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
 
-import { IconArrowNarrowLeft, IconTrash } from "@tabler/icons-react";
+import { IconArrowNarrowLeft, IconMoon, IconTrash, IconTruckDelivery } from "@tabler/icons-react";
 
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
+// import { IconSun } from "@tabler/icons-react";
+import { useState } from "react";
 // import axios from "axios";
 // import { AuthContext } from "../../Context/UserContext";
 // import { toast } from "react-hot-toast";
@@ -75,16 +80,16 @@ const useStyles = createStyles((theme) => ({
   },
 
   controls: {
-    marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingLeft: theme.spacing.xs,
-    marginLeft: theme.spacing.md,
+    marginTop: `calc(${theme.spacing.xs}* 5.5)`,
+    // display: "flex",
+    // justifyContent: "space-between",
+    // alignItems: "center",
+    // paddingLeft: theme.spacing.xs,
+    // marginLeft: theme.spacing.md,
 
-    [theme.fn.smallerThan("xs")]: {
-      flexDirection: "column",
-    },
+    // [theme.fn.smallerThan("xs")]: {
+    //   flexDirection: "column",
+    // },
   },
   control: {
     height: rem(22),
@@ -120,7 +125,7 @@ const useStyles = createStyles((theme) => ({
     border: "1px solid rgb(229 231 235)",
     opacity: "0.7",
     borderRadius: "15px",
-    height: "250px",
+    height: "350px",
   },
 
   section: {
@@ -147,14 +152,21 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Cart = () => {
+  // const [shipping, setShipping] = useState("delivery");
+
+  // const handleChange = (event, newShipping) => {
+  //   setShipping(newShipping);
+  // };
+
   // const { user } = useContext(AuthContext);
   const {
     cart,
     subTotal,
-    total,
     removeItemFromCart,
     handleIncreaseItem,
     handleDecreaseItem,
+    finalPrice,
+    taxDue,
     // quantity,
   } = useContext(ApiContext);
   const { classes } = useStyles();
@@ -237,7 +249,7 @@ const Cart = () => {
                       <Card className={classes.card}>
                         <div key={item.id}>
                           <div className={classes.body}>
-                            <Image src={item.image} width={90} height={90} radius={10} />
+                            <Image src={item.image} width={90} height={90} radius={10} alt={item.name} />
                             <div className={classes.text_container}>
                               <Text className={classes.title}>{item.name}</Text>
                               <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
@@ -267,7 +279,7 @@ const Cart = () => {
                               size="xs"
                             >
                               {" "}
-                              <IconTrash onClick={() => removeItemFromCart(item)} />
+                              <IconTrash size={"1.25rem"} onClick={() => removeItemFromCart(item)} />
                             </Button>
                           </div>
                         </div>
@@ -278,14 +290,11 @@ const Cart = () => {
                 </>
               ) : (
                 <>
-                  <section className="flex items-center text-red-800 mt-8">
+                  <section className="flex items-center text-[#FF922B] mt-8">
                     <div className="container flex flex-col items-center justify-center mx-auto">
                       <div className="text-center">
-                        {/* <h2 className="mb-8 font-extrabold text-9xl text-gray-400">
-                          <span className="sr-only">Error</span>404
-                        </h2> */}
                         <p className="text-2xl font-semibold md:text-3xl">Sorry, we couldn't find items .</p>
-                        <p className="mt-4  text-info-600">
+                        <p className="mt-4  ">
                           Good food is always cooking! Go ahead, order some yummy items from the menu.
                           <Link to={"/shop"} className="flex justify-center items-center gap-1">
                             <ActionIcon c={"#5C7CFA"}>
@@ -307,68 +316,57 @@ const Cart = () => {
 
           <Grid.Col md={6} lg={0.2}></Grid.Col>
           <Grid.Col md={6} lg={3.5} className={classes.cartPaymentSummary}>
-            <Text
-              variant="gradient"
-              gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
-              sx={{ fontFamily: "Inter, sans-serif" }}
-              ta="left"
-              fz="xl"
-              fw={700}
-            >
-              Payment summary
+            <Text c={"#4C6EF5"} ta="center" fz="md" p={4} fw={700}>
+              Order summary
             </Text>
             <hr />
-            <Text
-              variant="gradient"
-              gradient={{ from: "#B70C1C", to: "#222222", deg: 90 }}
-              sx={{ fontFamily: "Inter, sans-serif" }}
-              ta="left"
-              fz="sm"
-              fw={700}
-            >
-              <div className="mt-5">
+
+            {/* <Group position="center" my="xl">
+              <SegmentedControl
+                value={shipping}
+                onChange={handleChange}
+                data={[
+                  {
+                    value: "delivery",
+                    label: (
+                      <Center>
+                        <IconTruckDelivery size="1rem" stroke={1.5} />
+                        <Box ml={10}>Delivery</Box>
+                      </Center>
+                    ),
+                  },
+                  {
+                    value: "Pickup",
+                    label: (
+                      <Center>
+                        <IconMoon size="1rem" stroke={1.5} />
+                        <Box ml={10}>Pickup</Box>
+                      </Center>
+                    ),
+                  },
+                ]}
+              />
+            </Group> */}
+            <Text ta="left" fz="sm" fw={700}>
+              <div className="mt-28">
                 <div className="flex justify-between p-2">
-                  <p>Subtotal :</p>
-                  <p>
-                    $
-                    {
-                      subTotal
-                      // cart.reduce(
-                      //   (total, item) => total + item.price * item.quantity,
-                      //   0
-                      // )
-                    }
-                  </p>
+                  <Text c={"#495057"}>Subtotal :</Text>
+                  <Text c={"#495057"}>$ {subTotal.toFixed(2)}</Text>
                 </div>
                 <hr />
                 <div className="flex justify-between p-2">
-                  <p>Total(tax incl.) : </p>
-                  <p>
-                    {" "}
-                    $
-                    {
-                      total
-                      // cart.reduce(
-                      //   (total, item) => total + item.price * item.quantity,
-                      //   0
-                      // )
-                    }
-                  </p>
+                  <Text c={"#495057"}>Tax(11%) :</Text>
+                  <Text c={"#495057"}>$ {taxDue.toFixed(2)}</Text>
+                </div>
+                <hr />
+                <div className="flex justify-between p-2">
+                  <Text c={"#495057"}>Total : </Text>
+                  <Text c={"#5C7CFA"}> $ {finalPrice.toFixed(2)}</Text>
                 </div>
                 <hr />
               </div>
             </Text>
-            {/* <div position="center" className={classes.controls}> */}
-            {/* <Button compact className={classes.control} size="xs"> */}
-            <PaymentButton
-              // size="xs"
-              // compact
-              // className={classes.controls}
-              cart={cart}
-              // handleCheckout={handleCheckout}
-              // variant="default"
-            ></PaymentButton>
-       
+            <PaymentButton cart={cart}></PaymentButton>
           </Grid.Col>
         </Grid>
         <Link to={"/shop"} className="flex justify-start items-center gap-1 pb-5">

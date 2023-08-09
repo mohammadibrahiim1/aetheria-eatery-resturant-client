@@ -8,8 +8,7 @@ import { Link } from "react-router-dom";
 // import { toast } from "react-hot-toast";
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
   },
 
   title: {
@@ -57,17 +56,17 @@ const useStyles = createStyles((theme) => ({
     },
   },
   control: {
-    height: rem(32),
+    // height: rem(32),
     // fontSize: theme.fontSizes.sm,
-    color: "#B70C1C",
+    color: "#4263EB",
     marginTop: "12px",
     width: "100%",
-    border: "1px solid red",
+    border: "1px solid #4263EB",
     ":hover": {
-      backgroundColor: "red",
-      border: "1px solid red !important",
+      backgroundColor: "#4263EB",
+      border: "1px solid #4263EB",
       transition: "0.5s",
-      color: "white !important",
+      color: "#FFFFFF !important ",
     },
 
     "&:not(:first-of-type)": {
@@ -102,31 +101,15 @@ const PaymentButton = () => {
   //     .catch((err) => console.log(err.message));
   // };
   return (
-    <div className="mt-2">
-      <div
-        // onClick={() => handleCheckout()}
-        to="/shop"
-        position="center"
-        // mt={6}
-        // className={classes.controls}
-      >
-        <Link to="/checkout" 
-        // onClick={handleCheckout}
+    <div className="mt-5">
+      <div>
+        <Link
+          to="/checkout"
+          // onClick={handleCheckout}
         >
-          <Button compact className={classes.control} size="xs">
-            Proceed to checkout
-          </Button>
+          <Button className={classes.control} size="md">Proceed to checkout</Button>
         </Link>
       </div>
-      <Link
-        to="/shop"
-        position="center"
-        // className={classes.controls}
-      >
-        <Button compact className={classes.control} size="xs">
-          Add more items
-        </Button>
-      </Link>
     </div>
   );
 };
