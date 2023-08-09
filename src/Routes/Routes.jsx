@@ -15,6 +15,7 @@ import AdminRoute from "./AdminRoute";
 import { ErrorPage } from "../Components/ErrorPage";
 import Checkout from "../Pages/Checkout/Checkout";
 import MyOrder from "../Pages/MyOrder/MyOrder";
+import PlaceOrder from "../Components/PlaceOrder";
 // import ErrorPage from "../Components/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -48,8 +49,12 @@ export const router = createBrowserRouter([
         element: <Checkout></Checkout>,
       },
       {
+        path: "/placeOrder",
+        element: <PlaceOrder></PlaceOrder>,
+      },
+      {
         path: "/myOrder",
-        element: <MyOrder></MyOrder>
+        element: <MyOrder></MyOrder>,
       },
       {
         path: "/tableReservation",

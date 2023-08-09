@@ -11,17 +11,18 @@ import {
   Container,
   ActionIcon,
   Group,
-  SegmentedControl,
-  Center,
-  Box,
+  Indicator,
 } from "@mantine/core";
 import { useContext } from "react";
-import { ApiContext } from "../../Context/DataContext";
+// import { ApiContext } from "../../Context/DataContext";
 
 import { IconArrowNarrowLeft, IconMoon, IconTrash, IconTruckDelivery } from "@tabler/icons-react";
 
-import PaymentButton from "../../Components/PaymentButton";
-import { Link } from "react-router-dom";
+// import PaymentButton from "../../Components/PaymentButton";
+import { Link, useNavigate } from "react-router-dom";
+import { ApiContext } from "../Context/DataContext";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 // import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
@@ -115,11 +116,12 @@ const useStyles = createStyles((theme) => ({
     overflow: "auto",
     borderRadius: "15px",
   },
+
   cartPaymentSummary: {
     border: "1px solid rgb(229 231 235)",
     opacity: "0.7",
     borderRadius: "15px",
-    height: "350px",
+    height: "380px",
   },
 
   section: {
@@ -143,9 +145,54 @@ const useStyles = createStyles((theme) => ({
   text_container: {
     width: "400px",
   },
+  place_order: {
+    color: "#4263EB",
+    marginTop: "12px",
+    width: "100%",
+    border: "1px solid #4263EB",
+    ":hover": {
+      backgroundColor: "#4263EB",
+      border: "1px solid #4263EB",
+      transition: "0.5s",
+      color: "#FFFFFF !important ",
+    },
+
+    "&:not(:first-of-type)": {
+      marginLeft: theme.spacing.xs,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      "&:not(:first-of-type)": {
+        marginLeft: 0,
+      },
+    },
+  },
 }));
 
-const Cart = () => {
+const PlaceOrder = () => {
+  const orderInfoFromLocalStorage = JSON.parse(localStorage.getItem("orderInfo") || "[]");
+  const [orderInfo, setOrderInfo] = useState(orderInfoFromLocalStorage);
+  const { name, email, phone, city, state, totalPrice, zip } = orderInfo;
+  const navigate = useNavigate();
+
+  const handlePlaceOrder = () => {
+    const orderInfo = { name, email, phone, city, state, totalPrice, zip };
+    fetch("http://localhost:5000/orderInfo", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(orderInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if ((data.acknowledged = true)) {
+          toast.success(" orderInfo added successfully ");
+          navigate("/myOrder");
+        } else {
+          console.log(console.error);
+          //   toast.error(data.message);
+        }
+      });
+  };
   // const [shipping, setShipping] = useState("delivery");
 
   // const handleChange = (event, newShipping) => {
@@ -153,73 +200,32 @@ const Cart = () => {
   // };
 
   // const { user } = useContext(AuthContext);
-  const { cart, subTotal, removeItemFromCart, handleIncreaseItem, handleDecreaseItem, finalPrice, taxDue } =
-    useContext(ApiContext);
+  const { cart } = useContext(ApiContext);
   // localStorage.setItem("subtotal", subTotal);
 
   const { classes } = useStyles();
 
-  // const handleCheckout = () => {
-  //   const checkout = {
-  //     total,
-  //     name: user.displayName,
-  //     email: user.email,
-  //   };
-  //   fetch("https://resturant-website-server.vercel.app/checkout", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(checkout),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.acknowledged) {
-  //         // setSelectTable(null);
-  //         toast.success("added  successfully");
-  //         // refetch();
-  //       } else {
-  //         toast.error(data.message);
-  //       }
-  //     });
-  // };
+  //   const [showData, setShowData] = useState(false);
+  const [showData1, setShowData1] = useState(true);
+  const [showData2, setShowData2] = useState(false);
 
-  //   axios
-  //     .post(`https://resturant-website-server.vercel.app/checkoutPostInfo`, {
-  //       price: calculateSubTotal(),
-  //       totalPrice: calculateTotal(),
-  //     })
-  //     .then((res) => {
-  //       if (res.data.url) {
-  //         window.location.href = res.data.url;
-  //         toast.success("add checkout info");
-  //       }
-  //     })
-  //     .catch((err) => console.log(err.message));
-  // };
+  const toggleData1 = () => {
+    setShowData1(!showData1);
+    setShowData2(false); // Hide the other data
+  };
 
-  // console.log(cart);
-
-  // const calculateTotal = () => {
-  //   return cart.reduce((total, item) => {
-  //     return total + item.price * item.quantity;
-  //   }, 0);
-  // };
-
-  // const calculateSubTotal = () => {
-  //   return cart.reduce((subTotal, item) => {
-  //     return subTotal + item.price * item.quantity;
-  //   }, 0);
-  // };
+  const toggleData2 = () => {
+    setShowData2(!showData2);
+    setShowData1(false); // Hide the other data
+  };
 
   return (
     <div>
       <Container size="lg">
-        <Text className={classes.heading}>My Cart</Text>
+        <Text className={classes.heading}>Order Items</Text>
 
         <Grid className="pt-8 pb-2" gutter={"xs"}>
-          <Grid.Col md={6} lg={8.2} h={500} gap={2} className={classes.cartItems}>
+          <Grid.Col md={6} lg={8.2} gap={2} className={classes.cartItems}>
             <div className="">
               {cart.length ? (
                 <>
@@ -237,29 +243,31 @@ const Cart = () => {
                       <Card className={classes.card}>
                         <div key={item.id}>
                           <div className={classes.body}>
-                            <Image src={item.image} width={90} height={90} radius={10} alt={item.name} />
+                            <Indicator inline label={item.quantity} size={16}>
+                              <Image src={item.image} width={90} height={90} radius={10} alt={item.name} />
+                            </Indicator>
                             <div className={classes.text_container}>
                               <Text className={classes.title}>{item.name}</Text>
                               <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
                             </div>
 
-                            <div className={classes.counterContainer}>
+                            {/* <div className={classes.counterContainer}>
                               <button className="btn  btn-sm btn-circle" onClick={() => handleDecreaseItem(item._id)}>
                                 -
-                              </button>
-                              <Text size={15} w={15} align="center">
-                                {item.quantity}
-                              </Text>
-                              <button className="btn btn-sm btn-circle" onClick={() => handleIncreaseItem(item._id)}>
+                              </button> */}
+                            <Text size={15} w={15} align="center">
+                              {item.quantity}
+                            </Text>
+                            {/* <button className="btn btn-sm btn-circle" onClick={() => handleIncreaseItem(item._id)}>
                                 +
                               </button>
-                            </div>
+                            </div> */}
 
                             <Text w={50} align="center" className={classes.title}>
                               ${item.price * item.quantity}
                             </Text>
 
-                            <Button
+                            {/* <Button
                               // defaultValue={4}
                               className={classes.control}
                               compact
@@ -268,7 +276,7 @@ const Cart = () => {
                             >
                               {" "}
                               <IconTrash size={"1.25rem"} onClick={() => removeItemFromCart(item)} />
-                            </Button>
+                            </Button> */}
                           </div>
                         </div>
                       </Card>
@@ -299,75 +307,146 @@ const Cart = () => {
                 </>
               )}
             </div>
-            <div className="py-8"></div>
+            <div className="py-2">
+              <Text c={"#4C6EF5"} ta="left" fz="md" p={4} fw={700}>
+                select payment method
+              </Text>
+              <div>
+                <button onClick={toggleData1}>Toggle Data 1</button>
+                <button onClick={toggleData2}>Toggle Data 2</button>
+                {showData1 && (
+                  <div>
+                    {/* Place your data for Data 1 here */}
+                    <p>This is Data 1 that will be displayed when the first button is clicked.</p>
+                  </div>
+                )}
+                {showData2 && (
+                  <div>
+                    {/* Place your data for Data 2 here */}
+                    <p>This is Data 2 that will be displayed when the second button is clicked.</p>
+                  </div>
+                )}
+              </div>
+            </div>
           </Grid.Col>
 
           <Grid.Col md={6} lg={0.2}></Grid.Col>
           <Grid.Col md={6} lg={3.5} className={classes.cartPaymentSummary}>
             <Text c={"#4C6EF5"} ta="center" fz="md" p={4} fw={700}>
-              Order summary
+              order Information
             </Text>
             <hr />
 
             {/* <Group position="center" my="xl">
-              <SegmentedControl
-                value={shipping}
-                onChange={handleChange}
-                data={[
-                  {
-                    value: "delivery",
-                    label: (
-                      <Center>
-                        <IconTruckDelivery size="1rem" stroke={1.5} />
-                        <Box ml={10}>Delivery</Box>
-                      </Center>
-                    ),
-                  },
-                  {
-                    value: "Pickup",
-                    label: (
-                      <Center>
-                        <IconMoon size="1rem" stroke={1.5} />
-                        <Box ml={10}>Pickup</Box>
-                      </Center>
-                    ),
-                  },
-                ]}
-              />
-            </Group> */}
+                <SegmentedControl
+                  value={shipping}
+                  onChange={handleChange}
+                  data={[
+                    {
+                      value: "delivery",
+                      label: (
+                        <Center>
+                          <IconTruckDelivery size="1rem" stroke={1.5} />
+                          <Box ml={10}>Delivery</Box>
+                        </Center>
+                      ),
+                    },
+                    {
+                      value: "Pickup",
+                      label: (
+                        <Center>
+                          <IconMoon size="1rem" stroke={1.5} />
+                          <Box ml={10}>Pickup</Box>
+                        </Center>
+                      ),
+                    },
+                  ]}
+                />
+              </Group> */}
             <Text ta="left" fz="sm" fw={700}>
-              <div className="mt-28">
-                <div className="flex justify-between p-2">
-                  <Text c={"#495057"}>Subtotal :</Text>
-                  <Text c={"#495057"}>$ {subTotal.toFixed(2)}</Text>
+              <div className="">
+                <div className=" flex p-2">
+                  <Text c={"#495057"}>Name :</Text>
+                  <Text pl={3} c={"#495057"}>
+                    {" "}
+                    {name}
+                  </Text>
                 </div>
                 <hr />
-                <div className="flex justify-between p-2">
-                  <Text c={"#495057"}>Tax(11%) :</Text>
-                  <Text c={"#495057"}>$ {taxDue.toFixed(2)}</Text>
+                <div className=" flex p-2">
+                  <Text c={"#495057"}>Email : </Text>
+                  <Text pl={3} c={"#495057"}>
+                    {" "}
+                    {email}
+                  </Text>
                 </div>
                 <hr />
-                <div className="flex justify-between p-2">
-                  <Text c={"#495057"}>Total : </Text>
-                  <Text c={"#5C7CFA"}> $ {finalPrice.toFixed(2)}</Text>
+                <div className=" flex p-2">
+                  <Text c={"#495057"}>Phone : </Text>
+                  <Text pl={3} c={"#5C7CFA"}>
+                    {" "}
+                    {phone}
+                  </Text>
                 </div>
                 <hr />
+                <div className=" flex p-2">
+                  <Text c={"#495057"}> City : </Text>
+                  <Text pl={3} c={"#5C7CFA"}>
+                    {" "}
+                    {city}
+                  </Text>
+                </div>{" "}
+                <hr />
+                <div className=" flex p-2">
+                  <Text c={"#495057"}>state : </Text>
+                  <Text pl={3} c={"#5C7CFA"}>
+                    {" "}
+                    {state}
+                  </Text>
+                </div>{" "}
+                <hr />
+                <div className=" flex p-2">
+                  <Text c={"#495057"}> ZIP : </Text>
+                  <Text pl={3} c={"#5C7CFA"}>
+                    {" "}
+                    {zip}
+                  </Text>
+                </div>
+                <hr />
+                <div className=" flex p-2">
+                  <Text c={"#495057"}> Price : </Text>
+                  <Text pl={3} c={"#5C7CFA"}>
+                    {" "}
+                    {totalPrice}
+                  </Text>
+                </div>
+                <hr />
+                <Button
+                  onClick={handlePlaceOrder}
+                  className={classes.place_order}
+                  w={"100%"}
+                  size="sm"
+                  mt={16}
+                  color="indigo"
+                >
+                  place order
+                </Button>
               </div>
             </Text>
-            <PaymentButton cart={cart}></PaymentButton>
+            {/* <PaymentButton cart={cart}></PaymentButton> */}
           </Grid.Col>
         </Grid>
-        <Link to={"/shop"} className="flex justify-start items-center gap-1 pb-5">
+        {/* <Link to={"/shop"} className="flex justify-start items-center gap-1 pb-5">
           <ActionIcon c={"#5C7CFA"}>
             <IconArrowNarrowLeft size="1.25rem" />
           </ActionIcon>
           <Text c={"#5C7CFA"} fw={600} fz="sm">
             Add more meals
           </Text>
-        </Link>
+        </Link> */}
       </Container>
     </div>
   );
 };
 
-export default Cart;
+export default PlaceOrder;

@@ -5,9 +5,11 @@ import { toast } from "react-hot-toast";
 export const ApiContext = createContext();
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("newCart") || "[]");
 
+
 const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState(cartFromLocalStorage);
+  
 
   // const [checkoutInfo, setCheckoutInfo] = useState({});
   // console.log(checkoutInfo);
@@ -37,7 +39,7 @@ const DataContext = ({ children }) => {
     fetch("http://localhost:5000/v2/payments")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setOrders(data);
       });
   }, []);
@@ -232,10 +234,10 @@ const DataContext = ({ children }) => {
   let shipping = 59;
   let taxRate = 11;
   const taxDue = subTotal * (taxRate / 100);
-  console.log(taxDue.toFixed(2));
+  // console.log(taxDue.toFixed(2));
 
-  const finalPrice = shipping + subTotal * (1 + taxRate / 100);
-  console.log(finalPrice.toFixed(2));
+  const finalPrice = subTotal * (1 + taxRate / 100);
+  // console.log(finalPrice.toFixed(2));
 
   // useEffect(() => {
 

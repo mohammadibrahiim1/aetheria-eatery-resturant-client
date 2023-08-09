@@ -82,10 +82,32 @@ const useStyles = createStyles((theme) => ({
       },
     },
   },
+  place_order: {
+    color: "#4263EB",
+    marginTop: "12px",
+    width: "100%",
+    border: "1px solid #4263EB",
+    ":hover": {
+      backgroundColor: "#4263EB",
+      border: "1px solid #4263EB",
+      transition: "0.5s",
+      color: "#FFFFFF !important ",
+    },
+
+    "&:not(:first-of-type)": {
+      marginLeft: theme.spacing.xs,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      "&:not(:first-of-type)": {
+        marginLeft: 0,
+      },
+    },
+  },
 }));
 const PaymentButton = () => {
   const { classes } = useStyles();
-  const { cart } = useContext(ApiContext);
+  // const { cart } = useContext(ApiContext);
   // const url = "  http://localhost:5000 ";
   // console.log(user);
 

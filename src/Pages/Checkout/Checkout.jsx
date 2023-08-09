@@ -20,10 +20,11 @@ import { AuthContext } from "../../Context/UserContext";
 
 import { ApiContext } from "../../Context/DataContext";
 import { IconTrash } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useReducer } from "react";
 import { initialState, reducer } from "../../state/formReducers";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -155,14 +156,17 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 const Checkout = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { displayName, email } = user;
 
   const [isChecked, setIsChecked] = useState(false);
 
-  console.log(user);
   const { cart, removeItemFromCart, subTotal, finalPrice, taxDue, handleDecreaseItem, handleIncreaseItem, shipping } =
     useContext(ApiContext);
+
+  const grandTotal = finalPrice + shipping;
+
   console.log(cart);
   const { classes } = useStyles();
   // const [state, dispatch] = useReducer(reducer, initialState);
@@ -177,7 +181,37 @@ const Checkout = () => {
     const city = form.city.value;
     const state = form.state.value;
     const zip = form.zip.value;
-    console.log(name, phone, email, city, state, zip);
+    const totalPrice = grandTotal.toFixed(2);
+    console.log(name, phone, email, city, state, zip, totalPrice);
+
+    const orderInfo = {
+      name,
+      email,
+      phone,
+      city,
+      state,
+      zip,
+      totalPrice,
+    };
+
+    toast.success("saved order info to localStorage");
+    localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
+    navigate("/placeOrder");
+
+    // fetch("http://localhost:5000/orderInfo", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(orderInfo),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data.acknowledge) {
+    //       toast.success("successfully added orderInfo");
+    //       navigate("/placeOrder");
+    //     } else {
+    //       toast.error(data.message);
+    //     }
+    //   });
   };
 
   return (
@@ -302,6 +336,7 @@ const Checkout = () => {
                     checked={isChecked}
                     onChange={() => setIsChecked(!isChecked)}
                   />
+                  {/* <Link to="/placeOrder"> */}
                   <Button
                     type="submit"
                     disabled={!isChecked}
@@ -311,8 +346,9 @@ const Checkout = () => {
                     mt={16}
                     color="indigo"
                   >
-                    Place order
+                    proceed
                   </Button>
+                  {/* </Link> */}
                 </Stack>
               </form>
             </div>
@@ -354,7 +390,7 @@ const Checkout = () => {
                     <hr />
                     <div className="flex justify-between p-2">
                       <Text c={"#495057"}>Total : </Text>
-                      <Text c={"#5C7CFA"}> $ {finalPrice.toFixed(2)}</Text>
+                      <Text c={"#5C7CFA"}> $ {grandTotal.toFixed(2)}</Text>
                     </div>
                     <hr />
                   </div>
