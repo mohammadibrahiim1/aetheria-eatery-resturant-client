@@ -229,11 +229,12 @@ const DataContext = ({ children }) => {
     setSubTotal(subTotalPrice);
   }, [cart]);
 
+  let shipping = 59;
   let taxRate = 11;
   const taxDue = subTotal * (taxRate / 100);
   console.log(taxDue.toFixed(2));
 
-  const finalPrice = subTotal * (1 + taxRate / 100);
+  const finalPrice = shipping + subTotal * (1 + taxRate / 100);
   console.log(finalPrice.toFixed(2));
 
   // useEffect(() => {
@@ -269,6 +270,7 @@ const DataContext = ({ children }) => {
     subTotal,
     finalPrice,
     taxDue,
+    shipping,
     orders,
     // handleCheckout
   };
