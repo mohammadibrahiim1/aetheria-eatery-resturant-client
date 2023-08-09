@@ -220,7 +220,8 @@ const Checkout = () => {
                   <div key={item.id}>
                     <div className={classes.body}>
                       <Indicator label={item.quantity} inline size={24}>
-                        <Avatar size="xl" src={item.image} />
+                        <Image src={item.image} width={50} height={50} radius={10} alt={item.name} />
+                        {/* <Avatar size="lg" src={item.image} /> */}
                       </Indicator>
                       {/* <Image src={item.image} width={90} height={90} radius={10} alt={item.name} /> */}
                       <div className={classes.text_container}>
