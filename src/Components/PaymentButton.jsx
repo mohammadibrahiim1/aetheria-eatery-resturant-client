@@ -5,6 +5,8 @@ import React from "react";
 import { createStyles, rem } from "@mantine/core";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ApiContext } from "../Context/DataContext";
 // import { toast } from "react-hot-toast";
 const useStyles = createStyles((theme) => ({
   card: {
@@ -83,31 +85,17 @@ const useStyles = createStyles((theme) => ({
 }));
 const PaymentButton = () => {
   const { classes } = useStyles();
-  // const { user } = useContext(AuthContext);
+  const { cart } = useContext(ApiContext);
   // const url = "  http://localhost:5000 ";
   // console.log(user);
-  // const handleCheckout = () => {
-  //   console.log(cart);
-  //   axios
-  //     .post(`https://resturant-website-server.vercel.app/stripe/create-checkout-session`, {
-  //       cart,
-  //       userId: user._id,
-  //     })
-  //     .then((res) => {
-  //       if (res.data.url) {
-  //         window.location.href = res.data.url;
-  //       }
-  //     })
-  //     .catch((err) => console.log(err.message));
-  // };
+
   return (
     <div className="mt-5">
       <div>
-        <Link
-          to="/checkout"
-          // onClick={handleCheckout}
-        >
-          <Button className={classes.control} size="md">Proceed to checkout</Button>
+        <Link to="/checkout">
+          <Button className={classes.control} size="md">
+            Proceed to checkout
+          </Button>
         </Link>
       </div>
     </div>

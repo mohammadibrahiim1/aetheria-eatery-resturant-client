@@ -8,6 +8,7 @@ const cartFromLocalStorage = JSON.parse(localStorage.getItem("newCart") || "[]")
 const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
   const [cart, setCart] = useState(cartFromLocalStorage);
+
   // const [checkoutInfo, setCheckoutInfo] = useState({});
   // console.log(checkoutInfo);
   const [allItems, setAllItems] = useState([]);
@@ -193,28 +194,33 @@ const DataContext = ({ children }) => {
   });
 
   const handleIncreaseItem = (id) => {
-    const updateItems = cart.map((item) => {
+    const increaseQuantity = cart.map((item) => {
       if (item._id === id) {
         return {
           ...item,
           quantity: item.quantity + 1,
         };
       }
+      // localStorage.setItem("quantity", quantity);
       return item;
     });
-    setCart(updateItems);
+    localStorage.setItem("newCart", JSON.stringify(increaseQuantity));
+    setCart(increaseQuantity);
   };
+
   const handleDecreaseItem = (id) => {
-    const updateItems = cart.map((item) => {
+    const decreaseQuantity = cart.map((item) => {
       if (item._id === id && item.quantity > 1) {
         return {
           ...item,
           quantity: item.quantity - 1,
         };
       }
+
       return item;
     });
-    setCart(updateItems);
+    setCart(decreaseQuantity);
+    localStorage.setItem("newCart", JSON.stringify(decreaseQuantity));
   };
 
   // calculate cart item total price
@@ -230,7 +236,6 @@ const DataContext = ({ children }) => {
   const finalPrice = subTotal * (1 + taxRate / 100);
   console.log(finalPrice.toFixed(2));
 
- 
   // useEffect(() => {
 
   //   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -259,12 +264,13 @@ const DataContext = ({ children }) => {
     // handleCartInfo,
     handleIncreaseItem,
     handleDecreaseItem,
-    // quantity,
+    // newQuantity,
     booking,
     subTotal,
     finalPrice,
     taxDue,
     orders,
+    // handleCheckout
   };
 
   return (

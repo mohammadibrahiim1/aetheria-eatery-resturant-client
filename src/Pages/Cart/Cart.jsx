@@ -159,16 +159,10 @@ const Cart = () => {
   // };
 
   // const { user } = useContext(AuthContext);
-  const {
-    cart,
-    subTotal,
-    removeItemFromCart,
-    handleIncreaseItem,
-    handleDecreaseItem,
-    finalPrice,
-    taxDue,
-    // quantity,
-  } = useContext(ApiContext);
+  const { cart, subTotal, removeItemFromCart, handleIncreaseItem, handleDecreaseItem, finalPrice, taxDue } =
+    useContext(ApiContext);
+  // localStorage.setItem("subtotal", subTotal);
+
   const { classes } = useStyles();
 
   // const handleCheckout = () => {

@@ -1,15 +1,4 @@
-import {
-  Anchor,
-  Button,
-  Checkbox,
-  Grid,
-  Group,
-  Input,
-  PasswordInput,
-  Stack,
-  TextInput,
-  createStyles,
-} from "@mantine/core";
+import { Anchor, Button, Card, Checkbox, Grid, Group, Image, Input, Stack, Text, TextInput, createStyles } from "@mantine/core";
 // import { theme } from "antd";
 import React, { useContext } from "react";
 import PaymentSavedCart from "../../Components/PaymentSavedCart";
@@ -18,6 +7,8 @@ import { IconAt, IconPhone, IconWriting } from "@tabler/icons-react";
 import { AuthContext } from "../../Context/UserContext";
 import { upperFirst, useToggle } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
+import { ApiContext } from "../../Context/DataContext";
+import { IconTrash } from "@tabler/icons-react";
 // import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -73,12 +64,56 @@ const Checkout = () => {
     },
   });
   const { user } = useContext(AuthContext);
+  const { cart } = useContext(ApiContext);
+  console.log(cart);
   const { classes } = useStyles();
 
   return (
     <div>
       <Grid className={classes.section}>
         <Grid.Col sm={12} xs={12} lg={7}>
+          {cart.map((item) => (
+            <>
+              <Card className={classes.card}>
+                <div key={item.id}>
+                  <div className={classes.body}>
+                    <Image src={item.image} width={90} height={90} radius={10} alt={item.name} />
+                    <div className={classes.text_container}>
+                      <Text className={classes.title}>{item.name}</Text>
+                      <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
+                    </div>
+
+                    <div className={classes.counterContainer}>
+                      {/* <button className="btn  btn-sm btn-circle" onClick={() => handleDecreaseItem(item._id)}>
+                        -
+                      </button> */}
+                      <Text size={15} w={15} align="center">
+                        {item.quantity}
+                      </Text>
+                      {/* <button className="btn btn-sm btn-circle" onClick={() => handleIncreaseItem(item._id)}>
+                        +
+                      </button> */}
+                    </div>
+
+                    <Text w={50} align="center" className={classes.title}>
+                      ${item.price * item.quantity}
+                    </Text>
+
+                    {/* <Button
+                      // defaultValue={4}
+                      className={classes.control}
+                      compact
+                      // variant="default"
+                      size="xs"
+                    >
+                      {" "}
+                      <IconTrash size={"1.25rem"} onClick={() => removeItemFromCart(item)} />
+                    </Button> */}
+                  </div>
+                </div>
+              </Card>
+            </>
+          ))}
           <form onSubmit={form.onSubmit(() => {})}>
             <Stack>
               <TextInput
