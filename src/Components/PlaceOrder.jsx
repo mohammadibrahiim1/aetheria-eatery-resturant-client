@@ -12,6 +12,7 @@ import {
   ActionIcon,
   Group,
   Indicator,
+  Radio,
 } from "@mantine/core";
 import { useContext } from "react";
 // import { ApiContext } from "../../Context/DataContext";
@@ -224,7 +225,7 @@ const PlaceOrder = () => {
       <Container size="lg">
         <Text className={classes.heading}>Order Items</Text>
 
-        <Grid className="pt-8 pb-2" gutter={"xs"}>
+        <Grid className="pt-2 pb-8" gutter={"xs"}>
           <Grid.Col md={6} lg={8.2} gap={2} className={classes.cartItems}>
             <div className="">
               {cart.length ? (
@@ -307,25 +308,36 @@ const PlaceOrder = () => {
                 </>
               )}
             </div>
-            <div className="py-2">
-              <Text c={"#4C6EF5"} ta="left" fz="md" p={4} fw={700}>
-                select payment method
+            <div className="p-4">
+              <Text c={"#4C6EF5"} ta="left" fz="md" fw={700}>
+                Select payment method
               </Text>
-              <div>
-                <button onClick={toggleData1}>Toggle Data 1</button>
+              <div className="">
+                <Radio.Group
+                  // name="favoriteFramework"
+                  // label="Select your favorite framework/library"
+                  // description="This is anonymous"
+                  withAsterisk
+                >
+                  <Group mt="xs">
+                    <Radio color="indigo" size="sm" value="Strip payment" label="Stripe payment" />
+                    <Radio color="indigo" size="sm" value="Cash on delivery" label="Cash on delivery" />
+                  </Group>
+                </Radio.Group>
+                {/* <button onClick={toggleData1}>Toggle Data 1</button>
                 <button onClick={toggleData2}>Toggle Data 2</button>
                 {showData1 && (
                   <div>
-                    {/* Place your data for Data 1 here */}
+                    Place your data for Data 1 here
                     <p>This is Data 1 that will be displayed when the first button is clicked.</p>
                   </div>
                 )}
                 {showData2 && (
                   <div>
-                    {/* Place your data for Data 2 here */}
+                    Place your data for Data 2 here
                     <p>This is Data 2 that will be displayed when the second button is clicked.</p>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </Grid.Col>
