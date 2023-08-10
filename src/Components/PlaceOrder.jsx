@@ -6,25 +6,23 @@ import {
   // Group,
   // Container,
   Grid,
-  Button,
   rem,
   Container,
   ActionIcon,
   Group,
   Indicator,
-  Radio,
 } from "@mantine/core";
 import { useContext } from "react";
 // import { ApiContext } from "../../Context/DataContext";
 
-import { IconArrowNarrowLeft, IconMoon, IconTrash, IconTruckDelivery } from "@tabler/icons-react";
+import { IconArrowNarrowLeft } from "@tabler/icons-react";
 
 // import PaymentButton from "../../Components/PaymentButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ApiContext } from "../Context/DataContext";
-import { useState } from "react";
-import { toast } from "react-hot-toast";
 // import { useState } from "react";
+// import { toast } from "react-hot-toast";
+import PaymentCard from "./PaymentCard";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -122,7 +120,7 @@ const useStyles = createStyles((theme) => ({
     border: "1px solid rgb(229 231 235)",
     opacity: "0.7",
     borderRadius: "15px",
-    height: "380px",
+    // height: "380px",
   },
 
   section: {
@@ -171,54 +169,40 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const PlaceOrder = () => {
-  const orderInfoFromLocalStorage = JSON.parse(localStorage.getItem("orderInfo") || "[]");
-  const [orderInfo, setOrderInfo] = useState(orderInfoFromLocalStorage);
-  const { name, email, phone, city, state, totalPrice, zip } = orderInfo;
-  const navigate = useNavigate();
-
-  const handlePlaceOrder = () => {
-    const orderInfo = { name, email, phone, city, state, totalPrice, zip };
-    fetch("http://localhost:5000/orderInfo", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(orderInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if ((data.acknowledged = true)) {
-          toast.success(" orderInfo added successfully ");
-          navigate("/myOrder");
-        } else {
-          console.log(console.error);
-          //   toast.error(data.message);
-        }
-      });
-  };
-  // const [shipping, setShipping] = useState("delivery");
-
-  // const handleChange = (event, newShipping) => {
-  //   setShipping(newShipping);
-  // };
-
-  // const { user } = useContext(AuthContext);
-  const { cart } = useContext(ApiContext);
+  const { cart, orderInfo } = useContext(ApiContext);
+  console.log(orderInfo);
   // localStorage.setItem("subtotal", subTotal);
 
   const { classes } = useStyles();
 
-  //   const [showData, setShowData] = useState(false);
-  const [showData1, setShowData1] = useState(true);
-  const [showData2, setShowData2] = useState(false);
+  // const [selectedRadio, setSelectedRadio] = useState(null);
 
-  const toggleData1 = () => {
-    setShowData1(!showData1);
-    setShowData2(false); // Hide the other data
-  };
+  // const orderStatus = selectedRadio;
 
-  const toggleData2 = () => {
-    setShowData2(!showData2);
-    setShowData1(false); // Hide the other data
-  };
+  // const { name, email, phone, city, state, totalPrice, zip } = orderInfo;
+  // const navigate = useNavigate();
+
+  // const handleConfirmOrder = () => {
+  //   fetch("http://localhost:5000/orderInfo", {
+  //     method: "POST",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(orderInfo),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if ((data.acknowledged = true)) {
+  //         toast.success(" orderInfo added successfully ");
+  //         navigate("/myOrder");
+  //       } else {
+  //         console.log(console.error);
+  //         //   toast.error(data.message);
+  //       }
+  //     });
+  // };
+  // const handleRadioChange = (value) => {
+  //   setSelectedRadio(value);
+  // };
 
   return (
     <div>
@@ -252,32 +236,13 @@ const PlaceOrder = () => {
                               <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
                             </div>
 
-                            {/* <div className={classes.counterContainer}>
-                              <button className="btn  btn-sm btn-circle" onClick={() => handleDecreaseItem(item._id)}>
-                                -
-                              </button> */}
                             <Text size={15} w={15} align="center">
                               {item.quantity}
                             </Text>
-                            {/* <button className="btn btn-sm btn-circle" onClick={() => handleIncreaseItem(item._id)}>
-                                +
-                              </button>
-                            </div> */}
 
                             <Text w={50} align="center" className={classes.title}>
                               ${item.price * item.quantity}
                             </Text>
-
-                            {/* <Button
-                              // defaultValue={4}
-                              className={classes.control}
-                              compact
-                              // variant="default"
-                              size="xs"
-                            >
-                              {" "}
-                              <IconTrash size={"1.25rem"} onClick={() => removeItemFromCart(item)} />
-                            </Button> */}
                           </div>
                         </div>
                       </Card>
@@ -308,38 +273,41 @@ const PlaceOrder = () => {
                 </>
               )}
             </div>
-            <div className="p-4">
+            {/* <div className="p-4">
               <Text c={"#4C6EF5"} ta="left" fz="md" fw={700}>
-                Select payment method
+                Select payment method(
+                <span className="text-[#F76707]"> please, select a payment method for confirm your order</span> )
               </Text>
-              <div className="">
-                <Radio.Group
-                  // name="favoriteFramework"
-                  // label="Select your favorite framework/library"
-                  // description="This is anonymous"
-                  withAsterisk
-                >
-                  <Group mt="xs">
-                    <Radio color="indigo" size="sm" value="Strip payment" label="Stripe payment" />
-                    <Radio color="indigo" size="sm" value="Cash on delivery" label="Cash on delivery" />
-                  </Group>
-                </Radio.Group>
-                {/* <button onClick={toggleData1}>Toggle Data 1</button>
-                <button onClick={toggleData2}>Toggle Data 2</button>
-                {showData1 && (
-                  <div>
-                    Place your data for Data 1 here
-                    <p>This is Data 1 that will be displayed when the first button is clicked.</p>
-                  </div>
-                )}
-                {showData2 && (
-                  <div>
-                    Place your data for Data 2 here
-                    <p>This is Data 2 that will be displayed when the second button is clicked.</p>
-                  </div>
-                )} */}
+              <div className="flex items-center gap-12 py-3">
+                <label className="flex items-center text-lg gap-2">
+                  <input
+                    className="radio-sm checked:bg-blue-500"
+                    type="radio"
+                    name="radioGroup"
+                    value="stripe"
+                    checked={selectedRadio === "stripe"}
+                    onChange={() => handleRadioChange("stripe")}
+                  />
+                  <Text c={"#4C6EF5"} ta="left" fz="lg" fw={700}>
+                    Stripe
+                  </Text>
+                </label>
+
+                <label className="flex items-center text-lg gap-2">
+                  <input
+                    className="radio-sm checked:bg-red-500"
+                    type="radio"
+                    name="radioGroup"
+                    value="Cash on delivery"
+                    checked={selectedRadio === "Cash on delivery"}
+                    onChange={() => handleRadioChange("Cash on delivery")}
+                  />
+                  <Text c={"#0CA678"} ta="left" fz="md" fw={700}>
+                    Cash on delivery
+                  </Text>
+                </label>
               </div>
-            </div>
+            </div> */}
           </Grid.Col>
 
           <Grid.Col md={6} lg={0.2}></Grid.Col>
@@ -349,47 +317,21 @@ const PlaceOrder = () => {
             </Text>
             <hr />
 
-            {/* <Group position="center" my="xl">
-                <SegmentedControl
-                  value={shipping}
-                  onChange={handleChange}
-                  data={[
-                    {
-                      value: "delivery",
-                      label: (
-                        <Center>
-                          <IconTruckDelivery size="1rem" stroke={1.5} />
-                          <Box ml={10}>Delivery</Box>
-                        </Center>
-                      ),
-                    },
-                    {
-                      value: "Pickup",
-                      label: (
-                        <Center>
-                          <IconMoon size="1rem" stroke={1.5} />
-                          <Box ml={10}>Pickup</Box>
-                        </Center>
-                      ),
-                    },
-                  ]}
-                />
-              </Group> */}
             <Text ta="left" fz="sm" fw={700}>
               <div className="">
                 <div className=" flex p-2">
                   <Text c={"#495057"}>Name :</Text>
-                  <Text pl={3} c={"#495057"}>
+                  <Text pl={3} c={"#5C7CFA"}>
                     {" "}
-                    {name}
+                    {orderInfo.name}
                   </Text>
                 </div>
                 <hr />
                 <div className=" flex p-2">
                   <Text c={"#495057"}>Email : </Text>
-                  <Text pl={3} c={"#495057"}>
+                  <Text pl={3} c={"#5C7CFA"}>
                     {" "}
-                    {email}
+                    {orderInfo.email}
                   </Text>
                 </div>
                 <hr />
@@ -397,7 +339,7 @@ const PlaceOrder = () => {
                   <Text c={"#495057"}>Phone : </Text>
                   <Text pl={3} c={"#5C7CFA"}>
                     {" "}
-                    {phone}
+                    {orderInfo.phone}
                   </Text>
                 </div>
                 <hr />
@@ -405,7 +347,7 @@ const PlaceOrder = () => {
                   <Text c={"#495057"}> City : </Text>
                   <Text pl={3} c={"#5C7CFA"}>
                     {" "}
-                    {city}
+                    {orderInfo.city}
                   </Text>
                 </div>{" "}
                 <hr />
@@ -413,7 +355,7 @@ const PlaceOrder = () => {
                   <Text c={"#495057"}>state : </Text>
                   <Text pl={3} c={"#5C7CFA"}>
                     {" "}
-                    {state}
+                    {orderInfo.state}
                   </Text>
                 </div>{" "}
                 <hr />
@@ -421,7 +363,7 @@ const PlaceOrder = () => {
                   <Text c={"#495057"}> ZIP : </Text>
                   <Text pl={3} c={"#5C7CFA"}>
                     {" "}
-                    {zip}
+                    {orderInfo.zip}
                   </Text>
                 </div>
                 <hr />
@@ -429,33 +371,17 @@ const PlaceOrder = () => {
                   <Text c={"#495057"}> Price : </Text>
                   <Text pl={3} c={"#5C7CFA"}>
                     {" "}
-                    {totalPrice}
+                    {orderInfo.totalPrice}
                   </Text>
                 </div>
                 <hr />
-                <Button
-                  onClick={handlePlaceOrder}
-                  className={classes.place_order}
-                  w={"100%"}
-                  size="sm"
-                  mt={16}
-                  color="indigo"
-                >
-                  place order
-                </Button>
+                <div>
+                  <PaymentCard></PaymentCard>
+                </div>
               </div>
             </Text>
-            {/* <PaymentButton cart={cart}></PaymentButton> */}
           </Grid.Col>
         </Grid>
-        {/* <Link to={"/shop"} className="flex justify-start items-center gap-1 pb-5">
-          <ActionIcon c={"#5C7CFA"}>
-            <IconArrowNarrowLeft size="1.25rem" />
-          </ActionIcon>
-          <Text c={"#5C7CFA"} fw={600} fz="sm">
-            Add more meals
-          </Text>
-        </Link> */}
       </Container>
     </div>
   );

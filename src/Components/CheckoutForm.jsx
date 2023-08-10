@@ -1,35 +1,35 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { ApiContext } from "../Context/DataContext";
-import { AuthContext } from "../Context/UserContext";
+// import { ApiContext } from "../Context/DataContext";
 
-const CheckoutForm = () => {
+
+
+const CheckoutForm = ({ orderInfo }) => {
   const [cardError, setCardError] = useState("");
   const [paymentSuccess, setPaymentSuccess] = useState("");
-  const [processing, setProccesing] = useState(false);
+  const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   console.log(clientSecret);
   const stripe = useStripe();
   const elements = useElements();
-  const { total } = useContext(ApiContext);
-  const { user } = useContext(AuthContext);
+  // const { orderInfo } = useContext(ApiContext);
+  // const { user } = useContext(AuthContext);
 
-  const shippingCost = 10.0;
-  const totalPrice = total + shippingCost;
+  const { name, email, phone, city, state, totalPrice, zip, _id } = orderInfo;
+
+  // const shippingCost = 10.0;
+  // const totalPrice = total + shippingCost;
 
   useEffect(() => {
-    const price = {
-      totalPrice,
-    };
-    fetch("https://resturant-website-server.vercel.app/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify(price),
+      body: JSON.stringify({ totalPrice }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -54,32 +54,36 @@ const CheckoutForm = () => {
       console.log(error);
       setCardError(error.message);
     } else {
-      console.log("[payment method]", paymentMethod);
+      // console.log("payment method", paymentMethod);
       setCardError("");
     }
 
-    setProccesing(true);
+    setProcessing(true);
     setPaymentSuccess("");
 
-    const { paymentIntent, error: confirmError } =
-      await stripe.confirmCardPayment(
-        // '{PAYMENT_INTENT_CLIENT_SECRET}',
-        clientSecret,
-        {
-          payment_method: {
-            card: card,
-            billing_details: {
-              name: user.displayName,
-              email: user.email,
-            },
+    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+      // '{PAYMENT_INTENT_CLIENT_SECRET}',
+      clientSecret,
+      {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: name,
+            email: email,
+            // phone: phone,
+            // city: city,
+            // state: state,
+            // zip: zip,
           },
-        }
-      );
+        },
+      }
+    );
     if (confirmError) {
       setCardError(confirmError.message);
       return;
     }
     console.log("paymentIntent", paymentIntent);
+
     if (paymentIntent.status === "succeeded") {
       // setPaymentSuccess('Congrats! your payment completed')
       // setTransactionId(paymentIntent.id);
@@ -89,10 +93,15 @@ const CheckoutForm = () => {
         price: totalPrice,
         transactionId: paymentIntent.id,
         orderId: paymentIntent.created,
-        name: user.displayName,
-        email: user.email,
+        placeOrderId: _id,
+        name: name,
+        email: email,
+        phone: phone,
+        city: city,
+        state: state,
+        zip: zip,
       };
-      fetch("https://resturant-website-server.vercel.app/payments", {
+      fetch("http://localhost:5000/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -101,17 +110,16 @@ const CheckoutForm = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data);
+          console.log(data);
           if (data.insertedId) {
             setPaymentSuccess("Congrats! your payment completed");
             setTransactionId(paymentIntent.id);
-            Navigate("/bookingInfo");
-            window.location.reload();
+            Navigate("/myOrder");
           }
         });
     }
-    setProccesing(false);
-    // console.log("paymentIntent", paymentIntent);
+    setProcessing(false);
+    console.log("paymentIntent", paymentIntent);
   };
 
   return (
@@ -133,50 +141,21 @@ const CheckoutForm = () => {
             },
           }}
         />
+        <button
+          class="mt-8 border  w-full rounded-md bg-[#697BFF] hover:bg-[#4E60FF]  py-2  font-medium text-white cursor-pointer"
+          type="submit"
+          disabled={!stripe || !clientSecret || processing}
+        >
+          {" "}
+          confirm order
+        </button>
         <p className="text-red-900 text-xs pt-4">{cardError}</p>
         {paymentSuccess && (
           <div>
             <p className="text-green-500 text-sm pt-4">{paymentSuccess}</p>{" "}
-            <p className="text-green-500 text-sm">
-              {" "}
-              your transactionId : {transactionId}
-            </p>
+            <p className="text-green-500 text-sm"> your transactionId : {transactionId}</p>
           </div>
         )}
-        {/* <p className="text-red-900 text-xs pt-4">{paymentSuccess && <></>}</p> */}
-        <div>
-          <div class="flex items-center justify-between mt-4">
-            <p class="text-sm font-medium text-gray-900">Subtotal</p>
-            <p class="font-semibold text-gray-900">${total}</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <p class="text-sm font-medium text-gray-900">Shipping</p>
-            <p class="font-semibold text-gray-900">${shippingCost}</p>
-          </div>
-        </div>
-        <div class="mt-6 flex items-center justify-between">
-          <p class="text-sm font-medium text-gray-900">Total</p>
-          <p class="text-2xl font-semibold text-gray-900">${totalPrice}</p>
-        </div>
-
-        <button
-          class="mt-8 border  w-full rounded-md bg-[#697BFF] hover:bg-[#4E60FF]  py-2  font-medium text-white"
-          type="submit"
-          disabled={!stripe || !clientSecret || processing}
-        >
-          Submit Order
-        </button>
-
-        {/* <p className="text-danger">{cardError}</p> */}
-        {/* {paymentSuccess && (
-          <div>
-            <p className="text-success">{paymentSuccess}</p>
-            <p className="text-success">
-              {" "}
-              your transactionId : {transactionId}
-            </p>
-          </div>
-        )} */}
       </form>
     </div>
   );

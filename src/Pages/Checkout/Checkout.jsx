@@ -21,8 +21,8 @@ import { AuthContext } from "../../Context/UserContext";
 import { ApiContext } from "../../Context/DataContext";
 import { IconTrash } from "@tabler/icons-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useReducer } from "react";
-import { initialState, reducer } from "../../state/formReducers";
+// import { useReducer } from "react";
+// import { initialState, reducer } from "../../state/formReducers";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -162,8 +162,17 @@ const Checkout = () => {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const { cart, removeItemFromCart, subTotal, finalPrice, taxDue, handleDecreaseItem, handleIncreaseItem, shipping } =
-    useContext(ApiContext);
+  const {
+    // setOrderInfo,
+    cart,
+    removeItemFromCart,
+    subTotal,
+    finalPrice,
+    taxDue,
+    handleDecreaseItem,
+    handleIncreaseItem,
+    shipping,
+  } = useContext(ApiContext);
 
   const grandTotal = finalPrice + shipping;
 
@@ -192,26 +201,28 @@ const Checkout = () => {
       state,
       zip,
       totalPrice,
+      cart,
     };
 
-    toast.success("saved order info to localStorage");
-    localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
-    navigate("/placeOrder");
+    // toast.success("saved order info to localStorage");
+    // localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
+    // setOrderInfo(orderInfo);
+    // navigate("/placeOrder");
 
-    // fetch("http://localhost:5000/orderInfo", {
-    //   method: "POST",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(orderInfo),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.acknowledge) {
-    //       toast.success("successfully added orderInfo");
-    //       navigate("/placeOrder");
-    //     } else {
-    //       toast.error(data.message);
-    //     }
-    //   });
+    fetch("http://localhost:5000/v1/orders", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(orderInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          toast.success("order added successfully");
+          navigate("/placeOrder");
+        } else {
+          toast.error(data.message);
+        }
+      });
   };
 
   return (

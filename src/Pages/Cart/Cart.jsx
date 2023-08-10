@@ -11,14 +11,11 @@ import {
   Container,
   ActionIcon,
   Group,
-  SegmentedControl,
-  Center,
-  Box,
 } from "@mantine/core";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
 
-import { IconArrowNarrowLeft, IconMoon, IconTrash, IconTruckDelivery } from "@tabler/icons-react";
+import { IconArrowNarrowLeft, IconTrash } from "@tabler/icons-react";
 
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
@@ -165,7 +162,7 @@ const Cart = () => {
   //     name: user.displayName,
   //     email: user.email,
   //   };
-  //   fetch("https://resturant-website-server.vercel.app/checkout", {
+  //   fetch("http://localhost:5000/checkout", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
@@ -186,7 +183,7 @@ const Cart = () => {
   // };
 
   //   axios
-  //     .post(`https://resturant-website-server.vercel.app/checkoutPostInfo`, {
+  //     .post(`http://localhost:5000/checkoutPostInfo`, {
   //       price: calculateSubTotal(),
   //       totalPrice: calculateTotal(),
   //     })
@@ -309,32 +306,6 @@ const Cart = () => {
             </Text>
             <hr />
 
-            {/* <Group position="center" my="xl">
-              <SegmentedControl
-                value={shipping}
-                onChange={handleChange}
-                data={[
-                  {
-                    value: "delivery",
-                    label: (
-                      <Center>
-                        <IconTruckDelivery size="1rem" stroke={1.5} />
-                        <Box ml={10}>Delivery</Box>
-                      </Center>
-                    ),
-                  },
-                  {
-                    value: "Pickup",
-                    label: (
-                      <Center>
-                        <IconMoon size="1rem" stroke={1.5} />
-                        <Box ml={10}>Pickup</Box>
-                      </Center>
-                    ),
-                  },
-                ]}
-              />
-            </Group> */}
             <Text ta="left" fz="sm" fw={700}>
               <div className="mt-28">
                 <div className="flex justify-between p-2">
