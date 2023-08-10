@@ -1,6 +1,7 @@
-import { Table, Text, createStyles } from "@mantine/core";
+import { Avatar, Indicator, Table, Text, createStyles } from "@mantine/core";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles({
   table: {
@@ -26,39 +27,91 @@ const MyOrder = () => {
   //   ];
   const ths = (
     <tr className="bg-[#F7F7F9]">
-      <th>Order ID</th>
-      <th> Name</th>
-      <th>items</th>
-      <th>Phone</th>
-      <th>Amount</th>
-      <th>payment</th>
+      <th>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          Index
+        </Text>
+      </th>
+      <th>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          Name
+        </Text>
+      </th>
+      <th>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          Items
+        </Text>
+      </th>
+      <th>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          Phone
+        </Text>
+      </th>
+      <th>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          Amount
+        </Text>
+      </th>
+      <th>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          Payment
+        </Text>
+      </th>
     </tr>
   );
 
-  const rows = orders.map((order) => (
+  const rows = orders.map((order, i) => (
     <tr key={order.name}>
-      <td>{order._id ? order._id : "no order id"}</td>
-      <td>{order.name}</td>
+      <td>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          {i + 1}
+        </Text>
+      </td>
+      <td>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          {order.name}
+        </Text>
+      </td>
       <td className="flex items-center gap-2">
         {order?.cart?.map((item) => (
-          <div className="flex items-center gap-2">
-            <Text>{item.name}</Text>
-            <Text>{item.quantity}</Text>
+          <div className="flex items-center gap-5">
+            <Indicator inline label={item.quantity} color={"indigo"} size={16}>
+              <Text size={"md"} c={"indigo"} fw={600}>
+                {item.name}
+              </Text>
+            </Indicator>
+
+            {/* <Text>{item.quantity}</Text> */}
           </div>
         ))}
       </td>
-      <td>{order.phone}</td>
-      <td>${order.totalPrice}</td>
-      <td className="btn btn-accent "> payment</td>
+      <td>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          {order.phone}
+        </Text>
+      </td>
+      <td>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          ${order.totalPrice}
+        </Text>
+      </td>
+      <td>
+        {/* {order.price && !order.paid && ( */}
+        <Link to={`/payment/${order._id}`}>
+          <button className="btn bg-lime-600 border-none ">Payment</button>
+        </Link>
+        {/* )} */}
+        {/* {order.price && order.paid && <span className="btn bg-gray-400 border-none disabled text-white">Paid</span>} */}
+      </td>
     </tr>
   ));
 
   return (
     <Table
+      verticalSpacing="lg"
       captionSide="bottom"
       highlightOnHover
       withBorder
-      verticalSpacing="sm"
       fontSize="md"
       radius="lg"
       className={classes.table}

@@ -163,7 +163,7 @@ const Checkout = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const {
-    // setOrderInfo,
+    setOrderInfo,
     cart,
     removeItemFromCart,
     subTotal,
@@ -204,10 +204,10 @@ const Checkout = () => {
       cart,
     };
 
-    // toast.success("saved order info to localStorage");
-    // localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
-    // setOrderInfo(orderInfo);
-    // navigate("/placeOrder");
+    toast.success("saved order info to localStorage");
+    localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
+    setOrderInfo(orderInfo);
+    navigate("/placeOrder");
 
     fetch("http://localhost:5000/v1/orders", {
       method: "POST",
@@ -218,7 +218,7 @@ const Checkout = () => {
       .then((data) => {
         if (data.acknowledged === true) {
           toast.success("order added successfully");
-          navigate("/placeOrder");
+          navigate("/myOrder");
         } else {
           toast.error(data.message);
         }
@@ -357,7 +357,7 @@ const Checkout = () => {
                     mt={16}
                     color="indigo"
                   >
-                    proceed
+                    Place order
                   </Button>
                   {/* </Link> */}
                 </Stack>

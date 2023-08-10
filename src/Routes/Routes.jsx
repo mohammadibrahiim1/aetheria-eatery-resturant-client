@@ -16,6 +16,7 @@ import { ErrorPage } from "../Components/ErrorPage";
 import Checkout from "../Pages/Checkout/Checkout";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import PlaceOrder from "../Components/PlaceOrder";
+import Payment from "../Components/Payment";
 // import ErrorPage from "../Components/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,12 @@ export const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout></Checkout>,
+      },
+
+      {
+        path: "/payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`),
       },
       {
         path: "/placeOrder",

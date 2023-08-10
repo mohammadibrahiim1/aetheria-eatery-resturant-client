@@ -22,7 +22,8 @@ import { Link } from "react-router-dom";
 import { ApiContext } from "../Context/DataContext";
 // import { useState } from "react";
 // import { toast } from "react-hot-toast";
-import PaymentCard from "./PaymentCard";
+import PaymentCard from "./Payment";
+import { Button } from "antd";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -375,9 +376,9 @@ const PlaceOrder = () => {
                   </Text>
                 </div>
                 <hr />
-                <div>
-                  <PaymentCard></PaymentCard>
-                </div>
+                <Button  type="submit" className={classes.place_order} w={"100%"} size="sm" mt={16} color="indigo">
+                  proceed
+                </Button>
               </div>
             </Text>
           </Grid.Col>
