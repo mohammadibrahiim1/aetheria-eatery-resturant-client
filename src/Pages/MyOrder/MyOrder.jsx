@@ -1,7 +1,10 @@
-import { Avatar, Indicator, Table, Text, createStyles } from "@mantine/core";
-import { useContext } from "react";
-import { ApiContext } from "../../Context/DataContext";
+import { Button, Indicator, Table, Text, createStyles } from "@mantine/core";
+
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../Components/Loading";
 
 const useStyles = createStyles({
   table: {
@@ -12,19 +15,38 @@ const useStyles = createStyles({
     // border: "1px solid gray",
     // borderRadius: "20px",
   },
+  payment_button: {
+    backgroundColor: "#4C6EF5 !important",
+
+    ":hover": {
+      backgroundColor: "#4f71ea !important",
+    },
+  },
+  cancel_button: {
+    backgroundColor: "red !important",
+    ":hover": {
+      backgroundColor: "#FA5252 !important",
+    },
+  },
 });
 
 const MyOrder = () => {
   const { classes } = useStyles();
-  const { orders } = useContext(ApiContext);
-  console.log(orders);
-  //   const orders = [
-  //     { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-  //     { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-  //     { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-  //     { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-  //     { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-  //   ];
+
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["orders"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/orders");
+      const data = await res.json();
+      console.log(data);
+      return data;
+    },
+  });
+
   const ths = (
     <tr className="bg-[#F7F7F9]">
       <th>
@@ -57,69 +79,99 @@ const MyOrder = () => {
           Payment
         </Text>
       </th>
+      <th>
+        <Text size={"md"} c={"indigo"} fw={600}>
+          cancel order
+        </Text>
+      </th>
     </tr>
   );
 
-  const rows = orders.map((order, i) => (
-    <tr key={order.name}>
-      <td>
-        <Text size={"md"} c={"indigo"} fw={600}>
-          {i + 1}
-        </Text>
-      </td>
-      <td>
-        <Text size={"md"} c={"indigo"} fw={600}>
-          {order.name}
-        </Text>
-      </td>
-      <td className="flex items-center gap-2">
-        {order?.cart?.map((item) => (
-          <div className="flex items-center gap-5">
-            <Indicator inline label={item.quantity} color={"indigo"} size={16}>
-              <Text size={"md"} c={"indigo"} fw={600}>
-                {item.name}
-              </Text>
-            </Indicator>
+  // cancel your order
+  const handleDeleteProduct = (order) => {
+    fetch(`http://localhost:5000/v1/order/${order._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          console.log(data);
+          refetch();
+          toast.success(`${order.name} deleted successfully`);
+        }
+      });
 
-            {/* <Text>{item.quantity}</Text> */}
-          </div>
-        ))}
-      </td>
-      <td>
-        <Text size={"md"} c={"indigo"} fw={600}>
-          {order.phone}
-        </Text>
-      </td>
-      <td>
-        <Text size={"md"} c={"indigo"} fw={600}>
-          ${order.totalPrice}
-        </Text>
-      </td>
-      <td>
-        {/* {order.price && !order.paid && ( */}
-        <Link to={`/payment/${order._id}`}>
-          <button className="btn bg-lime-600 border-none ">Payment</button>
-        </Link>
-        {/* )} */}
-        {/* {order.price && order.paid && <span className="btn bg-gray-400 border-none disabled text-white">Paid</span>} */}
-      </td>
-    </tr>
-  ));
+    if (isLoading) {
+      return <Loading></Loading>;
+    }
+  };
+
+  const rows =
+    orders &&
+    orders?.map((order, i) => (
+      <tr key={order.name}>
+        <td>
+          <Text size={"md"} c={"indigo"} fw={600}>
+            {i + 1}
+          </Text>
+        </td>
+        <td>
+          <Text size={"md"} c={"indigo"} fw={600}>
+            {order.name}
+          </Text>
+        </td>
+        <td className="flex items-center gap-2">
+          {order?.cart?.map((item) => (
+            <div className="flex items-center gap-5">
+              <Indicator inline label={item.quantity} color={"indigo"} size={16}>
+                <Text size={"md"} c={"indigo"} fw={600}>
+                  {item.name}
+                </Text>
+              </Indicator>
+
+              {/* <Text>{item.quantity}</Text> */}
+            </div>
+          ))}
+        </td>
+        <td>
+          <Text size={"md"} c={"indigo"} fw={600}>
+            {order.phone}
+          </Text>
+        </td>
+        <td>
+          <Text size={"md"} c={"indigo"} fw={600}>
+            ${order.totalPrice}
+          </Text>
+        </td>
+        {order.totalPrice && !order.paid && (
+          <td>
+            <Link to={`/payment/${order._id}`}>
+              <Button className={classes.payment_button} size="xs">
+                payment
+              </Button>
+            </Link>
+          </td>
+        )}
+        {order.totalPrice && order.paid && (
+          <td>
+            <Button disabled color="indigo" size="xs">
+              paid
+            </Button>
+          </td>
+        )}
+
+        <td>
+          <Button onClick={() => handleDeleteProduct(order)} className={classes.cancel_button} size="xs">
+            cancel order
+          </Button>
+        </td>
+      </tr>
+    ));
 
   return (
-    <Table
-      verticalSpacing="lg"
-      captionSide="bottom"
-      highlightOnHover
-      withBorder
-      fontSize="md"
-      radius="lg"
-      className={classes.table}
-    >
-      {/* <caption>Some orders from periodic table</caption> */}
+    <Table verticalSpacing="lg" captionSide="bottom" withBorder fontSize="xs" radius="md" className={classes.table}>
       <thead>{ths}</thead>
       <tbody>{rows}</tbody>
-      {/* <tfoot>{ths}</tfoot> */}
     </Table>
   );
 };

@@ -7,6 +7,7 @@ import {
   Grid,
   Image,
   Indicator,
+  Loader,
   Stack,
   Text,
   TextInput,
@@ -25,6 +26,9 @@ import { Link, useNavigate } from "react-router-dom";
 // import { initialState, reducer } from "../../state/formReducers";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+// import { ClipLoader } from "react-spinners";
+// import Loader from "../../Components/Loading/Loaderg";
+// import Loading from "../../Components/Loading/Loading";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -157,6 +161,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Checkout = () => {
+  const { loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { displayName, email } = user;
@@ -205,6 +210,9 @@ const Checkout = () => {
       cart,
     };
 
+    // if (loading) {
+    //   return <Loader color="indigo" size="lg" variant="bars" />;
+    // }
     // toast.success("saved order info to localStorage");
     // localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
     // setOrderInfo(orderInfo);
@@ -220,6 +228,7 @@ const Checkout = () => {
         if (data.acknowledged === true) {
           toast.success("order added successfully");
           navigate("/myOrder");
+          window.location.reload();
         } else {
           toast.error(data.message);
         }

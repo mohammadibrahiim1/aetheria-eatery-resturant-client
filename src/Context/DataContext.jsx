@@ -36,16 +36,7 @@ const DataContext = ({ children }) => {
   const [subTotal, setSubTotal] = useState(0);
   // const [total, setTotal] = useState(0);
 
-  const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/orders")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setOrders(data);
-      });
-  }, []);
 
   const addItemToCart = (selectItem) => {
     let newCart = [];
@@ -90,6 +81,7 @@ const DataContext = ({ children }) => {
         setFoodItems(data);
       });
   }, []);
+  
   useEffect(() => {
     fetch("http://localhost:5000/menu")
       .then((res) => res.json())
@@ -276,7 +268,7 @@ const DataContext = ({ children }) => {
     finalPrice,
     taxDue,
     shipping,
-    orders,
+    // orders,
     orderInfo,
     setOrderInfo,
     // handleCheckout
