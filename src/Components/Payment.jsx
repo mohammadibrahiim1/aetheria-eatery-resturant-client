@@ -46,7 +46,7 @@ const Payment = () => {
 
   // const navigation = useNavigation();
 
-  console.log(orders);
+  // console.log(orders);
   const { ProductName, totalPrice } = orders;
   // if (navigation.state === 'loading') {
   //     return <Loading></Loading>

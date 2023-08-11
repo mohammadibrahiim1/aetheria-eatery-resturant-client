@@ -155,6 +155,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
+
 const Checkout = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -163,7 +164,7 @@ const Checkout = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const {
-    setOrderInfo,
+    // setOrderInfo,
     cart,
     removeItemFromCart,
     subTotal,
@@ -203,7 +204,6 @@ const Checkout = () => {
       totalPrice,
       cart,
     };
-
 
     // toast.success("saved order info to localStorage");
     // localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
@@ -348,20 +348,18 @@ const Checkout = () => {
                     checked={isChecked}
                     onChange={() => setIsChecked(!isChecked)}
                   />
-                  {/* <Link to="/placeOrder"> */}
-                  <Button
-                    type="submit"
-                    disabled={!isChecked}
-                    className={classes.place_order}
-                    w={"100%"}
-                    size="sm"
-                    mt={16}
-                    color="indigo"
-                  >
-                    Place order
-                  </Button>
-                  {/* </Link> */}
                 </Stack>
+                <Button
+                  type="submit"
+                  disabled={!isChecked}
+                  className={classes.place_order}
+                  w={"100%"}
+                  size="sm"
+                  mt={44}
+                  color="indigo"
+                >
+                  Place order
+                </Button>
               </form>
             </div>
           </Grid.Col>

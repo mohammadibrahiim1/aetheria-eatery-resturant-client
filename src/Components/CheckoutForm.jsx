@@ -199,7 +199,7 @@ const CheckoutForm = ({ orders }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { totalPrice, email, name, _id } = orders;
-  console.log(orders);
+  // console.log(orders);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -211,7 +211,10 @@ const CheckoutForm = ({ orders }) => {
       body: JSON.stringify({ totalPrice }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
+      .then((data) => {
+        console.log(data);
+        setClientSecret(data.clientSecret);
+      });
   }, [totalPrice]);
 
   const handleSubmit = async (e) => {
