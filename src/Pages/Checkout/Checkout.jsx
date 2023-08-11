@@ -204,10 +204,11 @@ const Checkout = () => {
       cart,
     };
 
-    toast.success("saved order info to localStorage");
-    localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
-    setOrderInfo(orderInfo);
-    navigate("/placeOrder");
+
+    // toast.success("saved order info to localStorage");
+    // localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
+    // setOrderInfo(orderInfo);
+    // navigate("/placeOrder");
 
     fetch("http://localhost:5000/v1/orders", {
       method: "POST",
