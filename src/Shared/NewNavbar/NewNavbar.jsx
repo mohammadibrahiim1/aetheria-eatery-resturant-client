@@ -100,7 +100,7 @@ export const NewNavbar = () => {
       const user = result.user;
       if (user) {
         fetch("http://localhost:5000/users", {
-          method: "post",
+          method: "POST",
           headers: {
             "content-type": "application/json",
           },
@@ -112,9 +112,8 @@ export const NewNavbar = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.acknowledged) {
-              toast.success(" successfully SignIn");
+              toast.success(data.message);
             } else {
               toast.error(data.message);
             }
