@@ -55,6 +55,7 @@ const MyOrder = () => {
           Index
         </Text>
       </th>
+
       <th>
         <Text size={"md"} c={"indigo"} fw={600}>
           Name

@@ -157,6 +157,7 @@ const useStyles = createStyles((theme) => ({
 const Checkout = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  console.log(user);
   const { displayName, email } = user;
 
   const [isChecked, setIsChecked] = useState(false);
