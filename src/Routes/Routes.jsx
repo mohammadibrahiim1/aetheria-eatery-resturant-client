@@ -12,7 +12,7 @@ import AllBookings from "../Pages/AllBookings/AllBookings";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
-import { ErrorPage } from "../Components/ErrorPage";
+// import { ErrorPage } from "../Components/ErrorPage";
 import Checkout from "../Pages/Checkout/Checkout";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import PlaceOrder from "../Components/PlaceOrder";
@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement: <ErrorPage></ErrorPage>,
+    // errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
       {
         path: "/payment/:id",
         element: <Payment></Payment>,
-        loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`),
+        loader: ({ params }) => fetch(`https://resturant-website-server.vercel.app/orders/${params.id}`),
       },
       {
         path: "/placeOrder",

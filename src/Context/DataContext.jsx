@@ -74,16 +74,16 @@ const DataContext = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/allProducts")
+    fetch("https://resturant-website-server.vercel.app/allProducts")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setFoodItems(data);
       });
   }, []);
-  
+
   useEffect(() => {
-    fetch("http://localhost:5000/menu")
+    fetch("https://resturant-website-server.vercel.app/menu")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -99,7 +99,7 @@ const DataContext = ({ children }) => {
       });
   }, []);
 
-  //   fetch("  http://localhost:5000 /checkoutInfo")
+  //   fetch("  https://resturant-website-server.vercel.app /checkoutInfo")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -114,7 +114,7 @@ const DataContext = ({ children }) => {
   //   //   cart,
   //   // };
 
-  //   // fetch("  http://localhost:5000 /checkoutInfo", {
+  //   // fetch("  https://resturant-website-server.vercel.app /checkoutInfo", {
   //   //   method: "POST",
   //   //   headers: {
   //   //     "content-type": "application/json",
@@ -140,7 +140,7 @@ const DataContext = ({ children }) => {
   //   console.log(checkoutInfo);
   //   // setTotalPrice(totalPrice);
   //   if (checkoutInfo) {
-  //     fetch("http://localhost:5000/checkoutInfo", {
+  //     fetch("https://resturant-website-server.vercel.app/checkoutInfo", {
   //       method: "POST",
   //       headers: {
   //         "content-type": "application/json",
@@ -160,7 +160,7 @@ const DataContext = ({ children }) => {
   // };
 
   // useEffect(() => {
-  //   fetch(`  http://localhost:5000 /category?category=${selectedCategory}`)
+  //   fetch(`  https://resturant-website-server.vercel.app /category?category=${selectedCategory}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -169,7 +169,7 @@ const DataContext = ({ children }) => {
   // }, [selectedCategory]);
 
   const handleCategoryChange = (selectedCategory) => {
-    fetch(`http://localhost:5000/category?category=${selectedCategory}`)
+    fetch(`https://resturant-website-server.vercel.app/category?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -183,7 +183,7 @@ const DataContext = ({ children }) => {
   const { data: booking = [] } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/bookings`);
+      const res = await fetch(`https://resturant-website-server.vercel.app/bookings`);
       const data = await res.json();
       // console.log(data);
       return data;

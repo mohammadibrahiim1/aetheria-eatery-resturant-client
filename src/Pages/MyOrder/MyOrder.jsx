@@ -41,7 +41,7 @@ const MyOrder = () => {
   } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/orders");
+      const res = await fetch("https://resturant-website-server.vercel.app/orders");
       const data = await res.json();
       console.log(data);
       return data;
@@ -90,7 +90,7 @@ const MyOrder = () => {
 
   // cancel your order
   const handleDeleteProduct = (order) => {
-    fetch(`http://localhost:5000/v1/order/${order._id}`, {
+    fetch(`https://resturant-website-server.vercel.app/v1/order/${order._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -99,7 +99,7 @@ export const NewNavbar = () => {
     signInWithGoogle().then((result) => {
       const user = result.user;
       if (user) {
-        fetch("http://localhost:5000/users", {
+        fetch("https://resturant-website-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -194,7 +194,7 @@ const Checkout = () => {
       cart,
     };
 
-    fetch("http://localhost:5000/v1/orders", {
+    fetch("https://resturant-website-server.vercel.app/v1/orders", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderInfo),
@@ -230,43 +230,44 @@ const Checkout = () => {
         <Grid className="mb-8">
           <Grid.Col sm={12} xs={12} lg={7.8} className={classes.cartItems}>
             <div className="">
-              {cart.map((item) => (
-                <>
-                  <Card className={classes.card}>
-                    <div key={item.id}>
-                      <div className={classes.body}>
-                        <Indicator label={item.quantity} inline size={24}>
-                          <Image src={item.image} width={50} height={50} radius={10} alt={item.name} />
-                        </Indicator>
+              {cart &&
+                cart?.map((item) => (
+                  <>
+                    <Card className={classes.card}>
+                      <div key={item.id}>
+                        <div className={classes.body}>
+                          <Indicator label={item.quantity} inline size={24}>
+                            <Image src={item.image} width={50} height={50} radius={10} alt={item.name} />
+                          </Indicator>
 
-                        <div className={classes.text_container}>
-                          <Text className={classes.title}>{item.name}</Text>
-                          <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
+                          <div className={classes.text_container}>
+                            <Text className={classes.title}>{item.name}</Text>
+                            <Text className={classes.subTitle}>{item.description.slice(0, 75)}...</Text>
+                          </div>
+
+                          <div className={classes.counterContainer}>
+                            <button className="btn  btn-sm btn-circle" onClick={() => handleDecreaseItem(item._id)}>
+                              -
+                            </button>
+
+                            <button className="btn btn-sm btn-circle" onClick={() => handleIncreaseItem(item._id)}>
+                              +
+                            </button>
+                          </div>
+
+                          <Text w={50} align="center" className={classes.title}>
+                            ${item.price * item.quantity}
+                          </Text>
+
+                          <Button className={classes.control} compact size="xs">
+                            {" "}
+                            <IconTrash size={"1.25rem"} onClick={() => removeItemFromCart(item)} />
+                          </Button>
                         </div>
-
-                        <div className={classes.counterContainer}>
-                          <button className="btn  btn-sm btn-circle" onClick={() => handleDecreaseItem(item._id)}>
-                            -
-                          </button>
-
-                          <button className="btn btn-sm btn-circle" onClick={() => handleIncreaseItem(item._id)}>
-                            +
-                          </button>
-                        </div>
-
-                        <Text w={50} align="center" className={classes.title}>
-                          ${item.price * item.quantity}
-                        </Text>
-
-                        <Button className={classes.control} compact size="xs">
-                          {" "}
-                          <IconTrash size={"1.25rem"} onClick={() => removeItemFromCart(item)} />
-                        </Button>
                       </div>
-                    </div>
-                  </Card>
-                </>
-              ))}
+                    </Card>
+                  </>
+                ))}
             </div>
             <div className="p-5">
               <Text c={"#4C6EF5"} ta="left" fz="md" pb={5} fw={700}>
