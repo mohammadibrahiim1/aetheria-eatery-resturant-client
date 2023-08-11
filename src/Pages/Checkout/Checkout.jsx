@@ -7,7 +7,6 @@ import {
   Grid,
   Image,
   Indicator,
-  Loader,
   Stack,
   Text,
   TextInput,
@@ -22,13 +21,8 @@ import { AuthContext } from "../../Context/UserContext";
 import { ApiContext } from "../../Context/DataContext";
 import { IconTrash } from "@tabler/icons-react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useReducer } from "react";
-// import { initialState, reducer } from "../../state/formReducers";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-// import { ClipLoader } from "react-spinners";
-// import Loader from "../../Components/Loading/Loaderg";
-// import Loading from "../../Components/Loading/Loading";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -161,31 +155,21 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Checkout = () => {
-  const { loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { displayName, email } = user;
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const {
-    // setOrderInfo,
-    cart,
-    removeItemFromCart,
-    subTotal,
-    finalPrice,
-    taxDue,
-    handleDecreaseItem,
-    handleIncreaseItem,
-    shipping,
-  } = useContext(ApiContext);
+  const { cart, removeItemFromCart, subTotal, finalPrice, taxDue, handleDecreaseItem, handleIncreaseItem, shipping } =
+    useContext(ApiContext);
 
   const grandTotal = finalPrice + shipping;
 
   console.log(cart);
   const { classes } = useStyles();
-  // const [state, dispatch] = useReducer(reducer, initialState);
 
+  // submit order data to database
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -209,14 +193,6 @@ const Checkout = () => {
       totalPrice,
       cart,
     };
-
-    // if (loading) {
-    //   return <Loader color="indigo" size="lg" variant="bars" />;
-    // }
-    // toast.success("saved order info to localStorage");
-    // localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
-    // setOrderInfo(orderInfo);
-    // navigate("/placeOrder");
 
     fetch("http://localhost:5000/v1/orders", {
       method: "POST",

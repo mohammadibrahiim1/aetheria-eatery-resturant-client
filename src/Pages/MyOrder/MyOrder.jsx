@@ -1,4 +1,4 @@
-import { Button, Indicator, Table, Text, createStyles } from "@mantine/core";
+import { Button, Container, Indicator, Table, Text, createStyles } from "@mantine/core";
 
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -10,7 +10,7 @@ const useStyles = createStyles({
   table: {
     width: "80%",
     margin: "auto",
-    marginTop: "50px",
+    marginTop: "25px",
     marginBottom: "50px",
     // border: "1px solid gray",
     // borderRadius: "20px",
@@ -33,6 +33,7 @@ const useStyles = createStyles({
 const MyOrder = () => {
   const { classes } = useStyles();
 
+  // fetch my orders
   const {
     data: orders,
     isLoading,
@@ -97,7 +98,7 @@ const MyOrder = () => {
         if (data.deletedCount > 0) {
           console.log(data);
           refetch();
-          toast.success(`${order.name} deleted successfully`);
+          toast.success(`${order.cart.map((item) => item.name)} deleted successfully`);
         }
       });
 
@@ -128,8 +129,6 @@ const MyOrder = () => {
                   {item.name}
                 </Text>
               </Indicator>
-
-              {/* <Text>{item.quantity}</Text> */}
             </div>
           ))}
         </td>
@@ -169,10 +168,25 @@ const MyOrder = () => {
     ));
 
   return (
-    <Table verticalSpacing="lg" captionSide="bottom" withBorder fontSize="xs" radius="md" className={classes.table}>
-      <thead>{ths}</thead>
-      <tbody>{rows}</tbody>
-    </Table>
+    <>
+      <Container size="81%">
+        <Text fz={18} mt={32} fw={700}>
+          My orders
+        </Text>
+      </Container>
+      <Table
+        mb={120}
+        verticalSpacing="lg"
+        captionSide="bottom"
+        withBorder
+        fontSize="xs"
+        radius="md"
+        className={classes.table}
+      >
+        <thead>{ths}</thead>
+        <tbody>{rows}</tbody>
+      </Table>
+    </>
   );
 };
 
