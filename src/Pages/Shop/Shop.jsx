@@ -89,7 +89,7 @@ const useStyles = createStyles((theme) => ({
 const Shop = () => {
   const [modalItem, setModalItem] = useState({});
   const [showMore, setShowMore] = useState(9);
-  const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange,cart } = useContext(ApiContext);
+  const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange, cart } = useContext(ApiContext);
   const { classes } = useStyles();
 
   const handleShowMore = () => {
@@ -165,14 +165,6 @@ const Shop = () => {
                     removeItemFromCart={removeItemFromCart}
                     handleCategoryChange={handleCategoryChange}
                   ></ShopPageCard>
-                  {/* <FoodCard
-                    item={item}
-                    setFoodItem={setFoodItem}
-                    addItemToCart={addItemToCart}
-                    removeItemFromCart={removeItemFromCart}
-                    foodItem={foodItem}
-                    key={item.id}
-                  ></FoodCard> */}
                 </>
               ))}
             </div>

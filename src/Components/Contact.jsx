@@ -4,9 +4,9 @@ import { createStyles, Text, rem, Container } from "@mantine/core";
 const useStyles = createStyles((theme) => ({
   root: {
     display: "flex",
-    backgroundImage: `linear-gradient(-60deg, ${
-      theme.colors[theme.primaryColor][4]
-    } 0%, ${theme.colors[theme.primaryColor][7]} 100%)`,
+    backgroundImage: `linear-gradient(-60deg, ${theme.colors[theme.primaryColor][4]} 0%, ${
+      theme.colors[theme.primaryColor][7]
+    } 100%)`,
     padding: `calc(${theme.spacing.xl} * 1.5)`,
     borderRadius: theme.radius.md,
 
@@ -118,7 +118,9 @@ const Contact = () => {
           <h1> Contact Us</h1>
         </div>
       </div>
-      <Container className={classes.root}>{stats}</Container>
+      <Container size={"lg"} className={classes.root}>
+        {stats}
+      </Container>
     </div>
   );
 };

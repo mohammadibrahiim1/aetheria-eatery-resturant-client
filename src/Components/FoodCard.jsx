@@ -99,53 +99,9 @@ const FoodCard = ({ item, setModalItem, addItemToCart }) => {
         </div>
 
         <div className="mt-5">
-          <Indicator inline color="#5C7CFA" size={16} label={item.length}>
-            <IconShoppingBag onClick={() => addItemToCart(item)} className="text-[#5C7CFA] cursor-pointer" />
-          </Indicator>
+          <IconShoppingBag onClick={() => addItemToCart(item)} className="text-[#5C7CFA] cursor-pointer" />
         </div>
       </Card>
-      {/* <Card withBorder radius="md" p={0} className={classes.card}>
-        <Group noWrap spacing={0}>
-          <Image src={item.image} height={140} width={140} />
-          <div className={classes.body}>
-            <Text transform="uppercase" color="dimmed" weight={700} size="xs">
-              {item.name}
-            </Text>
-            <Text className={classes.title} mt="xs" mb="md">
-              <div className="flex justify-between align-center gap-28">
-                <span size="xs"> {item.category}</span>
-                <span>${item.price}</span>
-              </div>
-            </Text>
-            <div>
-              {" "}
-              <div className={classes.controls}>
-                <Button
-                  onClick={() => addItemToCart(item)}
-                  compact
-                  className={classes.control}
-                  variant="default"
-                  size="xs"
-                >
-                  add to cart
-                </Button>
-                <Link to="/shop">
-                  <Button
-                    // onClick={open,()=>setFoodItem()}
-                    onClick={() => setFoodItem(item)}
-                    compact
-                    className={classes.control}
-                    variant="default"
-                    size="xs"
-                  >
-                    see more items
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Group>
-      </Card> */}
     </div>
   );
 };

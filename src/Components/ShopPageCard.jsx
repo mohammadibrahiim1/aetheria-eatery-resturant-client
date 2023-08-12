@@ -51,9 +51,7 @@ export const ShopPageCard = ({ item, addItemToCart, setModalItem, cart }) => {
         </div>
 
         <div className="mt-5">
-          <Indicator inline color="#5C7CFA" size={16} label={item.length}>
-            <IconShoppingBag onClick={() => addItemToCart(item)} className="text-[#5C7CFA] cursor-pointer" />
-          </Indicator>
+          <IconShoppingBag onClick={() => addItemToCart(item)} className="text-[#5C7CFA] cursor-pointer" />
         </div>
       </Card>
     </div>
