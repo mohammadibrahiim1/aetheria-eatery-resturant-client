@@ -15,15 +15,16 @@ import Contact from "../../Components/Contact";
 // import OrderOnline from "../../Components/OrderOnline";
 import MostFavourite from "./MostFavourite";
 import DescriptionModal from "../../Components/Modal/DescriptionModal";
+import Filters from "../../Components/Filters/Filters";
 // import FoodCard from "./FoodCard";
 // import Modal from "./FoodModal";
 // import FoodModal from "./FoodModal";
 
 const useStyles = createStyles((theme) => ({
-  container: {
-    width: "60%",
-    margin: "auto",
-  },
+  // container: {
+  //   width: "60%",
+  //   margin: "auto",
+  // },
 
   card: {
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
@@ -99,13 +100,13 @@ const Shop = () => {
   return (
     <div>
       <ShopPageHeader></ShopPageHeader>
-      <section className={classes.container}>
+      <Container size={"lg"}>
         <Text className={classes.heading}>
           <h1>All Items</h1>
         </Text>
-
-        <Grid className="py-8">
-          <Grid.Col className={classes.category_container}>
+        <Filters></Filters>
+        <Grid className="">
+          {/* <Grid.Col className={classes.category_container}>
             <Grid>
               <Grid.Col sm={1} lg={1.5}>
                 <span className={classes.category} variant="primary" onClick={() => handleCategoryChange("desert")}>
@@ -148,12 +149,9 @@ const Shop = () => {
                 </span>
               </Grid.Col>
             </Grid>
-          </Grid.Col>
+          </Grid.Col> */}
 
           <Grid.Col>
-            <p className="mb-1">
-              found <span className="text-md text-[#4E60FF] ">{allItems.length}</span> items
-            </p>
             <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-4">
               {allItems?.slice(0, showMore)?.map((item) => (
                 <>
@@ -171,24 +169,14 @@ const Shop = () => {
             <div>
               <DescriptionModal setModalItem={setModalItem} modalItem={modalItem}></DescriptionModal>
             </div>
-            <Button
-              onClick={handleShowMore}
-              variant="light"
-              color="red"
-              fullWidth
-              center
-              mt="md"
-              radius="md"
-              // variant="gradient"
-              // gradient={{ from: "teal", to: "blue", deg: 60 }}
-            >
+            <Button onClick={handleShowMore} variant="light" color="red" fullWidth center mt="md" radius="md">
               load more
             </Button>
           </Grid.Col>
         </Grid>
 
         <MostFavourite></MostFavourite>
-      </section>
+      </Container>
       <Contact></Contact>
     </div>
   );
