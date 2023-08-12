@@ -56,7 +56,7 @@ export const ShopPageCard = ({ item, addItemToCart, setModalItem }) => {
         <div className="grid grid-cols-2 gap-5 justify-between items-center mt-5">
           <Button
             onClick={() => addItemToCart(item)}
-            className="btn btn-sm capitalize border-[#4263EB] hover:bg-[#4263EB] duration-500 hover:text-[#FFF]"
+            className="btn btn-sm capitalize border-[#4263EB] bg-[#FFFFFF] hover:bg-[#4263EB] duration-500 hover:text-[#FFFFFF]"
           >
             Add To Cart
           </Button>
@@ -64,7 +64,7 @@ export const ShopPageCard = ({ item, addItemToCart, setModalItem }) => {
           <label
             onClick={() => setModalItem(item)}
             htmlFor="my_modal_6"
-            className="btn btn-sm capitalize border-[#4263EB] hover:bg-[#4263EB] duration-500 hover:text-[#FFF]"
+            className="btn btn-sm capitalize border-[#4263EB] bg-[#FFFFFF] hover:bg-[#4263EB] duration-500 hover:text-[#FFF]"
           >
             see more
           </label>
