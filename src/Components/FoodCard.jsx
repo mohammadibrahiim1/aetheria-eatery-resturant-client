@@ -1,6 +1,8 @@
 import React from "react";
 import {
+  Badge,
   Button,
+  Indicator,
   // Container, Grid, List, Modal,
   Text,
   rem,
@@ -8,11 +10,12 @@ import {
 
 import { createStyles, Card, Image, Group } from "@mantine/core";
 import { Link } from "react-router-dom";
+import { IconInfoCircleFilled } from "@tabler/icons-react";
+import { IconShoppingBag } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     width: "100%",
   },
 
@@ -59,12 +62,49 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const FoodCard = ({ item, setFoodItem, addItemToCart }) => {
+const FoodCard = ({ item, setModalItem, addItemToCart }) => {
   const { classes } = useStyles();
+  const { category, name, price, image, description } = item;
 
   return (
     <div>
-      <Card withBorder radius="md" p={0} className={classes.card}>
+      <Card className={classes.item_card} shadow="sm" radius="md" withBorder>
+        <div className="flex items-center justify-between gap-5 ">
+          <div>
+            <div className="flex justify-between items-center gap-5">
+              <Badge color="#4263EB" variant="light">
+                category : {category}
+              </Badge>
+              <Badge color="#4263EB" variant="light">
+                $ {price}
+              </Badge>
+            </div>
+            <Text mt={12} weight={500}>
+              {name}
+            </Text>
+          </div>
+
+          <div>
+            <Image src={image} height={90} alt={name} radius={12} />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-5 mt-5 ">
+          <Text size="sm" color="dimmed">
+            {description.slice(0, 60)}...
+          </Text>
+          <label onClick={() => setModalItem(item)} htmlFor="my_modal_6" className="cursor-pointer text-[#5C7CFA]">
+            <IconInfoCircleFilled />
+          </label>
+        </div>
+
+        <div className="mt-5">
+          <Indicator inline color="#5C7CFA" size={16} label={item.length}>
+            <IconShoppingBag onClick={() => addItemToCart(item)} className="text-[#5C7CFA] cursor-pointer" />
+          </Indicator>
+        </div>
+      </Card>
+      {/* <Card withBorder radius="md" p={0} className={classes.card}>
         <Group noWrap spacing={0}>
           <Image src={item.image} height={140} width={140} />
           <div className={classes.body}>
@@ -105,7 +145,7 @@ const FoodCard = ({ item, setFoodItem, addItemToCart }) => {
             </div>
           </div>
         </Group>
-      </Card>
+      </Card> */}
     </div>
   );
 };

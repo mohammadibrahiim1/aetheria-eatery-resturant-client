@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Title,
-  Text,
-  Container,
-  Button,
-  Overlay,
-  createStyles,
-  rem,
-} from "@mantine/core";
+import { Title, Text, Container, Button, Overlay, createStyles, rem } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -119,9 +111,8 @@ const Header = () => {
               {/* Build more reliable software with AI companion. AI is also trained
               to detect lazy developers who do nothing and just complain on
               Twitter. */}
-              Are you looking for somewhere special to go this weekend? Do you
-              want to try something new? Check out one of these hot new
-              restaurants.
+              Are you looking for somewhere special to go this weekend? Do you want to try something new? Check out one
+              of these hot new restaurants.
             </Text>
           </Container>
 
@@ -130,10 +121,7 @@ const Header = () => {
               Order Online
             </Button>
             <Link to="/mainMenu">
-              <Button
-                className={cx(classes.control, classes.secondaryControl)}
-                size="lg"
-              >
+              <Button className={cx(classes.control, classes.secondaryControl)} size="lg">
                 Our Menu
               </Button>
             </Link>

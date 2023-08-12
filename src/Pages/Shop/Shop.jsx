@@ -14,7 +14,7 @@ import ShopPageHeader from "../../Components/ShopPageHeader";
 import Contact from "../../Components/Contact";
 // import OrderOnline from "../../Components/OrderOnline";
 import MostFavourite from "./MostFavourite";
-import DescriptionModal from "../../Components/Modal/DesciptionModal";
+import DescriptionModal from "../../Components/Modal/DescriptionModal";
 // import FoodCard from "./FoodCard";
 // import Modal from "./FoodModal";
 // import FoodModal from "./FoodModal";
@@ -88,12 +88,12 @@ const useStyles = createStyles((theme) => ({
 
 const Shop = () => {
   const [modalItem, setModalItem] = useState({});
-  const [showMore, setShowMore] = useState(4);
-  const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange } = useContext(ApiContext);
+  const [showMore, setShowMore] = useState(9);
+  const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange,cart } = useContext(ApiContext);
   const { classes } = useStyles();
 
   const handleShowMore = () => {
-    setShowMore((preValue) => preValue + 1);
+    setShowMore((preValue) => preValue + 3);
   };
 
   return (
@@ -160,6 +160,7 @@ const Shop = () => {
                   <ShopPageCard
                     setModalItem={setModalItem}
                     item={item}
+                    cart={cart}
                     addItemToCart={addItemToCart}
                     removeItemFromCart={removeItemFromCart}
                     handleCategoryChange={handleCategoryChange}

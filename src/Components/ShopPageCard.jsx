@@ -1,6 +1,9 @@
-import { Card, Image, Text, Badge, Button, Group, Modal, createStyles } from "@mantine/core";
-import DescriptionModal from "./Modal/DesciptionModal";
-import { useState } from "react";
+import { Card, Image, Text, Badge, Button, Group, Modal, createStyles, Indicator } from "@mantine/core";
+import { IconInfoCircleFilled } from "@tabler/icons-react";
+import { IconShoppingBag } from "@tabler/icons-react";
+// import DescriptionModal from "./Modal/DesciptionModal";
+// import { useState } from "react";
+import { FaBagShopping } from "react-icons/fa";
 // import { useDisclosure } from "@mantine/hooks";
 
 // function Demo() {
@@ -12,22 +15,11 @@ const useStyles = createStyles(() => ({
     height: "227px",
   },
 }));
-export const ShopPageCard = ({ item, addItemToCart, setModalItem }) => {
+export const ShopPageCard = ({ item, addItemToCart, setModalItem, cart }) => {
   const { classes } = useStyles();
   const { image, name, description, price, category } = item;
   return (
     <div>
-      {/* <Modal
-      //  opened={opened} onClose={close} title="About Dishes" centered
-      >
-        <Text size="sm" color="dimmed">
-          {name}
-        </Text>
-
-        <Text size="sm" color="dimmed">
-          {description}
-        </Text>
-      </Modal> */}
       <Card className={classes.item_card} shadow="sm" radius="md" withBorder>
         <div className="flex items-center justify-between gap-5 ">
           <div>
@@ -49,25 +41,19 @@ export const ShopPageCard = ({ item, addItemToCart, setModalItem }) => {
           </div>
         </div>
 
-        <Text size="sm" color="dimmed" mt={5}>
-          {description.slice(0, 60)}...
-        </Text>
-
-        <div className="grid grid-cols-2 gap-5 justify-between items-center mt-5">
-          <Button
-            onClick={() => addItemToCart(item)}
-            className="btn btn-sm capitalize border-[#4263EB] bg-[#FFFFFF] hover:bg-[#4263EB] duration-500 hover:text-[#FFFFFF]"
-          >
-            Add To Cart
-          </Button>
-
-          <label
-            onClick={() => setModalItem(item)}
-            htmlFor="my_modal_6"
-            className="btn btn-sm capitalize border-[#4263EB] bg-[#FFFFFF] hover:bg-[#4263EB] duration-500 hover:text-[#FFF]"
-          >
-            see more
+        <div className="flex items-center gap-5 mt-5 ">
+          <Text size="sm" color="dimmed">
+            {description.slice(0, 60)}...
+          </Text>
+          <label onClick={() => setModalItem(item)} htmlFor="my_modal_6" className="cursor-pointer text-[#5C7CFA]">
+            <IconInfoCircleFilled />
           </label>
+        </div>
+
+        <div className="mt-5">
+          <Indicator inline color="#5C7CFA" size={16} label={item.length}>
+            <IconShoppingBag onClick={() => addItemToCart(item)} className="text-[#5C7CFA] cursor-pointer" />
+          </Indicator>
         </div>
       </Card>
     </div>

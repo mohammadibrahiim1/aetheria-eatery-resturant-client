@@ -70,10 +70,10 @@ const OrderOnline = () => {
   // console.log(foodItems);
   return (
     <div>
-      <Container>
+      <Container size={"lg"}>
         <LetStartOrdering></LetStartOrdering>
       </Container>
-      <Container className="py-28">
+      <Container size={"lg"} className="py-28">
         <div className={classes.heading} color="#151515">
           <h1>Order Online</h1>
         </div>

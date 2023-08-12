@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 import { FaUserAlt } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IconLayoutDashboard } from "@tabler/icons-react";
+import { IconShoppingBag } from "@tabler/icons-react";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -133,15 +134,6 @@ export const NewNavbar = () => {
     { link: "/tableReservation", label: "Book A Table" },
     { link: "/mainMenu", label: " Our Menu" },
     { link: "/shop", label: "Shop" },
-    {
-      link: "/cart",
-      label: (
-        <div>
-          {"Cart"}
-          <Indicator position="bottom-end" color="red" size={16} label={cart.length} />
-        </div>
-      ),
-    },
     { link: "/aboutUs", label: "About" },
     { link: "/myOrder", label: "My Order" },
     {
@@ -155,6 +147,16 @@ export const NewNavbar = () => {
         ) : (
           <></>
         ),
+    },
+    {
+      link: "/cart",
+      label: (
+        <div>
+          <Indicator inline color="#5C7CFA" size={16} label={cart.length}>
+            <IconShoppingBag size={"1.8rem"} />
+          </Indicator>
+        </div>
+      ),
     },
     {
       // link: "/dashboard/allBookings",

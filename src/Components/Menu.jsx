@@ -1,16 +1,15 @@
 import { React, useContext, useState } from "react";
-import { Button, Container, Grid, List, Text, rem } from "@mantine/core";
+import { Container, Grid, rem } from "@mantine/core";
 import { ApiContext } from "../Context/DataContext";
-
-import { createStyles, Card, Image, Group } from "@mantine/core";
+import { createStyles } from "@mantine/core";
 import FoodCard from "./FoodCard";
-import Modal from "./FoodModal";
-import FoodModal from "./FoodModal";
+// import Modal from "./FoodModal";
+import DescriptionModal from "./Modal/DescriptionModal";
+// import FoodModal from "./FoodModal";
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     width: "100%",
   },
 
@@ -77,15 +76,13 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Menu = () => {
-  const { foodItems, addItemToCart, removeItemFromCart, handleCategoryChange } =
-    useContext(ApiContext);
+  const [modalItem, setModalItem] = useState({});
+  const { foodItems, addItemToCart, removeItemFromCart, handleCategoryChange } = useContext(ApiContext);
   const { classes, cx } = useStyles();
-
-  const [foodItem, setFoodItem] = useState({});
 
   return (
     <div>
-      <Container className="py-22" id="menu">
+      <Container size={"lg"} className="py-22" id="menu">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
         </div>
@@ -95,27 +92,21 @@ const Menu = () => {
 
         <Grid className="py-8">
           <Grid.Col md={6} lg={12}>
-            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4  ">
               {foodItems?.slice(0, 6).map((item) => (
                 <>
                   <FoodCard
                     item={item}
-                    setFoodItem={setFoodItem}
+                    setModalItem={setModalItem}
                     addItemToCart={addItemToCart}
                     removeItemFromCart={removeItemFromCart}
-                    foodItem={foodItem}
                     key={item.id}
                   ></FoodCard>
                 </>
               ))}
             </div>
             <div>
-              {foodItem && (
-                <FoodModal
-                  foodItem={foodItem}
-                  setFoodItem={setFoodItem}
-                ></FoodModal>
-              )}
+              <DescriptionModal modalItem={modalItem}></DescriptionModal>
             </div>
           </Grid.Col>
         </Grid>
