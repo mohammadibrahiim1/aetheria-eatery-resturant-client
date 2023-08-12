@@ -195,7 +195,7 @@ const Checkout = () => {
       cart,
     };
 
-    fetch("https://resturant-website-server.vercel.app/v1/orders", {
+    fetch("http://localhost:5000/v1/orders", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderInfo),

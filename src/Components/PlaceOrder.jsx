@@ -184,7 +184,7 @@ const PlaceOrder = () => {
   const navigate = useNavigate();
 
   const handleConfirmOrder = () => {
-    fetch("https://resturant-website-server.vercel.app/orderInfo", {
+    fetch("http://localhost:5000/orderInfo", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderInfo),

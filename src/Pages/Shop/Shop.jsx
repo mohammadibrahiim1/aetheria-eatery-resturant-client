@@ -14,6 +14,7 @@ import ShopPageHeader from "../../Components/ShopPageHeader";
 import Contact from "../../Components/Contact";
 // import OrderOnline from "../../Components/OrderOnline";
 import MostFavourite from "./MostFavourite";
+import DescriptionModal from "../../Components/Modal/DesciptionModal";
 // import FoodCard from "./FoodCard";
 // import Modal from "./FoodModal";
 // import FoodModal from "./FoodModal";
@@ -25,8 +26,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     width: "100%",
   },
 
@@ -87,9 +87,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Shop = () => {
+  const [modalItem, setModalItem] = useState({});
   const [showMore, setShowMore] = useState(4);
-  const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange } =
-    useContext(ApiContext);
+  const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange } = useContext(ApiContext);
   const { classes } = useStyles();
 
   const handleShowMore = () => {
@@ -108,67 +108,42 @@ const Shop = () => {
           <Grid.Col className={classes.category_container}>
             <Grid>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  className={classes.category}
-                  variant="primary"
-                  onClick={() => handleCategoryChange("desert")}
-                >
+                <span className={classes.category} variant="primary" onClick={() => handleCategoryChange("desert")}>
                   Desert
                 </span>
               </Grid.Col>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  onClick={() => handleCategoryChange("offer")}
-                  className={classes.category}
-                >
+                <span onClick={() => handleCategoryChange("offer")} className={classes.category}>
                   Offer
                 </span>
               </Grid.Col>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  onClick={() => handleCategoryChange("drinks")}
-                  className={classes.category}
-                >
+                <span onClick={() => handleCategoryChange("drinks")} className={classes.category}>
                   Drinks
                 </span>
               </Grid.Col>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  onClick={() => handleCategoryChange("pizza")}
-                  className={classes.category}
-                >
+                <span onClick={() => handleCategoryChange("pizza")} className={classes.category}>
                   Pizza
                 </span>
               </Grid.Col>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  onClick={() => handleCategoryChange("salad")}
-                  className={classes.category}
-                >
+                <span onClick={() => handleCategoryChange("salad")} className={classes.category}>
                   Salads
                 </span>
               </Grid.Col>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  onClick={() => handleCategoryChange("thai")}
-                  className={classes.category}
-                >
+                <span onClick={() => handleCategoryChange("thai")} className={classes.category}>
                   Thai
                 </span>
               </Grid.Col>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  onClick={() => handleCategoryChange("soup")}
-                  className={classes.category}
-                >
+                <span onClick={() => handleCategoryChange("soup")} className={classes.category}>
                   Soup
                 </span>
               </Grid.Col>
               <Grid.Col sm={1} lg={1.5}>
-                <span
-                  onClick={() => handleCategoryChange("indian")}
-                  className={classes.category}
-                >
+                <span onClick={() => handleCategoryChange("indian")} className={classes.category}>
                   Indian
                 </span>
               </Grid.Col>
@@ -177,14 +152,13 @@ const Shop = () => {
 
           <Grid.Col>
             <p className="mb-1">
-              found{" "}
-              <span className="text-md text-[#4E60FF] ">{allItems.length}</span>{" "}
-              items
+              found <span className="text-md text-[#4E60FF] ">{allItems.length}</span> items
             </p>
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+            <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-4">
               {allItems?.slice(0, showMore)?.map((item) => (
                 <>
                   <ShopPageCard
+                    setModalItem={setModalItem}
                     item={item}
                     addItemToCart={addItemToCart}
                     removeItemFromCart={removeItemFromCart}
@@ -200,6 +174,9 @@ const Shop = () => {
                   ></FoodCard> */}
                 </>
               ))}
+            </div>
+            <div>
+              <DescriptionModal setModalItem={setModalItem} modalItem={modalItem}></DescriptionModal>
             </div>
             <Button
               onClick={handleShowMore}
