@@ -1,16 +1,13 @@
 import React from "react";
-import { Title, Text, Container, Button, Overlay, createStyles, rem } from "@mantine/core";
+import { Title, Text, Container, Button, createStyles, rem, Image } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
     position: "relative",
-    paddingTop: rem(180),
-    paddingBottom: rem(130),
-    backgroundImage: "url(https://i.ibb.co/Zd1b1Ww/header-img.png)",
     backgroundSize: "cover",
     backgroundPosition: "center",
-
+    paddingTop: "80px",
     [theme.fn.smallerThan("xs")]: {
       paddingTop: rem(80),
       paddingBottom: rem(50),
@@ -23,16 +20,13 @@ const useStyles = createStyles((theme) => ({
   },
 
   title: {
-    fontWeight: 800,
-    fontSize: rem(40),
-    letterSpacing: rem(-1),
-    paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md,
-    color: theme.white,
+    fontWeight: 500,
+    fontSize: rem(34),
+    width: "350px",
+    color: "#2A435D",
     marginBottom: theme.spacing.xs,
-    textAlign: "center",
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-
+    textAlign: "left",
+    textTransform: "uppercase",
     [theme.fn.smallerThan("xs")]: {
       fontSize: rem(28),
       textAlign: "left",
@@ -65,21 +59,21 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  control: {
-    height: rem(42),
-    fontSize: theme.fontSizes.md,
+  // control: {
+  //   // height: rem(42),
+  //   // fontSize: theme.fontSizes.md,
 
-    "&:not(:first-of-type)": {
-      marginLeft: theme.spacing.md,
-    },
+  //   "&:not(:first-of-type)": {
+  //     marginLeft: theme.spacing.md,
+  //   },
 
-    [theme.fn.smallerThan("xs")]: {
-      "&:not(:first-of-type)": {
-        marginTop: theme.spacing.md,
-        marginLeft: 0,
-      },
-    },
-  },
+  //   [theme.fn.smallerThan("xs")]: {
+  //     "&:not(:first-of-type)": {
+  //       marginTop: theme.spacing.md,
+  //       marginLeft: 0,
+  //     },
+  //   },
+  // },
 
   secondaryControl: {
     color: theme.white,
@@ -95,31 +89,37 @@ const Header = () => {
   const { classes, cx } = useStyles();
   return (
     <div>
-      <div className={classes.wrapper}>
-        <Overlay color="#000" opacity={0.65} zIndex={1} />
+      <Container m={"auto"} size={"lg"} className={classes.wrapper}>
+        {/* <Overlay color="#000" opacity={0.65} zIndex={1} /> 
+              {/* https://i.ibb.co/y5pSJNZ/image-delivery.png
+https://i.ibb.co/2tBfGNW/image-our-Resturant-3.png
+https://i.ibb.co/D7D3cpZ/image-our-Resturant-2.png
+https://i.ibb.co/NY7t2Gk/image-our-Resturant-1.png
+https://i.ibb.co/G2pXj4z/Rectangle-40.png
+https://i.ibb.co/6tmy32q/image-big-Offer-2.png
+https://i.ibb.co/X7JpSTk/image-big-Offer-1.png
+https://i.ibb.co/3yD3sBy/image-rich-Healthy-2.png
+https://i.ibb.co/Dz73gJm/image-rich-Healthy-1.png
+https://i.ibb.co/wrvFd66/image1.png */}
 
         <div className={classes.inner}>
-          <Title className={classes.title}>
-            OUR{" "}
-            <Text component="span" inherit className={classes.highlight}>
-              SHOP
-            </Text>
-          </Title>
+          <div className="flex justify-evenly items-center gap-3">
+            <Title className={classes.title}>
+              <Text fw={700} c={"indigo"} fz={"xs"}>
+                best in Town
+              </Text>
+              Enjoy our chicken <span className="text-[#C33]">burger</span> fast food
+              <Button className="btn-sm btn text-white bg-indigo-500 hover:bg-indigo-700" variant="white" size="lg">
+                Order Online
+              </Button>
+            </Title>
 
-          <Container size={640}>
             <Text size="lg" className={classes.description}>
-              {/* Build more reliable software with AI companion. AI is also trained
-              to detect lazy developers who do nothing and just complain on
-              Twitter. */}
-              Are you looking for somewhere special to go this weekend? Do you want to try something new? Check out one
-              of these hot new restaurants.
+              <Image maw={240} mx="auto" radius="md" src="https://i.ibb.co/wrvFd66/image1.png" alt="header food item" />
             </Text>
-          </Container>
+          </div>
 
           <Link to="/shop" className={classes.controls}>
-            <Button className={classes.control} variant="white" size="lg">
-              Order Online
-            </Button>
             <Link to="/mainMenu">
               <Button className={cx(classes.control, classes.secondaryControl)} size="lg">
                 Our Menu
@@ -127,7 +127,7 @@ const Header = () => {
             </Link>
           </Link>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
