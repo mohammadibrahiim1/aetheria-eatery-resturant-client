@@ -1,15 +1,7 @@
 import { Carousel } from "@mantine/carousel";
 import React, { useContext } from "react";
 import { ApiContext } from "../Context/DataContext";
-import {
-  createStyles,
-  Paper,
-  Text,
-  Title,
-  //   Button,
-  rem,
-  Container,
-} from "@mantine/core";
+import { createStyles, Text, rem, Container, Card, Group, getStylesRef } from "@mantine/core";
 import { LetStartOrdering } from "./LetStartOrdering";
 
 const useStyles = createStyles((theme) => ({
@@ -39,10 +31,8 @@ const useStyles = createStyles((theme) => ({
     color: "#151515",
     lineHeight: 1.2,
     fontSize: rem(32),
-    // marginTop: theme.spacing.xs,
     textTransform: "uppercase",
     textAlign: "center",
-    // paddingBottom: theme.spacing.sm,
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -62,12 +52,49 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     textTransform: "uppercase",
   },
+
+  image: {
+    ...theme.fn.cover(),
+    ref: getStylesRef("image"),
+    transition: "transform 500ms ease",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  },
+
+  overlay: {
+    position: "absolute",
+    top: "20%",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .85) 90%)",
+  },
+
+  content: {
+    height: "100%",
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    zIndex: 1,
+  },
+
+  bodyText: {
+    color: theme.colors.dark[2],
+    marginLeft: rem(7),
+  },
+
+  author: {
+    color: theme.colors.dark[1],
+    textTransform: "capitalize",
+  },
 }));
 
 const OrderOnline = () => {
   const { classes } = useStyles();
   const { foodItems } = useContext(ApiContext);
-  // console.log(foodItems);
+
   return (
     <div>
       <Container size={"lg"}>
@@ -97,31 +124,27 @@ const OrderOnline = () => {
             foodItems?.map((item) => (
               <>
                 <Carousel.Slide>
-                  {" "}
-                  <Paper
-                    shadow="md"
-                    p="xl"
-                    radius="md"
-                    sx={{ backgroundImage: `url(${item.image})` }}
-                    className={classes.card}
-                  >
-                    <div>
-                      <Text className={classes.category} size="xs">
-                        {item.category}
-                      </Text>
-                      <Title order={3} className={classes.title}>
-                        {item.name}
-                      </Title>
+                  <Card p="lg" shadow="lg" className={classes.card} radius="md">
+                    <div className={classes.image} style={{ backgroundImage: `url(${item.image})` }} />
+                    <div className={classes.overlay} />
+
+                    <div className={classes.content}>
+                      <div>
+                        <Text size="lg" className={classes.title} weight={500}>
+                          {item.name}
+                        </Text>
+
+                        <Group position="apart" spacing="xs">
+                          <Text size="sm" className={classes.author}>
+                            {item.category}
+                          </Text>
+                        </Group>
+                      </div>
                     </div>
-                    <Title className={classes.title}>${item.price}</Title>
-                  </Paper>
+                  </Card>
                 </Carousel.Slide>
               </>
             ))}
-
-          {/* <Carousel.Slide>2</Carousel.Slide>
-        <Carousel.Slide>3</Carousel.Slide> */}
-          {/* ...other slides */}
         </Carousel>
       </Container>
     </div>
