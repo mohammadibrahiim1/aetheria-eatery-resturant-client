@@ -6,12 +6,14 @@ import Menu from "../Components/Menu";
 import Contact from "../Components/Contact";
 import PopularDishes from "../Components/PopularDishes";
 import BigOffer from "../Components/BiggOffer";
+import RichandHealthy from "../Components/RichandHealthy";
 
 const Home = () => {
   return (
     <div>
       <Header></Header>
       <PopularDishes></PopularDishes>
+      <RichandHealthy></RichandHealthy>
       <OrderOnline></OrderOnline>
       <Menu></Menu>
       <BigOffer></BigOffer>
