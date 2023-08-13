@@ -4,7 +4,7 @@ import React from "react";
 const BigOffer = () => {
   return (
     <div>
-      <Container size={"lg"} mt={"70px"}>
+      <Container size={"lg"}>
         <Title>
           <Text fz={25} c={"indigo"} align="center">
             Bigg Offer

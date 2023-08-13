@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
-import OrderOnline from "../Components/OrderOnline";
+// import OrderOnline from "../Components/OrderOnline";
 import { Testimonials } from "../Components/Testimonials";
 import Menu from "../Components/Menu";
 import Contact from "../Components/Contact";
@@ -14,7 +14,7 @@ const Home = () => {
       <Header></Header>
       <PopularDishes></PopularDishes>
       <RichandHealthy></RichandHealthy>
-      <OrderOnline></OrderOnline>
+      {/* <OrderOnline></OrderOnline> */}
       <Menu></Menu>
       <BigOffer></BigOffer>
       <Contact></Contact>
