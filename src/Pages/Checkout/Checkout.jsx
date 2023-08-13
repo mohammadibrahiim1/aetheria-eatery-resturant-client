@@ -162,8 +162,17 @@ const Checkout = () => {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const { cart, removeItemFromCart, subTotal, finalPrice, taxDue, handleDecreaseItem, handleIncreaseItem, shipping } =
-    useContext(ApiContext);
+  const {
+    cart,
+    setCart,
+    removeItemFromCart,
+    subTotal,
+    finalPrice,
+    taxDue,
+    handleDecreaseItem,
+    handleIncreaseItem,
+    shipping,
+  } = useContext(ApiContext);
 
   const grandTotal = finalPrice + shipping;
 
@@ -206,6 +215,8 @@ const Checkout = () => {
           toast.success("order added successfully");
           navigate("/myOrder");
           window.location.reload();
+          localStorage.removeItem("newCart");
+          setCart([]);
         } else {
           toast.error(data.message);
         }

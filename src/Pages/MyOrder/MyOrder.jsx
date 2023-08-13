@@ -176,7 +176,7 @@ const MyOrder = () => {
         </Text>
       </Container>
       <Table
-        mb={120}
+        mb={194}
         verticalSpacing="lg"
         captionSide="bottom"
         withBorder
