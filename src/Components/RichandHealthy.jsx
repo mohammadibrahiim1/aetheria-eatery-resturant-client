@@ -4,7 +4,7 @@ import React from "react";
 const RichandHealthy = () => {
   return (
     <div>
-      <Container size={"lg"} py={50}>
+      <Container size={"lg"} py={55}>
         <Text c={"#4C6EF5"} fz={20} align="center" fw={700}>
           Rich & Healthy
         </Text>
@@ -50,7 +50,7 @@ const RichandHealthy = () => {
                 </Text>
                 <Image
                   width={320}
-                  height={300}
+                  height={290}
                   //   mx="auto"
                   radius="md"
                   src="https://i.ibb.co/3yD3sBy/image-rich-Healthy-2.png"

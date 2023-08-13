@@ -4,7 +4,7 @@ import React from "react";
 const PopularDishes = () => {
   return (
     <div>
-      <Container size={"lg"}>
+      <Container size={"lg"} py={25}>
         <Title>
           <Text c={"indigo"} align="center" uppercase fz={"sm"}>
             Food Items
@@ -20,7 +20,7 @@ https://i.ibb.co/PWn4gFH/image-Dishes-3.png
 https://i.ibb.co/LStT5wt/image-Dishes-2.png
 https://i.ibb.co/m84jPR1/image-Dishes-1.png */}
 
-        <div className="flex justify-between items-center mt-5">
+        <div className="flex justify-between items-center py-4">
           <div>
             <Image width={220} height={110} src="https://i.ibb.co/m84jPR1/image-Dishes-1.png" radius={"sm"} />
           </div>

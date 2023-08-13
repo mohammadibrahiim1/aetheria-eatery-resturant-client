@@ -195,7 +195,6 @@ export const NewNavbar = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container size="lg" className={classes.header}>
-        {" "}
         <Link to="/" className="flex justify-between align-center gap-2">
           <span>
             <img src="https://i.ibb.co/HtH5rWq/fast-food-1.png" alt="" srcset="" className="h-6 w-6" />
