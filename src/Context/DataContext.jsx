@@ -36,8 +36,6 @@ const DataContext = ({ children }) => {
   const [subTotal, setSubTotal] = useState(0);
   // const [total, setTotal] = useState(0);
 
-
-
   const addItemToCart = (selectItem) => {
     let newCart = [];
     const exists = cart.find((item) => item._id === selectItem._id);
@@ -168,17 +166,70 @@ const DataContext = ({ children }) => {
   //     });
   // }, [selectedCategory]);
 
-  const handleCategoryChange = (selectedCategory) => {
-    fetch(`http://localhost:5000/category?category=${selectedCategory}`)
+  const [category, setCategory] = useState("");
+  const [order, setOrder] = useState("");
+  // const [activeButton, setActiveButton] = useState("");
+  // const [isButtonClicked, setIsButtonClicked] = useState(false);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/category?category=${category}&order=${order}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setAllItems(data);
+        console.log(data);
       });
-    // setSelectedCategory(data);
-  };
-  // const [quantity, setQuantity] = useState(1);
-  // /users
+  }, [category, order]);
+
+  // const handleClick = () => {
+  //   setIsButtonClicked(!isButtonClicked);
+  // };
+
+  // const buttonStyle = {
+  //   backgroundColor: isButtonClicked ? "blue" : "white",
+  //   borderColor: isButtonClicked ? "blue" : "black",
+  //   color: isButtonClicked ? "white" : "black",
+  // };
+
+  // const handleClick = async (selectedCategory) => {
+  //   try {
+  //     setActiveButton(selectedCategory); // Change button color
+  //     const response = await fetch(`http://localhost:5000/category?category=${selectedCategory}&order=${order}`);
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setAllItems(data);
+  //     // data.sort((a, b) => (a.price - b.price) * (sortingOrder === "asc" ? 1 : -1));
+  //     // setSortedData(data);
+  //   } catch (error) {
+  //     console.error("Error fetching and sorting data:", error);
+  //   }
+  // };
+
+  // const handleCategoryChange = async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/category?category=${category}&order=${order}`);
+  //     const data = await response.json();
+  //     setAllItems(data);
+  //     // await fetch(`http://localhost:5000/category?category=${selectedCategory}&order=${order}`)
+  //     //   .then((res) => res.json())
+  //     //   .then((data) => {
+  //     //     // console.log(data);
+  //     //     setAllItems(data);
+  //     //   });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   // setSelectedCategory(data);
+  // };
+
+  // const handleSortedData = (order) => {
+  //   // console.log(order);
+  //   fetch(`http://localhost:5000/category?order=${order}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setAllItems(data);
+  //     });
+  // };
 
   const { data: booking = [] } = useQuery({
     queryKey: ["booking"],
@@ -247,7 +298,11 @@ const DataContext = ({ children }) => {
     addItemToCart,
     removeItemFromCart,
     cart,
-    handleCategoryChange,
+    setOrder,
+    category,
+    // handleClick,
+    // activeButton,
+    setCategory,
     offer,
     dessert,
     pizza,
@@ -271,6 +326,7 @@ const DataContext = ({ children }) => {
     // orders,
     orderInfo,
     setOrderInfo,
+    // handleSortedData,
     // handleCheckout
   };
 

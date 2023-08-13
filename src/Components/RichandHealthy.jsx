@@ -4,7 +4,7 @@ import React from "react";
 const RichandHealthy = () => {
   return (
     <div>
-      <Container size={"lg"} py={75}>
+      <Container size={"lg"} py={55}>
         <Text c={"#4C6EF5"} fz={20} align="center" fw={700}>
           Rich & Healthy
         </Text>
@@ -44,15 +44,17 @@ const RichandHealthy = () => {
 
                   <div>
                     <Button
+                      className="border-indigo-500"
                       pl={75}
                       pr={75}
                       size="lg"
-                      radius={"lg"}
+                      radius={"sm"}
                       pos={"relative"}
                       top={"100px"}
                       left={"20%"}
                       variant="outline"
                       m={"auto"}
+                      c={"indigo"}
                     >
                       Reade More
                     </Button>

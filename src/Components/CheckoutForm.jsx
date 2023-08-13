@@ -309,7 +309,7 @@ const CheckoutForm = ({ orders }) => {
           }}
         />
         <button
-          className="btn btn-sm mt-6 border-none bg-lime-600 ml-20"
+          className="btn btn-md px-10 mt-6 border-none bg-indigo-500 text-white hover:bg-indigo-600 "
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >

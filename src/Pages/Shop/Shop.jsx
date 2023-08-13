@@ -16,6 +16,8 @@ import Contact from "../../Components/Contact";
 import MostFavourite from "./MostFavourite";
 import DescriptionModal from "../../Components/Modal/DescriptionModal";
 import Filters from "../../Components/Filters/Filters";
+import Header from "../../Components/Header";
+import ShopPageMenu from "../../Components/ShopPageMune/ShopPageMenu";
 // import FoodCard from "./FoodCard";
 // import Modal from "./FoodModal";
 // import FoodModal from "./FoodModal";
@@ -91,7 +93,6 @@ const Shop = () => {
   const [modalItem, setModalItem] = useState({});
   const [showMore, setShowMore] = useState(9);
   const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange, cart } = useContext(ApiContext);
-  const { classes } = useStyles();
 
   const handleShowMore = () => {
     setShowMore((preValue) => preValue + 3);
@@ -99,58 +100,16 @@ const Shop = () => {
 
   return (
     <div>
-      <ShopPageHeader></ShopPageHeader>
-      <Container size={"lg"}>
-        <Text className={classes.heading}>
-          <h1>All Items</h1>
-        </Text>
-        <Filters></Filters>
-        <Grid className="">
-          {/* <Grid.Col className={classes.category_container}>
-            <Grid>
-              <Grid.Col sm={1} lg={1.5}>
-                <span className={classes.category} variant="primary" onClick={() => handleCategoryChange("desert")}>
-                  Desert
-                </span>
-              </Grid.Col>
-              <Grid.Col sm={1} lg={1.5}>
-                <span onClick={() => handleCategoryChange("offer")} className={classes.category}>
-                  Offer
-                </span>
-              </Grid.Col>
-              <Grid.Col sm={1} lg={1.5}>
-                <span onClick={() => handleCategoryChange("drinks")} className={classes.category}>
-                  Drinks
-                </span>
-              </Grid.Col>
-              <Grid.Col sm={1} lg={1.5}>
-                <span onClick={() => handleCategoryChange("pizza")} className={classes.category}>
-                  Pizza
-                </span>
-              </Grid.Col>
-              <Grid.Col sm={1} lg={1.5}>
-                <span onClick={() => handleCategoryChange("salad")} className={classes.category}>
-                  Salads
-                </span>
-              </Grid.Col>
-              <Grid.Col sm={1} lg={1.5}>
-                <span onClick={() => handleCategoryChange("thai")} className={classes.category}>
-                  Thai
-                </span>
-              </Grid.Col>
-              <Grid.Col sm={1} lg={1.5}>
-                <span onClick={() => handleCategoryChange("soup")} className={classes.category}>
-                  Soup
-                </span>
-              </Grid.Col>
-              <Grid.Col sm={1} lg={1.5}>
-                <span onClick={() => handleCategoryChange("indian")} className={classes.category}>
-                  Indian
-                </span>
-              </Grid.Col>
-            </Grid>
-          </Grid.Col> */}
+      <Header></Header>
+      {/* <ShopPageHeader></ShopPageHeader> */}
+      <Container size={"lg"} py={75}>
+        <div className="text-center">
+          <ShopPageMenu></ShopPageMenu>
+        </div>
 
+        <Filters></Filters>
+
+        <Grid className="">
           <Grid.Col>
             <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-4">
               {allItems?.slice(0, showMore)?.map((item) => (
@@ -169,9 +128,19 @@ const Shop = () => {
             <div>
               <DescriptionModal setModalItem={setModalItem} modalItem={modalItem}></DescriptionModal>
             </div>
-            <Button onClick={handleShowMore} variant="light" color="red" fullWidth center mt="md" radius="md">
-              load more
-            </Button>
+
+            <div className="flex justify-center py-5">
+              {/* {showMore.length < index ? (
+                ""
+              ) : ( */}
+                <button
+                  onClick={handleShowMore}
+                  className="btn btn-md px-12 border-indigo-500 hover:border-indigo-500 hover:bg-indigo-500 duration-300 hover:text-white capitalize"
+                >
+                  Show More
+                </button>
+              {/* )} */}
+            </div>
           </Grid.Col>
         </Grid>
 

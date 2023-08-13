@@ -79,7 +79,7 @@ const FoodCard = ({ item, setModalItem, addItemToCart }) => {
                 $ {price}
               </Badge>
             </div>
-            <Text mt={12} weight={500}>
+            <Text mt={12} fw={600} c={"#2B2B43"}>
               {name}
             </Text>
           </div>

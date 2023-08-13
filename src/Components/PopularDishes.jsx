@@ -4,7 +4,7 @@ import React from "react";
 const PopularDishes = () => {
   return (
     <div>
-      <Container size={"lg"} py={25}>
+      <Container size={"lg"} py={45}>
         <Title>
           <Text c={"indigo"} align="center" uppercase fz={"sm"}>
             Food Items
