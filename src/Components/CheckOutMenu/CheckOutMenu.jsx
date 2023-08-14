@@ -126,8 +126,7 @@ export function CheckOutMenu({ totalItems }) {
               </div>
             ))}
             <div className="text-center">
-              <Text fw={600} c={"indigo"}>
-                {" "}
+              <Text fw={600} c={"#FBBD23"} py={10}>
                 Current page : {currentPage} and items per page: {itemsPerPage}
               </Text>
               {pageNumbers.map((number) => (
