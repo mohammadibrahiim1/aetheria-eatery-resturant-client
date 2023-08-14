@@ -5,7 +5,7 @@ const RichandHealthy = () => {
   return (
     <div>
       <Container size={"lg"} py={55}>
-        <Text c={"#4C6EF5"} fz={20} align="center" fw={700}>
+        <Text c={"orange"} fs={"italic"} fz={20} align="center" fw={700}>
           Rich & Healthy
         </Text>
         <div className="flex justify-between items-center gap-7">
@@ -47,7 +47,7 @@ const RichandHealthy = () => {
                       className="border-indigo-500"
                       pl={75}
                       pr={75}
-                      size="lg"
+                      size="md"
                       radius={"sm"}
                       pos={"relative"}
                       top={"100px"}

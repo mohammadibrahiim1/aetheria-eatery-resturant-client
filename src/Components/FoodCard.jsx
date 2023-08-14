@@ -68,7 +68,7 @@ const FoodCard = ({ item, setModalItem, addItemToCart }) => {
 
   return (
     <div>
-      <Card className={classes.item_card} shadow="sm" radius="md" withBorder>
+      <Card shadow="sm" radius="md" withBorder>
         <div className="flex items-center justify-between gap-5 ">
           <div>
             <div className="flex justify-between items-center gap-5">

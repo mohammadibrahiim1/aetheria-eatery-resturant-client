@@ -11,11 +11,11 @@ const Menu = () => {
   return (
     <div>
       <Container size={"lg"} py={75} id="menu">
-        <Text fz={13} c={"indigo"} align="center" fw={600}>
+        <Text fs={"italic"} fz={13} c={"#748FFC"} align="center" fw={600}>
           ---check it out---
         </Text>
 
-        <Text fz={25} c={"indigo"} align="center" fw={700}>
+        <Text fs={"italic"} fz={25} c={"orange"} align="center" fw={700}>
           From Our Menu
         </Text>
 

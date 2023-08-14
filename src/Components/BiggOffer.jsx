@@ -6,10 +6,10 @@ const BigOffer = () => {
     <div>
       <Container size={"lg"}>
         <Title>
-          <Text fz={25} c={"indigo"} align="center">
+          <Text fz={25} c={"orange"} align="center" fs={"italic"}>
             Bigg Offer
           </Text>
-          <Text c={"indigo"} align="center" uppercase fz={"sm"}>
+          <Text c={"#748FFC"} align="center" uppercase fz={"sm"}>
             For in this week, take your food, buy your best one.
           </Text>
         </Title>

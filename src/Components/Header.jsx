@@ -89,7 +89,7 @@ const Header = () => {
   const { classes, cx } = useStyles();
   return (
     <div>
-      <Container m={"auto"} size={"lg"} py={30} className={classes.wrapper}>
+      <Container m={"auto"} size={"lg"} py={36} className={classes.wrapper}>
         <div className={classes.inner}>
           <div className="flex  items-center gap-5">
             <Card

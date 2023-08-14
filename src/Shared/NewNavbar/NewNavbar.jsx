@@ -64,12 +64,12 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7],
+    color: "#2B2B43",
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     "&:hover": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
+      color: "#4E60FF",
     },
 
     [theme.fn.smallerThan("sm")]: {
@@ -80,11 +80,11 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     "&, &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor }).color,
+      // backgroundColor: theme.fn.variant({
+      //   variant: "light",
+      //   color: theme.primaryColor,
+      // }).background,
+      color: "#4E60FF",
     },
   },
 }));
@@ -132,7 +132,7 @@ export const NewNavbar = () => {
 
   const links = [
     { link: "/tableReservation", label: "Book A Table" },
-    { link: "/mainMenu", label: " Our Menu" },
+    // { link: "/mainMenu", label: " Our Menu" },
     { link: "/shop", label: "Shop" },
     { link: "/aboutUs", label: "About" },
     { link: "/myOrder", label: "My Order" },
@@ -141,7 +141,6 @@ export const NewNavbar = () => {
       label:
         user?.email && isAdmin ? (
           <div>
-            {" "}
             <IconLayoutDashboard className="h-6 w-6" />
           </div>
         ) : (

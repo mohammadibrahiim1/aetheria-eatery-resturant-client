@@ -85,10 +85,10 @@ export function CheckOutMenu({ totalItems }) {
     <div>
       <Container size={"lg"}>
         <div className="text-center">
-          <Text c={"indigo"} fw={"700"} fz={25}>
+          <Text c={"orange"} fw={"700"} fz={25} fs={"italic"}>
             Check Out Our Menu
           </Text>
-          <Text c={"dark"} fw={"500"} fz={13}>
+          <Text c={"#748FFC"} fw={"500"} fz={13}>
             Demoralized by the charms of pleasure of the moment so blinded except to some advantage.
           </Text>
         </div>

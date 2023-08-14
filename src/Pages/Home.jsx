@@ -9,6 +9,7 @@ import BigOffer from "../Components/BiggOffer";
 import RichandHealthy from "../Components/RichandHealthy";
 import { CheckOutMenu } from "../Components/CheckOutMenu/CheckOutMenu";
 import { useLoaderData } from "react-router-dom";
+import { Delivery } from "../Components/Delivery/Delivery";
 
 const Home = () => {
   const { totalItems } = useLoaderData();
@@ -21,8 +22,9 @@ const Home = () => {
       <Menu></Menu>
       <CheckOutMenu totalItems={totalItems}></CheckOutMenu>
       <BigOffer></BigOffer>
-      <Contact></Contact>
-      <Testimonials></Testimonials>
+      <Delivery></Delivery>
+      {/* <Contact></Contact>
+      <Testimonials></Testimonials> */}
     </div>
   );
 };
