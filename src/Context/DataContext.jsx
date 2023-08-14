@@ -98,16 +98,6 @@ const DataContext = ({ children }) => {
   const [category, setCategory] = useState("");
   const [order, setOrder] = useState("");
 
-  // const [totalItems, setTotalItems] = useState();
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/totalItems")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setTotalItems(data);
-  //     });
-  // }, []);
-
   useEffect(() => {
     fetch(`http://localhost:5000/category?category=${category}&order=${order}`)
       .then((res) => res.json())
