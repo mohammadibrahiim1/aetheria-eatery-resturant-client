@@ -1,14 +1,7 @@
 import { Carousel } from "@mantine/carousel";
 import React, { useContext } from "react";
 
-import {
-  createStyles,
-  Paper,
-  Text,
-  Title,
-  rem,
-  Container,
-} from "@mantine/core";
+import { createStyles, Paper, Text, Title, rem, Container } from "@mantine/core";
 import { ApiContext } from "../../Context/DataContext";
 
 const useStyles = createStyles((theme) => ({
@@ -39,7 +32,7 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
     fontSize: rem(32),
     // marginTop: theme.spacing.xs,
-    textTransform: "uppercase",
+    textTransform: "capitalize",
     textAlign: "center",
     // paddingBottom: theme.spacing.sm,
   },
@@ -49,7 +42,7 @@ const useStyles = createStyles((theme) => ({
     color: "#D99904",
     lineHeight: 1.2,
     fontSize: rem(12),
-    marginTop: theme.spacing.xs,
+    // marginTop: theme.spacing.xs,
     textTransform: "uppercase",
     textAlign: "center",
     paddingBottom: theme.spacing.xs,
@@ -69,9 +62,11 @@ const MostFavourite = () => {
 
   return (
     <div>
-      <Container className="pt-28">
+      <Container size={"lg"} className="pt-28">
         <div className={classes.heading} color="#151515">
-          <h1>Your Favorites</h1>
+          <Text fs={"italic"} c={"orange"} py={5} fz={25} fw={700}>
+            Your Favorite
+          </Text>
         </div>
         <div className={classes.subTitle}>
           <p>---order online---</p>

@@ -161,9 +161,13 @@ const MyOrder = () => {
         )}
 
         <td>
-          <Button onClick={() => handleDeleteProduct(order)} className={classes.cancel_button} size="xs">
-            cancel order
-          </Button>
+          {order.paid ? (
+            <Button className="btn-sm btn-success">Order Details</Button>
+          ) : (
+            <Button onClick={() => handleDeleteProduct(order)} className="btn-sm btn-error">
+              Cancel Order
+            </Button>
+          )}
         </td>
       </tr>
     ));

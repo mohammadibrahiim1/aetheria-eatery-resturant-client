@@ -1,7 +1,16 @@
 import { useContext, useState } from "react";
-import { createStyles, Header, Container, Group, Burger, Paper, Transition, rem, Indicator } from "@mantine/core";
-// import { useDisclosure } from "@mantine/hooks";
-import { MantineLogo } from "@mantine/ds";
+import {
+  createStyles,
+  Header,
+  Container,
+  Group,
+  Burger,
+  Paper,
+  Transition,
+  rem,
+  Indicator,
+  Avatar,
+} from "@mantine/core";
 import { Link } from "react-router-dom";
 import UseAdmin from "../../Hooks/UseAdmin";
 import { ApiContext } from "../../Context/DataContext";
@@ -161,7 +170,8 @@ export const NewNavbar = () => {
       // link: "/dashboard/allBookings",
       label: user?.email ? (
         <div onClick={handleLogOut}>
-          <FaUserAlt className="h-6 w-6" />
+          <Avatar src={user.photoURL} alt="it's me" radius="xl" />
+          {/* <FaUserAlt className="h-6 w-6" /> */}
         </div>
       ) : (
         <div onClick={handleGoogleSignIn}>
@@ -172,7 +182,7 @@ export const NewNavbar = () => {
   ];
 
   // const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState(links.link);
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (

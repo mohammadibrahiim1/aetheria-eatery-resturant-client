@@ -153,10 +153,6 @@ const Header = () => {
                 </div>
               </div>
             </Card>
-
-            {/* <div>
-              <Image maw={240} mx="auto" radius="md" src="https://i.ibb.co/nLZ93nN/img.png" alt="header food item" />
-            </div> */}
           </div>
         </div>
       </Container>

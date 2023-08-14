@@ -101,7 +101,6 @@ const Shop = () => {
   return (
     <div>
       <Header></Header>
-      {/* <ShopPageHeader></ShopPageHeader> */}
       <Container size={"lg"} py={75}>
         <div className="text-center">
           <ShopPageMenu></ShopPageMenu>
@@ -133,12 +132,12 @@ const Shop = () => {
               {/* {showMore.length < index ? (
                 ""
               ) : ( */}
-                <button
-                  onClick={handleShowMore}
-                  className="btn btn-md px-12 border-indigo-500 hover:border-indigo-500 hover:bg-indigo-500 duration-300 hover:text-white capitalize"
-                >
-                  Show More
-                </button>
+              <button
+                onClick={handleShowMore}
+                className="btn btn-md px-12 border-indigo-500 hover:border-indigo-500 hover:bg-indigo-500 duration-300 hover:text-white capitalize"
+              >
+                Show More
+              </button>
               {/* )} */}
             </div>
           </Grid.Col>

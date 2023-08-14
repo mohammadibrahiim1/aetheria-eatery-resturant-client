@@ -14,8 +14,8 @@ const DescriptionModal = ({ modalItem }) => {
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">{modalItem.name}</h3>
-          <p className="py-4">{modalItem.description}</p>
+          <h3 className="font-bold text-lg text-orange-500">{modalItem.name}</h3>
+          <p className="py-4 text-sm">{modalItem.description}</p>
           <div className="modal-action">
             <label
               htmlFor="my_modal_6"

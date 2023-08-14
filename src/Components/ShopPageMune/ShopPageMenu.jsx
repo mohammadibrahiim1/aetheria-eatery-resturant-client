@@ -4,7 +4,7 @@ import { ApiContext } from "../../Context/DataContext";
 import { Text } from "@mantine/core";
 
 const ShopPageMenu = () => {
-  const { activeButton, setCategory } = useContext(ApiContext);
+  const { setCategory } = useContext(ApiContext);
   //   {
   //     /* <Grid.Col className={classes.category_container}>
   //             <Grid>
@@ -55,7 +55,7 @@ const ShopPageMenu = () => {
   return (
     <div>
       <div>
-        <Text c={"indigo"} py={5} fz={25} fw={700}>
+        <Text fs={"italic"} c={"orange"} py={5} fz={25} fw={700}>
           Explore Our Menu
         </Text>
       </div>

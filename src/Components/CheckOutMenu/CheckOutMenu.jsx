@@ -131,13 +131,17 @@ export function CheckOutMenu({ totalItems }) {
                 Current page : {currentPage} and items per page: {itemsPerPage}
               </Text>
               {pageNumbers.map((number) => (
-                <button onClick={() => setCurrentPage(number)} key={number} className="btn mx-3">
+                <button onClick={() => setCurrentPage(number)} key={number} className="btn-sm btn mx-2 btn-warning">
                   <Text px={10}>{number}</Text>
                 </button>
               ))}
-              <select value={itemsPerPage} onChange={handleSelectChange}>
+              <select
+                className="border rounded-lg p-1 bg-[#FBBD23]  "
+                value={itemsPerPage}
+                onChange={handleSelectChange}
+              >
                 {options.map((option) => (
-                  <option key={option} value={option}>
+                  <option className="bg-[#FBBD23]" key={option} value={option}>
                     {option}
                   </option>
                 ))}
