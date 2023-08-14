@@ -7,8 +7,11 @@ import Contact from "../Components/Contact";
 import PopularDishes from "../Components/PopularDishes";
 import BigOffer from "../Components/BiggOffer";
 import RichandHealthy from "../Components/RichandHealthy";
+import { CheckOutMenu } from "../Components/CheckOutMenu/CheckOutMenu";
+import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
+  const { totalItems } = useLoaderData();
   return (
     <div>
       <Header></Header>
@@ -16,6 +19,7 @@ const Home = () => {
       <RichandHealthy></RichandHealthy>
       {/* <OrderOnline></OrderOnline> */}
       <Menu></Menu>
+      <CheckOutMenu totalItems={totalItems}></CheckOutMenu>
       <BigOffer></BigOffer>
       <Contact></Contact>
       <Testimonials></Testimonials>

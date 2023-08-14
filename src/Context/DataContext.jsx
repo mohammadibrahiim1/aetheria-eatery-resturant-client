@@ -73,8 +73,11 @@ const DataContext = ({ children }) => {
   const [thai, setThai] = useState([]);
   const [indian, setIndian] = useState([]);
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemPerPage] = useState(8);
+
   useEffect(() => {
-    fetch("http://localhost:5000/menu")
+    fetch(`http://localhost:5000/menu?page=${currentPage}&limit=${itemsPerPage}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -88,12 +91,22 @@ const DataContext = ({ children }) => {
         setThai(data.slice(35, 39));
         setAllItems(data);
       });
-  }, []);
+  }, [currentPage, itemsPerPage]);
 
   // filter  food items by category and sort by items price
   const [allItems, setAllItems] = useState([]);
   const [category, setCategory] = useState("");
   const [order, setOrder] = useState("");
+
+  // const [totalItems, setTotalItems] = useState();
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/totalItems")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setTotalItems(data);
+  //     });
+  // }, []);
 
   useEffect(() => {
     fetch(`http://localhost:5000/category?category=${category}&order=${order}`)
@@ -183,6 +196,11 @@ const DataContext = ({ children }) => {
     finalPrice,
     taxDue,
     shipping,
+    currentPage,
+    setCurrentPage,
+    itemsPerPage,
+    setItemPerPage,
+    // totalItems,
     // orderInfo,
     // setOrderInfo,
   };
