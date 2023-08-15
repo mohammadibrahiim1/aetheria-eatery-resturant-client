@@ -97,10 +97,7 @@ export const OurTeam = () => {
                 withBorder
                 p="lg"
                 sx={(theme) => ({
-                  backgroundColor:
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[8]
-                      : theme.white,
+                  backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
                 })}
               >
                 <Avatar src={member.image} size={120} radius={120} mx="auto" />

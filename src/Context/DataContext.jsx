@@ -6,9 +6,6 @@ export const ApiContext = createContext();
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("newCart") || "[]");
 
 const DataContext = ({ children }) => {
-  // const orderInfoFromLocalStorage = JSON.parse(localStorage.getItem("orderInfo") || "[]");
-  // const [orderInfo, setOrderInfo] = useState(orderInfoFromLocalStorage);
-
   const [selectDate, setSelectDate] = useState(new Date());
 
   const [subTotal, setSubTotal] = useState(0);
@@ -190,9 +187,6 @@ const DataContext = ({ children }) => {
     setCurrentPage,
     itemsPerPage,
     setItemPerPage,
-    // totalItems,
-    // orderInfo,
-    // setOrderInfo,
   };
 
   return (

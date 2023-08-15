@@ -58,9 +58,7 @@ export const TableOptions = () => {
   const { data: bookingOptions = [], refetch } = useQuery({
     queryKey: ["bookingOptions", date],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/bookingOptions?date=${date}`
-      );
+      const res = await fetch(`http://localhost:5000/bookingOptions?date=${date}`);
       const data = await res.json();
       return data;
     },
@@ -70,9 +68,7 @@ export const TableOptions = () => {
     <div>
       {/* {bookingOptions.length} */}
       <Container className="">
-        <p className="pb-5 text-xl text-accent text-center font-semibold">
-          Book your desire Table
-        </p>
+        <p className="pb-5 text-xl text-accent text-center font-semibold">Book your desire Table</p>
         <SimpleGrid
           cols={3}
           breakpoints={[
@@ -85,11 +81,7 @@ export const TableOptions = () => {
           ))}
         </SimpleGrid>
         {selectTable && (
-          <BookingModal
-            setSelectTable={setSelectTable}
-            selectTable={selectTable}
-            refetch={refetch}
-          ></BookingModal>
+          <BookingModal setSelectTable={setSelectTable} selectTable={selectTable} refetch={refetch}></BookingModal>
         )}
       </Container>
     </div>

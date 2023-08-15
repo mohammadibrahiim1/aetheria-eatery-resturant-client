@@ -202,6 +202,7 @@ const Checkout = () => {
       zip,
       totalPrice,
       cart,
+      
     };
 
     fetch("http://localhost:5000/v1/orders", {

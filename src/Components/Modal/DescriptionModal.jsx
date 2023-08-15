@@ -2,15 +2,9 @@ import { IconX } from "@tabler/icons-react";
 import React from "react";
 
 const DescriptionModal = ({ modalItem }) => {
-  console.log(modalItem);
+
   return (
     <div>
-      {/* The button to open modal */}
-      {/* <label htmlFor="my_modal_6" className=" btn btn-sm">
-        open modal
-      </label> */}
-
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">

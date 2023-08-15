@@ -6,8 +6,7 @@ import GoogleMap from "./GoogleMap";
 // import { GoogleMap } from "./GoogleMap";
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     width: "100%",
   },
 
@@ -77,35 +76,23 @@ const AboutUs = () => {
   const { classes } = useStyles();
   return (
     <div>
-      <div>
-        <Header></Header>
-      </div>
-      <Container>
-        {/* <!-- component --> */}
+      <Container size={"lg"} mt={45}>
+        <div>
+          <Header></Header>
+        </div>
         <div class="py-16 bg-white">
           <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
-            <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+            <div class="space-y-6 md:space-y-0 md:flex justify-between md:gap-6 lg:items-center lg:gap-12">
               <div class="md:5/12 lg:w-5/12">
-                <img
-                  src="https://i.ibb.co/Zd1b1Ww/header-img.png"
-                  alt=""
-                  loading="lazy"
-                  width="full"
-                  height="full"
-                />
+                <img src="https://i.ibb.co/Zd1b1Ww/header-img.png" alt="" loading="lazy" width="full" height="full" />
               </div>
               <div class="md:7/12 lg:w-6/12">
-                <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">
-                  Our Story | Where it all began
-                </h2>
+                <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">Our Story | Where it all began</h2>
                 <p class="mt-6 text-gray-600">
-                  We've been on quite a journey over the last six decades which
-                  started in the rolling hills of Emilia-Romagna - the region of
-                  northern Italy which produces so many of the amazing foods
-                  which are key to the Italian kitchen. Prosciutto di Parma,
-                  Balsamico di Modena and Parmigiana all come from this part of
-                  Italy - and its where the inspiration for Ponti's Italian
-                  Kitchen was born.
+                  We've been on quite a journey over the last six decades which started in the rolling hills of
+                  Emilia-Romagna - the region of northern Italy which produces so many of the amazing foods which are
+                  key to the Italian kitchen. Prosciutto di Parma, Balsamico di Modena and Parmigiana all come from this
+                  part of Italy - and its where the inspiration for Ponti's Italian Kitchen was born.
                 </p>
                 {/* <p class="mt-4 text-gray-600">
                   {" "}
@@ -125,34 +112,26 @@ const AboutUs = () => {
                   Nuxt development is carried out by passionate developers
                 </h2> */}
                 <p class="mt-6 text-gray-600">
-                  <p className="text-center font-semibold py-4 text-lg">
-                    About Us
-                  </p>
-                  There are only two ingredients involved in the production of
-                  Prosciutto di Parma, a leg of pork with nothing but sea salt.
-                  This increases the tenderness of the meat, and gives it a
-                  characteristic sweet flavour. The similarity between
-                  present-day Parma Ham and its “ancestor” is evident and
-                  nowadays the tradition of Parma Ham is as strong as ever.
+                  <p className="text-center font-semibold py-4 text-lg">About Us</p>
+                  There are only two ingredients involved in the production of Prosciutto di Parma, a leg of pork with
+                  nothing but sea salt. This increases the tenderness of the meat, and gives it a characteristic sweet
+                  flavour. The similarity between present-day Parma Ham and its “ancestor” is evident and nowadays the
+                  tradition of Parma Ham is as strong as ever.
                 </p>
                 <p class="mt-4 text-gray-600">
                   {" "}
-                  Our Sheffield restaurant is in prime position at the
-                  beautifully designed and award-winning Fox Valley. We were
-                  proud to be part of the original line up when the centre
-                  opened in 2016 and we've been bringing our unique take on
-                  family friendly Italian dining to our fabulous Yorkshire
-                  foodies ever since. Our warm and welcoming restaurant with a
-                  stunning private dining room has built up a great reputation
-                  and we’re proud to be part of this beautiful part of
-                  Yorkshire.
+                  Our Sheffield restaurant is in prime position at the beautifully designed and award-winning Fox
+                  Valley. We were proud to be part of the original line up when the centre opened in 2016 and we've been
+                  bringing our unique take on family friendly Italian dining to our fabulous Yorkshire foodies ever
+                  since. Our warm and welcoming restaurant with a stunning private dining room has built up a great
+                  reputation and we’re proud to be part of this beautiful part of Yorkshire.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </Container>
-      <Container className="py-28">
+      <Container size={"lg"} className="py-28">
         <div className={classes.subTitle}>
           <p>---check it out---</p>
         </div>
@@ -169,62 +148,30 @@ const AboutUs = () => {
             />
           </div>
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/yN5rFD4/Shrimp-Korma.jpg"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/yN5rFD4/Shrimp-Korma.jpg" alt="" />
           </div>
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/vdGs7vJ/lime-refreshment.jpg"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/vdGs7vJ/lime-refreshment.jpg" alt="" />
           </div>
 
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/M8H6Ss9/m-monster.jpg"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/M8H6Ss9/m-monster.jpg" alt="" />
           </div>
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/8DzxP5K/french-vanilla-latte.jpg"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/8DzxP5K/french-vanilla-latte.jpg" alt="" />
           </div>
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/VHJ3G7m/curry.png"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/VHJ3G7m/curry.png" alt="" />
           </div>
 
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/2Ww9LGS/onion-rings.jpg"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/2Ww9LGS/onion-rings.jpg" alt="" />
           </div>
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/XFtpG0B/paneer-sticks.jpg"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/XFtpG0B/paneer-sticks.jpg" alt="" />
           </div>
           <div>
-            <img
-              class="h-full max-w-full rounded-lg"
-              src="https://i.ibb.co/g4SqC88/spicy-basil-chicken.png"
-              alt=""
-            />
+            <img class="h-full max-w-full rounded-lg" src="https://i.ibb.co/g4SqC88/spicy-basil-chicken.png" alt="" />
           </div>
 
           {/* <div>

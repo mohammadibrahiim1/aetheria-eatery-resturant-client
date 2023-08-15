@@ -43,7 +43,6 @@ const MyOrder = () => {
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/orders");
       const data = await res.json();
-      console.log(data);
       return data;
     },
   });
@@ -117,6 +116,11 @@ const MyOrder = () => {
             {i + 1}
           </Text>
         </td>
+        {/* <td>
+          <Text size={"md"} c={"indigo"} fw={600}>
+            {order.orderId ? order.orderId : <Text c={"teal"}>no order id</Text>}
+          </Text>
+        </td> */}
         <td>
           <Text size={"md"} c={"indigo"} fw={600}>
             {order.name}

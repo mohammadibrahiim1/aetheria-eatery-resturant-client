@@ -16,7 +16,6 @@ import UseAdmin from "../../Hooks/UseAdmin";
 import { ApiContext } from "../../Context/DataContext";
 import { AuthContext } from "../../Context/UserContext";
 import { toast } from "react-hot-toast";
-import { FaUserAlt } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IconLayoutDashboard } from "@tabler/icons-react";
 import { IconShoppingBag } from "@tabler/icons-react";
@@ -25,7 +24,7 @@ const HEADER_HEIGHT = rem(60);
 
 const useStyles = createStyles((theme) => ({
   root: {
-    position: "relative",
+    position: "fixed",
     // zIndex: 1,
   },
 
@@ -100,9 +99,8 @@ const useStyles = createStyles((theme) => ({
 
 export const NewNavbar = () => {
   const { signInWithGoogle, logOut, user } = useContext(AuthContext);
-  // const [openNav, setOpenNav] = React.useState(false);
   const { cart } = useContext(ApiContext);
-  // const { cart } = useContext(ApiContext);
+
   const [isAdmin] = UseAdmin(user?.email);
 
   const handleGoogleSignIn = () => {
@@ -141,8 +139,7 @@ export const NewNavbar = () => {
 
   const links = [
     { link: "/tableReservation", label: "Book A Table" },
-    // { link: "/mainMenu", label: " Our Menu" },
-    { link: "/shop", label: "Shop" },
+    { link: "/shop", label: "Menu" },
     { link: "/aboutUs", label: "About" },
     { link: "/myOrder", label: "My Order" },
     {
@@ -167,11 +164,9 @@ export const NewNavbar = () => {
       ),
     },
     {
-      // link: "/dashboard/allBookings",
       label: user?.email ? (
         <div onClick={handleLogOut}>
           <Avatar src={user.photoURL} alt="it's me" radius="xl" />
-          {/* <FaUserAlt className="h-6 w-6" /> */}
         </div>
       ) : (
         <div onClick={handleGoogleSignIn}>
@@ -181,7 +176,6 @@ export const NewNavbar = () => {
     },
   ];
 
-  // const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links.link);
   const { classes, cx } = useStyles();
 
@@ -194,7 +188,6 @@ export const NewNavbar = () => {
       })}
       onClick={(event) => {
         setActive(link.link);
-        // close();
       }}
     >
       {link.label}
@@ -213,17 +206,8 @@ export const NewNavbar = () => {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Burger
-          // opened={opened}
-          // onClick={toggle}
-          className={classes.burger}
-          size="sm"
-        />
-        <Transition
-          transition="pop-top-right"
-          duration={200}
-          //  mounted={opened}
-        >
+        <Burger className={classes.burger} size="sm" />
+        <Transition transition="pop-top-right" duration={200}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
               {items}

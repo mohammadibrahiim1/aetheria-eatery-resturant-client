@@ -2,7 +2,6 @@ import { createStyles, Image, Container, Group, Text, rem, Card } from "@mantine
 
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
-import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -62,19 +61,13 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function CheckOutMenu({ totalItems }) {
-  console.log(totalItems);
   const { allItems, currentPage, setCurrentPage, itemsPerPage, setItemPerPage } = useContext(ApiContext);
-  //   console.log(allItems);
   const { classes } = useStyles();
 
-  //   const itemsPerPage = 8;
-  //   const totalItems = 39;
   const totalPage = Math.ceil(totalItems / itemsPerPage);
-  console.log(totalPage);
 
-  const pageNumbers = [...Array(totalPage).keys()];
-  const options = [8, 16, 24];
-  //   console.log(pageNumbers);
+  let pageNumbers = [...Array(totalPage).keys()];
+  let options = [8, 16, 24];
 
   const handleSelectChange = (e) => {
     setItemPerPage(parseInt(e.target.value));
@@ -111,14 +104,7 @@ export function CheckOutMenu({ totalItems }) {
                   </Group>
 
                   <div>
-                    <Text
-                      // transform="uppercase"
-                      color="#000"
-                      weight={700}
-                      size="xs"
-                      //   className={classes.title}
-                      // mb="md"
-                    >
+                    <Text color="#000" weight={700} size="xs">
                       {item.description}
                     </Text>
                   </div>

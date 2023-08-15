@@ -30,21 +30,13 @@ const AllUsers = () => {
     <tr key={user._id}>
       <td>{i + 1}</td>
       <td>
-        <img
-          src={user.image}
-          alt=""
-          srcset=""
-          className="h-12 w-12 rounded-full"
-        />
+        <img src={user.image} alt="" srcset="" className="h-12 w-12 rounded-full" />
       </td>
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>
         {user?.role !== "admin" && (
-          <button
-            onClick={() => handleMakeAdmin(user._id)}
-            className="btn btn-xs btn-light"
-          >
+          <button onClick={() => handleMakeAdmin(user._id)} className="btn btn-xs btn-light">
             Make Admin
           </button>
         )}
@@ -66,8 +58,6 @@ const AllUsers = () => {
             <th>user name</th>
             <th>email</th>
             <th>user role</th>
-
-            {/* <th>image</th> */}
           </tr>
         </thead>
         <tbody>{rows}</tbody>

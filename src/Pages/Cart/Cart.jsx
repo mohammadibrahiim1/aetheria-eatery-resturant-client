@@ -1,17 +1,4 @@
-import {
-  createStyles,
-  Card,
-  Image,
-  Text,
-  // Group,
-  // Container,
-  Grid,
-  Button,
-  rem,
-  Container,
-  ActionIcon,
-  Group,
-} from "@mantine/core";
+import { createStyles, Card, Image, Text, Grid, Button, rem, Container, ActionIcon, Group } from "@mantine/core";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
 
@@ -19,7 +6,6 @@ import { IconArrowNarrowLeft, IconTrash } from "@tabler/icons-react";
 
 import PaymentButton from "../../Components/PaymentButton";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -143,83 +129,21 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Cart = () => {
-  // const [shipping, setShipping] = useState("delivery");
-
-  // const handleChange = (event, newShipping) => {
-  //   setShipping(newShipping);
-  // };
-
-  // const { user } = useContext(AuthContext);
   const { cart, subTotal, removeItemFromCart, handleIncreaseItem, handleDecreaseItem, finalPrice, taxDue } =
     useContext(ApiContext);
-  // localStorage.setItem("subtotal", subTotal);
 
   const { classes } = useStyles();
 
-  // const handleCheckout = () => {
-  //   const checkout = {
-  //     total,
-  //     name: user.displayName,
-  //     email: user.email,
-  //   };
-  //   fetch("http://localhost:5000/checkout", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(checkout),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.acknowledged) {
-  //         // setSelectTable(null);
-  //         toast.success("added  successfully");
-  //         // refetch();
-  //       } else {
-  //         toast.error(data.message);
-  //       }
-  //     });
-  // };
-
-  //   axios
-  //     .post(`http://localhost:5000/checkoutPostInfo`, {
-  //       price: calculateSubTotal(),
-  //       totalPrice: calculateTotal(),
-  //     })
-  //     .then((res) => {
-  //       if (res.data.url) {
-  //         window.location.href = res.data.url;
-  //         toast.success("add checkout info");
-  //       }
-  //     })
-  //     .catch((err) => console.log(err.message));
-  // };
-
-  // console.log(cart);
-
-  // const calculateTotal = () => {
-  //   return cart.reduce((total, item) => {
-  //     return total + item.price * item.quantity;
-  //   }, 0);
-  // };
-
-  // const calculateSubTotal = () => {
-  //   return cart.reduce((subTotal, item) => {
-  //     return subTotal + item.price * item.quantity;
-  //   }, 0);
-  // };
-
   return (
     <div>
-      <Container size="lg">
+      <Container size="lg" py={75}>
         <Text className={classes.heading}>My Cart</Text>
 
-        <Grid className="pt-8 pb-2" gutter={"xs"}>
+        <Grid className=" pb-2" gutter={"xs"}>
           <Grid.Col md={6} lg={8.2} h={500} gap={2} className={classes.cartItems}>
             <div className="">
-              {cart.length ? (
-                <>
+              {cart?.length ? (
+                <div>
                   <Group c={"#5C7CFA"} className="flex justify-start items-center gap-2 ms-4">
                     <Text fw={700} mb={2}>
                       Menu
@@ -230,7 +154,7 @@ const Cart = () => {
                   </Group>
 
                   {cart?.map((item) => (
-                    <>
+                    <div>
                       <Card className={classes.card}>
                         <div key={item.id}>
                           <div className={classes.body}>
@@ -270,11 +194,11 @@ const Cart = () => {
                         </div>
                       </Card>
                       <hr />
-                    </>
+                    </div>
                   ))}
-                </>
+                </div>
               ) : (
-                <>
+                <div>
                   <section className="flex items-center text-[#FF922B] mt-8">
                     <div className="container flex flex-col items-center justify-center mx-auto">
                       <div className="text-center">
@@ -293,7 +217,7 @@ const Cart = () => {
                       </div>
                     </div>
                   </section>
-                </>
+                </div>
               )}
             </div>
             <div className="py-8"></div>
