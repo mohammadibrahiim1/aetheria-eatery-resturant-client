@@ -52,7 +52,7 @@ const DataContext = ({ children }) => {
   const [foodItems, setFoodItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allProducts")
+    fetch("https://resturant-website-server.vercel.app/allProducts")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -74,7 +74,7 @@ const DataContext = ({ children }) => {
   const [itemsPerPage, setItemPerPage] = useState(8);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/menu?page=${currentPage}&limit=${itemsPerPage}`)
+    fetch(`https://resturant-website-server.vercel.app/menu?page=${currentPage}&limit=${itemsPerPage}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -96,7 +96,7 @@ const DataContext = ({ children }) => {
   const [order, setOrder] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/category?category=${category}&order=${order}`)
+    fetch(`https://resturant-website-server.vercel.app/category?category=${category}&order=${order}`)
       .then((res) => res.json())
       .then((data) => {
         setAllItems(data);
@@ -106,7 +106,7 @@ const DataContext = ({ children }) => {
   const { data: booking = [] } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/bookings`);
+      const res = await fetch(`https://resturant-website-server.vercel.app/bookings`);
       const data = await res.json();
 
       return data;

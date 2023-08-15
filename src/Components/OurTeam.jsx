@@ -59,7 +59,7 @@ export const OurTeam = () => {
   const { classes } = useStyles();
 
   useEffect(() => {
-    fetch("http://localhost:5000/team")
+    fetch("https://resturant-website-server.vercel.app/team")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
