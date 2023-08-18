@@ -1,5 +1,5 @@
 import { React, useContext, useState } from "react";
-import { Button, Container, Grid, List, Text, rem } from "@mantine/core";
+import { Button, Container, Grid, List, Overlay, Text, Title, rem } from "@mantine/core";
 // import { ApiContext } from "../Context/DataContext";
 
 import {
@@ -37,6 +37,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     lineHeight: 1.2,
+    color: "#FFF",
   },
   heading: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
@@ -64,16 +65,6 @@ const useStyles = createStyles((theme) => ({
   category_container: {
     marginBottom: "11px",
   },
-  // category: {
-  //   fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
-  //   fontWeight: 600,
-  //   color: "#D99904",
-  //   fontSize: rem(15),
-  //   marginTop: theme.spacing.xs,
-  //   textAlign: "center",
-  //   paddingBottom: theme.spacing.xs,
-  //   cursor: "pointer",
-  // },
 
   body: {
     padding: theme.spacing.md,
@@ -87,9 +78,43 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
   },
+  wrapper: {
+    position: "relative",
+    marginTop: "60px",
+    paddingTop: rem(200),
+    paddingBottom: rem(160),
+    backgroundImage: "url(https://i.ibb.co/1TVscGD/image-items-bg.png)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+
+    [theme.fn.smallerThan("xs")]: {
+      paddingTop: rem(80),
+      paddingBottom: rem(50),
+    },
+  },
+
+  inner: {
+    position: "relative",
+    zIndex: 1,
+  },
+
+  highlight: {
+    color: theme.colors[theme.primaryColor][4],
+  },
+
+  description: {
+    color: theme.colors.gray[0],
+    textAlign: "center",
+
+    [theme.fn.smallerThan("xs")]: {
+      fontSize: theme.fontSizes.md,
+      textAlign: "left",
+    },
+  },
 }));
 
 const Shop = () => {
+  const { classes } = useStyles();
   const [modalItem, setModalItem] = useState({});
   const [showMore, setShowMore] = useState(9);
   const { allItems, addItemToCart, removeItemFromCart, handleCategoryChange, cart } = useContext(ApiContext);
@@ -100,7 +125,28 @@ const Shop = () => {
 
   return (
     <div>
-      <Header></Header>
+      <div>
+        <div>
+          <div className={classes.wrapper}>
+            <Overlay color="#000" opacity={0.65} zIndex={1} />
+
+            <div className={classes.inner}>
+              <Title className={classes.title} align="center">
+                ITEMS
+              </Title>
+
+              <div>
+                <Text size="lg" className={classes.description}>
+                  See our Menu items, order from the menu
+                </Text>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <Header></Header>
+      </div>
       <Container size={"lg"} py={75}>
         <div className="text-center">
           <ShopPageMenu></ShopPageMenu>
@@ -143,9 +189,13 @@ const Shop = () => {
           </Grid.Col>
         </Grid>
 
-        <MostFavourite></MostFavourite>
+        <div className="mt-12">
+          <img src="https://i.ibb.co/pRQrwmh/image-items-List-ooffer-2.png" alt="" srcSet="" />
+        </div>
+
+        {/* <MostFavourite></MostFavourite> */}
       </Container>
-      <Contact></Contact>
+      {/* <Contact></Contact> */}
     </div>
   );
 };

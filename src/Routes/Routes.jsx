@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://resturant-website-server.vercel.app/totalItems"),
+        loader: () => fetch("http://localhost:5000/totalItems"),
       },
       {
         path: "/cart",
@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
       {
         path: "/payment/:id",
         element: <Payment></Payment>,
-        loader: ({ params }) => fetch(`https://resturant-website-server.vercel.app/orders/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`),
       },
       {
         path: "/placeOrder",

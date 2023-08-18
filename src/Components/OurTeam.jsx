@@ -1,5 +1,5 @@
 import { Carousel } from "@mantine/carousel";
-import { Avatar, Button, Paper, Text, createStyles, rem } from "@mantine/core";
+import { Avatar, Button, Paper, Text, Title, createStyles, rem } from "@mantine/core";
 import { useEffect } from "react";
 import { useState } from "react";
 const useStyles = createStyles((theme) => ({
@@ -37,7 +37,7 @@ const useStyles = createStyles((theme) => ({
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
     fontWeight: 500,
-    color: "#D99904",
+    color: "#c33",
     lineHeight: 1.2,
     fontSize: rem(12),
     marginTop: theme.spacing.xs,
@@ -59,7 +59,7 @@ export const OurTeam = () => {
   const { classes } = useStyles();
 
   useEffect(() => {
-    fetch("https://resturant-website-server.vercel.app/team")
+    fetch("http://localhost:5000/team")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -68,8 +68,10 @@ export const OurTeam = () => {
   }, []);
   return (
     <div className="py-28">
-      <div className={classes.heading} color="#151515">
-        <h1>Order Online</h1>
+      <div>
+        <Title fz={"32px"} fw={700} c={"#2A435D"} tt={"uppercase"} align="center">
+          Order Online
+        </Title>
       </div>
       <div className={classes.subTitle}>
         <p>---From 11:00am to 10:00pm---</p>
@@ -93,6 +95,7 @@ export const OurTeam = () => {
             <Carousel.Slide>
               {" "}
               <Paper
+                h={350}
                 radius="md"
                 withBorder
                 p="lg"
@@ -118,10 +121,6 @@ export const OurTeam = () => {
             </Carousel.Slide>
           </>
         ))}
-
-        {/* <Carousel.Slide>2</Carousel.Slide>
-      <Carousel.Slide>3</Carousel.Slide> */}
-        {/* ...other slides */}
       </Carousel>
     </div>
   );

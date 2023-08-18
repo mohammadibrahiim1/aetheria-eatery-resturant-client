@@ -9,7 +9,7 @@ const AllBookings = () => {
   // const { data: booking = [] } = useQuery({
   //   queryKey: ["users"],
   //   queryFn: async () => {
-  //     const res = await fetch(`   https://resturant-website-server.vercel.app   /bookings`);
+  //     const res = await fetch(`   http://localhost:5000   /bookings`);
   //     const data = await res.json();
   //     console.log(data);
   //     return data;
