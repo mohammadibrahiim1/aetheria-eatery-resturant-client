@@ -55,7 +55,7 @@ const Payment = () => {
 
   return (
     <Container m={"auto"} size={"lg"}>
-      <Text c={"indigo"} fw={700} className="text-3xl mt-6 ml-20">
+      <Text  c={"indigo"} fw={700} className="text-3xl mt-20 ml-20">
         Complete your payment
       </Text>
       <Text c={"#575757"} fw={500} className="text-sm mt-2 ml-20">

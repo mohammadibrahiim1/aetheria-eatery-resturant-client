@@ -150,7 +150,7 @@ export const NewNavbar = () => {
             <IconLayoutDashboard className="h-6 w-6" />
           </div>
         ) : (
-          <></>
+          ""
         ),
     },
     {
