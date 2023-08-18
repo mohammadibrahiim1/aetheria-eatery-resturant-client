@@ -1,33 +1,17 @@
 import { React, useContext, useState } from "react";
-import { Button, Container, Grid, List, Overlay, Text, Title, rem } from "@mantine/core";
-// import { ApiContext } from "../Context/DataContext";
+import { Container, Grid, Overlay, Text, Title, rem } from "@mantine/core";
 
-import {
-  createStyles,
-  //  Card, Image, Group
-} from "@mantine/core";
-// import FoodCard from "../../Components/FoodCard";
-// import FoodModal from "../../Components/FoodModal";
+import { createStyles } from "@mantine/core";
+
 import { ApiContext } from "../../Context/DataContext";
 import { ShopPageCard } from "../../Components/ShopPageCard";
-import ShopPageHeader from "../../Components/ShopPageHeader";
-import Contact from "../../Components/Contact";
-// import OrderOnline from "../../Components/OrderOnline";
-import MostFavourite from "./MostFavourite";
+
 import DescriptionModal from "../../Components/Modal/DescriptionModal";
 import Filters from "../../Components/Filters/Filters";
 import Header from "../../Components/Header";
 import ShopPageMenu from "../../Components/ShopPageMune/ShopPageMenu";
-// import FoodCard from "./FoodCard";
-// import Modal from "./FoodModal";
-// import FoodModal from "./FoodModal";
 
 const useStyles = createStyles((theme) => ({
-  // container: {
-  //   width: "60%",
-  //   margin: "auto",
-  // },
-
   card: {
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     width: "100%",
@@ -46,14 +30,11 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
     fontSize: rem(19),
     marginTop: "11px",
-
-    // textTransform: "uppercase",
-    // textAlign: "center",
   },
 
   category: {
     border: "1px solid #E4002B",
-    // padding: "9px",
+
     paddingRight: "15px",
     paddingLeft: "15px",
     paddingTop: "5px",

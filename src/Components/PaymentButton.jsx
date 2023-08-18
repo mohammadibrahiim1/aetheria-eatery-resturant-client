@@ -5,9 +5,7 @@ import React from "react";
 import { createStyles, rem } from "@mantine/core";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ApiContext } from "../Context/DataContext";
-// import { toast } from "react-hot-toast";
+
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
@@ -28,10 +26,9 @@ const useStyles = createStyles((theme) => ({
     color: "#151515",
     lineHeight: 1.2,
     fontSize: rem(32),
-    // marginTop: theme.spacing.xs,
     textTransform: "uppercase",
     textAlign: "center",
-    // paddingBottom: theme.spacing.sm,
+
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -45,8 +42,6 @@ const useStyles = createStyles((theme) => ({
     paddingBottom: theme.spacing.xs,
   },
   controls: {
-    // marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -58,8 +53,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   control: {
-    // height: rem(32),
-    // fontSize: theme.fontSizes.sm,
+
     color: "#4263EB",
     marginTop: "12px",
     width: "100%",
@@ -77,7 +71,6 @@ const useStyles = createStyles((theme) => ({
 
     [theme.fn.smallerThan("xs")]: {
       "&:not(:first-of-type)": {
-        // marginTop: theme.spacing.md,
         marginLeft: 0,
       },
     },
@@ -107,9 +100,6 @@ const useStyles = createStyles((theme) => ({
 }));
 const PaymentButton = () => {
   const { classes } = useStyles();
-  // const { cart } = useContext(ApiContext);
-  // const url = "   http://localhost:5000   ";
-  // console.log(user);
 
   return (
     <div className="mt-5">

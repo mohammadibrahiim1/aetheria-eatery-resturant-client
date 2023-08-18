@@ -1,6 +1,5 @@
 import { Button, Container, Overlay, Text, Title, createStyles, rem } from "@mantine/core";
 import React from "react";
-import Header from "./Header";
 import { OurTeam } from "./OurTeam";
 import GoogleMap from "./GoogleMap";
 import { Link } from "react-router-dom";
@@ -13,8 +12,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     color: "#FFF8EE",
-    /* H1 Heading 35px Roboto bold */
-    // fontFamily: "Roboto",
+
     fontSize: "35px",
     fontStyle: "normal",
     fontWeight: 700,
@@ -26,10 +24,9 @@ const useStyles = createStyles((theme) => ({
     color: "#151515",
     lineHeight: 1.2,
     fontSize: rem(32),
-    // marginTop: theme.spacing.xs,
+
     textTransform: "uppercase",
     textAlign: "center",
-    // paddingBottom: theme.spacing.sm,
   },
   subTitle: {
     fontFamily: `Inter, sans-serif ${theme.fontFamily}`,
@@ -52,28 +49,11 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    // paddingLeft: theme.spacing.xs,
-    // marginRight: theme.spacing.md,
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   flexDirection: "column",
-    // },
   },
   control: {
     height: rem(28),
     fontSize: theme.fontSizes.sm,
     color: "#B70C1C",
-
-    // "&:not(:first-of-type)": {
-    // marginLeft: theme.spacing.xs,
-    // },
-
-    // [theme.fn.smallerThan("xs")]: {
-    //   "&:not(:first-of-type)": {
-    //     marginTop: theme.spacing.md,
-    //     marginLeft: 0,
-    //   },
-    // },
   },
 
   wrapper: {
@@ -122,7 +102,6 @@ const useStyles = createStyles((theme) => ({
   text_primary: {
     color: "#2A435D",
     textAlign: "justify",
-    // fontFamily: "Roboto",
     fontSize: "16px",
     fontStyle: "normal",
     fontWeight: 700,
@@ -133,7 +112,7 @@ const useStyles = createStyles((theme) => ({
     color: "#2A435D",
     textAlign: "justify",
     marginTop: "21px",
-    // fontFamily: "Roboto",
+
     fontSize: "14px",
     fontStyle: "normal",
     fontWeight: 400,
@@ -143,9 +122,6 @@ const useStyles = createStyles((theme) => ({
   title_secondary: {
     color: "#C33",
     textAlign: "center",
-
-    /* H1 Heading 35px Roboto bold */
-    // fontFamily: "Roboto",
     fontSize: "35px",
     fontStyle: "normal",
     fontWeight: 700,
@@ -159,8 +135,7 @@ const useStyles = createStyles((theme) => ({
     width: "511px",
     height: "177px",
     flexShrink: 0,
-    /* H1 Heading 18px Roboto Regular */
-    // fontFamily: "Roboto",
+    
     fontSize: "18px",
     fontStyle: "normal",
     fontWeight: 400,
@@ -179,8 +154,7 @@ const useStyles = createStyles((theme) => ({
     color: "#2A435D",
     textAlign: "justify",
 
-    /* H1 Heading 35px Roboto bold */
-    // fontFamily: "Roboto",
+    
     fontSize: "35px",
     fontStyle: "normal",
     fontWeight: 700,
@@ -191,8 +165,7 @@ const useStyles = createStyles((theme) => ({
     textAlign: "justify",
     width: "609px",
     paddingTop: "18px",
-    /* H1 Heading 18px Roboto Regular */
-    // fontFamily: Roboto;
+    
     fontSize: "15px",
     fontStyle: "normal",
     fontWeight: 400,
