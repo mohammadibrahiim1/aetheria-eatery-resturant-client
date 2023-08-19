@@ -1,5 +1,4 @@
-import { Container, Grid, SimpleGrid, Text, Title, createStyles, rem } from "@mantine/core";
-// import { DatePicker } from "antd";
+import { Container, SimpleGrid, Text, createStyles, rem } from "@mantine/core";
 import React from "react";
 
 import ReactDatePicker from "react-datepicker";
@@ -119,8 +118,7 @@ const AvailableTables = () => {
           <Text c={"indigo"} className={classes.title}>
             <div>Available tables on {date}</div>
           </Text>
-          {/* </Grid.Col> */}
-          {/* <Grid.Col md={6} lg={6}> */}
+
           <Text c={"indigo"} align="right" className={classes.title}>
             Select Your Booking Date :{" "}
             <ReactDatePicker
@@ -131,7 +129,6 @@ const AvailableTables = () => {
               dateFormat={"PP"}
             />
           </Text>
-          {/* </Grid.Col> */}
         </SimpleGrid>{" "}
       </Container>
     </div>

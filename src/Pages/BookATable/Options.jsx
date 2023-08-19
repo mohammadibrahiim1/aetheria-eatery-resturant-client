@@ -1,4 +1,4 @@
-import { Button, Card, Text, createStyles, rem } from "@mantine/core";
+import { Card, Text, createStyles } from "@mantine/core";
 import React from "react";
 const useStyles = createStyles((theme) => ({
   card: {
@@ -24,10 +24,6 @@ const useStyles = createStyles((theme) => ({
     marginTop: "12px",
     borderRadius: "4px",
     cursor: "pointer",
-    // backgroundImage: `linear-gradient(-60deg, ${
-    //   theme.colors[theme.primaryColor][4]
-    // } 0%, ${theme.colors[theme.primaryColor][7]} 100%)`,
-    // backgroundColor: theme.white,
   },
 
   progressTrack: {
@@ -35,36 +31,14 @@ const useStyles = createStyles((theme) => ({
   },
 
   controls: {
-    // marginTop: `calc(${theme.spacing.xs}* 1.5)`,
-
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    // paddingLeft: theme.spacing.xs,
-    // marginLeft: theme.spacing.md,
 
-    [theme.fn.smallerThan("xs")]: {
-      // flexDirection: "column",
-    },
+    [theme.fn.smallerThan("xs")]: {},
   },
 
-  // control: {
-  //   height: rem(32),
-  //   fontSize: theme.fontSizes.sm,
-  //   color: "White",
-  //   marginTop: "12px",
-  //   padding: "6px",
-  //   // width: "100%",
-  //   border: "1px solid #1C7ED6",
-  //   borderRadius: "5px",
-  //   ":hover": {
-  //     backgroundColor: "White",
-  //     border: "1px solid #4c6ef5 !important",
-  //     transition: "0.5s",
-  //     color: "#4c6ef5 !important",
-  //     cursor: "pointer",
-  //   },
-  // },
+  
 }));
 const Options = ({ option, setSelectTable }) => {
   const { classes } = useStyles();
