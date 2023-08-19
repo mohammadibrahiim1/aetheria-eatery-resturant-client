@@ -2,9 +2,11 @@ import { Button, Card, Text, createStyles, rem } from "@mantine/core";
 import React from "react";
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundImage: `linear-gradient(-60deg, ${
-      theme.colors[theme.primaryColor][4]
-    } 0%, ${theme.colors[theme.primaryColor][7]} 100%)`,
+    backgroundImage: theme.fn.gradient({ from: "#6677f4", to: "#4E60FF", deg: -60 }),
+    color: theme.white,
+    // backgroundImage: `linear-gradient(-60deg, ${
+    //   theme.colors[theme.primaryColor][7]
+    // } 0%, ${theme.colors[theme.primaryColor][7]} 100%)`,
   },
 
   title: {
@@ -42,27 +44,27 @@ const useStyles = createStyles((theme) => ({
     // marginLeft: theme.spacing.md,
 
     [theme.fn.smallerThan("xs")]: {
-      flexDirection: "column",
+      // flexDirection: "column",
     },
   },
 
-  control: {
-    height: rem(32),
-    fontSize: theme.fontSizes.sm,
-    color: "White",
-    marginTop: "12px",
-    padding: "6px",
-    // width: "100%",
-    border: "1px solid #4BA9F5",
-    borderRadius: "5px",
-    ":hover": {
-      backgroundColor: "White",
-      border: "1px solid #4BA9F5 !important",
-      transition: "0.5s",
-      color: "#4BA9F5 !important",
-      cursor: "pointer",
-    },
-  },
+  // control: {
+  //   height: rem(32),
+  //   fontSize: theme.fontSizes.sm,
+  //   color: "White",
+  //   marginTop: "12px",
+  //   padding: "6px",
+  //   // width: "100%",
+  //   border: "1px solid #1C7ED6",
+  //   borderRadius: "5px",
+  //   ":hover": {
+  //     backgroundColor: "White",
+  //     border: "1px solid #4c6ef5 !important",
+  //     transition: "0.5s",
+  //     color: "#4c6ef5 !important",
+  //     cursor: "pointer",
+  //   },
+  // },
 }));
 const Options = ({ option, setSelectTable }) => {
   const { classes } = useStyles();
@@ -85,13 +87,12 @@ const Options = ({ option, setSelectTable }) => {
           <label
             disabled={slots.length === 0}
             htmlFor="booking-modal"
-            className={classes.control}
+            className="btn btn-md mt-5 "
             onClick={() => setSelectTable(option)}
           >
             Book A Table
           </label>
         </div>
-        
       </Card>
     </div>
   );

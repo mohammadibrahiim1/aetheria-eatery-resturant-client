@@ -8,6 +8,7 @@ import {
   //   Modal,
   //   Progress,
   SimpleGrid,
+  Text,
   //   Text,
   //   createStyles,
 } from "@mantine/core";
@@ -67,8 +68,7 @@ export const TableOptions = () => {
   return (
     <div>
       {/* {bookingOptions.length} */}
-      <Container className="">
-        <p className="pb-5 text-xl text-accent text-center font-semibold">Book your desire Table</p>
+      <Container size={"lg"} className="">
         <SimpleGrid
           cols={3}
           breakpoints={[

@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Text, Container, Button, Overlay, createStyles, rem } from "@mantine/core";
+import { Title, Text, Container, Button, Overlay, createStyles, rem, SimpleGrid } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -115,18 +115,24 @@ const BookATableBanner = () => {
               Are you looking for somewhere special to go this weekend? Do you want to try something new? Check out one
               of these hot new restaurants.
             </Text>
-          </Container>
 
-          <Link to="/shop" className={classes.controls}>
-            <Button className={classes.control} variant="white" size="lg">
-              Order Online
-            </Button>
-            <Link to="/mainMenu">
-              <Button className={cx(classes.control, classes.secondaryControl)} size="lg">
-                Our Menu
-              </Button>
-            </Link>
-          </Link>
+            <SimpleGrid
+              className="flex items-center justify-center"
+              mt={12}
+              cols={2}
+              breakpoints={[
+                { maxWidth: "sm", cols: 1 },
+                { maxWidth: "md", cols: 1 },
+              ]}
+            >
+              <Link to="/shop">
+                <Button className="btn btn-md btn-primary">Order Online</Button>
+              </Link>
+              <Link to="/shop">
+                <Button className="btn btn-md btn-secondary">Our Menu</Button>
+              </Link>
+            </SimpleGrid>
+          </Container>
         </div>
       </div>
     </div>

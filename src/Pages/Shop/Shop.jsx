@@ -23,6 +23,7 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
     color: "#FFF",
   },
+  
   heading: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontWeight: 700,

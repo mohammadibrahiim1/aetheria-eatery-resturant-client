@@ -12,9 +12,8 @@ const DashboardLayout = () => {
   //   const [isAdmin] = useAdmin(user?.email);
   return (
     <div>
-      {/* <Navbar></Navbar> */}
       <NewNavbar></NewNavbar>
-      <Container className="py-32">
+      <Container size={"lg"} className="py-32">
         {" "}
         <div>
           {/* <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> */}

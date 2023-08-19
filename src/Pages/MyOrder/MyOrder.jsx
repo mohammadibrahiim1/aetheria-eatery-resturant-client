@@ -5,6 +5,8 @@ import { toast } from "react-hot-toast";
 
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Components/Loading";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/UserContext";
 
 const useStyles = createStyles({
   table: {
@@ -32,6 +34,7 @@ const useStyles = createStyles({
 
 const MyOrder = () => {
   const { classes } = useStyles();
+  const { user } = useContext(AuthContext);
 
   // fetch my orders
   const {
@@ -41,7 +44,7 @@ const MyOrder = () => {
   } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/orders");
+      const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`);
       const data = await res.json();
       return data;
     },
@@ -82,7 +85,7 @@ const MyOrder = () => {
       </th>
       <th>
         <Text size={"md"} c={"indigo"} fw={600}>
-          cancel order
+          Orders role
         </Text>
       </th>
     </tr>
@@ -116,11 +119,7 @@ const MyOrder = () => {
             {i + 1}
           </Text>
         </td>
-        {/* <td>
-          <Text size={"md"} c={"indigo"} fw={600}>
-            {order.orderId ? order.orderId : <Text c={"teal"}>no order id</Text>}
-          </Text>
-        </td> */}
+
         <td>
           <Text size={"md"} c={"indigo"} fw={600}>
             {order.name}
@@ -131,7 +130,7 @@ const MyOrder = () => {
             <div className="flex items-center gap-5">
               <Indicator inline label={item.quantity} color={"indigo"} size={16}>
                 <Text size={"md"} c={"indigo"} fw={600}>
-                  {item.name}
+                  {item.name},
                 </Text>
               </Indicator>
             </div>
