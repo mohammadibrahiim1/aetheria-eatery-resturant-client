@@ -67,7 +67,7 @@ export function CheckOutMenu({ totalItems }) {
   const totalPage = Math.ceil(totalItems / itemsPerPage);
 
   let pageNumbers = [...Array(totalPage).keys()];
-  let options = [8, 16, 24];
+  let options = [(8, 16, 24)];
 
   const handleSelectChange = (e) => {
     setItemPerPage(parseInt(e.target.value));
