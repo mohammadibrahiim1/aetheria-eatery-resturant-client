@@ -18,11 +18,10 @@ import { useContext } from "react";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 
 // import PaymentButton from "../../Components/PaymentButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ApiContext } from "../Context/DataContext";
 // import { useState } from "react";
-import { toast } from "react-hot-toast";
-import PaymentCard from "./Payment";
+// import { toast } from "react-hot-toast";
 import { Button } from "antd";
 
 const useStyles = createStyles((theme) => ({
@@ -181,26 +180,26 @@ const PlaceOrder = () => {
   // const orderStatus = selectedRadio;
 
   // const { name, email, phone, city, state, totalPrice, zip } = orderInfo;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleConfirmOrder = () => {
-    fetch(" http://localhost:5000  /orderInfo", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(orderInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if ((data.acknowledged = true)) {
-          toast.success(" orderInfo added successfully ");
-          navigate("/myOrder");
-        } else {
-          console.log(console.error);
-          //   toast.error(data.message);
-        }
-      });
-  };
+  // const handleConfirmOrder = () => {
+  //   fetch(" http://localhost:5000  /orderInfo", {
+  //     method: "POST",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(orderInfo),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if ((data.acknowledged = true)) {
+  //         toast.success(" orderInfo added successfully ");
+  //         navigate("/myOrder");
+  //       } else {
+  //         console.log(console.error);
+  //         //   toast.error(data.message);
+  //       }
+  //     });
+  // };
   // const handleRadioChange = (value) => {
   //   setSelectedRadio(value);
   // };

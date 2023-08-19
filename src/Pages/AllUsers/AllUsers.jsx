@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Table, Text, createStyles } from "@mantine/core";
+import { Button, Table, Text, createStyles } from "@mantine/core";
 import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 

@@ -177,7 +177,7 @@ const MyOrder = () => {
 
   return (
     <>
-      <Container size="81%">
+      <Container size="81%" className="mt-24" >
         <Text fz={18} mt={32} fw={700}>
           My orders
         </Text>
