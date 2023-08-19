@@ -95,7 +95,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const AvailableTables = () => {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   //   const [value, setValue] = (useState < Date) | (null > null);
   const { selectDate, setSelectDate } = useContext(ApiContext);
 
@@ -107,7 +107,7 @@ const AvailableTables = () => {
           Book your desire Table
         </Text>
         <SimpleGrid
-        p={12}
+          p={12}
           cols={2}
           breakpoints={[
             { maxWidth: "sm", cols: 1 },

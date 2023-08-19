@@ -4,10 +4,12 @@ import { createStyles, Text, rem, Container } from "@mantine/core";
 const useStyles = createStyles((theme) => ({
   root: {
     display: "flex",
-    backgroundImage: `linear-gradient(-60deg, ${theme.colors[theme.primaryColor][4]} 0%, ${
-      theme.colors[theme.primaryColor][7]
-    } 100%)`,
-    padding: `calc(${theme.spacing.xl} * 1.5)`,
+    backgroundImage: theme.fn.gradient({ from: "#6677f4", to: "#4E60FF", deg: -60 }),
+    color: theme.white,
+    // backgroundImage: `linear-gradient(-60deg, ${theme.colors[theme.primaryColor][4]} 0%, ${
+    //   theme.colors[theme.primaryColor][7]
+    // } 100%)`,
+    padding: `calc(${theme.spacing.xl} * 1.7)`,
     borderRadius: theme.radius.md,
 
     [theme.fn.smallerThan("sm")]: {
@@ -110,13 +112,13 @@ const Contact = () => {
   ));
   return (
     <div className="py-28">
-      <div className="py-12">
-        <div className={classes.subTitle}>
-          <p>---check it out---</p>
-        </div>
-        <div className={classes.heading} color="#151515">
-          <h1> Contact Us</h1>
-        </div>
+      <div className="py-5">
+        <Text c={"#748FFC"} fs={"italic"} align="center" uppercase fz={"sm"} fw={600}>
+          Contact us
+        </Text>
+        <Text fz={25} fs={"italic"} c={"orange"} align="center" fw={700}>
+          Popular Dishes
+        </Text>
       </div>
       <Container size={"lg"} className={classes.root}>
         {stats}

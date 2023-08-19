@@ -93,7 +93,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const BookATableBanner = () => {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   return (
     <div>
       <div className={classes.wrapper}>

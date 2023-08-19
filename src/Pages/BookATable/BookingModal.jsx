@@ -134,7 +134,7 @@ const BookingModal = ({ selectTable, setSelectTable, refetch }) => {
   const { selectDate } = useContext(ApiContext);
   const date = format(selectDate, "PP");
   const { user } = useContext(AuthContext);
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
 
   const { name, slots } = selectTable;
 
