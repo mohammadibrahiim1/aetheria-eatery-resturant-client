@@ -170,7 +170,7 @@ const AllOrders = () => {
             ${order.totalPrice}
           </Text>
         </td>
-        {order.totalPrice && !order.paid && (
+        {/* {order.totalPrice && !order.paid && (
           <td>
             <Link>
               <Button className={classes.payment_button} size="xs">
@@ -178,7 +178,7 @@ const AllOrders = () => {
               </Button>
             </Link>
           </td>
-        )}
+        )} */}
         {order.totalPrice && order.paid && (
           <td>
             <Button disabled color="indigo" size="xs">
@@ -187,23 +187,42 @@ const AllOrders = () => {
           </td>
         )}
 
-        <td>
-          {showInitialButton && !order.paid ? (
-            <button>waiting for payment</button>
+        {showInitialButton && !order.paid ? (
+          <>
+            <td>
+              <Button className="btn btn-active">Unpaid</Button>
+            </td>
+
+            <td>
+              <Button className="btn btn-warning">Waiting for payment</Button>
+            </td>
+          </>
+        ) : (
+          <>
+            {order.paid ? (
+              <Button className="btn btn-success">Order details</Button>
+            ) : (
+              <Button className="btn btn-error">cancel order</Button>
+            )}
+          </>
+        )}
+
+        {/* <td>
+          {order.paid && <Button className="btn-sm btn-success">Order Details</Button>}
+          {order.totalPrice && showInitialButton && !order.paid ? (
+            <Button className="btn btn-error">Waiting for payment</Button>
           ) : (
-            // {order.paid && <Button className="btn-sm btn-success">Order Details</Button>}
-            <Button onClick={() => handleDeleteProduct(order)} className="btn-sm btn-error">
-              Order details
-            </Button>
+            <Button className="btn btn-error">cancel order</Button>
           )}
-          {/* {order.paid && !showInitialButton ? (
+
+          {order.paid && !showInitialButton ? (
             <Button className="btn-sm btn-success">Order Details</Button>
           ) : (
             <Button onClick={() => handleDeleteProduct(order)} className="btn-sm btn-error">
               cancel order
             </Button>
-          )} */}
-        </td>
+          )}
+        </td> */}
       </tr>
     ));
 
