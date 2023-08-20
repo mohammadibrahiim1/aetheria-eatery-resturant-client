@@ -40,6 +40,18 @@ const AllOrders = () => {
   const [showInitialButton, setShowInitialButton] = useState(true);
   //   const [allOrders, setAllOrders] = useState([]);
 
+  const [counter, setCounter] = useState(0);
+  console.log(counter);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowInitialButton(false);
+      setCounter((prevCounter) => prevCounter + 1);
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // fetch my orders
   const { data: allOrders = [], refetch } = useQuery({
     queryKey: ["allOrders"],
@@ -59,20 +71,6 @@ const AllOrders = () => {
   //         return data;
   //       });
   //   }, [user]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowInitialButton(false);
-    }, 60000); // 1 minute in milliseconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  //   useEffect(() => {
-  //     if (isMinutePassed) {
-  //       setDisplayText("New Text After 1 Minute");
-  //     }
-  //   }, [isMinutePassed]);
 
   if (loading) {
     return <Loading></Loading>;
@@ -188,23 +186,23 @@ const AllOrders = () => {
         )}
 
         {showInitialButton && !order.paid ? (
-          <>
+          <td>
             <td>
-              <Button className="btn btn-active">Unpaid</Button>
+              <Button className="btn btn-sm btn-active">Unpaid</Button>
             </td>
 
             <td>
-              <Button className="btn btn-warning">Waiting for payment</Button>
+              <Button className="btn btn-sm btn-warning">waiting for payment</Button>
             </td>
-          </>
+          </td>
         ) : (
-          <>
+          <td>
             {order.paid ? (
-              <Button className="btn btn-success">Order details</Button>
+              <Button className="btn btn-sm btn-success">Order details</Button>
             ) : (
-              <Button className="btn btn-error">cancel order</Button>
+              <Button className="btn btn-sm btn-error">cancel order</Button>
             )}
-          </>
+          </td>
         )}
 
         {/* <td>
@@ -235,7 +233,7 @@ const AllOrders = () => {
       </section>
       <Table
         mb={194}
-        verticalSpacing="sm"
+        verticalSpacing="md"
         horizontalSpacing={"xl"}
         captionSide="bottom"
         withBorder

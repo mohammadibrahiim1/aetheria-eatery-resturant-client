@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
-import {  Table, Text, createStyles } from "@mantine/core";
+import { Table, Text, createStyles } from "@mantine/core";
 
 // import { useQuery } from "@tanstack/react-query";
 const useStyles = createStyles(() => ({
@@ -45,7 +45,7 @@ const TableBookings = () => {
   //   </tr>
   // ));
   const rows = booking.map((book, i) => (
-    <tr className="text-center" key={book._id}>
+    <tr className="text-start" key={book._id}>
       <td>
         <Text fw={700} c={"green"}>
           {i + 1}
@@ -77,7 +77,7 @@ const TableBookings = () => {
         </Text>
       </td>
       <td>
-        <Text fw={700} c={"red"}>
+        <Text   fw={700} c={"red"}>
           {book.slot}
         </Text>
       </td>
