@@ -1,9 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
-// import OrderOnline from "../Components/OrderOnline";
-import { Testimonials } from "../Components/Testimonials";
 import Menu from "../Components/Menu";
-import Contact from "../Components/Contact";
 import PopularDishes from "../Components/PopularDishes";
 import BigOffer from "../Components/BiggOffer";
 import RichandHealthy from "../Components/RichandHealthy";
@@ -13,18 +10,16 @@ import { Delivery } from "../Components/Delivery/Delivery";
 
 const Home = () => {
   const { totalItems } = useLoaderData();
+
   return (
     <div>
       <Header></Header>
       <PopularDishes></PopularDishes>
       <RichandHealthy></RichandHealthy>
-      {/* <OrderOnline></OrderOnline> */}
       <Menu></Menu>
       <CheckOutMenu totalItems={totalItems}></CheckOutMenu>
       <BigOffer></BigOffer>
       <Delivery></Delivery>
-      {/* <Contact></Contact>
-      <Testimonials></Testimonials> */}
     </div>
   );
 };

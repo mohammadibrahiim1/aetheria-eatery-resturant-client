@@ -2,10 +2,8 @@ import { Button, Container, Indicator, Table, Text, createStyles } from "@mantin
 
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
-
-import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Components/Loading";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/UserContext";
 
 const useStyles = createStyles({
@@ -34,21 +32,23 @@ const useStyles = createStyles({
 
 const MyOrder = () => {
   const { classes } = useStyles();
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
+  const [orders, setOrders] = useState([]);
 
   // fetch my orders
-  const {
-    data: orders,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["orders"],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`);
-      const data = await res.json();
-      return data;
-    },
-  });
+  useEffect(() => {
+    fetch(`http://localhost:5000/orders?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setOrders(data);
+        return data;
+      });
+  }, [user]);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   const ths = (
     <tr className="bg-[#F7F7F9]">
@@ -100,14 +100,10 @@ const MyOrder = () => {
       .then((data) => {
         if (data.deletedCount > 0) {
           console.log(data);
-          refetch();
+          // refetch();
           toast.success(`${order.cart.map((item) => item.name)} deleted successfully`);
         }
       });
-
-    if (isLoading) {
-      return <Loading></Loading>;
-    }
   };
 
   const rows =
@@ -177,7 +173,7 @@ const MyOrder = () => {
 
   return (
     <>
-      <Container size="81%" className="mt-24" >
+      <Container size="81%" className="mt-24">
         <Text fz={18} mt={32} fw={700}>
           My orders
         </Text>

@@ -36,19 +36,31 @@ const AllUsers = () => {
   };
   const rows = users.map((user, i) => (
     <tr key={user._id}>
-      <td>{i + 1}</td>
+      <td>
+        <Text c={"violet"} fw={700}>
+          {i + 1}
+        </Text>
+      </td>
       <td>
         <img src={user.image} alt="" srcset="" className="h-12 w-12 rounded-full" />
       </td>
-      <td>{user.name}</td>
-      <td>{user.email}</td>
+      <td>
+        <Text fw={700} tt={"capitalize"} c={"teal"}>
+          {user.name}
+        </Text>
+      </td>
+      <td>
+        <Text c={"lime"} fw={700}>
+          {user.email}
+        </Text>
+      </td>
       <td>
         {user?.role !== "admin" ? (
-          <Button onClick={() => handleMakeAdmin(user._id)} className="btn btn-sm btn-light">
+          <Button onClick={() => handleMakeAdmin(user._id)} className="btn btn-sm btn-warning">
             Make Admin
           </Button>
         ) : (
-          <Button disabled className="btn btn-sm">
+          <Button disabled className="btn btn-sm ">
             Admin
           </Button>
         )}
@@ -57,7 +69,7 @@ const AllUsers = () => {
   ));
 
   const ths = (
-    <tr className="bg-[#F7F7F9]">
+    <tr className="bg-[#F7F7F9] ">
       <th>
         <Text size={"sm"} c={"indigo"} fw={600}>
           Index
@@ -93,7 +105,17 @@ const AllUsers = () => {
         Users information
       </Text>
 
-      <Table mb={194} captionSide="bottom" withBorder fontSize="sm" fw={600} radius="xl" className={classes.table}>
+      <Table
+        verticalSpacing={"xs"}
+        horizontalSpacing={"xl"}
+        mb={194}
+        captionSide="bottom"
+        withBorder
+        fontSize="sm"
+        fw={600}
+        radius="xl"
+        className={classes.table}
+      >
         <thead>{ths}</thead>
         <tbody>{rows}</tbody>
       </Table>

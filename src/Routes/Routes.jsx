@@ -8,7 +8,7 @@ import MainMenu from "../Pages/MainMenu/MainMenu";
 import Shop from "../Pages/Shop/Shop";
 import TableReservation from "../Pages/BookATable/BookATable";
 import DashboardLayout from "../Layout/DashboardLayout";
-import AllBookings from "../Pages/AllBookings/AllBookings";
+// import AllBookings from "../Pages/AllBookings/AllBookings";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
@@ -17,6 +17,7 @@ import Checkout from "../Pages/Checkout/Checkout";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import PlaceOrder from "../Components/PlaceOrder";
 import Payment from "../Components/Payment";
+import TableBookings from "../Pages/TableBookings/TableBookings";
 // import ErrorPage from "../Components/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -86,7 +87,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/tableBookings",
         element: (
           <AdminRoute>
-            <AllBookings></AllBookings>
+            <TableBookings></TableBookings>
           </AdminRoute>
         ),
       },
