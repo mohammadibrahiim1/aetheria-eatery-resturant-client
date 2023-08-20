@@ -18,6 +18,7 @@ import MyOrder from "../Pages/MyOrder/MyOrder";
 import PlaceOrder from "../Components/PlaceOrder";
 import Payment from "../Components/Payment";
 import TableBookings from "../Pages/TableBookings/TableBookings";
+import AllOrders from "../Pages/AllOrders/AllOrders";
 // import ErrorPage from "../Components/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allOrders",
+        element: (
+          <AdminRoute>
+            <AllOrders></AllOrders>
           </AdminRoute>
         ),
       },

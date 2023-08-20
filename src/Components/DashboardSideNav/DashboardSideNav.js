@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import UseAdmin from "../../Hooks/UseAdmin";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
-import { IconUsers } from "@tabler/icons-react";
+import { IconShoppingBagCheck, IconUsers } from "@tabler/icons-react";
 import { IconReservedLine } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
@@ -71,6 +71,13 @@ export const DashboardSideNav = () => {
                       <Link to="/dashboard/tableBookings">
                         <Text className="text-indigo-500 font-semibold flex items-center gap-1 mt-2 ">
                           <IconReservedLine size={"1.2rem"} /> <span className="pt-1">Table reserved</span>
+                        </Text>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard/allOrders">
+                        <Text className="text-indigo-500 font-semibold flex items-center gap-1 mt-2 ">
+                          <IconShoppingBagCheck size={"1.2rem"} /> <span className="pt-1">Orders</span>
                         </Text>
                       </Link>
                     </li>

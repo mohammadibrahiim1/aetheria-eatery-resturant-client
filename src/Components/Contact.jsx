@@ -117,7 +117,7 @@ const Contact = () => {
           Contact us
         </Text>
         <Text fz={25} fs={"italic"} c={"orange"} align="center" fw={700}>
-          Popular Dishes
+          Contact with us
         </Text>
       </div>
       <Container size={"lg"} className={classes.root}>

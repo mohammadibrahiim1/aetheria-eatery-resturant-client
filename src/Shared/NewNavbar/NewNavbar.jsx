@@ -144,15 +144,9 @@ export const NewNavbar = () => {
     { link: "/myOrder", label: "My Order" },
     {
       link: "/dashboard/tableBookings",
-      label:
-        user?.email && isAdmin ? (
-          <div>
-            <IconLayoutDashboard className="h-6 w-6" />
-          </div>
-        ) : (
-          ""
-        ),
+      label: user?.email && isAdmin ? <div>Dashboard</div> : "",
     },
+
     {
       link: "/cart",
       label: (
@@ -163,6 +157,7 @@ export const NewNavbar = () => {
         </div>
       ),
     },
+
     {
       label: user?.email ? (
         <div onClick={handleLogOut}>
@@ -181,7 +176,6 @@ export const NewNavbar = () => {
 
   const items = links.map((link) => (
     <Link
-      key={link.label}
       to={link.link}
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
