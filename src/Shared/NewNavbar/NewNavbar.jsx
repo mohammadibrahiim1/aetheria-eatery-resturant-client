@@ -143,7 +143,7 @@ export const NewNavbar = () => {
     { link: "/aboutUs", label: "About" },
     { link: "/myOrder", label: "My Order" },
     {
-      link: "/dashboard/allBookings",
+      link: "/dashboard/tableBookings",
       label:
         user?.email && isAdmin ? (
           <div>

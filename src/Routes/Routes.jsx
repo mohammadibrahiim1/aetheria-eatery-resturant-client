@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/allBookings",
+        path: "/dashboard/tableBookings",
         element: (
           <AdminRoute>
             <AllBookings></AllBookings>

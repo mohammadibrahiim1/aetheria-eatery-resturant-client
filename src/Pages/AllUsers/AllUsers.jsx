@@ -5,12 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 
 const useStyles = createStyles(() => ({
   table: {
-    // width: "80%",
-    // margin: "auto",
-    marginTop: "25px",
-    marginBottom: "50px",
-    // border: "1px solid gray",
-    // borderRadius: "20px",
+    width: "100%",
+    margin: "auto",
   },
 }));
 
@@ -63,28 +59,28 @@ const AllUsers = () => {
   const ths = (
     <tr className="bg-[#F7F7F9]">
       <th>
-        <Text size={"md"} c={"indigo"} fw={600}>
+        <Text size={"sm"} c={"indigo"} fw={600}>
           Index
         </Text>
       </th>
 
       <th>
-        <Text size={"md"} c={"indigo"} fw={600}>
+        <Text size={"sm"} c={"indigo"} fw={600}>
           Photo
         </Text>
       </th>
       <th>
-        <Text size={"md"} c={"indigo"} fw={600}>
+        <Text size={"sm"} c={"indigo"} fw={600}>
           Name
         </Text>
       </th>
       <th>
-        <Text size={"md"} c={"indigo"} fw={600}>
+        <Text size={"sm"} c={"indigo"} fw={600}>
           Email
         </Text>
       </th>
       <th>
-        <Text size={"md"} c={"indigo"} fw={600}>
+        <Text size={"sm"} c={"indigo"} fw={600}>
           Role
         </Text>
       </th>
@@ -93,11 +89,11 @@ const AllUsers = () => {
 
   return (
     <div>
-      <Text fz={18} mt={32} fw={700}>
-        users dashboard
+      <Text fz={18} fw={700}>
+        Users information
       </Text>
 
-      <Table mb={194} captionSide="bottom" withBorder fontSize="xs" radius="md" className={classes.table}>
+      <Table mb={194} captionSide="bottom" withBorder fontSize="sm" fw={600} radius="xl" className={classes.table}>
         <thead>{ths}</thead>
         <tbody>{rows}</tbody>
       </Table>
