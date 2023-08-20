@@ -200,7 +200,9 @@ const AllOrders = () => {
             {order.paid ? (
               <Button className="btn btn-sm btn-success">Order details</Button>
             ) : (
-              <Button className="btn btn-sm btn-error">cancel order</Button>
+              <Button onClick={() => handleDeleteProduct(order._id)} className="btn btn-sm btn-error">
+                cancel order
+              </Button>
             )}
           </td>
         )}

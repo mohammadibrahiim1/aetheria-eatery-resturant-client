@@ -50,7 +50,7 @@ const AllUsers = () => {
         </Text>
       </td>
       <td>
-        <Text c={"lime"} fw={700}>
+        <Text c={"lime"} fw={700} fz={16}>
           {user.email}
         </Text>
       </td>
