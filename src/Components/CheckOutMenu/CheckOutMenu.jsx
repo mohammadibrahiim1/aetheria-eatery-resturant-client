@@ -1,4 +1,12 @@
-import { createStyles, Image, Container, Group, Text, rem, Card } from "@mantine/core";
+import {
+  createStyles,
+  Image,
+  Container,
+  Group,
+  Text,
+  rem,
+  Card,
+} from "@mantine/core";
 
 import { useContext } from "react";
 import { ApiContext } from "../../Context/DataContext";
@@ -54,20 +62,29 @@ const useStyles = createStyles((theme) => ({
 
   highlight: {
     position: "relative",
-    backgroundColor: theme.fn.variant({ variant: "light", color: theme.primaryColor }).background,
+    backgroundColor: theme.fn.variant({
+      variant: "light",
+      color: theme.primaryColor,
+    }).background,
     borderRadius: theme.radius.sm,
     padding: `${rem(4)} ${rem(12)}`,
   },
 }));
 
 export function CheckOutMenu({ totalItems }) {
-  const { allItems, currentPage, setCurrentPage, itemsPerPage, setItemPerPage } = useContext(ApiContext);
+  const {
+    allItems,
+    currentPage,
+    setCurrentPage,
+    itemsPerPage,
+    setItemPerPage,
+  } = useContext(ApiContext);
   const { classes } = useStyles();
 
   const totalPage = Math.ceil(totalItems / itemsPerPage);
 
   let pageNumbers = [...Array(totalPage).keys()];
-  let options = [(8, 16, 24)];
+  let options = [8, 16, 24];
 
   const handleSelectChange = (e) => {
     setItemPerPage(parseInt(e.target.value));
@@ -82,7 +99,8 @@ export function CheckOutMenu({ totalItems }) {
             Check Out Our Menu
           </Text>
           <Text c={"#748FFC"} fw={"500"} fz={13}>
-            Demoralized by the charms of pleasure of the moment so blinded except to some advantage.
+            Demoralized by the charms of pleasure of the moment so blinded
+            except to some advantage.
           </Text>
         </div>
 
@@ -93,11 +111,21 @@ export function CheckOutMenu({ totalItems }) {
                 <Card shadow="sm" radius="md" p={5} className={classes.card}>
                   <Group noWrap spacing={0}>
                     <div className="flex items-center gap-1">
-                      <Text transform="uppercase" color="#CC3333" weight={700} size="sm">
+                      <Text
+                        transform="uppercase"
+                        color="#CC3333"
+                        weight={700}
+                        size="sm"
+                      >
                         {item.name}--------------------
                       </Text>
 
-                      <Text c={"#CC3333"} fw={600} className={classes.price} size="sm">
+                      <Text
+                        c={"#CC3333"}
+                        fw={600}
+                        className={classes.price}
+                        size="sm"
+                      >
                         ${item.price}
                       </Text>
                     </div>
@@ -116,7 +144,11 @@ export function CheckOutMenu({ totalItems }) {
                 Current page : {currentPage} and items per page: {itemsPerPage}
               </Text>
               {pageNumbers.map((number) => (
-                <button onClick={() => setCurrentPage(number)} key={number} className="btn-sm btn mx-2 btn-warning">
+                <button
+                  onClick={() => setCurrentPage(number)}
+                  key={number}
+                  className="btn-sm btn mx-2 btn-warning"
+                >
                   <Text px={10}>{number}</Text>
                 </button>
               ))}
@@ -133,7 +165,11 @@ export function CheckOutMenu({ totalItems }) {
               </select>
             </div>
           </div>
-          <Image src="https://i.ibb.co/G2pXj4z/Rectangle-40.png" alt="food img" className={classes.image} />
+          <Image
+            src="https://i.ibb.co/G2pXj4z/Rectangle-40.png"
+            alt="food img"
+            className={classes.image}
+          />
         </div>
       </Container>
     </div>
