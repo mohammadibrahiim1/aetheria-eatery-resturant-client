@@ -108,7 +108,12 @@ export function CheckOutMenu({ totalItems }) {
           <div className={classes.content}>
             {allItems?.slice(0, 8).map((item) => (
               <div>
-                <Card shadow="sm" radius="md" p={5} className={classes.card}>
+                <Card
+                  shadow="sm"
+                  radius="md"
+                  p={5}
+                  className="lg:w-full  w-[360px]"
+                >
                   <Group noWrap spacing={0}>
                     <div className="flex items-center gap-1">
                       <Text
@@ -139,7 +144,7 @@ export function CheckOutMenu({ totalItems }) {
                 </Card>
               </div>
             ))}
-            <div className="text-center">
+            <div className="text-center w-full">
               <Text fw={600} c={"#FBBD23"} py={10}>
                 Current page : {currentPage} and items per page: {itemsPerPage}
               </Text>

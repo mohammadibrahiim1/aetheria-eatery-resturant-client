@@ -14,21 +14,46 @@ const PopularDishes = () => {
           </Text>
         </Title>
 
-        <div className="flex justify-between items-center py-4">
+        <div className="grid  place-content-center lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1 lg:justify-between sm:justify-center md:justify-center items-center py-4 gap-4 ">
           <div>
-            <Image width={220} height={110} src="https://i.ibb.co/m84jPR1/image-Dishes-1.png" radius={"sm"} />
+            <Image
+              width={220}
+              height={110}
+              src="https://i.ibb.co/m84jPR1/image-Dishes-1.png"
+              radius={"sm"}
+            />
           </div>
           <div>
-            <Image width={220} height={110} src="https://i.ibb.co/LStT5wt/image-Dishes-2.png" radius={"sm"} />
+            <Image
+              width={220}
+              height={110}
+              src="https://i.ibb.co/LStT5wt/image-Dishes-2.png"
+              radius={"sm"}
+            />
           </div>
           <div>
-            <Image width={220} height={110} src="https://i.ibb.co/PWn4gFH/image-Dishes-3.png" radius={"sm"} />
+            <Image
+              width={220}
+              height={110}
+              src="https://i.ibb.co/PWn4gFH/image-Dishes-3.png"
+              radius={"sm"}
+            />
           </div>
           <div>
-            <Image width={220} height={110} src="https://i.ibb.co/Zh3gTJ0/image-Dishes-4.png" radius={"sm"} />
+            <Image
+              width={220}
+              height={110}
+              src="https://i.ibb.co/Zh3gTJ0/image-Dishes-4.png"
+              radius={"sm"}
+            />
           </div>
           <div>
-            <Image width={220} height={110} src="https://i.ibb.co/QHkQbjy/image-Dishes-5.png" radius={"sm"} />
+            <Image
+              width={220}
+              height={110}
+              src="https://i.ibb.co/QHkQbjy/image-Dishes-5.png"
+              radius={"sm"}
+            />
           </div>
         </div>
       </Container>

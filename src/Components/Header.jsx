@@ -1,5 +1,14 @@
 import React from "react";
-import { Title, Text, Container, Button, createStyles, rem, Image, Card } from "@mantine/core";
+import {
+  Title,
+  Text,
+  Container,
+  Button,
+  createStyles,
+  rem,
+  Image,
+  Card,
+} from "@mantine/core";
 import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -89,15 +98,21 @@ const Header = () => {
   const { classes, cx } = useStyles();
   return (
     <div>
-      <Container m={"auto"} size={"lg"} py={65} mt={35} className={classes.wrapper}>
+      <Container
+        m={"auto"}
+        size={"lg"}
+        py={65}
+        mt={35}
+        className={classes.wrapper}
+      >
         <div className={classes.inner}>
-          <div className="flex  items-center gap-5">
+          <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5">
             <Card
               w={540}
               h={188}
               radius={"md"}
               bg={"#FFF3ED"}
-              className="grid grid-cols-2 justify-between items-center"
+              className="grid grid-cols-2 justify-between items-center lg:w-[540px] md:w-[370px] w-[360px]"
             >
               <Image
                 maw={224}
@@ -128,7 +143,7 @@ const Header = () => {
               h={188}
               radius={"md"}
               bg={"#F3F4FF"}
-              className="grid grid-cols-2 justify-between items-center"
+              className="grid grid-cols-2 justify-between items-center lg:w-[540px] md:w-[370px] w-[360px]"
             >
               <Image
                 maw={224}
