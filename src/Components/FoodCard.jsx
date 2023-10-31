@@ -15,7 +15,8 @@ import { IconShoppingBag } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     width: "100%",
   },
 
@@ -93,13 +94,20 @@ const FoodCard = ({ item, setModalItem, addItemToCart }) => {
           <Text size="sm" color="dimmed">
             {description.slice(0, 60)}...
           </Text>
-          <label onClick={() => setModalItem(item)} htmlFor="my_modal_6" className="cursor-pointer text-[#5C7CFA]">
+          <label
+            onClick={() => setModalItem(item)}
+            htmlFor="my_modal_6"
+            className="cursor-pointer text-[#5C7CFA]"
+          >
             <IconInfoCircleFilled />
           </label>
         </div>
 
         <div className="mt-5">
-          <IconShoppingBag onClick={() => addItemToCart(item)} className="text-[#5C7CFA] cursor-pointer" />
+          <IconShoppingBag
+            onClick={() => addItemToCart(item)}
+            className="text-[#5C7CFA] cursor-pointer"
+          />
         </div>
       </Card>
     </div>

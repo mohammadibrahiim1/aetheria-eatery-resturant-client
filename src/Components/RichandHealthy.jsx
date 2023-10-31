@@ -5,7 +5,7 @@ const RichandHealthy = () => {
   return (
     <div>
       <Container size={"lg"} py={55}>
-        <Text c={"orange"} fs={"italic"} fz={20} align="center" fw={700}>
+        <Text c={"orange"} fs={"italic"} fz={20} align="center" fw={700} py={12}>
           Rich & Healthy
         </Text>
         <div className="lg:flex grid place-content-center grid-cols-1 md:grid-cols-1 lg:grid-cols-2  justify-between items-center gap-7">

@@ -14,15 +14,24 @@ const BigOffer = () => {
           </Text>
         </Title>
 
-        <div className="flex justify-between items-center mt-5 gap-1">
+        <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-center mt-5 gap-1">
           <div>
-            <Image src="https://i.ibb.co/X7JpSTk/image-big-Offer-1.png" radius={"xs"} />
+            <Image
+              src="https://i.ibb.co/X7JpSTk/image-big-Offer-1.png"
+              radius={"xs"}
+            />
           </div>
           <div>
-            <Image src="https://i.ibb.co/6tmy32q/image-big-Offer-2.png" radius={"xs"} />
+            <Image
+              src="https://i.ibb.co/6tmy32q/image-big-Offer-2.png"
+              radius={"xs"}
+            />
           </div>
           <div>
-            <Image src="https://i.ibb.co/WBQBcp4/image-big-Offer-3.png" radius={"xs"} />
+            <Image
+              src="https://i.ibb.co/WBQBcp4/image-big-Offer-3.png"
+              radius={"xs"}
+            />
           </div>
         </div>
       </Container>
