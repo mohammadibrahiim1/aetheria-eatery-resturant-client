@@ -1,13 +1,12 @@
-// http://localhost:5000/v1/orders
+// https://resturant-website-server.vercel.app/v1/orders
 
-import { Button, Container, Indicator, Table, Text, createStyles } from "@mantine/core";
+import { Button, Indicator, Table, Text, createStyles } from "@mantine/core";
 
-import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import Loading from "../../Components/Loading";
-import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/UserContext";
-import { useQuery } from "@tanstack/react-query";
 
 const useStyles = createStyles({
   //   table: {
@@ -56,14 +55,14 @@ const AllOrders = () => {
   const { data: allOrders = [], refetch } = useQuery({
     queryKey: ["allOrders"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/v1/orders`);
+      const res = await fetch(`https://resturant-website-server.vercel.app/v1/orders`);
       const data = await res.json();
 
       return data;
     },
   });
   //   useEffect(() => {
-  //     fetch(`http://localhost:5000/v1/orders`)
+  //     fetch(`https://resturant-website-server.vercel.app/v1/orders`)
   //       .then((res) => res.json())
   //       .then((data) => {
   //         console.log(data);
@@ -119,7 +118,7 @@ const AllOrders = () => {
 
   // cancel your order
   const handleDeleteProduct = (order) => {
-    fetch(`http://localhost:5000/v1/order/${order._id}`, {
+    fetch(`https://resturant-website-server.vercel.app/v1/order/${order._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

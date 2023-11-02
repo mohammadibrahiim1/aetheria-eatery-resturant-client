@@ -1,7 +1,6 @@
-import React from "react";
-import { useContext } from "react";
-import { ApiContext } from "../../Context/DataContext";
 import { Table, Text, createStyles } from "@mantine/core";
+import React, { useContext } from "react";
+import { ApiContext } from "../../Context/DataContext";
 
 // import { useQuery } from "@tanstack/react-query";
 const useStyles = createStyles(() => ({
@@ -18,7 +17,7 @@ const TableBookings = () => {
   // const { data: booking = [] } = useQuery({
   //   queryKey: ["bookings"],
   //   queryFn: async () => {
-  //     const res = await fetch(`   http://localhost:5000   /bookings`);
+  //     const res = await fetch(`   https://resturant-website-server.vercel.app   /bookings`);
   //     const data = await res.json();
   //     console.log(data);
   //     return data;

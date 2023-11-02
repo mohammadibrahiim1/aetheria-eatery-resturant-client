@@ -1,24 +1,23 @@
-import { useContext, useState } from "react";
 import {
-  createStyles,
-  Header,
-  Container,
-  Group,
-  Burger,
-  Paper,
-  Transition,
-  rem,
-  Indicator,
-  Avatar,
+    Avatar,
+    Burger,
+    Container,
+    Group,
+    Header,
+    Indicator,
+    Paper,
+    Transition,
+    createStyles,
+    rem,
 } from "@mantine/core";
-import { Link } from "react-router-dom";
-import UseAdmin from "../../Hooks/UseAdmin";
-import { ApiContext } from "../../Context/DataContext";
-import { AuthContext } from "../../Context/UserContext";
+import { IconShoppingBag } from "@tabler/icons-react";
+import { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
-import { IconLayoutDashboard } from "@tabler/icons-react";
-import { IconShoppingBag } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
+import { ApiContext } from "../../Context/DataContext";
+import { AuthContext } from "../../Context/UserContext";
+import UseAdmin from "../../Hooks/UseAdmin";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -107,7 +106,7 @@ export const NewNavbar = () => {
     signInWithGoogle().then((result) => {
       const user = result.user;
       if (user) {
-        fetch("http://localhost:5000/users", {
+        fetch("https://resturant-website-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

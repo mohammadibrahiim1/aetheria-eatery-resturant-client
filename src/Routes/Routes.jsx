@@ -2,23 +2,23 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
 import Home from "../Pages/Home";
 
-import Cart from "../Pages/Cart/Cart";
 import AboutUs from "../Components/AboutUs";
+import DashboardLayout from "../Layout/DashboardLayout";
+import TableReservation from "../Pages/BookATable/BookATable";
+import Cart from "../Pages/Cart/Cart";
 import MainMenu from "../Pages/MainMenu/MainMenu";
 import Shop from "../Pages/Shop/Shop";
-import TableReservation from "../Pages/BookATable/BookATable";
-import DashboardLayout from "../Layout/DashboardLayout";
 // import AllBookings from "../Pages/AllBookings/AllBookings";
 import AllUsers from "../Pages/AllUsers/AllUsers";
-import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 // import { ErrorPage } from "../Components/ErrorPage";
+import Payment from "../Components/Payment";
+import PlaceOrder from "../Components/PlaceOrder";
+import AllOrders from "../Pages/AllOrders/AllOrders";
 import Checkout from "../Pages/Checkout/Checkout";
 import MyOrder from "../Pages/MyOrder/MyOrder";
-import PlaceOrder from "../Components/PlaceOrder";
-import Payment from "../Components/Payment";
 import TableBookings from "../Pages/TableBookings/TableBookings";
-import AllOrders from "../Pages/AllOrders/AllOrders";
 // import ErrorPage from "../Components/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/totalItems"),
+        loader: () => fetch("https://resturant-website-server.vercel.app/totalItems"),
       },
       {
         path: "/cart",
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
       {
         path: "/payment/:id",
         element: <Payment></Payment>,
-        loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`),
+        loader: ({ params }) => fetch(`https://resturant-website-server.vercel.app/orders/${params.id}`),
       },
       {
         path: "/placeOrder",

@@ -1,10 +1,10 @@
+import { Avatar, Burger, Group, Header, Paper, Transition, createStyles, rem } from "@mantine/core";
 import { useContext, useState } from "react";
-import { createStyles, Header, Group, Burger, Paper, Transition, rem, Avatar } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-import { AuthContext } from "../../Context/UserContext";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../Context/UserContext";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -92,7 +92,7 @@ export const DashboardNav = () => {
     signInWithGoogle().then((result) => {
       const user = result.user;
       if (user) {
-        fetch("http://localhost:5000/users", {
+        fetch("https://resturant-website-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

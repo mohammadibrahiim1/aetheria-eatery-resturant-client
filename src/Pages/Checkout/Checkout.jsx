@@ -1,28 +1,28 @@
 import {
-  ActionIcon,
-  Button,
-  Card,
-  Checkbox,
-  Container,
-  Grid,
-  Image,
-  Indicator,
-  Stack,
-  Text,
-  TextInput,
-  createStyles,
-  rem,
+    ActionIcon,
+    Button,
+    Card,
+    Checkbox,
+    Container,
+    Grid,
+    Image,
+    Indicator,
+    Stack,
+    Text,
+    TextInput,
+    createStyles,
+    rem,
 } from "@mantine/core";
 
-import React, { useContext } from "react";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
+import React, { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
 
-import { ApiContext } from "../../Context/DataContext";
 import { IconTrash } from "@tabler/icons-react";
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { ApiContext } from "../../Context/DataContext";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -205,7 +205,7 @@ const Checkout = () => {
       
     };
 
-    fetch("http://localhost:5000/v1/orders", {
+    fetch("https://resturant-website-server.vercel.app/v1/orders", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderInfo),

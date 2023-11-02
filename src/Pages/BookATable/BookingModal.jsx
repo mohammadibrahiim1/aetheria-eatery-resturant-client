@@ -1,10 +1,9 @@
-import React from "react";
-import { useContext } from "react";
+import { createStyles, rem } from "@mantine/core";
+import { format } from "date-fns";
+import React, { useContext } from "react";
+import { Toaster, toast } from "react-hot-toast";
 import { ApiContext } from "../../Context/DataContext";
 import { AuthContext } from "../../Context/UserContext";
-import { Toaster, toast } from "react-hot-toast";
-import { format } from "date-fns";
-import { createStyles, rem } from "@mantine/core";
 
 // css style for booking modal
 
@@ -154,7 +153,7 @@ const BookingModal = ({ selectTable, setSelectTable, refetch }) => {
       slot: slot,
       table: name,
     };
-    fetch(" http://localhost:5000  /bookings", {
+    fetch(" https://resturant-website-server.vercel.app  /bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

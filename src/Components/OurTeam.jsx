@@ -1,7 +1,6 @@
 import { Carousel } from "@mantine/carousel";
 import { Avatar, Button, Paper, Text, Title, createStyles, rem } from "@mantine/core";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const useStyles = createStyles((theme) => ({
   card: {
     height: rem(380),
@@ -59,7 +58,7 @@ export const OurTeam = () => {
   const { classes } = useStyles();
 
   useEffect(() => {
-    fetch("http://localhost:5000/team")
+    fetch("https://resturant-website-server.vercel.app/team")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

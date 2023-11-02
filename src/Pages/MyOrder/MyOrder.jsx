@@ -1,9 +1,9 @@
 import { Button, Container, Indicator, Table, Text, createStyles } from "@mantine/core";
 
-import { Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import Loading from "../../Components/Loading";
 import { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import Loading from "../../Components/Loading";
 import { AuthContext } from "../../Context/UserContext";
 
 const useStyles = createStyles({
@@ -37,7 +37,7 @@ const MyOrder = () => {
 
   // fetch my orders
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${user?.email}`)
+    fetch(`https://resturant-website-server.vercel.app/orders?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -93,7 +93,7 @@ const MyOrder = () => {
 
   // cancel your order
   const handleDeleteProduct = (order) => {
-    fetch(`http://localhost:5000/v1/order/${order._id}`, {
+    fetch(`https://resturant-website-server.vercel.app/v1/order/${order._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

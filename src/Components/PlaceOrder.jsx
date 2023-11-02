@@ -1,16 +1,16 @@
 import {
-  createStyles,
-  Card,
-  Image,
-  Text,
-  // Group,
-  // Container,
-  Grid,
-  rem,
-  Container,
-  ActionIcon,
-  Group,
-  Indicator,
+    ActionIcon,
+    Card,
+    Container,
+    // Group,
+    // Container,
+    Grid,
+    Group,
+    Image,
+    Indicator,
+    Text,
+    createStyles,
+    rem,
 } from "@mantine/core";
 import { useContext } from "react";
 // import { ApiContext } from "../../Context/DataContext";
@@ -183,7 +183,7 @@ const PlaceOrder = () => {
   // const navigate = useNavigate();
 
   // const handleConfirmOrder = () => {
-  //   fetch(" http://localhost:5000  /orderInfo", {
+  //   fetch(" https://resturant-website-server.vercel.app  /orderInfo", {
   //     method: "POST",
   //     headers: { "content-type": "application/json" },
   //     body: JSON.stringify(orderInfo),

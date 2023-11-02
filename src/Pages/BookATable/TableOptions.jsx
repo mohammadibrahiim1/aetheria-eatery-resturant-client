@@ -1,12 +1,11 @@
 import { Container, SimpleGrid } from "@mantine/core";
 
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { format } from "date-fns";
+import { useContext, useState } from "react";
+import { ApiContext } from "../../Context/DataContext";
 import BookingModal from "./BookingModal";
 import Options from "./Options";
-import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
-import { ApiContext } from "../../Context/DataContext";
-import { format } from "date-fns";
 
 export const TableOptions = () => {
   const { selectDate } = useContext(ApiContext);
@@ -19,7 +18,7 @@ export const TableOptions = () => {
   const { data: bookingOptions = [], refetch } = useQuery({
     queryKey: ["bookingOptions", date],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/bookingOptions?date=${date}`);
+      const res = await fetch(`https://resturant-website-server.vercel.app/bookingOptions?date=${date}`);
       const data = await res.json();
       return data;
     },
